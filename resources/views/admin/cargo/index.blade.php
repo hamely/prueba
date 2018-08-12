@@ -5,7 +5,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Tipos de cargos <small></small></h3>
+                <h3>Tipos de cargos de  <small></small></h3>
               </div>
             </div>
 
