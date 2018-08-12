@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cargo;
 
 class CargoController extends Controller
 {
@@ -13,7 +14,8 @@ class CargoController extends Controller
      */
     public function index()
     {
-        return view('admin/cargo/index');
+        $cargo=Cargo::all();
+        return  view('admin.cargo.index',['cargo' => $cargo]);
     }
 
     /**
@@ -23,7 +25,7 @@ class CargoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.cargo.create');
     }
 
     /**
@@ -34,7 +36,12 @@ class CargoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cargo = new Cargo;
+        $cargo->codigo = $request->codigo;
+        $cargo->nombre = $request->nombre;
+        $cargo->save();
+        
+        return redirect()->route('cargo.index')->with('info' , 'Se registro correctamente');
     }
 
     /**

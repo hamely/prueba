@@ -85,6 +85,11 @@
                       <li><a href="{{ url('persona') }}">Datos personales PNP</a></li>
                     </ul>
                   </li> 
+                  <li><a><i class="fa fa-toggle-down"></i>Cargo<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('cargo') }}">Tipos de cargo</a></li>
+                    </ul>
+                  </li> 
                   <li><a><i class="fa fa-toggle-down"></i>Sanciones<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ url('sancion') }}">Tipos de sanciones</a></li>

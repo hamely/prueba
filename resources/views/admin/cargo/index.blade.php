@@ -13,8 +13,8 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                  <a href="{{('/comision/create')}}" class="btn btn-success ">Nuevo cargo</a>
-                    <h2>Lista de tipos de cargos<small></small></h2>
+                  <a href="{{('/cargo/create')}}" class="btn btn-success ">Nuevo cargo</a>
+                    <h2>Lista de cargos<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -46,14 +46,15 @@
                         </tr>
                       </thead>
                       <tbody>
-                       
+                      @foreach($cargo as $item)
                             <tr>
-                            <td></td>
-                            <td></td>
+                            <td>{{$item->codigo }}</td>
+                            <td>{{$item->nombre }}</td>
+                   
                             <td><button class="btn-success">editar</button></td>
                             
                             </tr>
-                    
+                      @endforeach
                 
                       </tbody>
                     </table>
