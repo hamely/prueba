@@ -98,17 +98,22 @@
 
 
 
-        <div class="modal fade" id="unidad" role="dialog">
+    <div class="modal fade" id="unidad" role="dialog">
         <div class="modal-dialog">
         
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Modal Header</h4>
+              <h4 class="modal-title">Asignar cargo,unidad y grado</h4>
             </div>
             <div class="modal-body">
-              <p>Some text in the modal.</p>
+                <input type="hidden" name="idPersona" id="idPersona">
+                <label> Cargo</label>
+                 <div class="divCargo">
+                     <select class='selectpicker' id='cargo' data-live-search='true'>
+                    </select>
+                 </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -126,16 +131,24 @@
 
     function listarCargos(idPersona)
     {
+       $("#idPersona").val(idPersona);
+
        $.ajaxSetup({
           headers: {
               'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
           }
       });
        jQuery.ajax({
-          url: "{{ url('/grocery/post') }}",
+          url: "{{('cargo')}}",
           method: 'GET',
           success: function(result){
-             console.log(result);
+
+            var html="";
+              $.each(result.data, function(cargo, item) {
+                    html= html+ "<option data-tokens='"+item.nombre+"'>"+item.nombre+"</option>";
+                });
+              $("#cargo").append(html);
+              $('.selectpicker').selectpicker('refresh');
           }});
     }
 

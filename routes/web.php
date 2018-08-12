@@ -19,3 +19,5 @@ Route::resource('sancion', 'SancionController'); //LLAMAR AL CONTROLADOR Typesan
 Route::resource('comision','ComisionController');
 Route::resource('persona','PersonaController');
 Route::resource('cargo','CargoController');
+Route::post('post/cargo','CargoController@asignar');
+
