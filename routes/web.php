@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::resource('sancion', 'SancionController'); //LLAMAR AL CONTROLADOR TypesanctionController
 Route::resource('comision','ComisionController');
 Route::resource('persona','PersonaController');
+Route::resource('cargo','CargoController');

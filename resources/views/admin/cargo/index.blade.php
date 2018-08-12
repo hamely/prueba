@@ -46,14 +46,15 @@
                         </tr>
                       </thead>
                       <tbody>
-                       
+                      @foreach($cargo as $item)
                             <tr>
-                            <td></td>
-                            <td></td>
+                            <td>{{$item->codigo }}</td>
+                            <td>{{$item->nombre }}</td>
+                   
                             <td><button class="btn-success">editar</button></td>
                             
                             </tr>
-                    
+                      @endforeach
                 
                       </tbody>
                     </table>
