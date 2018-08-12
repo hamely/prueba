@@ -76,7 +76,10 @@
                                       <span class="caret"></span></button>
                                       <ul class="dropdown-menu dropdown-menu-right">
                                         <li><a href="#">Unidad</a></li>
-                                        <li><a href="#">Cargo</a></li>
+                                        <li>
+                                          <button type="button" onclick="listarCargos(1)" class="btn btn-ling" data-toggle="modal" data-target="#unidad">cargo
+                                          </button>
+                                       </li>
                                       </ul>
                                   </div>
                                 </td>
@@ -93,11 +96,49 @@
           </div>
         </div>
 
+
+
+        <div class="modal fade" id="unidad" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+              <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
 @endsection
 
 
 @section('script')
    <script>
+
+    function listarCargos(idPersona)
+    {
+       $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+          }
+      });
+       jQuery.ajax({
+          url: "{{ url('/grocery/post') }}",
+          method: 'GET',
+          success: function(result){
+             console.log(result);
+          }});
+    }
+
     
   </script>
 @endsection
