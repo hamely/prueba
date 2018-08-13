@@ -14,7 +14,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                  <a href="{{('/persona/create')}}" class="btn btn-success ">Nuevo persona</a>
+                  <a href="{{('/persona/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
                     <h2>Lista de personas de la PNP <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
