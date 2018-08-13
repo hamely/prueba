@@ -37,10 +37,40 @@
 
                     {!! Form::open(['route' => ['asignarcomision.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
                     <div class="item form-group">
+                        <br/>
+                        <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Ingresar CIP o Nombres y Apellidos <span class="required">*</span>
+                        </label>
+                        <div class="col-md-2  col-sm-6 col-xs-12">
+                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar apellidos y nombres" required="required" type="text">
+                        </div>
+                        <div class="col-md-1 col-sm-6 col-xs-12">
+                            <a href="" class="btn btn-success ">BUSCAR</a>
+                        </div>
+                        
+                    </div>
+                      <hr/>
+                        
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> <span class="required"></span>
+                        </label>
+                        <div class="col-md-2 col-sm-6 col-xs-12">
+                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100"  class="form-control col-md-7 col-xs-12" placeholder="CIP" readonly>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="Nombres y Apellidos" type="text" readonly>
+                        </div>
+                       
+                    </div>
+                    <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Número Comisión <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
+                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de comisión" class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
                     <div class="form-group">
