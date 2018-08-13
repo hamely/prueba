@@ -79,6 +79,8 @@
                                         <li>
                                           <button type="button" onclick="listarCargos(1)" class="btn btn-ling" data-toggle="modal" data-target="#unidad">cargo
                                           </button>
+                                          <button type="button" onclick="listarGrados(1)" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
+                                          </button>
                                        </li>
                                       </ul>
                                   </div>
@@ -121,7 +123,33 @@
           </div>
           
         </div>
-      </div>
+    </div>
+
+
+    <div class="modal fade" id="grado" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Asignar grado</h4>
+            </div>
+            <div class="modal-body">
+                <input type="text" name="idPersona" id="idPersona">
+                <label> Grado</label>
+                 <div class="divGrado">
+                     <select class='selectpicker' id='grado' data-live-search='true'>
+                    </select>
+                 </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+    </div>
 
 @endsection
 
@@ -148,6 +176,28 @@
                     html= html+ "<option data-tokens='"+item.nombre+"'>"+item.nombre+"</option>";
                 });
               $("#cargo").append(html);
+              $('.selectpicker').selectpicker('refresh');
+          }});
+    }
+
+    function listarGrados(idPersona)
+    {
+       $("#idPersona").val(idPersona);
+
+       $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+          }
+      });
+       jQuery.ajax({
+          url: "{{('grado')}}",
+          method: 'GET',
+          success: function(result){  
+            var html="";
+              $.each(result.data, function(grado, item) {
+                    html= html+ "<option data-tokens='"+item.nombre+"'>"+item.nombre+"</option>";
+                });
+              $("#grado").append(html);
               $('.selectpicker').selectpicker('refresh');
           }});
     }

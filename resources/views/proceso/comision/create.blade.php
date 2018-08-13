@@ -69,8 +69,11 @@
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Número Comisión <span class="required">*</span>
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de comisión" class="form-control col-md-7 col-xs-12">
+                        <div class="col-md-2 col-sm-6 col-xs-12">
+                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Número de comisión" class="form-control col-md-7 col-xs-12">
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Siglas" class="form-control col-md-7 col-xs-12" readonly>
                         </div>
                     </div>
                     <div class="form-group">

@@ -12,10 +12,18 @@ class GradoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $grado=Grado::all();
-        return  view('admin.grado.index',['grado' => $grado]);
+        if($request->ajax()){ 
+
+            $grado=Grado::all();
+            return response(['data' => $grado]);
+
+        }else {
+
+            $grado=Grado::all();
+            return  view('admin.grado.index',['grado' => $grado]);
+        }
     }
 
     /**
