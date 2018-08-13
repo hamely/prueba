@@ -5,7 +5,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Tipos de cargos<small></small></h3>
+                <h3>COMISIONES<small></small></h3>
               </div>
             </div>
 
@@ -13,8 +13,8 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                  <a href="{{('/cargo/create')}}" class="btn btn-success ">Nuevo cargo</a>
-                    <h2>Lista de cargos<small></small></h2>
+                  <a href="{{('/asignarcomision/create')}}" class="btn btn-success ">Comisión</a>
+                    <h2>Lista de comisiones<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -39,22 +39,42 @@
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Código</th>
-                          <th>Tipo de cargos</th>
-                          <th>Acciones</th>
-                   
+                          <th>N° Comisión</th>
+                          <th>Destino</th>
+                          <th>Fecha emisión</th>
+                          <th>Fecha llegada</th>
+                          <th>Hora llegada</th>
+                          <th>Por disposición superior</th>
+                          <th>Motivo</th>
+                          <th>Fecha salida</th>
+                          <th>Hora salida</th>
+                          <th>Observación</th>
+                          <th>N° reincorporación</th>
+                          <th>Fecha retorno/salida</th>
+                          <th>Hora retono/salida</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
-                      @foreach($cargo as $item)
+                  
                             <tr>
-                            <td>{{$item->codigo }}</td>
-                            <td>{{$item->nombre }}</td>
-                   
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td><button class="btn-success">editar</button></td>
                             
                             </tr>
-                      @endforeach
+           
                 
                       </tbody>
                     </table>

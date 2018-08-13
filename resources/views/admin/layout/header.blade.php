@@ -42,7 +42,7 @@
                   </li>
                   <li><a><i class="fa fa-automobile"></i>Comisiones<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">Registro</a></li>
+                      <li><a href="{{ url('asignarcomision') }}">Registro</a></li>
                       <li><a href="form_advanced.html">Reporte</a></li>
                     </ul>
                   </li>
