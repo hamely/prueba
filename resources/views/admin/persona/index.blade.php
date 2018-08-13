@@ -76,7 +76,10 @@
                                       <span class="caret"></span></button>
                                       <ul class="dropdown-menu dropdown-menu-right">
                                         <li><a href="#">Unidad</a></li>
-                                        <li><a href="#">Cargo</a></li>
+                                        <li>
+                                          <button type="button" onclick="listarCargos(1)" class="btn btn-ling" data-toggle="modal" data-target="#unidad">cargo
+                                          </button>
+                                       </li>
                                       </ul>
                                   </div>
                                 </td>
@@ -93,11 +96,62 @@
           </div>
         </div>
 
+
+
+    <div class="modal fade" id="unidad" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Asignar cargo,unidad y grado</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="idPersona" id="idPersona">
+                <label> Cargo</label>
+                 <div class="divCargo">
+                     <select class='selectpicker' id='cargo' data-live-search='true'>
+                    </select>
+                 </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
 @endsection
 
 
 @section('script')
    <script>
+
+    function listarCargos(idPersona)
+    {
+       $("#idPersona").val(idPersona);
+
+       $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+          }
+      });
+       jQuery.ajax({
+          url: "{{('cargo')}}",
+          method: 'GET',
+          success: function(result){
+
+            var html="";
+              $.each(result.data, function(cargo, item) {
+                    html= html+ "<option data-tokens='"+item.nombre+"'>"+item.nombre+"</option>";
+                });
+              $("#cargo").append(html);
+              $('.selectpicker').selectpicker('refresh');
+          }});
+    }
+
     
   </script>
 @endsection

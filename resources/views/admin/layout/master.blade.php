@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="{{ asset("build/css/custom.min.css") }}">
 
     <link rel="stylesheet" href="{{ asset("vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css") }}" >
+    <link rel="stylesheet" href="{{ asset("admin/css/bootstrap-select.min.css") }}" >
 
 </head>
 <body class="nav-md">
@@ -97,6 +98,7 @@
     <script src="{{ asset("vendors/jszip/dist/jszip.min.js") }}"></script>
     <script src="{{ asset("vendors/pdfmake/build/pdfmake.min.js") }}"></script>
     <script src="{{ asset("vendors/pdfmake/build/vfs_fonts.js") }}"></script>
+    <script src="{{ asset("admin/js/bootstrap-select.min.js") }}"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../"></script>

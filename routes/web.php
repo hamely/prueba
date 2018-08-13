@@ -20,3 +20,7 @@ Route::resource('comision','ComisionController');
 Route::resource('persona','PersonaController');
 Route::resource('cargo','CargoController');
 Route::resource('grado','GradoController');
+
+//Route::post('post/cargo','CargoController@asignar');
+
+

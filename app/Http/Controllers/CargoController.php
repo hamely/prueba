@@ -12,10 +12,20 @@ class CargoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cargo=Cargo::all();
-        return  view('admin.cargo.index',['cargo' => $cargo]);
+        if($request->ajax()){ 
+
+            $cargo=Cargo::all();
+            return response(['data' => $cargo]);
+
+        }else {
+
+            $cargo=Cargo::all();
+            return  view('admin.cargo.index',['cargo' => $cargo]);
+
+        }
+
     }
 
     /**
@@ -87,5 +97,13 @@ class CargoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function asignar(Request $request)
+    {
+
+        //guardar
+        
+        return $request->all();
     }
 }
