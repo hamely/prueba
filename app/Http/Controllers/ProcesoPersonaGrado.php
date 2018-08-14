@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 use App\PersonaGrado;
+use App\Persona;
 class ProcesoPersonaGrado extends Controller
 {
     /**
@@ -13,7 +14,18 @@ class ProcesoPersonaGrado extends Controller
      */
     public function index()
     {
-        return view('proceso/personagrado/index');
+       /* $results = PersonaGrado::select('PersonaGrado_id')->whereHas('persona_grado', function($query) use ($Persona) {
+            $query->where('persona_id', $Persona);
+        })->get();
+        return $results;*/
+        $personagrado = DB::table('persona_grado')
+        ->select('persona.cip','persona.dni','persona.cuenta','persona.fechanacimiento','persona.sexo','persona.estadocivil','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','persona.celular','persona.gruposanguineo','persona.emailpersonal','emailinstitucional','grado.codigo','grado.nombre','persona_grado.observacion','persona_grado.fechaAsignacion')
+        ->join('persona', 'persona.id', '=', 'persona_grado.id')
+        ->join('grado', 'grado.id', '=', 'persona_grado.id')
+        ->get();
+        //dd($personagrado);
+       return  view('proceso.personagrado.index',['personagrado' => $personagrado]);
+      
     }
 
     /**

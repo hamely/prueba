@@ -34,45 +34,68 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
+                 
+
+                   <div class="x_content">
                   
-                    <table id="datatable" class="table table-striped table-bordered">
-                      <thead>
-                        <tr>
-                          <th>CIP</th>
-                          <th>DNI</th>
-                          <th>Nombre</th>
-                          <th>Celular</th>
-                          <th>Correo personal</th>
-                          <th>Correo institucional</th>
-                          <th>Estado civil</th>
-                          <th>Codigo</th>
-                          <th>Grado</th>
-                          <th>Fecha asignacion</th>
-                          <th>Observación</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
+                  <table id="datatable" class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th> CIP</th>
+                        <th>DNI</th>
+                        <th>N° de Cuenta</th>
+                        <th>Fecha nacimiento</th>
+                        <th>Sexo</th>
+                        <th>Apellidos y Nombres </th>
+                        <th>N° de celular</th>
+                        <th>Grupo sanguineo</th>
+                        <th>Email</th>
+                        <th>Estado civil</th>
+                        <th>Codigo grado</th>
+                        <th>Grado</th>
+                        <th>Fecha asignacion</th>
+                        <th>Observación</th>
+                        <th></th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach($personagrado as $item)
+                          <tr>
+                              <td>{{$item->cip }}</td>
+                              <td>{{$item->dni }}</td>
+                              <td>{{$item->cuenta }}</td>
+                              <td>{{$item->fechanacimiento }}</td>
+                              <td>{{$item->sexo }}</td>
+                              <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
+                              <td>{{$item->celular }}</td>
+                              <td>{{$item->gruposanguineo }}</td>
+                              <td>
+                             <strong> Personal:</strong><br>{{$item->emailpersonal }}<br>
+                             <strong>Institucional:</strong><br>{{$item->emailinstitucional }}
+                              </td>
+                              <td>{{$item->estadocivil }}</td>
+                              <td>{{$item->codigo }}</td>
+                              <td>{{$item->nombre }}</td>
+                              <td>{{$item->fechaAsignacion }}</td>
+                              <td>{{$item->observacion }}</td>
+                              <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Proceso
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                      <li><a href="#">Unidad</a></li>
+                                    
+                                    </ul>
+                                </div>
+                              </td>
+                          </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
+                </div>
+
                   
-                            <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><button class="btn-success">editar</button></td>
-                            
-                            </tr>
-                      </tbody>
-                    </table>
-                  </div>
                 </div>
               </div>
 
