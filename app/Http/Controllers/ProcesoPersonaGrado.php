@@ -13,7 +13,7 @@ class ProcesoPersonaGrado extends Controller
      */
     public function index()
     {
-        //
+        return view('proceso/personagrado/index');
     }
 
     /**
@@ -41,7 +41,6 @@ class ProcesoPersonaGrado extends Controller
         $PersonaGrado->persona_id = $request->idPersonaC;
         $PersonaGrado->grado_id = $request->Combogrado;
         $PersonaGrado->save();
-        
         return redirect()->route('personagrado.index')->with('info' , 'Se registro correctamente');
     }
 

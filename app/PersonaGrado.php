@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PersonaGrado extends Model
 {
-    protected $table = 'persona_cargo';
+    protected $table = 'persona_grado';
     protected $fillable = [
         'fechaAsignacion',
         'observacion',

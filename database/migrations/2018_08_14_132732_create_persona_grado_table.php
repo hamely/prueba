@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePersonaCargoTable extends Migration
+class CreatePersonaGradoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePersonaCargoTable extends Migration
      */
     public function up()
     {
-        Schema::create('persona_cargo', function (Blueprint $table) {
+        Schema::create('persona_grado', function (Blueprint $table) {
             $table->increments('id');
             $table->date('fechaAsignacion');
             $table->string('observacion');
@@ -32,6 +32,6 @@ class CreatePersonaCargoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('persona_cargo');
+        Schema::dropIfExists('persona_grado');
     }
 }

@@ -72,7 +72,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-area-chart"></i> Reportes generales <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">Comisiones</a></li>
+                      <li><a href="{{ url('personagrado') }}">Grados asignados</a></li>
                     </ul>
                   </li>
                 </ul>
