@@ -22,6 +22,7 @@ Route::resource('cargo','CargoController');
 Route::resource('grado','GradoController');
 Route::resource('asignarcomision','ProcesoComisionController');
 Route::resource('personagrado','ProcesoPersonaGrado');
+Route::resource('personaunidadcargo','ProcesoPersonaUnidadCargoController');
 
 //Route::post('post/cargo','CargoController@asignar');
 
