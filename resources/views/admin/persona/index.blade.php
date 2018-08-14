@@ -136,12 +136,25 @@
               <h4 class="modal-title">Asignar grado</h4>
             </div>
             <div class="modal-body">
-                <input type="text" name="idPersona" id="idPersona">
+            {!! Form::open(['route' => ['personagrado.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
+                <input type="hidden" name="idPersonaC" id="idPersonaC">
                 <label> Grado</label>
                  <div class="divGrado">
-                     <select class='selectpicker' id='grado' data-live-search='true'>
+                     <select class='selectpicker' id='Combogrado' name="Combogrado" data-live-search='true'>
                     </select>
                  </div>
+                 <div>
+                 <input id="fechaAsignacion"  name="fechaAsignacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de grado" required="required" type="date">
+                   
+                 </div>
+                 <div>
+                 <input id="observacion"  name="observacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de grado" required="required" type="text">
+                   
+                 </div>
+
+                 <button id="send" type="submit" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
+                          <button type="submit" class="btn btn-danger"><i class="fa fa-times-circle"> Cancelar</i></button>
+            {!! Form::close() !!}
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -172,6 +185,7 @@
           success: function(result){
 
             var html="";
+            $("#cargo").remove();
               $.each(result.data, function(cargo, item) {
                     html= html+ "<option data-tokens='"+item.nombre+"'>"+item.nombre+"</option>";
                 });
@@ -182,7 +196,8 @@
 
     function listarGrados(idPersona)
     {
-       $("#idPersona").val(idPersona);
+       console.log(idPersona);
+       $("#idPersonaC").val(idPersona);
 
        $.ajaxSetup({
           headers: {
@@ -193,11 +208,13 @@
           url: "{{('grado')}}",
           method: 'GET',
           success: function(result){  
-            var html="";
+            
+            var html1="";
               $.each(result.data, function(grado, item) {
-                    html= html+ "<option data-tokens='"+item.nombre+"'>"+item.nombre+"</option>";
+                html1 = html1 + "<option value='"+item.id+"' data-tokens='"+item.nombre+"'>"+item.nombre+"</option>";
                 });
-              $("#grado").append(html);
+
+              $("#Combogrado").append(html1);
               $('.selectpicker').selectpicker('refresh');
           }});
     }
