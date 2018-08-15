@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('admin/inicio/index');
 });
 
+Route::get('/modulos', function () { 
+    return view('index');
+});
+Route::get('/login', function () {
+    return view('welcome');
+});
+
+
 Route::resource('sancion', 'SancionController'); //LLAMAR AL CONTROLADOR TypesanctionController
 Route::resource('comision','ComisionController');
 Route::resource('persona','PersonaController');
