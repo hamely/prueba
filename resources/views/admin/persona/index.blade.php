@@ -77,7 +77,7 @@
                                         <li>
                                           <button type="button" onclick="listarCargos({!! $item->id !!})" class="btn btn-ling" data-toggle="modal" data-target="#unidad">cargo
                                           </button>
-                                          <button type="button" onclick="listarGrados({!! $item->id !!})" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
+                                          <button type="button" onclick="listarGrados({!! $item->id !!},{!! $item->nombres!!})" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
                                           </button>
                                        </li>
                                       </ul>
@@ -137,6 +137,7 @@
             {!! Form::open(['route' => ['personagrado.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
               
             <input type="hidden" name="idPersonaG" id="idPersonaG">
+            <input type="text" name="nombrepersona" id="nombrepersona">
             <br/>
 
             <div class="form-group">
@@ -198,10 +199,12 @@
           }});
     }
 
-    function listarGrados(idPersona)
+    function listarGrados(idPersona,nombrepersona)
     {
+      alert(idPersona);
        console.log(idPersona);
        $("#idPersonaG").val(idPersona);
+       $("#nombrepersona").val(nombrepersona);
 
        $.ajaxSetup({
           headers: {
