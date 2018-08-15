@@ -75,9 +75,9 @@
                                       <ul class="dropdown-menu dropdown-menu-right">
                                         <li><a href="#">Unidad</a></li>
                                         <li>
-                                          <button type="button" onclick="listarCargos(1)" class="btn btn-ling" data-toggle="modal" data-target="#unidad">cargo
+                                          <button type="button" onclick="listarCargos({!! $item->id !!})" class="btn btn-ling" data-toggle="modal" data-target="#unidad">cargo
                                           </button>
-                                          <button type="button" onclick="listarGrados(1)" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
+                                          <button type="button" onclick="listarGrados({!! $item->id !!})" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
                                           </button>
                                        </li>
                                       </ul>
@@ -135,7 +135,7 @@
             </div>
             <div class="modal-body">
             {!! Form::open(['route' => ['personagrado.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
-                <input type="hidden" name="idPersonaC" id="idPersonaC">
+                <input type="text" name="idPersonaG" id="idPersonaG">
                 <label> Grado</label>
                  <div class="divGrado">
                      <select class='selectpicker' id='Combogrado' name="Combogrado" data-live-search='true'>
@@ -195,7 +195,7 @@
     function listarGrados(idPersona)
     {
        console.log(idPersona);
-       $("#idPersonaC").val(idPersona);
+       $("#idPersonaG").val(idPersona);
 
        $.ajaxSetup({
           headers: {

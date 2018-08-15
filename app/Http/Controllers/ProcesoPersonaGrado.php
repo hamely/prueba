@@ -20,11 +20,11 @@ class ProcesoPersonaGrado extends Controller
         return $results;*/
         $personagrado = DB::table('persona_grado')
         ->select('persona.cip','persona.dni','persona.cuenta','persona.fechanacimiento','persona.sexo','persona.estadocivil','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','persona.celular','persona.gruposanguineo','persona.emailpersonal','emailinstitucional','grado.codigo','grado.nombre','persona_grado.observacion','persona_grado.fechaAsignacion')
-        ->join('persona', 'persona.id', '=', 'persona_grado.id')
-        ->join('grado', 'grado.id', '=', 'persona_grado.id')
+        ->join('persona', 'persona.id', '=', 'persona_grado.persona_id')
+        ->join('grado', 'grado.id', '=', 'persona_grado.grado_id')
         ->get();
-        //dd($personagrado);
-       return  view('proceso.personagrado.index',['personagrado' => $personagrado]);
+       // dd($personagrado);
+        return  view('proceso.personagrado.index',['personagrado' => $personagrado]);
       
     }
 
@@ -50,7 +50,7 @@ class ProcesoPersonaGrado extends Controller
         $PersonaGrado->fechaAsignacion = $request->fechaAsignacion;
 
         $PersonaGrado->observacion = $request->observacion;
-        $PersonaGrado->persona_id = $request->idPersonaC;
+        $PersonaGrado->persona_id = $request->idPersonaG;
         $PersonaGrado->grado_id = $request->Combogrado;
         $PersonaGrado->save();
         return redirect()->route('personagrado.index')->with('info' , 'Se registro correctamente');
