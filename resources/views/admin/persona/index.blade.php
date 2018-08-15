@@ -135,27 +135,33 @@
             </div>
             <div class="modal-body">
             {!! Form::open(['route' => ['personagrado.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
-                <input type="text" name="idPersonaG" id="idPersonaG">
-                <label> Grado</label>
-                 <div class="divGrado">
-                     <select class='selectpicker' id='Combogrado' name="Combogrado" data-live-search='true'>
-                    </select>
-                 </div>
-                 <div>
-                 <input id="fechaAsignacion"  name="fechaAsignacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de grado" required="required" type="date">
-                   
-                 </div>
-                 <div>
-                 <input id="observacion"  name="observacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de grado" required="required" type="text">
-                   
-                 </div>
+              
+            <input type="hidden" name="idPersonaG" id="idPersonaG">
+            <br/>
+
+            <div class="form-group">
+              <label for="usr">Grado:</label>
+              <select class='selectpicker' id='Combogrado' name="Combogrado" data-live-search='true'>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Fecha asignación de grado:</label>
+              <input id="fechaAsignacion"  name="fechaAsignacion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de grado" required="required" type="date">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Observación:</label>
+              <textarea id="observacion" required="required" class="form-control" name="observacion" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                            data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones"></textarea> 
+            </div>
+
+                 <br/>
 
                  <button id="send" type="submit" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
                           <button type="submit" class="btn btn-danger"><i class="fa fa-times-circle"> Cancelar</i></button>
             {!! Form::close() !!}
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
           </div>
           

@@ -4,12 +4,11 @@
 
 <div class="right_col" role="main">
           <div class="">
-              <div class="row">
+            <div class="row">
               <div class="col-md-12">
                 <div class="x_panel">
-                <CENTER><h2>VII MACRO REGIÓN CUSCO - APURÍMAC </h2></CENTER>
-                <CENTER><h2>SISTEMA DE ADMINISTRACIÓN DE PERSONAL CYBER MANAGEMENT </h2></CENTER>
-                 
+                  <CENTER><h2>VII MACRO REGIÓN CUSCO - APURÍMAC </h2></CENTER>
+                  <CENTER><h2>SISTEMA DE ADMINISTRACIÓN DE PERSONAL CYBER MANAGEMENT </h2></CENTER>   
                 </div>
               </div>
             </div>

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Cyber | Management </title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{{ asset("vendors/bootstrap/dist/css/bootstrap.min.css") }}">
@@ -33,12 +33,12 @@
         <div class="animate form login_form">
           <section class="login_content">
             <form>
-              <h1>Login Form</h1>
+              <h1>Formulario Login</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" placeholder="Usuario" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" placeholder="Contraseña" required="" />
               </div>
               <div>
                 <a class="btn btn-default submit" href="{{('/modulos')}}">Log in</a>
@@ -56,8 +56,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <h1><i class="fa fa-paw"></i> Cyber Management!</h1>
+                  <p>©2018 Todos los derechos reservados</p>
                 </div>
               </div>
             </form>
@@ -67,24 +67,24 @@
         <div id="register" class="animate form registration_form">
           <section class="login_content">
             <form>
-              <h1>Create Account</h1>
+              <h1>Crear una cuenta</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" placeholder="Usuario" required="" />
               </div>
               <div>
                 <input type="email" class="form-control" placeholder="Email" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" placeholder="Contraseña" required="" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="">Submit</a>
+                <a class="btn btn-default submit" href="">Enviar</a>
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">Already a member ?
+                <p class="change_link">Eres un miembro ?
                   <a href="{{('/modulos')}}" class="to_register"> Log in </a>
                 </p>
 
@@ -92,8 +92,8 @@
                 <br />
 
                 <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <h1><i class="fa fa-paw"></i> Cyber Management!</h1>
+                  <p>©2018 Todos los derechos reservados</p>
                 </div>
               </div>
             </form>
