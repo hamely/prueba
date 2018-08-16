@@ -5,16 +5,17 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Tipos de comisiones <small></small></h3>
+                <h3>Unidades de la PNP <small></small></h3>
               </div>
             </div>
+
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                  <a href="{{('/comision/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
-                    <h2>Lista de tipos de comisiones <small></small></h2>
+                  <a href="" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
+                    <h2>Lista de unidades <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -39,29 +40,24 @@
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Código</th>
-                          <th>Tipo de sanción</th>
-                          <th>Acciones</th>
+                          <th>Orden</th>
+                          <th>Codigo</th>
+                          <th>Unidad</th>
+                          <th></th>
                    
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($comision as $item)
+                       
+                       
                             <tr>
-                            <td>{{$item->codigo }}</td>
-                            <td>{{$item->nombre }}</td>
-                            <td><a href="{{route('comision.edit',$item->id)}}" >editar<a/>
-                            
-                            {!! Form::open(['route' => ['comision.destroy',$item->id] , 'method' => 'DELETE', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
-                            {{ Form::button('<i class="fa fa-trash"></i>',['type' =>'submit','class'=>'btn btn-danger btn-sm'])}}
-                           
-                            {!! Form::close() !!}
-                            </td>
-                            
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><button class="btn-success">editar</button></td>
                             
                             </tr>
-                        @endforeach
-                
+                    
                       </tbody>
                     </table>
                   </div>

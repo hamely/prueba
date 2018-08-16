@@ -106,6 +106,11 @@
                       <li><a href="{{ url('comision') }}">Tipos de comisiones</a></li>
                     </ul>
                   </li> 
+                  <li><a><i class="fa fa-toggle-down"></i>Unidad<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('unidad') }}">Tipos de unidades</a></li>
+                    </ul>
+                  </li> 
                   <li><a><i class="fa fa-user"></i>Usuarios<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="s.html">Registro</a></li>
