@@ -13,7 +13,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                  <a href="{{('/grado/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
+                  <a href="{{('/licencia/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
                     <h2>Lista de licencias <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
@@ -51,7 +51,12 @@
                             <td>{{$item->codigo }}</td>
                             <td>{{$item->nombre }}</td>
                             <td>
-
+                            <a style= "color:blue" href="{{route('licencia.edit',$item->id)}}" >editar<a/>
+                            
+                            {!! Form::open(['route' => ['licencia.destroy',$item->id] , 'method' => 'DELETE', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
+                            {{ Form::button('<i class="fa fa-trash"></i>',['type' =>'submit','class'=>'btn btn-danger btn-sm'])}}
+                           
+                            {!! Form::close() !!}
                             </td>
                             
                             </tr>

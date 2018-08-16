@@ -36,9 +36,9 @@ class LicenciaController extends Controller
      */
     public function store(Request $request)
     {
-        $licencia = new licencia;
-        $licencia->codigo = $request->licencia;
-        $licencia->nombre = $request->licencia;
+        $licencia = new Licencia;
+        $licencia->codigo = $request->codigo;
+        $licencia->nombre = $request->nombre;
         $licencia->save();
         
         return redirect()->route('licencia.index')->with('info' , 'Se registro correctamente');
@@ -63,7 +63,8 @@ class LicenciaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $licencia= Licencia::find($id);
+        return  view('admin.licencia.update',['licencia' => $licencia]);
     }
 
     /**
@@ -75,7 +76,9 @@ class LicenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $licencia= Licencia::findOrFail($id);
+        $licencia->update($request->all());
+        return redirect()->route('licencia.index');
     }
 
     /**

@@ -44,7 +44,7 @@ class GradoController extends Controller
      */
     public function store(Request $request)
     {
-        $grado = new grado;
+        $grado = new Grado;
         $grado->codigo = $request->codigo;
         $grado->nombre = $request->nombre;
         $grado->save();

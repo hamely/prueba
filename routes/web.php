@@ -34,5 +34,3 @@ Route::resource('personaunidadcargo','ProcesoPersonaUnidadCargoController');
 Route::resource('unidad','UnidadController');
 Route::resource('licencia','LicenciaController');
 //Route::post('post/cargo','CargoController@asignar');
-
-

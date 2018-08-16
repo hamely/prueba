@@ -35,6 +35,13 @@
                   </div>
                   <div class="x_content">
 
+                   <form class="navbar-form navbar-left" role="search" action="{{url('home/searchredirect')}}">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name='search' placeholder="Buscar ..." />
+                    </div>
+                    <button type="submit" class="btn btn-default">Buscar</button>
+                    </form>
+
                     {!! Form::open(['route' => ['asignarcomision.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
                     <div class="item form-group">
                         <br/>

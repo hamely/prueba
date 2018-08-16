@@ -15,7 +15,7 @@ class CreateLicenciaTable extends Migration
     {
         Schema::create('licencia', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo');
+            $table->integer('codigo');
             $table->string('nombre');
             $table->timestamps();
         });
