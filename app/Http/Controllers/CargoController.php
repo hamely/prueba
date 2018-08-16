@@ -73,7 +73,8 @@ class CargoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cargo= Cargo::find($id);
+        return  view('admin.cargo.update',['cargo' => $cargo]);
     }
 
     /**
@@ -85,7 +86,9 @@ class CargoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cargo= Cargo::findOrFail($id);
+        $cargo->update($request->all());
+        return redirect()->route('cargo.index');
     }
 
     /**
@@ -96,7 +99,9 @@ class CargoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cargo= Cargo::findOrFail($id);
+        $cargo->delete();
+        return redirect()->route('cargo.index');
     }
 
     public function asignar(Request $request)

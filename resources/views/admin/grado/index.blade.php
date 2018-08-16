@@ -40,7 +40,7 @@
                       <thead>
                         <tr>
                           <th>Código</th>
-                          <th>Cargo</th>
+                          <th>Grado</th>
                           <th>Acciones</th>
                    
                         </tr>
@@ -50,7 +50,14 @@
                             <tr>
                             <td>{{$item->codigo }}</td>
                             <td>{{$item->nombre }}</td>
-                            <td><button class="btn-success">editar</button></td>
+                            <td><a style= "color:blue" href="{{route('grado.edit',$item->id)}}" >editar<a/>
+
+                            {!! Form::open(['route' => ['grado.destroy',$item->id] , 'method' => 'DELETE', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
+                            {{ Form::button('<i class="fa fa-trash"></i>',['type' =>'submit','class'=>'btn btn-danger btn-sm'])}}
+                           
+                            {!! Form::close() !!}
+                            
+                            </td>
                             
                             </tr>
                         @endforeach

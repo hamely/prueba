@@ -64,7 +64,8 @@ class SancionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sancion= Sancion::find($id);
+        return  view('admin.sancion.update',['sancion' => $sancion]);
     }
 
     /**
@@ -76,7 +77,9 @@ class SancionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sancion= Sancion::findOrFail($id);
+        $sancion->update($request->all());
+        return redirect()->route('sancion.index');
     }
 
     /**
@@ -87,6 +90,8 @@ class SancionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sancion= Sancion::findOrFail($id);
+        $sancion->delete();
+        return redirect()->route('sancion.index');
     }
 }
