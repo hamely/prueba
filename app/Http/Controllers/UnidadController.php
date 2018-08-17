@@ -13,6 +13,7 @@ class UnidadController extends Controller
      */
     public function index()
     {
+        
         return view('admin/unidad/index');
     }
 

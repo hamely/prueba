@@ -16,7 +16,9 @@ class CreateGradoTable extends Migration
         Schema::create('grado', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('codigo');
+            $table->string('nombrecorto');
             $table->string('nombre');
+            $table->string('sigla');
             $table->timestamps();
         });
     }

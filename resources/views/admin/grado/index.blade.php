@@ -40,7 +40,9 @@
                       <thead>
                         <tr>
                           <th>Código</th>
+                          <th>Nombre corto</th>
                           <th>Grado</th>
+                          <th>Sigla</th>
                           <th>Acciones</th>
                    
                         </tr>
@@ -49,7 +51,9 @@
                         @foreach($grado as $item)
                             <tr>
                             <td>{{$item->codigo }}</td>
+                            <td>{{$item->nombrecorto }}</td>
                             <td>{{$item->nombre }}</td>
+                            <td>{{$item->sigla }}</td>
                             <td><a style= "color:blue" href="{{route('grado.edit',$item->id)}}" >editar<a/>
 
                             {!! Form::open(['route' => ['grado.destroy',$item->id] , 'method' => 'DELETE', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}

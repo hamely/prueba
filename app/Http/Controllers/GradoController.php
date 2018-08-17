@@ -46,7 +46,9 @@ class GradoController extends Controller
     {
         $grado = new Grado;
         $grado->codigo = $request->codigo;
+        $grado->nombrecorto = $request->nombrecorto;
         $grado->nombre = $request->nombre;
+        $grado->sigla = $request->sigla;
         $grado->save();
         
         return redirect()->route('grado.index')->with('info' , 'Se registro correctamente');
