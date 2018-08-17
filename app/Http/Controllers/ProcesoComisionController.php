@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Persona;
 class ProcesoComisionController extends Controller
 {
     /**
@@ -23,7 +23,9 @@ class ProcesoComisionController extends Controller
      */
     public function create()
     {
-        return view('proceso.comision.create');
+        $persona=Persona::all();
+        //return $persona;
+        return view('proceso.comision.create',['persona'=>$persona]);
     }
 
     /**

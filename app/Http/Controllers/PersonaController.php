@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Persona;
-
+use Illuminate\Support\Facades\DB;
 class PersonaController extends Controller
 {
     /**
@@ -105,6 +105,31 @@ class PersonaController extends Controller
     public function destroy($id)
     {
         
+    }
+
+    public function search()
+    {
+
+        if(request()->ajax())
+        {
+            $cip            =$_POST['cip'];
+            $nombreCompleto =$_POST['nombreCompleto'];
+
+            $Persona=Persona::select('id', DB::raw('CONCAT(apellidopaterno," ",apellidomaterno," ", nombres) AS full_name'))
+                            ->get();
+
+            foreach ($Persona as $item) 
+            {
+                if($nombreCompleto==$item->full_name)
+                {
+                    $id=$item->id;  
+                }
+            }
+
+            $search=Persona::find($id);
+
+            return response(["data" => $search]);
+        }
     }
 
      

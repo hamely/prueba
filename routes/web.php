@@ -26,7 +26,7 @@ Route::get('/login', function () {
 Route::resource('sancion', 'SancionController'); //LLAMAR AL CONTROLADOR TypesanctionController
 Route::resource('comision','ComisionController');
 Route::resource('persona','PersonaController');
-Route::post('search/persona','PersonaController@search');
+Route::post('search/persona','PersonaController@search')->name('searchPersona');
 
 Route::resource('cargo','CargoController');
 Route::resource('grado','GradoController');

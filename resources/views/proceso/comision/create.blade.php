@@ -52,7 +52,13 @@
                           <input type="number" id="cip" name="cip"   value="22" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
                         </div>
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                          <input id="nombreCompleto"  name="nombreCompleto" value="hola"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar apellidos y nombres" required="required" type="text">
+                           <select class="form-control" id="nombreCompleto" name="nombreCompleto">
+                            @foreach($persona as $item)
+                            <option value="{{ $item->apellidopaterno}} {{ $item->apellidomaterno}} {{ $item->nombres}}">
+                                {{ $item->apellidopaterno}} {{ $item->apellidomaterno}} {{ $item->nombres}}
+                            </option>
+                            @endforeach
+                          </select>
                         </div>
                         <div class="col-md-1 col-sm-6 col-xs-12">
                             <a href="" id="buscarPersona" class="btn btn-success "><i class="fa fa-search"> Buscar</i> </a>
@@ -66,10 +72,10 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> <span class="required"></span>
                         </label>
                         <div class="col-md-1 col-sm-6 col-xs-12">
-                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100"  class="form-control col-md-7 col-xs-12" placeholder="CIP" readonly>
+                          <input type="number" id="cippersona" name="cippersona" required="required" data-validate-minmax="10,100"  class="form-control col-md-7 col-xs-12" placeholder="CIP" readonly>
                         </div>
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="Nombres y Apellidos" type="text" readonly>
+                          <input id="nombrecompletopersona"  name="nombrecompletopersona" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="Nombres y Apellidos" type="text" readonly>
                         </div>
                         <div class="col-md-2 col-sm-6 col-xs-12">
                           <input id="unidad"  name="unidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="Unidad" type="text" readonly>
@@ -187,11 +193,11 @@
         var nombreCompleto=$("#nombreCompleto").val();
 
         $.ajax({
-                 url:'{{ route('toursOpcion') }}',
+                 url:'{{ route('searchPersona') }}',
                  type: 'POST',
                  data:{
                         "_token": "{{ csrf_token() }}",
-                         "abbr":"{{ $abbr }}", "catagoria":catagoria,"cantidaPeticion":cantidaPeticion
+                        "cip":cip,"nombreCompleto":nombreCompleto
                     },
                  dataType: 'JSON',
                  beforeSend: function() {
@@ -199,7 +205,15 @@
                  error: function() {
                  },
                   success: function(respuesta) {
-                       
+                    var dato=respuesta.data;
+                    
+                    var cip=dato.cip;
+                    var ape=dato.apellidomaterno;
+                    var apm=dato.apellidomaterno;
+                    var nombre=dato.nombres;
+                    $("#cippersona").val(cip);
+                    $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
+
                   }
               });
         
