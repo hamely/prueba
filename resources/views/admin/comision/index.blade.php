@@ -50,7 +50,7 @@
                             <tr>
                             <td>{{$item->codigo }}</td>
                             <td>{{$item->nombre }}</td>
-                            <td><a href="{{route('comision.edit',$item->id)}}" >editar<a/>
+                            <td><a style= "color:blue" href="{{route('comision.edit',$item->id)}}" >editar<a/>
                             
                             {!! Form::open(['route' => ['comision.destroy',$item->id] , 'method' => 'DELETE', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
                             {{ Form::button('<i class="fa fa-trash"></i>',['type' =>'submit','class'=>'btn btn-danger btn-sm'])}}

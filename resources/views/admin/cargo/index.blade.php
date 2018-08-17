@@ -51,7 +51,14 @@
                             <td>{{$item->codigo }}</td>
                             <td>{{$item->nombre }}</td>
                    
-                            <td><button class="btn-success">editar</button></td>
+                            <td><a style= "color:blue" href="{{route('cargo.edit',$item->id)}}" >editar<a/>
+                            
+                            {!! Form::open(['route' => ['cargo.destroy',$item->id] , 'method' => 'DELETE', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
+                            {{ Form::button('<i class="fa fa-trash"></i>',['type' =>'submit','class'=>'btn btn-danger btn-sm'])}}
+                           
+                            {!! Form::close() !!}
+                            
+                            </td>
                             
                             </tr>
                       @endforeach

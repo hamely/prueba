@@ -78,7 +78,8 @@ class PersonaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $persona= Persona::find($id);
+        return  view('admin.persona.update',['persona' => $persona]);
     }
 
     /**
@@ -90,7 +91,9 @@ class PersonaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $persona= Persona::findOrFail($id);
+        $persona->update($request->all());
+        return redirect()->route('persona.index');
     }
 
     /**
@@ -101,7 +104,7 @@ class PersonaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 
      

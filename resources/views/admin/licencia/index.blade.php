@@ -5,7 +5,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Tipos de grados <small></small></h3>
+                <h3>Tipos de licencia <small></small></h3>
               </div>
             </div>
 
@@ -13,8 +13,8 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                  <a href="{{('/grado/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
-                    <h2>Lista de grados <small></small></h2>
+                  <a href="{{('/licencia/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
+                    <h2>Lista de licencias <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -40,23 +40,23 @@
                       <thead>
                         <tr>
                           <th>Código</th>
-                          <th>Grado</th>
+                          <th>Licencia</th>
                           <th>Acciones</th>
                    
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($grado as $item)
+                        @foreach($licencia as $item)
                             <tr>
                             <td>{{$item->codigo }}</td>
                             <td>{{$item->nombre }}</td>
-                            <td><a style= "color:blue" href="{{route('grado.edit',$item->id)}}" >editar<a/>
-
-                            {!! Form::open(['route' => ['grado.destroy',$item->id] , 'method' => 'DELETE', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
+                            <td>
+                            <a style= "color:blue" href="{{route('licencia.edit',$item->id)}}" >editar<a/>
+                            
+                            {!! Form::open(['route' => ['licencia.destroy',$item->id] , 'method' => 'DELETE', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
                             {{ Form::button('<i class="fa fa-trash"></i>',['type' =>'submit','class'=>'btn btn-danger btn-sm'])}}
                            
                             {!! Form::close() !!}
-                            
                             </td>
                             
                             </tr>

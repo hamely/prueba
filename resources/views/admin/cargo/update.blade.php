@@ -5,7 +5,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Tipos de unidades</h3>
+                <h3>Tipos de cargos</h3>
               </div>
 
             </div>
@@ -15,7 +15,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Registrar unidad <small></small></h2>
+                    <h2>Editar o modificar cargo <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -35,19 +35,19 @@
                   </div>
                   <div class="x_content">
 
-                    {!! Form::open(['route' => ['unidad.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
+                    {!! Form::open(['route' => ['cargo.update',$cargo->id] , 'method' => 'PUT', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Código de unidad<span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Código de cargo <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="codigo" name="codigo" required="required" data-validate-minmax="10,100" placeholder="Ingrese código de sanción" class="form-control col-md-7 col-xs-12">
+                          <input type="number" id="codigo" name="codigo" value="{!! $cargo->codigo !!}" required="required" data-validate-minmax="10,100" placeholder="Ingrese código de cargo" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de sanción <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de cargo<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="sancion"  name="sancion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de sanción" required="required" type="text">
+                          <input id="nombre"  name="nombre" value="{!! $cargo->nombre !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de cargo" required="required" type="text">
                         </div>
                       </div>
                       <div class="ln_solid"></div>

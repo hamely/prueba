@@ -44,7 +44,7 @@ class GradoController extends Controller
      */
     public function store(Request $request)
     {
-        $grado = new grado;
+        $grado = new Grado;
         $grado->codigo = $request->codigo;
         $grado->nombre = $request->nombre;
         $grado->save();
@@ -71,7 +71,8 @@ class GradoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $grado= Grado::find($id);
+        return  view('admin.grado.update',['grado' => $grado]);
     }
 
     /**
@@ -83,7 +84,9 @@ class GradoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $grado= Grado::findOrFail($id);
+        $grado->update($request->all());
+        return redirect()->route('grado.index');
     }
 
     /**
@@ -94,6 +97,6 @@ class GradoController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

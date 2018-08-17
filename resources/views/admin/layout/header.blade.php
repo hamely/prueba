@@ -59,6 +59,7 @@
                       <li><a href="form_advanced.html">Reporte</a></li>
                     </ul>
                   </li>
+                  
                   <li><a><i class="fa fa-institution"></i>Incorporaciones<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">Registro</a></li>
@@ -109,6 +110,11 @@
                   <li><a><i class="fa fa-toggle-down"></i>Unidad<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ url('unidad') }}">Tipos de unidades</a></li>
+                    </ul>
+                  </li> 
+                  <li><a><i class="fa fa-toggle-down"></i>Licencias<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('licencia') }}">Tipos de licencias</a></li>
                     </ul>
                   </li> 
                   <li><a><i class="fa fa-user"></i>Usuarios<span class="fa fa-chevron-down"></span></a>

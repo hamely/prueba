@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-class UnidadController extends Controller
+use App\Licencia;
+class LicenciaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,9 @@ class UnidadController extends Controller
      */
     public function index()
     {
-        return view('admin/unidad/index');
+        $licencia=Licencia::all();
+        //dd($sancion);
+        return  view('admin.licencia.index',['licencia' => $licencia]);
     }
 
     /**
@@ -23,7 +25,7 @@ class UnidadController extends Controller
      */
     public function create()
     {
-        return view('admin.unidad.create');
+        return view('admin.licencia.create');
     }
 
     /**
@@ -34,7 +36,12 @@ class UnidadController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $licencia = new Licencia;
+        $licencia->codigo = $request->codigo;
+        $licencia->nombre = $request->nombre;
+        $licencia->save();
+        
+        return redirect()->route('licencia.index')->with('info' , 'Se registro correctamente');
     }
 
     /**
@@ -56,7 +63,8 @@ class UnidadController extends Controller
      */
     public function edit($id)
     {
-        //
+        $licencia= Licencia::find($id);
+        return  view('admin.licencia.update',['licencia' => $licencia]);
     }
 
     /**
@@ -68,7 +76,9 @@ class UnidadController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $licencia= Licencia::findOrFail($id);
+        $licencia->update($request->all());
+        return redirect()->route('licencia.index');
     }
 
     /**

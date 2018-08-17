@@ -73,6 +73,7 @@
                                       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Proceso
                                       <span class="caret"></span></button>
                                       <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="{{route('persona.edit',$item->id)}}">Modificar</a></li>
                                         <li><a href="#">Unidad</a></li>
                                         <li>
                                           <button type="button" onclick="listarCargos({!! $item->id !!})" class="btn btn-ling" data-toggle="modal" data-target="#unidad">cargo
@@ -137,8 +138,13 @@
             {!! Form::open(['route' => ['personagrado.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
               
             <input type="hidden" name="idPersonaG" id="idPersonaG">
-            <input type="text" name="nombrepersona" id="nombrepersona" readonly>
+            
             <br/>
+
+            <div class="form-group">
+              <label for="usr">Persona</label>
+              <input type="text" name="nombrepersona" id="nombrepersona" readonly>
+            </div>
 
             <div class="form-group">
               <label for="usr">Grado:</label>

@@ -14,7 +14,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                  <a href="" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
+                  <a href="{{('/unidad/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
                     <h2>Lista de unidades <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
