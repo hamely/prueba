@@ -42,13 +42,13 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Ingresar CIP o Nombres y Apellidos <span class="required">*</span>
                         </label>
                         <div class="col-md-2  col-sm-6 col-xs-12">
-                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
+                          <input type="number" id="cip" name="cip"   value="22" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
                         </div>
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar apellidos y nombres" required="required" type="text">
+                          <input id="nombreCompleto"  name="nombreCompleto" value="hola"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar apellidos y nombres" required="required" type="text">
                         </div>
                         <div class="col-md-1 col-sm-6 col-xs-12">
-                            <a href="" class="btn btn-success "><i class="fa fa-search"> Buscar</i> </a>
+                            <a href="" id="buscarPersona" class="btn btn-success "><i class="fa fa-search"> Buscar</i> </a>
                         </div>
                         
                     </div>
@@ -174,6 +174,29 @@
 
 @section('script')
    <script>
-    
+      $("#buscarPersona").click(function( event ) {
+        event.preventDefault();
+        var cip=$("#cip").val();
+        var nombreCompleto=$("#nombreCompleto").val();
+
+        $.ajax({
+                 url:'{{ route('toursOpcion') }}',
+                 type: 'POST',
+                 data:{
+                        "_token": "{{ csrf_token() }}",
+                         "abbr":"{{ $abbr }}", "catagoria":catagoria,"cantidaPeticion":cantidaPeticion
+                    },
+                 dataType: 'JSON',
+                 beforeSend: function() {
+                 },
+                 error: function() {
+                 },
+                  success: function(respuesta) {
+                       
+                  }
+              });
+        
+
+      });
   </script>
 @endsection

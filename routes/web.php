@@ -26,6 +26,8 @@ Route::get('/login', function () {
 Route::resource('sancion', 'SancionController'); //LLAMAR AL CONTROLADOR TypesanctionController
 Route::resource('comision','ComisionController');
 Route::resource('persona','PersonaController');
+Route::post('search/persona','PersonaController@search');
+
 Route::resource('cargo','CargoController');
 Route::resource('grado','GradoController');
 Route::resource('asignarcomision','ProcesoComisionController');
@@ -33,5 +35,4 @@ Route::resource('personagrado','ProcesoPersonaGrado');
 Route::resource('personaunidadcargo','ProcesoPersonaUnidadCargoController');
 Route::resource('unidad','UnidadController');
 //Route::post('post/cargo','CargoController@asignar');
-
 
