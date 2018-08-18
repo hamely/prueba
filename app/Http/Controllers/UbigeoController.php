@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Persona;
-use App\Ubigeo;
-use DB;
-class ProcesoComisionController extends Controller
+
+class UbigeoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +13,7 @@ class ProcesoComisionController extends Controller
      */
     public function index()
     {
-        return view('proceso/comision/index');
+        //
     }
 
     /**
@@ -25,18 +23,7 @@ class ProcesoComisionController extends Controller
      */
     public function create()
     {
-        $persona=Persona::all();
-        //$ubigeo=Ubigeo::all();
-        //return $persona;
-
-
-       $ubigeo = DB::table('ubigeo')
-        ->select('departamento','provincia', 'distrito')
-        ->wherenull('provincia')
-        ->wherenull('distrito')
-        ->get();
-
-        return view('proceso.comision.create',['persona'=>$persona,'ubigeo'=>$ubigeo]);
+        //
     }
 
     /**

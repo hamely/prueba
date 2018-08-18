@@ -16,7 +16,7 @@ class PersonaController extends Controller
     public function index()
     {
         
-        $persona=Persona::paginate(5);
+        $persona=Persona::paginate(8);
         //dd($persona);
         return  view('admin.persona.index',['persona' => $persona]);
         //return view('admin/persona/index');

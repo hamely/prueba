@@ -53,7 +53,7 @@
                           </div>
                         </div>
                        
-                        <div class="col-md-3 col-sm-6 col-xs-12">
+                        <!--<div class="col-md-3 col-sm-6 col-xs-12">
                            <select id="nombreCompleto" name="nombreCompleto" class='selectpicker'  data-live-search='true'>
                             @foreach($persona as $item)
                             <option value="{{ $item->apellidopaterno}} {{ $item->apellidomaterno}} {{ $item->nombres}}">
@@ -61,7 +61,7 @@
                             </option>
                             @endforeach
                           </select>
-                        </div>
+                        </div>-->
                         <div class="col-md-1 col-sm-6 col-xs-12">
                             <a href="" id="buscarPersona" class="btn btn-success "><i class="fa fa-search"> Buscar</i> </a>
                         </div>
@@ -97,6 +97,29 @@
                     <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Destino<span class="required">*</span>
                         </label>
+                        <div class="form-group">
+                          <label for="usr"></label>
+                          <select class='selectpicker' id='Combodepartamento' name="Combodepartamento" data-live-search='true'>
+                              @foreach($ubigeo as $item)
+                                <option value="{{ $item->departamento}}">
+                                {{ $item->departamento}}
+                                </option>
+                              @endforeach
+                          </select>
+                        
+                        </div>
+                    
+
+                         <!--<div class="col-md-3 col-sm-6 col-xs-12">
+                           <select id="nombreCompleto" name="nombreCompleto" class='selectpicker'  data-live-search='true'>
+                            @foreach($persona as $item)
+                            <option value="{{ $item->apellidopaterno}} {{ $item->apellidomaterno}} {{ $item->nombres}}">
+                                {{ $item->apellidopaterno}} {{ $item->apellidomaterno}} {{ $item->nombres}}
+                            </option>
+                            @endforeach
+                          </select>
+                        </div>-->
+
                         <div class="col-md-2 col-sm-6 col-xs-12">
                           <select class="form-control" id="estadocivil" name="estadocivil">
                             <option>Elija departamento</option>
