@@ -42,18 +42,16 @@ class PersonaController extends Controller
     {
         $persona = new Persona;
         $persona->cip = $request->cip;
-        $persona->dni = $request->dni;
-        $persona->cuenta = $request->cuenta;
-        $persona->fechanacimiento = $request->fechanacimiento;
-        $persona->sexo = $request->sexo;
         $persona->apellidopaterno = $request->apellidopaterno;
         $persona->apellidomaterno = $request->apellidomaterno;
+        $persona->fechanacimiento = $request->fechanacimiento;
         $persona->nombres = $request->nombres;
         $persona->celular = $request->celular;
-        $persona->gruposanguineo = $request->gruposanguineo;
-        $persona->emailpersonal = $request->emailpersonal;
-        $persona->emailinstitucional = $request->emailinstitucional;
+        $persona->cuenta = $request->cuenta;
+        $persona->dni = $request->dni;
         $persona->estadocivil = $request->estadocivil;
+        $persona->sexo = $request->sexo;
+        $persona->email = $request->email;
 
         $persona->save();
         

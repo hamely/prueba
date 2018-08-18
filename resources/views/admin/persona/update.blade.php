@@ -44,38 +44,6 @@
                         </div>
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">DNI <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="dni" name="dni" value="{!! $persona->dni !!}" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de DNI" class="form-control col-md-7 col-xs-12">
-                        </div>
-                    </div>
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Número de cuenta <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="cuenta" name="cuenta" value="{!! $persona->cuenta !!}" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de cuenta" class="form-control col-md-7 col-xs-12">
-                        </div>
-                    </div>
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha de nacimiento<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="fechanacimiento"  name="fechanacimiento" value="{!! $persona->fechanacimiento !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese apellido paterno" required="required" type="date">
-                        </div>
-                      </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Seleccione género<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="form-control" id="sexo" name="sexo" >
-                            <option>Elija una opción</option>
-                            <option value="Femenino">Femenino</option>
-                            <option value="Masculino">Masculino</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Paterno <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -97,6 +65,13 @@
                         </div>
                       </div>
                       <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha de nacimiento<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="fechanacimiento"  name="fechanacimiento" value="{!! $persona->fechanacimiento !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese apellido paterno" required="required" type="date">
+                        </div>
+                      </div>
+                      <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Número de celular <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -104,28 +79,21 @@
                         </div>
                       </div>
                       <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Grupo sanguineo <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Número de cuenta <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="gruposanguineo"  name="gruposanguineo" value="{!! $persona->gruposanguineo !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese grupo sanguineo" required="required" type="text">
+                          <input type="number" id="cuenta" name="cuenta" value="{!! $persona->cuenta !!}" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de cuenta" class="form-control col-md-7 col-xs-12">
                         </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Email personal <span class="required">*</span>
+                    </div>
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">DNI <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="emailpersonal"  name="emailpersonal" value="{!! $persona->emailpersonal !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese email personal" required="required" type="text">
+                          <input type="number" id="dni" name="dni" value="{!! $persona->dni !!}" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de DNI" class="form-control col-md-7 col-xs-12">
                         </div>
-                      </div>
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Email institucional<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="emailinstitucional"  name="emailinstitucional" value="{!! $persona->emailinstitucional !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese email institucional" required="required" type="text">
-                        </div>
-                      </div>
-                      
-                      <div class="form-group">
+                    </div>
+                  
+                    <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Estado civil<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -138,6 +106,28 @@
                           </select>
                         </div>
                       </div>
+                  
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Seleccione género<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="form-control" id="sexo" name="sexo" >
+                            <option>Elija una opción</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Masculino">Masculino</option>
+                          </select>
+                        </div>
+                      </div>
+                      
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Email personal <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="email"  name="email" value="{!! $persona->email !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese email personal" required="required" type="text">
+                        </div>
+                      </div>
+                      
+                      
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">

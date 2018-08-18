@@ -39,13 +39,12 @@
                       <thead>
                         <tr>
                           <th> CIP</th>
-                          <th>DNI</th>
-                          <th>N° de Cuenta</th>
+                          <th>Apellidos y Nombres</th>
                           <th>Fecha nacimiento</th>
+                          <th>N° de Cuenta</th>
                           <th>Sexo</th>
-                          <th>Apellidos y Nombres </th>
+                          <th>DNI </th>
                           <th>N° de celular</th>
-                          <th>Grupo sanguineo</th>
                           <th>Email</th>
                           <th>Estado civil</th>
                           <th></th>
@@ -56,16 +55,14 @@
                         @foreach($persona as $item)
                             <tr>
                                 <td>{{$item->cip }}</td>
-                                <td>{{$item->dni }}</td>
-                                <td>{{$item->cuenta }}</td>
-                                <td>{{$item->fechanacimiento }}</td>
-                                <td>{{$item->sexo }}</td>
                                 <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
+                                <td>{{$item->fechanacimiento }}</td>
+                                <td>{{$item->cuenta }}</td>
+                                <td>{{$item-> dni}}</td>
+                                <td>{{$item->sexo }}</td>
+                                
                                 <td>{{$item->celular }}</td>
-                                <td>{{$item->gruposanguineo }}</td>
-                                <td>
-                               <strong> Personal:</strong><br>{{$item->emailpersonal }}<br>
-                               <strong>Institucional:</strong><br>{{$item->emailinstitucional }}
+                                <td>{{$item->email}}                          
                                 </td>
                                 <td>{{$item->estadocivil }}</td>
                                 <td>
