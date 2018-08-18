@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Persona;
-use Illuminate\Support\Facades\DB;
+use DB;
+use App\Grado;
 class PersonaController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class PersonaController extends Controller
     public function index()
     {
         
-        $persona=Persona::all();
+        $persona=Persona::paginate(5);
         //dd($persona);
         return  view('admin.persona.index',['persona' => $persona]);
         //return view('admin/persona/index');
@@ -116,7 +117,7 @@ class PersonaController extends Controller
             $nombreCompleto =$_POST['nombreCompleto'];
 
             $Persona=Persona::select('id', DB::raw('CONCAT(apellidopaterno," ",apellidomaterno," ", nombres) AS full_name'))
-                            ->get();
+                            ->get()[5];
 
             foreach ($Persona as $item) 
             {
@@ -131,6 +132,18 @@ class PersonaController extends Controller
             return response(["data" => $search]);
         }
     }
-
+    public function buscar(Request $request)
+    {
+            $term = $request->term ?: '';
+           
+            $tags = Grado::where('nombre', 'like', $term.'%')->get();
+            return $tags;
+            $valid_tags = [];
+            foreach ($tags as $id => $tag) {
+                $valid_tags[] = ['id' => $id, 'text' => $tag];
+            }
+            return response(["term" => $valid_tags]);
+           //return Response::json($valid_tags);
+    }
      
 }

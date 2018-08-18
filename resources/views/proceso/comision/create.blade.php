@@ -46,8 +46,15 @@
                         <div class="col-md-2  col-sm-6 col-xs-12">
                           <input type="number" id="cip" name="cip"   value="22" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
                         </div>
+                        <div class="col-md-4"> 
+                          <div class="form-group">
+                              <label for="tags" class="control-label">Tags</label>
+                              <select name="tags[]" class="form-control" style="width:100%" multiple="multiple" id="tags"></select>
+                          </div>
+                        </div>
+                       
                         <div class="col-md-3 col-sm-6 col-xs-12">
-                           <select class="form-control" id="nombreCompleto" name="nombreCompleto">
+                           <select id="nombreCompleto" name="nombreCompleto" class='selectpicker'  data-live-search='true'>
                             @foreach($persona as $item)
                             <option value="{{ $item->apellidopaterno}} {{ $item->apellidomaterno}} {{ $item->nombres}}">
                                 {{ $item->apellidopaterno}} {{ $item->apellidomaterno}} {{ $item->nombres}}
@@ -214,5 +221,27 @@
         
 
       });
+    
+      $('#tags').select2({
+            // Activamos la opcion "Tags" del plugin
+            tags: true,
+            tokenSeparators: [','],
+            ajax: {
+                dataType: 'json',
+                url: '{{ url("tags") }}',
+                delay: 250,
+                data: function(params) {
+                  console.log(params.term);
+                    return {
+                        term: params.term
+                    }
+                },
+                processResults: function (data, page) {
+                  return {
+                    results: data
+                  };
+                },
+            }
+        });
   </script>
 @endsection

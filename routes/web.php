@@ -37,3 +37,4 @@ Route::resource('unidad','UnidadController');
 Route::resource('licencia','LicenciaController');
 //Route::post('post/cargo','CargoController@asignar');
 
+Route::get('tags','PersonaController@buscar');
