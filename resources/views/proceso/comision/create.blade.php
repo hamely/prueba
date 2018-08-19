@@ -35,22 +35,39 @@
                   </div>
                   <div class="x_content">
 
-        
+                
+
 
                     {!! Form::open(['route' => ['asignarcomision.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
                     <div class="item form-group">
-                        <br/>
+                        
                         <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Ingresar CIP o Nombres y Apellidos <span class="required">*</span>
-                        </label>
-                        <div class="col-md-2  col-sm-6 col-xs-12">
-                          <input type="number" id="cip" name="cip"   value="22" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
+                        
+                        <div class="col-md-2"><br/>
+                             <label class="control-label" for="number">BUSCAR <span class="required">*</span>
+                            </label> 
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                    <label for="tag_list">CIP</label>
+                                    <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
+                            </div>
+
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                            </br>
+                                <a href="" id="buscarPersona" class="btn btn-success "><i class="fa fa-search"> Buscar</i> </a>
+                            </div>
+
                         </div>
                         <div class="col-md-4"> 
-                          <div class="form-group">
-                              <label for="tags" class="control-label">Tags</label>
-                              <select name="tags[]" class="form-control" style="width:100%" multiple="multiple" id="tags"></select>
-                          </div>
+                          <form>
+                                <div class="form-group">
+                                    <label for="tag_list">Nombre y apellido</label>
+                                    <select class="itemName form-control" style="width:350px;" id="idPersona" name="itemName"></select>
+                                </div>
+                            </form>
                         </div>
                        
                         <!--<div class="col-md-3 col-sm-6 col-xs-12">
@@ -62,10 +79,7 @@
                             @endforeach
                           </select>
                         </div>-->
-                        <div class="col-md-1 col-sm-6 col-xs-12">
-                            <a href="" id="buscarPersona" class="btn btn-success "><i class="fa fa-search"> Buscar</i> </a>
-                        </div>
-                        
+                      
                     </div>
                       <hr/>
                         
@@ -212,17 +226,50 @@
 
 @section('script')
    <script>
-      $("#buscarPersona").click(function( event ) {
+      $("#idPersona").change(function( event ) {
         event.preventDefault();
-        var cip=$("#cip").val();
-        var nombreCompleto=$("#nombreCompleto").val();
+        
+        var idPersona=$("#idPersona").val();
 
         $.ajax({
                  url:'{{ route('searchPersona') }}',
                  type: 'POST',
                  data:{
                         "_token": "{{ csrf_token() }}",
-                        "cip":cip,"nombreCompleto":nombreCompleto
+                        "idPersona":idPersona
+                    },
+                 dataType: 'JSON',
+                 beforeSend: function() {
+                 },
+                 error: function() {
+                 },
+                  success: function(respuesta) {
+                    var dato=respuesta.data;
+                    
+                    var cip=dato.cip;
+                    var ape=dato.apellidomaterno;
+                    var apm=dato.apellidomaterno;
+                    var nombre=dato.nombres;
+                    $("#cippersona").val(cip);
+                    $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
+
+                  }
+              });
+        
+
+      });
+
+      $("#buscarPersona").click(function( event ) {
+        event.preventDefault();
+        
+        var cip=$("#cip").val();
+
+        $.ajax({
+                 url:'{{ route('searchPersonaCip') }}',
+                 type: 'POST',
+                 data:{
+                        "_token": "{{ csrf_token() }}",
+                        "cip":cip
                     },
                  dataType: 'JSON',
                  beforeSend: function() {
@@ -245,26 +292,22 @@
 
       });
     
-      $('#tags').select2({
-            // Activamos la opcion "Tags" del plugin
-            tags: true,
-            tokenSeparators: [','],
-            ajax: {
-                dataType: 'json',
-                url: '{{ url("tags") }}',
-                delay: 250,
-                data: function(params) {
-                  console.log(params.term);
-                    return {
-                        term: params.term
-                    }
-                },
-                processResults: function (data, page) {
-                  return {
-                    results: data
-                  };
-                },
-            }
-        });
+    
+
+        $('.itemName').select2({
+        placeholder: 'Seleccione personal',
+        ajax: {
+          url: '/tags',
+          dataType: 'json',
+          delay: 250,
+          processResults: function (data) {
+            
+             return {
+              results: data
+            };
+          },
+          cache: true
+        }
+      });
   </script>
 @endsection

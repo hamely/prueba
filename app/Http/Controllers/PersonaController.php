@@ -111,10 +111,9 @@ class PersonaController extends Controller
 
         if(request()->ajax())
         {
-            $cip            =$_POST['cip'];
-            $nombreCompleto =$_POST['nombreCompleto'];
+            $idPersona =$_POST['idPersona'];
 
-            $Persona=Persona::select('id', DB::raw('CONCAT(apellidopaterno," ",apellidomaterno," ", nombres) AS full_name'))
+           /* $Persona=Persona::select('id', DB::raw('CONCAT(apellidopaterno," ",apellidomaterno," ", nombres) AS full_name'))
                             ->get()[5];
 
             foreach ($Persona as $item) 
@@ -123,25 +122,43 @@ class PersonaController extends Controller
                 {
                     $id=$item->id;  
                 }
-            }
+            }*/
 
-            $search=Persona::find($id);
+            $search=Persona::find($idPersona);
 
             return response(["data" => $search]);
         }
     }
+     public function searchCipPersona()
+    {
+
+        if(request()->ajax())
+        {
+            $cip =$_POST['cip'];
+
+            $Persona=Persona::where('cip', $cip)
+                              ->get()[0];
+            return response(["data" => $Persona]);
+        }
+    }
+
     public function buscar(Request $request)
     {
-            $term = $request->term ?: '';
-           
-            $tags = Grado::where('nombre', 'like', $term.'%')->get();
-            return $tags;
-            $valid_tags = [];
-            foreach ($tags as $id => $tag) {
-                $valid_tags[] = ['id' => $id, 'text' => $tag];
+
+            $data = [];
+
+
+            if($request->has('q')){
+                $search = $request->q;
+                $data = DB::table("persona")
+                        ->select("id",DB::raw("CONCAT(nombres,' ',apellidopaterno,' ',apellidomaterno) as text"))
+                        ->where('nombres','LIKE',"%$search%")
+                        ->get();
             }
-            return response(["term" => $valid_tags]);
-           //return Response::json($valid_tags);
+
+
+            return response()->json($data);
+           
     }
      
 }
