@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Ubigeo;
 
 class UbigeoController extends Controller
 {
@@ -80,5 +81,30 @@ class UbigeoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function provincia(Request $request)
+    {
+        if($request->ajax())
+        {
+            $departamento=$_POST['departamento'];
+            $provincia   =Ubigeo::where('departamento',$departamento)
+                                  ->whereNull('distrito')
+                                  ->whereNotNull('provincia')
+                                  ->get();
+
+            return response(['data'=>$provincia]);
+        }
+    }
+    public function distrito(Request $request)
+    {
+        if($request->ajax())
+        {
+            $provincia =$_POST['provincia'];
+            $distrito=Ubigeo::Where('provincia',$provincia)
+                              ->whereNotNull('distrito')
+                              ->get();
+            return response(['data'=>$distrito]);
+        }
     }
 }

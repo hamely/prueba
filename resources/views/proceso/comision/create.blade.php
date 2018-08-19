@@ -34,26 +34,22 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-
-                
-
-
                     {!! Form::open(['route' => ['asignarcomision.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
                     <div class="item form-group">
                         
                         <div class="item form-group">
                         
-                        <div class="col-md-2"><br/>
-                             <label class="control-label" for="number">BUSCAR <span class="required">*</span>
-                            </label> 
-                        </div>
-                        <div class="col-md-2">
-                            <div class="form-group">
-                                    <label for="tag_list">CIP</label>
-                                    <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
-                            </div>
+	                        <div class="col-md-2"><br/>
+	                             <label class="control-label" for="number">BUSCAR <span class="required">*</span>
+	                            </label> 
+	                        </div>
+	                        <div class="col-md-2">
+	                            <div class="form-group">
+	                                    <label for="tag_list">CIP</label>
+	                                    <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
+	                            </div>
 
-                        </div>
+	                        </div>
                         <div class="col-md-2">
                             <div class="form-group">
                             </br>
@@ -69,142 +65,145 @@
                                 </div>
                             </form>
                         </div>
-                       
-                        <!--<div class="col-md-3 col-sm-6 col-xs-12">
-                           <select id="nombreCompleto" name="nombreCompleto" class='selectpicker'  data-live-search='true'>
-                            @foreach($persona as $item)
-                            <option value="{{ $item->apellidopaterno}} {{ $item->apellidomaterno}} {{ $item->nombres}}">
-                                {{ $item->apellidopaterno}} {{ $item->apellidomaterno}} {{ $item->nombres}}
-                            </option>
-                            @endforeach
-                          </select>
-                        </div>-->
                       
                     </div>
-                      <hr/>
+                    
+                    <hr/>
+                    
+                    </div>
+                    <div class="item form-group">
+	                    <div class="col-md-2">
+	                        <div class="form-group">
+	                        	 <label for="tag_list">CIP</label>
+	                          <input type="number" id="cippersona" name="cippersona" required="required" data-validate-minmax="10,100"  class="form-control col-md-7 col-xs-12" placeholder="CIP" readonly>
+	                        </div>
+	                    </div>
+	                     <div class="col-md-2">
+	                        <div  class="form-group">
+	                          <label for="tag_list">Nombre Comppleto</label>
+	                          <input id="nombrecompletopersona"  name="nombrecompletopersona" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="Nombres y Apellidos" type="text" readonly>
+	                        </div>
+	                     </div>
+	                     <div class="col-md-2">
+	                        <div  class="form-group">
+	                           <label for="tag_list">Unidad</label>
+	                           <input id="unidad"  name="unidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="Unidad" type="text" readonly>
+	                        </div>
+	                       
+	                    </div>
+	                    <div class="col-md-3">
+	                        <div  class="form-group">
+	                           <label for="tag_list">Número Comisión</label>
+	                           <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Número de comisión" class="form-control col-md-4">
+	                        </div>
+	                       
+	                    </div>
+	                    <div class="col-md-2">
+	                        <div  class="form-group">
+	                           <label for="tag_list">Siglas</label>
+	                            <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Siglas" class="form-control col-md-7 col-xs-12" readonly>
+	                        </div>
+	                       
+	                    </div><br><br>
+                    <hr/>
+                    <div class="item form-group">
+                       <div class="col-md-3">
+	                        <div class="form-group">
+	                          <label for="usr"> Departamento</label>
+	                          <select class='selectpicker' id='Combodepartamento' name="Combodepartamento" data-live-search='true'>
+	                              @foreach($ubigeo as $item)
+	                                <option value="{{ $item->departamento}}">
+	                                {{ $item->departamento}}
+	                                </option>
+	                              @endforeach
+	                          </select>
+	                        
+	                        </div>
+                        </div>
+
+                        <div class="col-md-4">
+							<div class="form-group">
+								<label for="usr">Provincias</label>
+		                          <select class="form-control" id="ComboProvincia" name="ComboProvincia">
+		                           
+		                          </select>
+							 </div>
+                        </div>
+                        <div class="col-md-4">
+							<div class="form-group">
+								<label for="usr">Distrito</label>
+		                          <select class="form-control" id="ComboDistrito" name="ComboDistrito">
+		                            
+		                          </select>
+		                    </div>
+                        </div>
+                        
+                      </div><br><br>
+                    <div class="item form-group">
+                        <div class="col-md-4">
+	                        <label class="control-label" for="name">Lugar<span class="required">*</span>
+	                        </label>
+	                        <div class="col-md-12">
+	                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar lugar de comisión" required="required" type="text">
+	                        </div>
+                        </div>
+                    
+                   		<div class="col-md-4">
+		                        <label class="control-label" for="name">Fecha de emision<span class="required">*</span>
+		                        </label>
+		                        <div class="col-md-12">
+		                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
+		                        </div>
+		                        
+		                </div>
+		                <div class="col-md-4">
+		                	<label class="control-label" for="name">Fecha de llegada<span class="required">*</span>
+		                        </label>
+			                <div class="col-md-12">
+			                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="date">
+			                        </div>
+		                </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="col-md-4">
+	                        <label class="control-label" for="name">Por disposición<span class="required">*</span>
+	                        </label>
+	                        <div class="col-md-12">
+	                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar disposión" required="required" type="text">
+	                        </div>
+                        </div>
+                         <div class="col-md-8">
+	                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Motivo <span class="required">*</span>
+	                        </label>
+	                        <div class="col-md-12">
+	                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar el motivo" required="required" type="text">
+	                        </div>
+                   		 </div>
                         
                     </div>
                     <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"> <span class="required"></span>
-                        </label>
-                        <div class="col-md-1 col-sm-6 col-xs-12">
-                          <input type="number" id="cippersona" name="cippersona" required="required" data-validate-minmax="10,100"  class="form-control col-md-7 col-xs-12" placeholder="CIP" readonly>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                          <input id="nombrecompletopersona"  name="nombrecompletopersona" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="Nombres y Apellidos" type="text" readonly>
-                        </div>
-                        <div class="col-md-2 col-sm-6 col-xs-12">
-                          <input id="unidad"  name="unidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="Unidad" type="text" readonly>
-                        </div>
-                       
-                    </div>
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Número Comisión <span class="required">*</span>
-                        </label>
-                        <div class="col-md-2 col-sm-6 col-xs-12">
-                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Número de comisión" class="form-control col-md-7 col-xs-12">
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Siglas" class="form-control col-md-7 col-xs-12" readonly>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Destino<span class="required">*</span>
-                        </label>
-                        <div class="form-group">
-                          <label for="usr"></label>
-                          <select class='selectpicker' id='Combodepartamento' name="Combodepartamento" data-live-search='true'>
-                              @foreach($ubigeo as $item)
-                                <option value="{{ $item->departamento}}">
-                                {{ $item->departamento}}
-                                </option>
-                              @endforeach
-                          </select>
-                        
-                        </div>
-                    
-
-                         <!--<div class="col-md-3 col-sm-6 col-xs-12">
-                           <select id="nombreCompleto" name="nombreCompleto" class='selectpicker'  data-live-search='true'>
-                            @foreach($persona as $item)
-                            <option value="{{ $item->apellidopaterno}} {{ $item->apellidomaterno}} {{ $item->nombres}}">
-                                {{ $item->apellidopaterno}} {{ $item->apellidomaterno}} {{ $item->nombres}}
-                            </option>
-                            @endforeach
-                          </select>
-                        </div>-->
-
-                        <div class="col-md-2 col-sm-6 col-xs-12">
-                          <select class="form-control" id="estadocivil" name="estadocivil">
-                            <option>Elija departamento</option>
-                            <option value="Apurímac">Apurímac</option>
-                            <option value="Cusco">Cusco</option>
-                          </select>
-                        </div>
-                        <div class="col-md-2 col-sm-6 col-xs-12">
-                          <select class="form-control" id="estadocivil" name="estadocivil">
-                            <option>Elija provincia</option>
-                            <option value="Abancay">Abancay</option>
-                            <option value="Cusco">Cusco</option>
-                          </select>
-                        </div>
-                        <div class="col-md-2 col-sm-6 col-xs-12">
-                          <select class="form-control" id="estadocivil" name="estadocivil">
-                            <option>Elija provincia</option>
-                            <option value="Abancay">Abancay</option>
-                            <option value="Cusco">Cusco</option>
-                          </select>
-                        </div>
-                      </div>
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Lugar<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar lugar de comisión" required="required" type="text">
-                        </div>
-                    </div>
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha de emision y fecha de llegada<span class="required">*</span>
-                        </label>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="date">
-                        </div>
-                    </div>
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Por disposición<span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar disposión" required="required" type="text">
-                        </div>
-                    </div>
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Motivo <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar el motivo" required="required" type="text">
-                        </div>
-                    </div>
-                    
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha de salida y hora<span class="required">*</span>
-                        </label>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida">
-                        </div>
-                    </div>
-                    <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Observación <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
-                            data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones"></textarea>
-                        </div>
+                    	<div class="col-md-4">
+	                    	<label class="control-label" for="name">Fecha de salida y hora<span class="required">*</span>
+	                        </label>
+	                        <div class="col-md-12">
+	                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
+	                        </div>
+	                    </div>
+	                    <div class="col-md-3">
+	                    	<label class="control-label" for="name">Hora<span class="required">*</span>
+	                        </label>
+	                        <div class="col-md-12">
+	                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida">
+	                        </div>
+						</div>
+						<div class="col-md-5">
+	                        <label class="control-label" for="name">Observación <span class="required">*</span>
+	                        </label>
+	                        <div class="col-md-12">
+	                        <textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+	                            data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones"></textarea>
+	                        </div>
+						</div>
                     </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -226,6 +225,123 @@
 
 @section('script')
    <script>
+
+    	listarProvincia();
+   		function listarProvincia()
+   		{
+   		var departamento=$("#Combodepartamento").val();
+        $("#ComboProvincia").html('');
+        var html;
+        $.ajax({
+                 url:'{{ route('listProvincia') }}',
+                 type: 'POST',
+                 data:{
+                        "_token": "{{ csrf_token() }}",
+                        "departamento":departamento
+                    },
+                 dataType: 'JSON',
+                 beforeSend: function() {
+                 },
+                 error: function() {
+                 },
+                  success: function(respuesta) {
+                    $.each(respuesta.data, function(index, val) {
+                    	 html=html+' <option value="'+val.provincia+' ">'+val.provincia+'</option>';
+                    });
+                    $("#ComboProvincia").append(html);
+                  }
+              });
+         var provincia=$("#ComboProvincia").val();
+        
+   		}
+
+   	$("#Combodepartamento").change(function( event ) {
+        event.preventDefault();
+        
+        var departamento=$("#Combodepartamento").val();
+        $("#ComboProvincia").html('');
+        var html;
+        $.ajax({
+                 url:'{{ route('listProvincia') }}',
+                 type: 'POST',
+                 data:{
+                        "_token": "{{ csrf_token() }}",
+                        "departamento":departamento
+                    },
+                 dataType: 'JSON',
+                 beforeSend: function() {
+                 },
+                 error: function() {
+                 },
+                  success: function(respuesta) {
+                    $.each(respuesta.data, function(index, val) {
+                    	 html=html+' <option value="'+val.provincia+' ">'+val.provincia+'</option>';
+                    });
+                    $("#ComboProvincia").append(html);
+                  }
+              });
+         var provincia=$("#ComboProvincia").val();
+        
+
+      });
+
+     listarDistrito();
+    function listarDistrito()
+    {
+    	
+    	var provincia='Chachapoyas';
+        $("#ComboDistrito").html('');
+        var html;
+        $.ajax({
+                 url:'{{ route('listDistrito') }}',
+                 type: 'POST',
+                 data:{
+                        "_token": "{{ csrf_token() }}",
+                        "provincia":provincia
+                    },
+                 dataType: 'JSON',
+                 beforeSend: function() {
+                 },
+                 error: function() {
+                 },
+                  success: function(respuesta) {
+                    $.each(respuesta.data, function(index, val) {
+                    	 html=html+' <option value="'+val.id+' ">'+val.distrito+'</option>';
+                    });
+                    $("#ComboDistrito").append(html);
+                  }
+              });
+    }
+
+   	$("#ComboProvincia").change(function( event ) {
+        event.preventDefault();
+        
+        var provincia=$("#ComboProvincia").val();
+        $("#ComboDistrito").html('');
+        var html;
+        $.ajax({
+                 url:'{{ route('listDistrito') }}',
+                 type: 'POST',
+                 data:{
+                        "_token": "{{ csrf_token() }}",
+                        "provincia":provincia
+                    },
+                 dataType: 'JSON',
+                 beforeSend: function() {
+                 },
+                 error: function() {
+                 },
+                  success: function(respuesta) {
+                    $.each(respuesta.data, function(index, val) {
+                    	 html=html+' <option value="'+val.id+' ">'+val.distrito+'</option>';
+                    });
+                    $("#ComboDistrito").append(html);
+                  }
+              });
+        
+
+      });
+   	
       $("#idPersona").change(function( event ) {
         event.preventDefault();
         

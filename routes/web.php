@@ -36,6 +36,10 @@ Route::resource('personagrado','ProcesoPersonaGrado');
 Route::resource('personaunidadcargo','ProcesoPersonaUnidadCargoController');
 Route::resource('unidad','UnidadController');
 Route::resource('licencia','LicenciaController');
+Route::resource('ubigeo','UbigeoController');
+Route::post('list/provincia','UbigeoController@provincia')->name('listProvincia');
+Route::post('list/distrito','UbigeoController@distrito')->name('listDistrito');
+
 //Route::post('post/cargo','CargoController@asignar');
 
 Route::get('tags','PersonaController@buscar');
