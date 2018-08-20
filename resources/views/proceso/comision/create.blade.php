@@ -80,7 +80,7 @@
 	                    </div>
 	                     <div class="col-md-2">
 	                        <div  class="form-group">
-	                          <label for="tag_list">Nombre Comppleto</label>
+	                          <label for="tag_list">Nombre Completo</label>
 	                          <input id="nombrecompletopersona"  name="nombrecompletopersona" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="Nombres y Apellidos" type="text" readonly>
 	                        </div>
 	                     </div>
@@ -88,7 +88,7 @@
 	                    <div class="col-md-4">
 	                        <div  class="form-group">
 	                           <label for="tag_list">Número Comisión</label>
-	                           <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Número de comisión" class="form-control col-md-4">
+	                           <input type="number" id="numerocomision" name="numerocomision" required="required" data-validate-minmax="10,100" placeholder="Número de comisión" class="form-control col-md-4">
 	                        </div>
 	                       
 	                    </div>
@@ -145,7 +145,7 @@
 	                        <label class="control-label" for="name">Lugar<span class="required">*</span>
 	                        </label>
 	                        <div class="col-md-12">
-	                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar lugar de comisión" required="required" type="text">
+	                          <input id="lugarcomision"  name="lugarcomision" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar lugar de comisión" required="required" type="text">
 	                        </div>
                         </div>
                     
@@ -153,58 +153,86 @@
 		                        <label class="control-label" for="name">Fecha de emision<span class="required">*</span>
 		                        </label>
 		                        <div class="col-md-12">
-		                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
-		                        </div>
-		                        
-		                </div>
-		                <div class="col-md-4">
-		                	<label class="control-label" for="name">Fecha de llegada<span class="required">*</span>
-		                        </label>
-			                <div class="col-md-12">
-			                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="date">
-			                        </div>
-		                </div>
-                    </div>
-                    <div class="item form-group">
+		                          <input id="fechaemision"  name="fechaemision" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
+		                        </div>       
+		                  </div>
+                      <div class="item form-group">
+                        <div class="col-md-8">
+	                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Motivo <span class="required">*</span>
+	                        </label>
+	                        <div class="col-md-12">
+	                          <input id="motivo"  name="motivo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar el motivo" required="required" type="text">
+	                        </div>
+                        </div>
                         <div class="col-md-4">
 	                        <label class="control-label" for="name">Por disposición<span class="required">*</span>
 	                        </label>
 	                        <div class="col-md-12">
-	                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar disposión" required="required" type="text">
+	                          <input id="disposicion"  name="disposicion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar disposión" required="required" type="text">
 	                        </div>
                         </div>
-                         <div class="col-md-8">
-	                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Motivo <span class="required">*</span>
-	                        </label>
-	                        <div class="col-md-12">
-	                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar el motivo" required="required" type="text">
-	                        </div>
-                   		 </div>
-                        
+                         
+                   		</div>
+		                
+                
                     </div>
+                    
                     <div class="item form-group">
                     	<div class="col-md-4">
-	                    	<label class="control-label" for="name">Fecha de salida y hora<span class="required">*</span>
+	                    	<label class="control-label" for="name">Fecha de salida <span class="required">*</span>
 	                        </label>
 	                        <div class="col-md-12">
-	                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
+	                          <input id="fechasalida"  name="fechasalida" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
 	                        </div>
 	                    </div>
 	                    <div class="col-md-3">
-	                    	<label class="control-label" for="name">Hora<span class="required">*</span>
+	                    	<label class="control-label" for="name">Hora de salida<span class="required">*</span>
 	                        </label>
 	                        <div class="col-md-12">
-	                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida">
+	                          <input id="horasalida"  name="horasalida" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida">
 	                        </div>
-						</div>
-						<div class="col-md-5">
+						          </div>
+						        </div>
+
+                     <div class="item form-group">
+                    	<div class="col-md-4">
+	                    	<label class="control-label" for="name">Fecha de llegada<span class="required">*</span>
+	                        </label>
+	                        <div class="col-md-12">
+	                          <input id="fechallegada"  name="fechallegada" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
+	                        </div>
+	                    </div>
+	                    <div class="col-md-3">
+	                    	<label class="control-label" for="name">Hora de llegada<span class="required">*</span>
+	                        </label>
+	                        <div class="col-md-12">
+	                          <input id="horallegada"  name="horallegada" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida">
+	                        </div>
+						          </div>
+                    </div>
+                    <div class="item form-group">
+                    	<div class="col-md-4">
+	                    	<label class="control-label" for="name">Fecha de retorno<span class="required">*</span>
+	                        </label>
+	                        <div class="col-md-12">
+	                          <input id="fecharetorno"  name="fecharetorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
+	                        </div>
+	                    </div>
+	                    <div class="col-md-3">
+	                    	<label class="control-label" for="name">Hora de retorno<span class="required">*</span>
+	                        </label>
+	                        <div class="col-md-12">
+	                          <input id="horaretorno"  name="horaretorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida">
+	                        </div>
+						          </div>
+                      <div class="col-md-5">
 	                        <label class="control-label" for="name">Observación <span class="required">*</span>
 	                        </label>
-	                        <div class="col-md-12">
-	                        <textarea id="message" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+	                      <div class="col-md-12">
+	                        <textarea id="observacion" name="observacion" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
 	                            data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones"></textarea>
-	                        </div>
-						</div>
+	                      </div>
+						          </div>
                     </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
@@ -230,16 +258,40 @@
    	$("#enviarComision").click(function( event ) {
         event.preventDefault();
         var idPersona=$("#idPersona").val();
+        var Numerocomision=$("#numerocomision").val();
         var Combocomision=$("#Combocomision").val();
         var ComboDistrito=$("#ComboDistrito").val();
+        var Lugarcomision=$("#lugarcomision").val();
+        var Fechaemision=$("#fechaemision").val();
+        var Motivo=$("#motivo").val();
+        var Disposicion=$("#disposicion").val();
+        var Fechasalida=$("#fechasalida").val();
+        var Horasalida=$("#horasalida").val();
+        var Fechallegada=$("#fechallegada").val();
+        var Horallegada=$("#horallegada").val();
+        var Fecharetorno=$("#fecharetorno").val();
+        var Horaretorno=$("#horaretorno").val();
+        var Observacion=$("#observacion").val();
         $.ajax({
                  url:'{{ route('insertComision') }}',
                  type: 'POST',
                  data:{
                         "_token": "{{ csrf_token() }}",
                         "idPersona":idPersona,
+                        "Numerocomision":numerocomision,
                         'Combocomision':Combocomision,
-                        "ComboDistrito":ComboDistrito
+                        "ComboDistrito":ComboDistrito,
+                        "Lugarcomision":lugarcomision,
+                        "Fechaemision":fechaemision,
+                        "Motivo":motivo,
+                        "Disposicion":disposicion,
+                        "Fechasalida":fechasalida,
+                        "Horasalida":horasalida,
+                        "Fechallegada":fechallegada,
+                        "Horallegada":horallegada,
+                        "Fecharetorno":fecharetorno,
+                        "Horaretorno":horaretorno,
+                        "Observacion":observacion
                     },
                  dataType: 'JSON',
                  beforeSend: function() {

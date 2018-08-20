@@ -48,7 +48,7 @@
                         <th>Sexo</th>
                         <th>Apellidos y Nombres </th>
                         <th>N° de celular</th>
-                        <th>Grupo sanguineo</th>
+                      
                         <th>Email</th>
                         <th>Estado civil</th>
                         <th>Codigo grado</th>
@@ -69,10 +69,8 @@
                               <td>{{$item->sexo }}</td>
                               <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
                               <td>{{$item->celular }}</td>
-                              <td>{{$item->gruposanguineo }}</td>
-                              <td>
-                             <strong> Personal:</strong><br>{{$item->emailpersonal }}<br>
-                             <strong>Institucional:</strong><br>{{$item->emailinstitucional }}
+                       
+                              <td>{{$item->email}}                   
                               </td>
                               <td>{{$item->estadocivil }}</td>
                               <td>{{$item->codigo }}</td>
