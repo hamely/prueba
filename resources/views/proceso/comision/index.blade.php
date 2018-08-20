@@ -40,7 +40,10 @@
                     <table id="datatable" class="table table-striped table-bordered">
                       <thead>
                         <tr>
+                          <th>Cip</th>
+                          <th>Persona</th>
                           <th>N° Comisión</th>
+                          <th>Tipo comision</th>
                           <th>Destino</th>
                           <th>Fecha emisión</th>
                           <th>Fecha llegada</th>
@@ -57,10 +60,13 @@
                         </tr>
                       </thead>
                       <tbody>
-                  
+                      @foreach($comisionpersona as $item)
                             <tr>
+                            <td>{{$item->cip }}</td>
+                            <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
                             <td></td>
-                            <td></td>
+                            <td>{{$item->nombre }}</td>
+                            <td><strong>Departamento:</strong> {{$item->departamento}} <br/><strong>Provincia:</strong> {{$item->provincia}} </br> <strong>Distrito:</strong> {{$item->distrito}}</td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -75,7 +81,7 @@
                             <td><button class="btn-success">editar</button></td>
                             
                             </tr>
-           
+                      @endforeach
                 
                       </tbody>
                     </table>

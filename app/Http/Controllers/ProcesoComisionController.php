@@ -17,7 +17,16 @@ class ProcesoComisionController extends Controller
      */
     public function index()
     {
-        return view('proceso/comision/index');
+        $comisionpersona = DB::table('asignar_comision')
+        ->select('persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre', 'ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito')
+        ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
+        ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
+        ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
+        ->get();
+       // dd($personagrado);
+        return  view('proceso.comision.index',['comisionpersona' => $comisionpersona]);
+      
+       // return view('proceso/comision/index');
     }
 
     /**
