@@ -84,27 +84,28 @@
 	                          <input id="nombrecompletopersona"  name="nombrecompletopersona" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="Nombres y Apellidos" type="text" readonly>
 	                        </div>
 	                     </div>
-	                     <div class="col-md-2">
-	                        <div  class="form-group">
-	                           <label for="tag_list">Unidad</label>
-	                           <input id="unidad"  name="unidad" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" placeholder="Unidad" type="text" readonly>
-	                        </div>
-	                       
-	                    </div>
-	                    <div class="col-md-3">
+	                    
+	                    <div class="col-md-4">
 	                        <div  class="form-group">
 	                           <label for="tag_list">Número Comisión</label>
 	                           <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Número de comisión" class="form-control col-md-4">
 	                        </div>
 	                       
 	                    </div>
-	                    <div class="col-md-2">
-	                        <div  class="form-group">
-	                           <label for="tag_list">Siglas</label>
-	                            <input type="number" id="cip" name="cip" required="required" data-validate-minmax="10,100" placeholder="Siglas" class="form-control col-md-7 col-xs-12" readonly>
+	                    <div class="col-md-3">
+	                        <div class="form-group">
+	                          <label for="usr"> Tipo de comisión</label>
+	                          <select class='selectpicker' id='Combocomision' name="Combocomision" data-live-search='true'>
+	                              @foreach($comision as $item)
+	                                <option value="{{ $item->id}}">
+	                                {{ $item->nombre}}
+	                                </option>
+	                              @endforeach
+	                          </select>
+	                        
 	                        </div>
-	                       
-	                    </div><br><br>
+                        </div>
+	                    <br><br>
                     <hr/>
                     <div class="item form-group">
                        <div class="col-md-3">
@@ -208,7 +209,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                            <button id="send" type="submit" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
+                            <button id="enviarComision" type="button" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
                             <button type="submit" class="btn btn-danger"><i class="fa fa-times-circle"> Cancelar</i></button>
                         </div>
                       </div>
@@ -225,6 +226,33 @@
 
 @section('script')
    <script>
+
+   	$("#enviarComision").click(function( event ) {
+        event.preventDefault();
+        var idPersona=$("#idPersona").val();
+        var Combocomision=$("#Combocomision").val();
+        var ComboDistrito=$("#ComboDistrito").val();
+        $.ajax({
+                 url:'{{ route('insertComision') }}',
+                 type: 'POST',
+                 data:{
+                        "_token": "{{ csrf_token() }}",
+                        "idPersona":idPersona,
+                        'Combocomision':Combocomision,
+                        "ComboDistrito":ComboDistrito
+                    },
+                 dataType: 'JSON',
+                 beforeSend: function() {
+                 },
+                 error: function() {
+                 },
+                  success: function(respuesta) {
+                   console.log(respuesta);
+                  }
+              });
+        
+
+      });
 
     	listarProvincia();
    		function listarProvincia()
