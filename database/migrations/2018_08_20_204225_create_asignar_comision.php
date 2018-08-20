@@ -29,7 +29,7 @@ class CreateAsignarComision extends Migration
             $table->time('horallegada'); //(habilitado)
             $table->date('fecharetorno'); //Deberia coincidir si realmente llego o retorno el dia que pusieron
             $table->time('horaretorno');
-            $table->string('observacion'); //(habilitadp)
+            $table->string('observacion'); //(habilitado)
 
             $table->foreign('persona_id')->references('id')->on('persona');
             $table->foreign('comision_id')->references('id')->on('comision');
