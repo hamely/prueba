@@ -34,6 +34,7 @@ Route::resource('grado','GradoController');
 Route::resource('asignarcomision','ProcesoComisionController');
 Route::post('insertComision','ProcesoComisionController@asignarComision')->name('insertComision');
 Route::resource('personagrado','ProcesoPersonaGrado');
+Route::resource('personacargo','ProcesoPersonaCargo');
 Route::resource('personaunidadcargo','ProcesoPersonaUnidadCargoController');
 Route::resource('unidad','UnidadController');
 Route::resource('licencia','LicenciaController');

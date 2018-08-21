@@ -73,9 +73,9 @@
                                         <li><a href="{{route('persona.edit',$item->id)}}">Modificar</a></li>
                                         <li><a href="#">Unidad</a></li>
                                         <li>
-                                          <button type="button" onclick="listarCargos({!! $item->id !!})" class="btn btn-ling" data-toggle="modal" data-target="#unidad">cargo
+                                          <button type="button" onclick="listarCargos({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#unidad">cargo
                                           </button>
-                                          <button type="button" onclick="listarGrados({!! $item->id !!},'{!! $item->nombres!!}')" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
+                                          <button type="button" onclick="listarGrados({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
                                           </button>
                                        </li>
                                       </ul>
@@ -99,26 +99,49 @@
 
     <div class="modal fade" id="unidad" role="dialog">
         <div class="modal-dialog">
-        
-          <!-- Modal content-->
-          <div class="modal-content">
+        <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Asignar cargo,unidad y grado</h4>
+              <h4 class="modal-title">Asignar cargo</h4>
             </div>
             <div class="modal-body">
-                <input type="hidden" name="idPersona" id="idPersona">
-                <label> Cargo</label>
-                 <div class="divCargo">
-                     <select class='selectpicker' id='cargo' data-live-search='true'>
-                    </select>
-                 </div>
+            {!! Form::open(['route' => ['personacargo.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
+              
+            <input type="text" name="idPersonaC" id="idPersonaC">
+            
+            <br/>
+
+            <div class="form-group">
+              <label for="usr">Persona</label>
+              <input type="text" id="nombrepersonaC" name="nombrepersonaC"  readonly>
+            </div>
+
+            <div class="form-group">
+              <label for="usr">Cargo:</label>
+              <select class='selectpicker' id='Combocargo' name="Combocargo" data-live-search='true'>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Fecha asignación de cargo:</label>
+              <input id="fechaAsignacionC"  name="fechaAsignacionC" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de grado" required="required" type="date">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Observación:</label>
+              <textarea id="observacionC" required="required" class="form-control" name="observacionC" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                            data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones"></textarea> 
+            </div>
+
+                 <br/>
+
+                 <button id="send" type="submit" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
+                          <button type="submit" class="btn btn-danger"><i class="fa fa-times-circle"> Cancelar</i></button>
+            {!! Form::close() !!}
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
           </div>
-          
+
         </div>
     </div>
 
@@ -179,9 +202,10 @@
 @section('script')
    <script>
 
-    function listarCargos(idPersona)
+    function listarCargos(idPersona,nombrepersona)
     {
-       $("#idPersona").val(idPersona);
+       $("#idPersonaC").val(idPersona);
+       $("#nombrepersonaC").val(nombrepersona);
 
        $.ajaxSetup({
           headers: {
@@ -196,9 +220,9 @@
             var html="";
             $("#cargo").remove();
               $.each(result.data, function(cargo, item) {
-                    html= html+ "<option data-tokens='"+item.nombre+"'>"+item.nombre+"</option>";
+                    html = html + "<option value='"+item.id+"' data-tokens='"+item.nombrecorto+"'>"+item.nombrecorto+"</option>";
                 });
-              $("#cargo").append(html);
+              $("#Combocargo").append(html);
               $('.selectpicker').selectpicker('refresh');
           }});
     }
@@ -229,6 +253,5 @@
           }});
     }
 
-    
   </script>
 @endsection

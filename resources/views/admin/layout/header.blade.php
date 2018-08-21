@@ -74,6 +74,7 @@
                   <li><a><i class="fa fa-area-chart"></i> Reportes generales <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ url('personagrado') }}">Grados asignados</a></li>
+                      <li><a href="{{ url('personacargo') }}">Cargos asignados</a></li>
                       <li><a href="{{ url('personaunidadcargo') }}">Unidades y cargos asignados</a></li>
                     </ul>
                   </li>
