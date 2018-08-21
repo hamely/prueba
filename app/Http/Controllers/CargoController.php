@@ -48,7 +48,8 @@ class CargoController extends Controller
     {
         $cargo = new Cargo;
         $cargo->codigo = $request->codigo;
-        $cargo->nombre = $request->nombre;
+        $cargo->nombrecorto = $request->nombrecorto;
+        $cargo->nombrelargo = $request->nombrelargo;
         $cargo->save();
         
         return redirect()->route('cargo.index')->with('info' , 'Se registro correctamente');

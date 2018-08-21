@@ -40,7 +40,8 @@
                       <thead>
                         <tr>
                           <th>Código</th>
-                          <th>Tipo de cargos</th>
+                          <th>Nombre corto</th>
+                          <th>Nombre largo</th>
                           <th>Acciones</th>
                    
                         </tr>
@@ -49,8 +50,8 @@
                       @foreach($cargo as $item)
                             <tr>
                             <td>{{$item->codigo }}</td>
-                            <td>{{$item->nombre }}</td>
-                   
+                            <td>{{$item->nombrecorto }}</td>
+                            <td>{{$item->nombrelargo }}</td>
                             <td><a style= "color:blue" href="{{route('cargo.edit',$item->id)}}" >editar<a/>
                             
                             {!! Form::open(['route' => ['cargo.destroy',$item->id] , 'method' => 'DELETE', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
