@@ -53,9 +53,7 @@
                           <th>Fecha salida</th>
                           <th>Hora salida</th>
                           <th>Observación</th>
-                          <th>N° reincorporación</th>
-                          <th>Fecha retorno/salida</th>
-                          <th>Hora retono/salida</th>
+                          
                           <th></th>
                         </tr>
                       </thead>
@@ -64,20 +62,18 @@
                             <tr>
                             <td>{{$item->cip }}</td>
                             <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
-                            <td></td>
+                            <td>{{$item->numerocomision}}</td>
                             <td>{{$item->nombre }}</td>
                             <td><strong>Departamento:</strong> {{$item->departamento}} <br/><strong>Provincia:</strong> {{$item->provincia}} </br> <strong>Distrito:</strong> {{$item->distrito}}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$item->fechaemision }}</td>
+                            <td>{{$item->fechallegada }}</td>
+                            <td>{{$item->horallegada }}</td>
+                            <td>{{$item->disposicion}}</td>
+                            <td>{{$item->motivo}}</td>
+                            <td>{{$item->fechasalida}}</td>
+                            <td>{{$item->horasalida}}</td>
+                            <td>{{$item->observacion}}</td>
+                           
                             <td><button class="btn-success">editar</button></td>
                             
                             </tr>

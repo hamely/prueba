@@ -10,7 +10,6 @@ class AsignarComision extends Model
     protected $fillable = [
         'persona_id',
         'numerocomision',
-
         'comision_id',
         'ubigeo_id',
         'lugarcomision',

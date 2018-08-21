@@ -147,12 +147,13 @@ class PersonaController extends Controller
 
             $data = [];
 
-
             if($request->has('q')){
                 $search = $request->q;
                 $data = DB::table("persona")
                         ->select("id",DB::raw("CONCAT(nombres,' ',apellidopaterno,' ',apellidomaterno) as text"))
-                        ->where('nombres','LIKE',"%$search%")
+                        ->where('nombres','=', $search)
+                        ->orwhere('apellidomaterno','=',$search)
+                        ->orwhere('apellidopaterno','=',$search)
                         ->get();
             }
 

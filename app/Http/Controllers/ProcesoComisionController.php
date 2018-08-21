@@ -18,11 +18,12 @@ class ProcesoComisionController extends Controller
     public function index()
     {
         $comisionpersona = DB::table('asignar_comision')
-        ->select('persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre', 'ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito')
+        ->select('persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion')
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
         ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
         ->get();
+        //return $comisionpersona;
        // dd($personagrado);
         return  view('proceso.comision.index',['comisionpersona' => $comisionpersona]);
       
@@ -36,7 +37,8 @@ class ProcesoComisionController extends Controller
      */
     public function create()
     {
-        $persona=Persona::all();
+        
+            
         //$ubigeo=Ubigeo::all();
         //return $persona;
         $comision=Comision::all();
@@ -47,7 +49,7 @@ class ProcesoComisionController extends Controller
         ->wherenull('distrito')
         ->get();
 
-        return view('proceso.comision.create',['persona'=>$persona,'ubigeo'=>$ubigeo,'comision'=>$comision]);
+        return view('proceso.comision.create',['ubigeo'=>$ubigeo,'comision'=>$comision]);
     }
 
     /**
@@ -110,17 +112,27 @@ class ProcesoComisionController extends Controller
     {
         if($request->ajax())
         {
-            $idPersona=$_POST['idPersona'];
-            $Combocomision=$_POST['Combocomision'];
-            $ComboDistrito=$_POST['ComboDistrito'];
-
+        
             $insert=new AsignarComision;
-            $insert->persona_id=$idPersona;
-            $insert->comision_id=$Combocomision;
-            $insert->ubigeo_id=$ComboDistrito;
+            $insert->persona_id=$_POST['idPersona'];
+            $insert->numerocomision=$_POST['numeroComision'];
+            $insert->comision_id=$_POST['comboComision'];
+            $insert->ubigeo_id=$_POST['comboDistrito'];
+            $insert->lugarcomision=$_POST['lugarComision'];
+            $insert->fechaemision='1212-12-12 00:00:00';
+            $insert->motivo=$_POST['motivo'];
+            $insert->disposicion=$_POST['disposicion'];
+            $insert->fechasalida=$_POST['fechaSalida'];
+            $insert->horasalida=$_POST['horaSalida'];
+            $insert->fechallegada=$_POST['fechaLlegada'];
+            $insert->horallegada=$_POST['horaLlegada'];
+            $insert->fecharetorno=$_POST['fechaRetorno'];
+            $insert->horaretorno=$_POST['fechaRetorno'];
+            $insert->observacion=$_POST['observacion'];
+
             $insert->save();
         }
-        return Response(['data'=>$idPersona]);
+        return Response(['data'=>$_POST['idPersona']]);
 
     }
 }

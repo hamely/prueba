@@ -32,9 +32,7 @@
     <link rel="stylesheet" href="{{ asset("build/css/custom.min.css") }}">
 
     <link rel="stylesheet" href="{{ asset("vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css") }}" >
-    <link rel="stylesheet" href="{{ asset("admin/css/bootstrap-select.min.css") }}" >
-      <link href = "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel = "stylesheet" />   
-  <script src = "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js" > </ script> 
+    
 
 </head>
 <body class="nav-md">
@@ -100,7 +98,9 @@
     <script src="{{ asset("vendors/pdfmake/build/pdfmake.min.js") }}"></script>
     <script src="{{ asset("vendors/pdfmake/build/vfs_fonts.js") }}"></script>
     <script src="{{ asset("admin/js/bootstrap-select.min.js") }}"></script>
-
+<link rel="stylesheet" href="{{ asset("admin/css/bootstrap-select.min.css") }}" >
+      <link href = "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel = "stylesheet" />   
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js" > </ script> 
     <!-- Custom Theme Scripts -->
     <script src="../"></script>
     <script src="{{ asset("build/js/custom.min.js") }}"></script>
