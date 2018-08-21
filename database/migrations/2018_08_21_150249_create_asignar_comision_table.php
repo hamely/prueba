@@ -20,7 +20,7 @@ class CreateAsignarComisionTable extends Migration
             $table->integer('comision_id')->unsigned()->index();
             $table->integer('ubigeo_id')->unsigned()->index();
             $table->string('lugarcomision');       
-            $table->datetime('fechaemision'); //fecha del sistema
+            $table->date('fechaemision')->nullable(); ; //fecha del sistema
             $table->string('motivo');
             $table->string('disposicion');
             $table->date('fechasalida'); //Ejemplo sale hoy 20 de agosto 1 las 19 horas

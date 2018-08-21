@@ -111,15 +111,14 @@ class ProcesoComisionController extends Controller
     public function asignarComision(Request $request)
     {
         if($request->ajax())
-        {
-        
+        {       
             $insert=new AsignarComision;
             $insert->persona_id=$_POST['idPersona'];
             $insert->numerocomision=$_POST['numeroComision'];
             $insert->comision_id=$_POST['comboComision'];
             $insert->ubigeo_id=$_POST['comboDistrito'];
             $insert->lugarcomision=$_POST['lugarComision'];
-            $insert->fechaemision='1212-12-12 00:00:00';
+            $insert->fechaemision='2018-01-01';
             $insert->motivo=$_POST['motivo'];
             $insert->disposicion=$_POST['disposicion'];
             $insert->fechasalida=$_POST['fechaSalida'];

@@ -203,7 +203,7 @@
                           </div>
                           </div>
                     </div> 
-                       <div class="col-sm-2">
+                    <div class="col-sm-2">
                       <div class="form-group">
                             <label for="email">Fecha de retorno</label>
                             <input id="fecharetorno"  name="fecharetorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
@@ -219,6 +219,12 @@
                           </div>
                           </div>
                     </div> 
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                            <label for="email">Fecha de emisión</label>
+                            <input id="fechaemision"  name="fechaemision" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
+                          </div>
+                    </div> 
                     <div class="col-md-6">
                             <label class="control-label" for="name">Observación <span class="required">*</span>
                             </label>
@@ -232,8 +238,10 @@
                    <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                             <button id="enviarComision" type="button" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
-                             <a href="{{('/asignarcomision/create')}}" class="btn btn-primary "><i class="fa fa-plus-circle"> Limpiar</i></a>
-                            <button type="submit" class="btn btn-danger"><i class="fa fa-times-circle"> Cancelar</i></button>
+                              <a href="" class="btn btn-primary"><i class="fa fa-file-pdf-o"> Imprimir papeleta</i></a>  
+                              <a href="{{('/asignarcomision/create')}}" class="btn btn-default  "><i class="fa fa-eraser"> Limpiar</i></a>
+                              <a href="{{('/asignarcomision/')}}" class="btn btn-info"><i class="fa fa-mail-reply"> Retroceder</i></a>
+                              <button type="submit" class="btn btn-danger"><i class="fa fa-times-circle"> Cancelar</i></button>
 
                         </div>
                       </div><br>
