@@ -77,6 +77,8 @@
                                           </button>
                                           <button type="button" onclick="listarGrados({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
                                           </button>
+                                          <button type="button" onclick="listarUnidadÑaboral()" class="btn btn-ling" data-toggle="modal" data-target="#unidadlaboral">unidad
+                                          </button>
                                        </li>
                                       </ul>
                                   </div>
@@ -196,6 +198,56 @@
         </div>
     </div>
 
+     <div class="modal fade" id="unidadlaboral" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Asignar unidad laboral</h4>
+            </div>
+            <div class="modal-body">
+            <form>
+              
+            <input type="hidden" name="idPersonaG" id="idPersonaG">
+            
+            <br/>
+
+            <div class="form-group">
+              <label for="usr">Persona</label>
+              <input type="text" name="nombrepersonaU" id="nombrepersonaU" readonly>
+            </div>
+
+            <div class="form-group">
+              <label for="usr">Unidad:</label>
+              <select class='selectpicker' id='Combounidad' name="Combounidad" data-live-search='true'>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pwd">Fecha asignación de grado:</label>
+              <input id="fechaAsignacionU"  name="fechaAsignacionU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de grado" required="required" type="date">
+            </div>
+            <div class="form-group">
+              <label for="pwd">Observación:</label>
+              <textarea id="observacionU" name="observacionU" class="form-control"  data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                            data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones"></textarea> 
+            </div>
+
+                 <br/>
+
+                 <button id="send" type="submit" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
+                          <button type="submit" class="btn btn-danger"><i class="fa fa-times-circle"> Cancelar</i></button>
+            </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+          
+        </div>
+    </div>
+
 @endsection
 
 
@@ -253,5 +305,9 @@
           }});
     }
 
+    function listarUnidadLaboral()
+    {
+      
+    }
   </script>
 @endsection
