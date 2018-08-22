@@ -45,7 +45,6 @@
                       <div id="myTabContent" class="tab-content">
                         <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
                             
-
                           <div class="row">
                           <div class="col-md-12 col-sm-12 col-xs-12">
                           <div class="x_panel">
@@ -82,6 +81,7 @@
                                 <tbody>
                                 @foreach($comisionpersona as $item)
                                       <tr>
+                                      
                                       <td>{{$item->cip }}</td>
                                       <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
                                       <td>{{$item->numerocomision}}</td>
@@ -97,7 +97,7 @@
                                       <td>{{$item->observacion}}</td>
                                      
                                       <td>
-                                      <a href="{{route('culminarcomision')}}" class="btn btn-default btn-xs">Estado</a>
+                                      <a href="{{route('culminarcomision',['id' => 1])}}" class="btn btn-default btn-xs">Estado</a> 
                                       <a href="{{route('papeletacomision')}}" class="btn btn-default btn-xs btn-primary"><i class="fa fa-file-pdf-o"> Papeleta</i></a>
                                       </td>
                                       
@@ -110,6 +110,7 @@
                           </div>
                          </div>
                        </div>
+
 
 
 

@@ -144,9 +144,12 @@ class ProcesoComisionController extends Controller
         return $pdf->download('listado.pdf');      
     }  
 
-    public function culminarcomision()
-    {
-        return view('proceso/comision/culminarcomision');
+    public function culminarcomision($id)
+    {   
+        $culminarcomision= AsignarComision::find($id);
+        return  view('proceso.comision.culminarcomision',['culminarcomision' => $culminarcomision]);
+
+        //return view('proceso/comision/culminarcomision');
     }   
     
 }
