@@ -117,7 +117,71 @@
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
                           
-                            COMISIONES TERMINADAS POR ESTADO
+                        <div class="row">
+                          <div class="col-md-12 col-sm-12 col-xs-12">
+                          <div class="x_panel">
+                            <div class="x_title">
+                            <a href="{{('/asignarcomision/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
+                             
+                              
+                              <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                            
+                              <table id="datatable1" class="table table-striped table-bordered">
+                                 <h2>Comisiones<small> CULMINADA </small></h2>
+                                 <hr/>
+                                <thead>
+                                  <tr>
+                                    <th>Cip</th>
+                                    <th>Persona</th>
+                                    <th>N° Comisión</th>
+                                    <th>Tipo comision</th>
+                                    <th>Destino</th>
+                                    <th>Fecha emisión</th>
+                                    <th>Fecha llegada</th>
+                                    <th>Hora llegada</th>
+                                    <th>Por disposición superior</th>
+                                    <th>Motivo</th>
+                                    <th>Fecha salida</th>
+                                    <th>Hora salida</th>
+                                    <th>Observación</th>
+                                    
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($comisionpersona as $item)
+                                      <tr>
+                                      <td>{{$item->cip }}</td>
+                                      <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
+                                      <td>{{$item->numerocomision}}</td>
+                                      <td>{{$item->nombre }}</td>
+                                      <td><strong>Departamento:</strong> {{$item->departamento}} <br/><strong>Provincia:</strong> {{$item->provincia}} </br> <strong>Distrito:</strong> {{$item->distrito}}</td>
+                                      <td>{{$item->fechaemision }}</td>
+                                      <td>{{$item->fechallegada }}</td>
+                                      <td>{{$item->horallegada }}</td>
+                                      <td>{{$item->disposicion}}</td>
+                                      <td>{{$item->motivo}}</td>
+                                      <td>{{$item->fechasalida}}</td>
+                                      <td>{{$item->horasalida}}</td>
+                                      <td>{{$item->observacion}}</td>
+                                     
+                                      <td>
+                                      <a href="{{route('culminarcomision')}}" class="btn btn-default btn-xs">Estado</a>
+                                      <a href="{{route('papeletacomision')}}" class="btn btn-default btn-xs btn-primary"><i class="fa fa-file-pdf-o"> Papeleta</i></a>
+                                      </td>
+                                      
+                                      </tr>
+                                @endforeach
+                          
+                              </tbody>
+                            </table>
+                           </div>
+                          </div>
+                         </div>
+
+
                             
                         </div>
                         
