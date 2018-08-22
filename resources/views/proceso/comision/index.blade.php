@@ -96,7 +96,8 @@
                                       <td>{{$item->horasalida}}</td>
                                       <td>{{$item->observacion}}</td>
                                      
-                                      <td><button class="btn-success">editar</button></td>
+                                      <td><button class="btn-success">editar</button>
+                                      <a href="{{route('papeletacomision')}}" class="btn btn-primary"><i class="fa fa-file-pdf-o"> Papeleta</i></a> </td>
                                       
                                       </tr>
                                 @endforeach
