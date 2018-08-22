@@ -97,9 +97,8 @@
                                       <td>{{$item->observacion}}</td>
                                      
                                       <td>
-                                      <a href="" class="btn btn-default btn-xs">Estado</a>
+                                      <a href="{{route('culminarcomision')}}" class="btn btn-default btn-xs">Estado</a>
                                       <a href="{{route('papeletacomision')}}" class="btn btn-default btn-xs btn-primary"><i class="fa fa-file-pdf-o"> Papeleta</i></a>
-                                      
                                       </td>
                                       
                                       </tr>

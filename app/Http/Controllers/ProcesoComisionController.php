@@ -83,7 +83,7 @@ class ProcesoComisionController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -143,6 +143,10 @@ class ProcesoComisionController extends Controller
 
         return $pdf->download('listado.pdf');      
     }  
-     
+
+    public function culminarcomision()
+    {
+        return view('proceso/comision/culminarcomision');
+    }   
     
 }

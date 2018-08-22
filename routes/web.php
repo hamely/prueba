@@ -43,6 +43,7 @@ Route::post('list/provincia','UbigeoController@provincia')->name('listProvincia'
 Route::post('list/distrito','UbigeoController@distrito')->name('listDistrito');
 
 Route::get('papeletacomision', 'ProcesoComisionController@pdfpapeletacomision')->name('papeletacomision');
+Route::get('culminarcomision', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 
 //Route::post('post/cargo','CargoController@asignar');
 
