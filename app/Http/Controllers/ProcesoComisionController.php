@@ -8,6 +8,7 @@ use App\Ubigeo;
 use App\Comision;
 use DB;
 use App\AsignarComision;
+use Barryvdh\DomPDF\Facade as PDF;
 class ProcesoComisionController extends Controller
 {
     /**
@@ -134,4 +135,14 @@ class ProcesoComisionController extends Controller
         return Response(['data'=>$_POST['idPersona']]);
 
     }
+    public function pdfpapeletacomision()
+    {
+        $products = Comision::all(); 
+
+        $pdf = PDF::loadView('reportes.papeletacomision', compact('products'));
+
+        return $pdf->download('listado.pdf');      
+    }  
+     
+    
 }

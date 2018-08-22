@@ -42,7 +42,7 @@ Route::resource('ubigeo','UbigeoController');
 Route::post('list/provincia','UbigeoController@provincia')->name('listProvincia');
 Route::post('list/distrito','UbigeoController@distrito')->name('listDistrito');
 
-
+Route::get('papeletacomision', 'ProcesoComisionController@pdfpapeletacomision')->name('papeletacomision');
 
 //Route::post('post/cargo','CargoController@asignar');
 
