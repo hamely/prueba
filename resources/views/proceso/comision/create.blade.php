@@ -76,7 +76,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">CIP</label>
-                            <input type="text" id="idpersonaBuscador" name="idpersonaBuscador">
+                            <input type="hidden" id="idpersonaBuscador" name="idpersonaBuscador">
                             <input type="number" class="form-control" id="cippersona" name="cippersona" placeholder="CIP" readonly>
                         </div>
                       </div> 
