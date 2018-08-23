@@ -196,6 +196,13 @@ class ProcesoComisionController extends Controller
         return  view('proceso.comision.culminarcomision',['culminarcomision' => $culminarcomision]);
 
         //return view('proceso/comision/culminarcomision');
-    }   
+    }  
+    
+    public function datoscomision(Request $request, $id)
+    {
+        $comision= AsignarComision::findOrFail($id);
+        $comision->update($request->all());
+        return redirect()->route('asignarcomision.index');
+    }
     
 }

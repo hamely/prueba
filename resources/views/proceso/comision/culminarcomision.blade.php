@@ -35,30 +35,28 @@
                   </div>
                   <div class="x_content">
                     
-                   {!! Form::open(['route' => ['asignarcomision.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
+                   {!! Form::open(['route' => ['persona.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
 
                      <div class="col-sm-6">
-                      
+         
                       <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">CIP</label>
-                            <input type="number" class="form-control" id="cippersona" name="cippersona" placeholder="CIP" readonly>
+                            <input type="number" class="form-control" id="cippersona" name="cippersona" value="{!! $culminarcomision->cip !!}" placeholder="CIP" readonly>
                         </div>
                       </div> 
-
+                    
                       <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">Nombres y apellidos</label>
-                            <input type="text" class="form-control" id="nombrecompletopersona"  name="nombrecompletopersona" placeholder="Nombres y Apellidos" readonly>
+                            <input type="text" class="form-control" id="nombrecompletopersona" value="{!! $culminarcomision->apellidos !!}" name="nombrecompletopersona" placeholder="Nombres y Apellidos" readonly>
                           
                         </div>
                       </div> 
-
                       <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">Número comision</label>
-                            <input type="number" class="form-control" id="numerocomision" name="numerocomision" placeholder="N° de comisión" readonly>
-                            
+                            <input type="number" class="form-control" id="numerocomision" name="numerocomision" value="{!! $culminarcomision->numerocomision !!}" placeholder="N° de comisión" readonly>                            
                         </div>
                       </div> 
 
@@ -69,32 +67,20 @@
                           
                         </div>
                       </div> 
-                       <div class="col-sm-12">
-                         <div class="col-xs-4">
-                               <div class="form-group">
-                                  <label for="usr"> Departamento</label>
-                            </div>
-                         </div>
-                         <div class="col-xs-4">
-                            <div class="form-group">
-                                    <label for="usr">Provincias</label>
-                                     
-                            </div>
-                         </div>
-                         <div class="col-xs-4">
-                            <div class="form-group">
-                                    <label for="usr">Distrito</label>
-                                  
-                            </div>
-                         </div>
-                         
-                      </div> 
+                     
+                      <div class="col-sm-12">
+                      
+                        <div class="form-group">
+                          <label for="email">Ubigeo (Departamento, provincia, distrito)</label>
+                            <input id="ubigeo"  name="ubigeo" value="" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar lugar de comisión"  type="text" readonly>
+                        </div>
 
+                       </div> 
                        <div class="col-sm-12">
                       
                             <div class="form-group">
                                 <label for="email">Lugar:</label>
-                                  <input id="lugarcomision"  name="lugarcomision" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar lugar de comisión"  type="text" readonly>
+                                  <input id="lugarcomision"  name="lugarcomision" value="{!! $culminarcomision->lugarcomision !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar lugar de comisión"  type="text" readonly>
                               </div>
 
                         </div> 
@@ -102,14 +88,14 @@
                       
                             <div class="form-group">
                                 <label for="email">Motivo:</label>
-                                   <input id="motivo"  name="motivo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar el motivo" type="text" readonly>
+                                   <input id="motivo"  name="motivo" value="{!! $culminarcomision->motivo !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar el motivo" type="text" readonly>
                               </div>
                         </div> 
                         <div class="col-sm-12">
                       
                             <div class="form-group">
                                 <label for="email">Por disposición:</label>
-                                  <input id="disposicion"  name="disposicion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar disposión" required="required" type="text" readonly>
+                                  <input id="disposicion"  name="disposicion" value="{!! $culminarcomision->disposicion !!}"class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar disposión" required="required" type="text" readonly>
                               </div>
 
                         </div> 
@@ -120,7 +106,7 @@
                     <div class="col-sm-2">
                       <div class="form-group">
                             <label for="email">Fecha de salida</label>
-                            <input id="fechasalida"  name="fechasalida" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date" readonly>
+                            <input id="fechasalida"  name="fechasalida" value="{!!$culminarcomision->fechasalida !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date" readonly>
 
                           </div>
                     </div> 
@@ -129,7 +115,7 @@
                       <div class="form-group">
                             <label for="email">Hora de salida</label>
                           <div>
-                           <input id="horasalida"  name="horasalida" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida" readonly>   
+                           <input id="horasalida"  name="horasalida" class="form-control col-md-7 col-xs-12" value="{!!$culminarcomision->horasalida !!}" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida" readonly>   
                           </div>
                           </div>
                     </div> 
@@ -137,7 +123,7 @@
                     <div class="col-sm-2">
                       <div class="form-group">
                             <label for="email">Fecha de llegada</label>
-                            <input id="fechallegada"  name="fechallegada" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date" readonly>
+                            <input id="fechallegada"  name="fechallegada" value="{!!$culminarcomision->fechallegada !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date" readonly>
 
                           </div>
                     </div> 
@@ -146,7 +132,7 @@
                       <div class="form-group">
                             <label for="email">Hora de llegada</label>
                           <div>
-                           <input id="horallegada"  name="horallegada" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida" readonly>  
+                           <input id="horallegada"  name="horallegada" value="{!!$culminarcomision->horallegada !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida" readonly>  
                           </div>
                           </div>
                     </div> 
@@ -164,12 +150,6 @@
                           <div>
                             <input id="horaretorno"  name="horaretorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida">  
                           </div>
-                          </div>
-                    </div> 
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                            <label for="email">Fecha de emisión</label>
-                            <input id="fechaemision"  name="fechaemision" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
                           </div>
                     </div> 
                     <div class="col-md-6">
