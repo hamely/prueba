@@ -36,11 +36,13 @@ class ProcesoComisionController extends Controller
     {
       
         $comisionpersona = DB::table('asignar_comision')
-        ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado')
+        ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado','persona.id')
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
         ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
+        ->orderBy('asignar_comision.id', 'desc')
         ->where('asignar_comision.estado',$estado)
+     
         ->get();
         //return $comisionpersona;
        // dd($personagrado);
@@ -111,7 +113,9 @@ class ProcesoComisionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $comision= AsignarComision::findOrFail($id);
+        $comision->update($request->all());
+        return redirect()->route('comision.index');
     }
 
     /**
