@@ -30,7 +30,7 @@ class CreateAsignarComisionTable extends Migration
             $table->date('fecharetorno')->nullable(); //Deberia coincidir si realmente llego o retorno el dia que pusieron
             $table->string('horaretorno')->nullable();
             $table->string('observacion')->nullable(); //(habilitado)
-
+            $table->string('estado');
             $table->foreign('persona_id')->references('id')->on('persona');
             $table->foreign('comision_id')->references('id')->on('comision');
             $table->foreign('ubigeo_id')->references('id')->on('ubigeo');

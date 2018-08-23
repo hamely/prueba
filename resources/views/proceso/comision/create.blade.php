@@ -76,6 +76,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">CIP</label>
+                            <input type="text" id="idpersonaBuscador" name="idpersonaBuscador">
                             <input type="number" class="form-control" id="cippersona" name="cippersona" placeholder="CIP" readonly>
                         </div>
                       </div> 
@@ -259,7 +260,14 @@
 
    	$("#enviarComision").click(function( event ) {
         event.preventDefault();
-        var Idpersona=$("#idPersona").val();
+        if($("#idpersonaBuscador").val()===''){
+          var Idpersona=$("#idPersona").val();
+        }
+        else
+        {
+          var Idpersona=$("#idpersonaBuscador").val();
+        }
+       
         var Numerocomision=$("#numerocomision").val();
         var Combocomision=$("#Combocomision").val();
         var ComboDistrito=$("#ComboDistrito").val();
@@ -482,7 +490,9 @@
                     var ape=dato.apellidomaterno;
                     var apm=dato.apellidomaterno;
                     var nombre=dato.nombres;
+                    var id=dato.id;
                     $("#cippersona").val(cip);
+                    $("#idpersonaBuscador").val(id);
                     $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
 
                   }
@@ -500,7 +510,7 @@
           dataType: 'json',
           delay: 500,
           processResults: function (data) {
-            
+            $('#idpersonaBuscador').val('');
              return {
               results: data
             };

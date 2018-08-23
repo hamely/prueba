@@ -30,9 +30,13 @@ Route::post('search/persona','PersonaController@search')->name('searchPersona');
 Route::post('search/personaCip','PersonaController@searchCipPersona')->name('searchPersonaCip');
 
 Route::resource('cargo','CargoController');
+
 Route::resource('grado','GradoController');
+
 Route::resource('asignarcomision','ProcesoComisionController');
+Route::get('selectListadoComision/{estado?}','ProcesoComisionController@selectListadoPorComisionEstado')->name('selectListadoComision');
 Route::post('insertComision','ProcesoComisionController@asignarComision')->name('insertComision');
+
 Route::resource('personagrado','ProcesoPersonaGrado');
 Route::resource('personacargo','ProcesoPersonaCargo');
 Route::resource('personaunidadcargo','ProcesoPersonaUnidadCargoController');
@@ -42,7 +46,7 @@ Route::resource('ubigeo','UbigeoController');
 Route::post('list/provincia','UbigeoController@provincia')->name('listProvincia');
 Route::post('list/distrito','UbigeoController@distrito')->name('listDistrito');
 
-Route::get('papeletacomision', 'ProcesoComisionController@pdfpapeletacomision')->name('papeletacomision');
+Route::get('papeletacomision/{id?}', 'ProcesoComisionController@pdfpapeletacomision')->name('papeletacomision');
 //Route::get('culminarcomision', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 Route::get('culminarcomision/{id?}', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 //Route::post('post/cargo','CargoController@asignar');

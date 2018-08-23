@@ -19,10 +19,11 @@ class ProcesoComisionController extends Controller
     public function index()
     {
         $comisionpersona = DB::table('asignar_comision')
-        ->select('persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion')
+        ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado')
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
         ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
+         
         ->get();
         //return $comisionpersona;
        // dd($personagrado);
@@ -31,6 +32,21 @@ class ProcesoComisionController extends Controller
        // return view('proceso/comision/index');
     }
 
+    public function selectListadoPorComisionEstado($estado)
+    {
+      
+        $comisionpersona = DB::table('asignar_comision')
+        ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado')
+        ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
+        ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
+        ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
+        ->where('asignar_comision.estado',$estado)
+        ->get();
+        //return $comisionpersona;
+       // dd($personagrado);
+        return  view('proceso.comision.index',['comisionpersona' => $comisionpersona]);
+
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -129,24 +145,49 @@ class ProcesoComisionController extends Controller
             $insert->fecharetorno=$_POST['fechaRetorno'];
             $insert->horaretorno=$_POST['fechaRetorno'];
             $insert->observacion=$_POST['observacion'];
-
+            $insert->estado='proceso';
             $insert->save();
         }
         return Response(['data'=>$_POST['idPersona']]);
 
     }
-    public function pdfpapeletacomision()
+    public function pdfpapeletacomision($id='')
     {
-        $products = Comision::all(); 
+       
+       if($id=='')
+       {
+            $idMax =DB::table('asignar_comision')->max('id');
+            $papeletacomision = DB::table('asignar_comision')
+            ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion')
+            ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
+            ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
+            ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
+            ->where('asignar_comision.id',$idMax)
+            ->get();
+       }else 
+       {
 
-        $pdf = PDF::loadView('reportes.papeletacomision', compact('products'));
+            $papeletacomision = DB::table('asignar_comision')
+            ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion')
+            ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
+            ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
+            ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
+            ->where('asignar_comision.id',$id)
+            ->get();
+       }
+        
+
+
+        $pdf = PDF::loadView('reportes.papeletacomision', compact('papeletacomision'));
 
         return $pdf->download('listado.pdf');      
     }  
 
     public function culminarcomision($id)
     {   
+        
         $culminarcomision= AsignarComision::find($id);
+
         return  view('proceso.comision.culminarcomision',['culminarcomision' => $culminarcomision]);
 
         //return view('proceso/comision/culminarcomision');
