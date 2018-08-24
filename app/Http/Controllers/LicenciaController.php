@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Licencia;
+use Session;
 class LicenciaController extends Controller
 {
     /**
@@ -40,7 +41,7 @@ class LicenciaController extends Controller
         $licencia->codigo = $request->codigo;
         $licencia->nombre = $request->nombre;
         $licencia->save();
-        
+        Session::flash('Mensaje','Se registró correctamente la licencia');
         return redirect()->route('licencia.index')->with('info' , 'Se registro correctamente');
     }
 
@@ -78,6 +79,7 @@ class LicenciaController extends Controller
     {
         $licencia= Licencia::findOrFail($id);
         $licencia->update($request->all());
+        Session::flash('MensajeActualizar','Se actualizo correctamente la licencia');
         return redirect()->route('licencia.index');
     }
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Grado;
-
+use Session;
 class GradoController extends Controller
 {
     /**
@@ -50,7 +50,7 @@ class GradoController extends Controller
         $grado->nombre = $request->nombre;
         $grado->sigla = $request->sigla;
         $grado->save();
-        
+        Session::flash('Mensaje','Se registro correctamente el grado');
         return redirect()->route('grado.index')->with('info' , 'Se registro correctamente');
     }
 
@@ -88,6 +88,7 @@ class GradoController extends Controller
     {
         $grado= Grado::findOrFail($id);
         $grado->update($request->all());
+        Session::flash('MensajeActualizar','Se actualizó correctamente el grado');
         return redirect()->route('grado.index');
     }
 
@@ -99,6 +100,6 @@ class GradoController extends Controller
      */
     public function destroy($id)
     {
-
+        
     }
 }

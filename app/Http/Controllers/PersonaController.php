@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Persona;
 use DB;
 use App\Grado;
+use Session;
 class PersonaController extends Controller
 {
     /**
@@ -54,7 +55,7 @@ class PersonaController extends Controller
         $persona->email = $request->email;
 
         $persona->save();
-        
+        Session::flash('Mensaje','Se guardo correctamente los datos de la persona');
         return redirect()->route('persona.index')->with('info' , 'Se registro correctamente');
     }
 

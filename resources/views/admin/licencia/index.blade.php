@@ -11,6 +11,17 @@
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
+                @if(Session::has('Mensaje'))
+                    <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  {{Session::get('Mensaje')}}
+                    </div>
+                @endif
+                @if(Session::has('MensajeActualizar'))
+                   <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{Session::get('MensajeActualizar')}}
+                @endif
                 <div class="x_panel">
                   <div class="x_title">
                   <a href="{{('/licencia/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>

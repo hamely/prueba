@@ -42,7 +42,7 @@ class ComisionController extends Controller
         $comision->codigo = $request->codigo;
         $comision->nombre = $request->nombre;
         $comision->save();
-        Session::flash('Mensaje', 'Se guardo correctamente la comisión');
+        Session::flash('Mensaje', 'Se registro correctamente la comisión');
         return redirect()->route('comision.index');
     }
 
@@ -80,6 +80,7 @@ class ComisionController extends Controller
     {
         $comision= Comision::findOrFail($id);
         $comision->update($request->all());
+        Session::flash('MensajeActualizar','Se actualizó correctamente la comisión');
         return redirect()->route('comision.index');
     }
 
@@ -93,7 +94,7 @@ class ComisionController extends Controller
     {
         $comision= Comision::findOrFail($id);
         $comision->delete();
-         Session::flash('MensajeEliminar', 'Se elimino correctamente la comisión');
+         Session::flash('MensajeEliminar', 'Se eliminó correctamente la comisión');
         return redirect()->route('comision.index');
     }
 }

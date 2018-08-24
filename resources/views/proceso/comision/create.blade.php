@@ -183,7 +183,7 @@
                       <div class="form-group">
                             <label for="email">Hora de salida</label>
                           <div>
-                           <input id="horasalida"  name="horasalida" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida">   
+                           <input id="horasalida"  name="horasalida" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="time" placeholder="Hora de salida">   
                           </div>
                           </div>
                     </div> 
@@ -200,7 +200,7 @@
                       <div class="form-group">
                             <label for="email">Hora de llegada</label>
                           <div>
-                           <input id="horallegada"  name="horallegada" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida">  
+                           <input id="horallegada"  name="horallegada" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="time" placeholder="Hora de salida">  
                           </div>
                           </div>
                     </div> 
@@ -450,7 +450,7 @@
                     var dato=respuesta.data;
                     
                     var cip=dato.cip;
-                    var ape=dato.apellidomaterno;
+                    var ape=dato.apellidopaterno;
                     var apm=dato.apellidomaterno;
                     var nombre=dato.nombres;
                     $("#cippersona").val(cip);
@@ -483,7 +483,7 @@
                     var dato=respuesta.data;
                     
                     var cip=dato.cip;
-                    var ape=dato.apellidomaterno;
+                    var ape=dato.apellidopaterno;
                     var apm=dato.apellidomaterno;
                     var nombre=dato.nombres;
                     var id=dato.id;
@@ -493,8 +493,6 @@
 
                   }
               });
-        
-
       });
     
     

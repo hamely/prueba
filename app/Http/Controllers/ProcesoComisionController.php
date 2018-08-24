@@ -9,6 +9,7 @@ use App\Comision;
 use DB;
 use App\AsignarComision;
 use Barryvdh\DomPDF\Facade as PDF;
+use Session;
 class ProcesoComisionController extends Controller
 {
     /**
@@ -153,6 +154,7 @@ class ProcesoComisionController extends Controller
             $insert->estado='proceso';
             $insert->save();
         }
+        Session::flash('Mensaje','Se registró correctamente la comision');
         return Response(['data'=>$_POST['idPersona']]);
 
     }

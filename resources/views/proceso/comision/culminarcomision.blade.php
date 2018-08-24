@@ -13,12 +13,14 @@
 
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
+             
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Registrar comisión <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
+                      
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
                         <ul class="dropdown-menu" role="menu">
@@ -149,7 +151,7 @@
                       <div class="form-group">
                             <label for="email">Hora de retorno</label>
                           <div>
-                            <input id="horaretorno"  name="horaretorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" type="text" placeholder="Hora de salida">  
+                            <input id="horaretorno"  name="horaretorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" type="time" placeholder="Hora de retorno">  
                           </div>
                           </div>
                     </div> 

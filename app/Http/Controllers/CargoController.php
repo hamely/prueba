@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cargo;
+use Session;
 
 class CargoController extends Controller
 {
@@ -51,6 +52,7 @@ class CargoController extends Controller
         $cargo->nombrecorto = $request->nombrecorto;
         $cargo->nombrelargo = $request->nombrelargo;
         $cargo->save();
+        Session::flash('Mensaje','Se guardo correctamente el cargo');
         
         return redirect()->route('cargo.index')->with('info' , 'Se registro correctamente');
     }
@@ -89,6 +91,7 @@ class CargoController extends Controller
     {
         $cargo= Cargo::findOrFail($id);
         $cargo->update($request->all());
+        Session::flash('MensajeActualizar','Se actualizó correctamente el cargo');
         return redirect()->route('cargo.index');
     }
 
@@ -102,6 +105,7 @@ class CargoController extends Controller
     {
         $cargo= Cargo::findOrFail($id);
         $cargo->delete();
+        Session::flash('MensajeEliminar', 'Se eliminó correctamente el cargo');
         return redirect()->route('cargo.index');
     }
 
