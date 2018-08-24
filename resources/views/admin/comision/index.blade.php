@@ -8,9 +8,25 @@
                 <h3>Tipos de comisiones <small></small></h3>
               </div>
             </div>
+           
 
             <div class="row">
+
               <div class="col-md-12 col-sm-12 col-xs-12">
+                 @if(Session::has('Mensaje'))
+                    <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  {{Session::get('Mensaje')}}
+                    </div>
+                @endif
+                @if(Session::has('MensajeEliminar'))
+                    <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  {{Session::get('MensajeEliminar')}}
+                    </div>
+
+                @endif
+                 
                 <div class="x_panel">
                   <div class="x_title">
                   <a href="{{('/comision/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>

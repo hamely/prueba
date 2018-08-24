@@ -98,8 +98,8 @@
                                       <td>{{$item->observacion}}</td>
                                       <td>{{$item->estado}}</td>
                                       <td>
-                                      <a href="{{route('culminarcomision', $item->id)}}" class="btn btn-default btn-xs">Estado</a> 
-                                      <a href="{{route('papeletacomision', $item->id)}}" class="btn btn-default btn-xs btn-primary"><i class="fa fa-file-pdf-o"> Papeleta</i></a>
+                                      <a href="{{route('culminarcomision', $item->id_as_co)}}" class="btn btn-default btn-xs">Estado</a> 
+                                      <a href="{{route('papeletacomision', $item->id_as_co)}}" class="btn btn-default btn-xs btn-primary"><i class="fa fa-file-pdf-o"> Papeleta</i></a>
                                       </td>
                                       
                                       </tr>

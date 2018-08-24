@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Comision;
-
+use Session;
 class ComisionController extends Controller
 {
     /**
@@ -42,8 +42,8 @@ class ComisionController extends Controller
         $comision->codigo = $request->codigo;
         $comision->nombre = $request->nombre;
         $comision->save();
-        
-        return redirect()->route('comision.index')->with('info' , 'Se registro correctamente');
+        Session::flash('Mensaje', 'Se guardo correctamente la comisión');
+        return redirect()->route('comision.index');
     }
 
     /**
@@ -93,6 +93,7 @@ class ComisionController extends Controller
     {
         $comision= Comision::findOrFail($id);
         $comision->delete();
+         Session::flash('MensajeEliminar', 'Se elimino correctamente la comisión');
         return redirect()->route('comision.index');
     }
 }

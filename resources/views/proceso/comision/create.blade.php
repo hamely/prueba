@@ -207,7 +207,7 @@
                     <div class="col-sm-2">
                       <div class="form-group">
                             <label for="email">Fecha de retorno</label>
-                            <input id="fecharetorno"  name="fecharetorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
+                            <input id="fecharetorno"  name="fecharetorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date" readonly>
 
                           </div>
                     </div> 
@@ -216,22 +216,17 @@
                       <div class="form-group">
                             <label for="email">Hora de retorno</label>
                           <div>
-                            <input id="horaretorno"  name="horaretorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida">  
+                            <input id="horaretorno"  name="horaretorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de retorno" readonly>  
                           </div>
                           </div>
                     </div> 
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                            <label for="email">Fecha de emisión</label>
-                            <input id="fechaemision"  name="fechaemision" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
-                          </div>
-                    </div> 
+                
                     <div class="col-md-6">
                             <label class="control-label" for="name">Observación <span class="required">*</span>
                             </label>
                           <div class="col-md-12">
                             <textarea id="observacion" name="observacion" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
-                                data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones"></textarea>
+                                data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones" readonly></textarea>
                           </div>
                      </div>
                    
@@ -246,6 +241,7 @@
 
                         </div>
                       </div><br>
+                      {!! Form::close() !!}
                 </div>
               </div>
             </div>

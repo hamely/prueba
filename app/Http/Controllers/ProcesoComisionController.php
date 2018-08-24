@@ -19,7 +19,7 @@ class ProcesoComisionController extends Controller
     public function index()
     {
         $comisionpersona = DB::table('asignar_comision')
-        ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado')
+        ->select('asignar_comision.id as id_as_co','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado')
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
         ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
@@ -32,11 +32,11 @@ class ProcesoComisionController extends Controller
        // return view('proceso/comision/index');
     }
 
-    public function selectListadoPorComisionEstado($estado)
+    public function selectListadoPorComisionEstado($estado='')
     {
       
         $comisionpersona = DB::table('asignar_comision')
-        ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado','persona.id')
+        ->select('asignar_comision.id as id_as_co','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado','persona.id')
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
         ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
@@ -44,6 +44,7 @@ class ProcesoComisionController extends Controller
         ->where('asignar_comision.estado',$estado)
      
         ->get();
+       
         //return $comisionpersona;
        // dd($personagrado);
         return  view('proceso.comision.index',['comisionpersona' => $comisionpersona]);
@@ -146,9 +147,9 @@ class ProcesoComisionController extends Controller
             $insert->horasalida=$_POST['horaSalida'];
             $insert->fechallegada=$_POST['fechaLlegada'];
             $insert->horallegada=$_POST['horaLlegada'];
-            $insert->fecharetorno=$_POST['fechaRetorno'];
+            /*$insert->fecharetorno=$_POST['fechaRetorno'];
             $insert->horaretorno=$_POST['fechaRetorno'];
-            $insert->observacion=$_POST['observacion'];
+            $insert->observacion=$_POST['observacion'];*/
             $insert->estado='proceso';
             $insert->save();
         }
@@ -191,17 +192,30 @@ class ProcesoComisionController extends Controller
     public function culminarcomision($id)
     {   
         
-        $culminarcomision= AsignarComision::find($id);
+        //$culminarcomision= AsignarComision::find($id);
+
+        $culminarcomision = DB::table('asignar_comision')
+        ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','comision.nombre')
+        ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
+        ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
+        ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
+        ->where('asignar_comision.id',$id)
+        ->get();
 
         return  view('proceso.comision.culminarcomision',['culminarcomision' => $culminarcomision]);
 
         //return view('proceso/comision/culminarcomision');
     }  
     
-    public function datoscomision(Request $request, $id)
+    public function terminarcomision(Request $request)
     {
-        $comision= AsignarComision::findOrFail($id);
-        $comision->update($request->all());
+        $terminarcomision= AsignarComision::find($request->id);
+        $terminarcomision->fecharetorno=$request->fecharetorno;
+        $terminarcomision->horaretorno=$request->horaretorno;
+        $terminarcomision->observacion=$request->observacion;
+        $terminarcomision->estado='culminado';
+        $terminarcomision->save();
+     
         return redirect()->route('asignarcomision.index');
     }
     

@@ -50,6 +50,6 @@ Route::get('papeletacomision/{id?}', 'ProcesoComisionController@pdfpapeletacomis
 //Route::get('culminarcomision', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 Route::get('culminarcomision/{id?}', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 //Route::post('post/cargo','CargoController@asignar');
-Route::post('comisionrecuperar/','ProcesoComisionController@datoscomision')->name('comisionrecuperar');
+Route::post('terminarcomision/','ProcesoComisionController@terminarcomision')->name('terminarcomision');
 
 Route::get('tags','PersonaController@buscar');
