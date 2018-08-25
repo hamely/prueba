@@ -40,56 +40,61 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Número CIP <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="cip" name="cip" required="required" data-validate-minmax="1,8" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
+                          <input type="number" id="cip" name="cip" value="{{ old('cip')}}" data-validate-minmax="1,8" placeholder="Ingrese número de CIP" class="form-control col-md-7 col-xs-12">
+                          <p style="color:red;">{{ $errors->first('cip') }}</p>
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Paterno <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="apellidopaterno"  name="apellidopaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese apellido paterno" required="required" type="text">
+                          <input id="apellidopaterno"  name="apellidopaterno" value="{{ old('apellidopaterno')}}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese apellido paterno" type="text">
+                          <p style="color:red;">{{ $errors->first('apellidopaterno')}}</p>
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Apellido Materno <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="apellidomaterno"  name="apellidomaterno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese apellido materno" required="required" type="text">
+                          <input id="apellidomaterno"  name="apellidomaterno" value="{{old('apellidomaterno')}}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese apellido materno" type="text">
+                          <p style="color:red">{{ $errors->first('apellidomaterno')}}</p>
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="nombres"  name="nombres" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombres" required="required" type="text">
+                          <input id="nombres"  name="nombres" value="{{old('nombres')}}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombres" type="text">
+                          <p style="color:red">{{ $errors->first('nombres')}}</p>
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Fecha de nacimiento<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese apellido paterno" required="required" type="date">
+                          <input id="fechanacimiento"  name="fechanacimiento" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese apellido paterno" type="date">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Número de celular <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="celular" name="celular" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de celular" class="form-control col-md-7 col-xs-12">
+                          <input type="number" id="celular" name="celular" data-validate-minmax="10,100" placeholder="Ingrese número de celular" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Número de cuenta <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="cuenta" name="cuenta" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de cuenta" class="form-control col-md-7 col-xs-12">
+                          <input type="number" id="cuenta" name="cuenta" data-validate-minmax="10,100" placeholder="Ingrese número de cuenta" class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">DNI <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="dni" name="dni" required="required" data-validate-minmax="10,100" placeholder="Ingrese número de DNI" class="form-control col-md-7 col-xs-12">
+                          <input type="number" id="dni" name="dni" value="{{old('dni')}}" data-validate-minmax="10,100" placeholder="Ingrese número de DNI" class="form-control col-md-7 col-xs-12">
+                          <p style="color:red">{{ $errors->first('dni')}}</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -124,7 +129,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Email personal <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="email"  name="email" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese email personal" required="required" type="text">
+                          <input id="email"  name="email" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese email personal" type="text">
                         </div>
                       </div>
                       

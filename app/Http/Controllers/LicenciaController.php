@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Licencia;
 use Session;
+use App\Http\Requests\LicenciaRequest;
 class LicenciaController extends Controller
 {
     /**
@@ -35,7 +36,7 @@ class LicenciaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(LicenciaRequest $request)
     {
         $licencia = new Licencia;
         $licencia->codigo = $request->codigo;

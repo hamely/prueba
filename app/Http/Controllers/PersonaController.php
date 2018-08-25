@@ -7,6 +7,7 @@ use App\Persona;
 use DB;
 use App\Grado;
 use Session;
+use App\Http\Requests\PersonaRequest;
 class PersonaController extends Controller
 {
     /**
@@ -39,7 +40,7 @@ class PersonaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PersonaRequest $request)
     {
         $persona = new Persona;
         $persona->cip = $request->cip;

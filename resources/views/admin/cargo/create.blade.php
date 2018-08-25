@@ -40,21 +40,24 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Código de cargo <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="codigo" name="codigo" required="required" data-validate-minmax="10,100" placeholder="Ingrese código de cargo" class="form-control col-md-7 col-xs-12">
+                          <input type="number" id="codigo" name="codigo" value="{{ old('codigo') }}"  data-validate-minmax="10,100" placeholder="Ingrese código de cargo" class="form-control col-md-7 col-xs-12">
+                          <p style="color:red;">{{ $errors->first('codigo') }}</p>
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre corto del cargo<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="nombrecorto"  name="nombrecorto" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre corto del cargo" required="required" type="text">
+                          <input id="nombrecorto"  name="nombrecorto" value="{{ old('nombrecorto') }}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre corto del cargo" type="text">
+                          <p style="color:red;">{{ $errors->first('nombrecorto') }}</p>
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre largo del cargo<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="nombrelargo"  name="nombrelargo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre largo del cargo" required="required" type="text">
+                          <input id="nombrelargo"  name="nombrelargo" value="{{ old('nombrelargo') }}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre largo del cargo" type="text">
+                          <p style="color:red;">{{ $errors->first('nombrelargo') }}</p>
                         </div>
                       </div>
                       <div class="ln_solid"></div>

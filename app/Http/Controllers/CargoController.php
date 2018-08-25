@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cargo;
 use Session;
-
+use App\Http\Requests\CargoRequest;
 class CargoController extends Controller
 {
     /**
@@ -45,7 +45,7 @@ class CargoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CargoRequest $request)
     {
         $cargo = new Cargo;
         $cargo->codigo = $request->codigo;

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ComisionRequest extends FormRequest
+class CargoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,18 @@ class ComisionRequest extends FormRequest
     public function rules()
     {
         return [
-            'codigo' => ['required','unique:comision,codigo,$id'],
-            'nombre' => 'required',
+            'codigo' => ['required','unique:cargo,codigo,$id'],
+            'nombrecorto'=>'required',
+            'nombrelargo'=>'required',
         ];
     }
     public function messages()
     {
         return [
-            'codigo.required'=>'Debe ingresar el código de la comisión',
-            'codigo.unique'=>'El código de comisión ya existe. Ingrese otro código',
-            'nombre.required'=>'Debe ingresar el tipo de comisión',
+            'codigo.required'=>'Debe ingresar el código del cargo', 
+            'codigo.unique'=>'El código de tipo de cargo ya existe. Ingrese otro código',
+            'nombrecorto.required'=>'Debe ingresar nombre corto del cargo',
+            'nombrelargo.required'=>'Debe ingresar nombre largo del cargo',
         ];
     }
 }

@@ -40,14 +40,16 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="number">Código de licencia <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="number" id="codigo" name="codigo" required="required" data-validate-minmax="10,100" placeholder="Ingrese código de licencia" class="form-control col-md-7 col-xs-12">
+                          <input type="number" id="codigo" name="codigo" value="{{ old('codigo') }}"  data-validate-minmax="10,100" placeholder="Ingrese código de licencia" class="form-control col-md-7 col-xs-12">
+                          <p style="color:red;">{{ $errors->first('codigo') }}</p>
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de licencia<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="nombre"  name="nombre" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de licencia" required="required" type="text">
+                          <input id="nombre"  name="nombre" value="{{ old('nombre') }}"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de licencia" type="text">
+                          <p style="color:red;">{{ $errors->first('nombre') }}</p>
                         </div>
                       </div>
                       <div class="ln_solid"></div>

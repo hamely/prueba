@@ -61,7 +61,9 @@
                                  <hr/>
                                 <thead>
                                   <tr>
+                                    
                                     <th>Cip</th>
+                                    <th>Dias</th>
                                     <th>Persona</th>
                                     <th>N° Comisión</th>
                                     <th>Tipo comision</th>
@@ -95,6 +97,7 @@
 
                                       </td>
                                       @endif
+                                      <td></td>
                                       <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
                                       <td>{{$item->numerocomision}}</td>
                                       <td>{{$item->nombre }}</td>

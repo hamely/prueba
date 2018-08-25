@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Sancion;
+use App\Http\Requests\SancionRequest;
 class SancionController extends Controller
 {
     /**
@@ -34,7 +35,7 @@ class SancionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SancionRequest $request)
     {
         $sancion = new Sancion;
         $sancion->codigo = $request->codigo;
