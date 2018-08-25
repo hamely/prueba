@@ -23,6 +23,7 @@ class ProcesoComisionController extends Controller
         
         $date = Carbon::now();
         $fechaSistema=$date->format('Y-m-d');
+        //return $fechaSistema;
         $fechaSalida='2018-07-20';
 
         $fechaSalida = Carbon::parse($fechaSalida);

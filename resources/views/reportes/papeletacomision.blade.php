@@ -1,5 +1,6 @@
 <div style="font-size:16px;">
     <div style="color:#FF0000;" align="right">
+
     ORIGINAL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
     @foreach($papeletacomision as $itemp)
@@ -42,9 +43,22 @@
         </tr>
         
     </table>
-</div>
+</div> 
 
-<p align="right">CUSCO, 24 DE AGOSTO DEL 2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p align="right">
+    Cusco,
+    <?php 
+        /*$fecha= date ("d/m/Y");
+        echo $fecha;*/
+        
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+ 
+        echo date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
+        //Salida: Viernes 24 de Febrero del 2012
+    ?>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ </p>
+
     <table>
         <tr>
             <td>      
@@ -81,7 +95,20 @@
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A DONDE SE DIRIGE &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{$itemp->departamento}} - {{$itemp->provincia}} - {{$itemp->distrito}}, {{$itemp->lugarcomision}} <br/>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOTIVO &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{$itemp->motivo}}<br/>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DEBIENDO RETORNAR &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : AL TERMINO DE SU COMETIDO.<br/>
-    <p align="right">CUSCO, 24 DE AGOSTO DEL 2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p align="right">
+    Cusco,
+    <?php 
+        /*$fecha= date ("d/m/Y");
+        echo $fecha;*/
+        
+        $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+ 
+        echo date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
+        //Salida: Viernes 24 de Febrero del 2012
+    ?>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+
    
 </div>
  <table>
