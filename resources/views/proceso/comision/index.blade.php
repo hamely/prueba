@@ -82,8 +82,19 @@
                                 <tbody>
                                 @foreach($comisionpersona as $item)
                                       <tr>
-                                      
-                                      <td>{{$item->cip }}</td>
+                                      @if($item->estado=='proceso')
+                                      <td style="background: red;">
+
+                                        {{$item->cip }}
+
+                                      </td>
+                                      @else
+                                      <td>
+
+                                        {{$item->cip }}
+
+                                      </td>
+                                      @endif
                                       <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
                                       <td>{{$item->numerocomision}}</td>
                                       <td>{{$item->nombre }}</td>
@@ -98,7 +109,11 @@
                                       <td>{{$item->observacion}}</td>
                                       <td>{{$item->estado}}</td>
                                       <td>
+                                     @if($item->estado=='proceso')
                                       <a href="{{route('culminarcomision', $item->id_as_co)}}" class="btn btn-default btn-xs">Estado</a> 
+                                      @else
+                                      
+                                      @endif
                                       <a href="{{route('papeletacomision', $item->id_as_co)}}" class="btn btn-default btn-xs btn-primary"><i class="fa fa-file-pdf-o"> Papeleta</i></a>
                                       </td>
                                       

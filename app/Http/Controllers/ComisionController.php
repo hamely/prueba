@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Comision;
 use Session;
+use App\Http\Requests\ComisionRequest;
 class ComisionController extends Controller
 {
     /**
@@ -14,6 +15,8 @@ class ComisionController extends Controller
      */
     public function index()
     {
+       
+        
         $comision=Comision::all();
         //dd($comision);
         //return view('admin/comision/index');
@@ -36,7 +39,7 @@ class ComisionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComisionRequest $request)
     {
         $comision = new Comision;
         $comision->codigo = $request->codigo;

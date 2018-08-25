@@ -10,6 +10,7 @@ use DB;
 use App\AsignarComision;
 use Barryvdh\DomPDF\Facade as PDF;
 use Session;
+use Carbon\Carbon;
 class ProcesoComisionController extends Controller
 {
     /**
@@ -19,6 +20,17 @@ class ProcesoComisionController extends Controller
      */
     public function index()
     {
+        
+        $date = Carbon::now();
+        $fechaSistema=$date->format('Y-m-d');
+        $fechaSalida='2018-07-20';
+
+        $fechaSalida = Carbon::parse($fechaSalida);
+        $fechaSistema = Carbon::parse($fechaSistema);
+
+        $diasDiferencia = $fechaSistema->diffInDays($fechaSalida);
+        //return $diasDiferencia;
+
         $comisionpersona = DB::table('asignar_comision')
         ->select('asignar_comision.id as id_as_co','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado')
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
@@ -26,6 +38,7 @@ class ProcesoComisionController extends Controller
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
          
         ->get();
+        
         //return $comisionpersona;
        // dd($personagrado);
         return  view('proceso.comision.index',['comisionpersona' => $comisionpersona]);
