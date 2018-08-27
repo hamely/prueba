@@ -53,7 +53,7 @@
         
         $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
  
-        echo date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
+        echo date('d')." de ".$meses[date('n')-1]. " del ".date('Y');
         //Salida: Viernes 24 de Febrero del 2012
     ?>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

@@ -24,16 +24,11 @@ class ProcesoComisionController extends Controller
         $date = Carbon::now();
         $fechaSistema=$date->format('Y-m-d');
         //return $fechaSistema;
-        $fechaSalida='2018-07-20';
-
-        $fechaSalida = Carbon::parse($fechaSalida);
         $fechaSistema = Carbon::parse($fechaSistema);
-
-        $diasDiferencia = $fechaSistema->diffInDays($fechaSalida);
         //return $diasDiferencia;
 
         $comisionpersona = DB::table('asignar_comision')
-        ->select('asignar_comision.id as id_as_co','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado')
+        ->select(DB::raw('DATEDIFF("'.$fechaSistema.'",fechasalida) as dia'),'asignar_comision.id as id_as_co','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado')
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
         ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
@@ -41,7 +36,7 @@ class ProcesoComisionController extends Controller
         ->get();
         
         //return $comisionpersona;
-       // dd($personagrado);
+       //dd($comisionpersona);
         return  view('proceso.comision.index',['comisionpersona' => $comisionpersona]);
       
        // return view('proceso/comision/index');
@@ -49,9 +44,12 @@ class ProcesoComisionController extends Controller
 
     public function selectListadoPorComisionEstado($estado='')
     {
-      
+        $date = Carbon::now();
+        $fechaSistema=$date->format('Y-m-d');
+        $fechaSistema = Carbon::parse($fechaSistema);
+        
         $comisionpersona = DB::table('asignar_comision')
-        ->select('asignar_comision.id as id_as_co','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado','persona.id')
+        ->select(DB::raw('DATEDIFF("'.$fechaSistema.'",fechasalida) as dia'),'asignar_comision.id as id_as_co','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado','persona.id')
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
         ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')

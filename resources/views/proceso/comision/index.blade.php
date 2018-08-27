@@ -56,8 +56,9 @@
                             
                               <table id="datatable" class="table table-striped table-bordered">
                                  <h2>Comisiones<small></small></h2>
-                                   <a href="{{route('selectListadoComision', 'proceso')}}" class="btn btn-success">proceso</a> 
-                                    <a href="{{route('selectListadoComision', 'culminado')}}" class="btn btn-primary"><i class="fa fa-file-pdf-o"> culminado</i></a>
+                                  <a href="{{url('asignarcomision')}}" class="btn btn-success">Todo</a> 
+                                   <a href="{{route('selectListadoComision', 'proceso')}}" class="btn btn-success">Proceso</a> 
+                                    <a href="{{route('selectListadoComision', 'culminado')}}" class="btn btn-primary"><i class="fa fa-file-pdf-o"> Culminado</i></a>
                                  <hr/>
                                 <thead>
                                   <tr>
@@ -97,7 +98,7 @@
 
                                       </td>
                                       @endif
-                                      <td></td>
+                                      <td>{{$item->dia}}</td>
                                       <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
                                       <td>{{$item->numerocomision}}</td>
                                       <td>{{$item->nombre }}</td>

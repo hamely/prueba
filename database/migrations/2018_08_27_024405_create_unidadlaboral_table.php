@@ -30,7 +30,6 @@ class CreateUnidadlaboralTable extends Migration
             $table->string('nivel12')->nullable();
             $table->string('nivel13')->nullable();
             $table->string('nivel14')->nullable();
-            $table->string('nivel15')->nullable();
             $table->string('observacion')->nullable();
             $table->timestamps();
         });

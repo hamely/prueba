@@ -163,5 +163,15 @@ class PersonaController extends Controller
             return response()->json($data);
            
     }
+
+    public function listarUnidadLaboral()
+    {
+            $data = DB::table("unidadlaboral")
+                    ->select('unidadlaboral.*')
+                    ->get();
+
+            return response(["data" => $data]);
+           
+    }
      
 }

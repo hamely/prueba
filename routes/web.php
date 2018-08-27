@@ -28,6 +28,7 @@ Route::resource('comision','ComisionController');
 Route::resource('persona','PersonaController');
 Route::post('search/persona','PersonaController@search')->name('searchPersona');
 Route::post('search/personaCip','PersonaController@searchCipPersona')->name('searchPersonaCip');
+Route::get('/selectListadoUnidadLaboral','PersonaController@listarUnidadLaboral');
 
 Route::resource('cargo','CargoController');
 

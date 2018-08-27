@@ -83,7 +83,7 @@
                                           </button>
                                           <button type="button" onclick="listarGrados({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
                                           </button>
-                                          <button type="button" onclick="listarUnidadÑaboral()" class="btn btn-ling" data-toggle="modal" data-target="#unidadlaboral">unidad
+                                          <button type="button" onclick="listarUnidadlaboral()" class="btn btn-ling" data-toggle="modal" data-target="#unidadlaboral">unidad
                                           </button>
                                        </li>
                                       </ul>
@@ -260,6 +260,28 @@
 @section('script')
    <script>
 
+     listarUnidad();
+     function listarUnidad()
+    {
+
+       $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+          }
+      });
+       jQuery.ajax({
+          url: "/selectListadoUnidadLaboral",
+          method: 'GET',
+          success: function(result){
+           var html="";
+              $.each(result.data, function(unidad, item) {
+                    html = html + "<option value='"+item.id+"' data-tokens='"+item.nivel2+' '+item.nivel4+' '+item.nivel6+ ' '+item.nivel8+ ' '+item.nivel10+' '+item.nivel12 +' '+item.nivel14 +"'>"+item.nivel2+' '+item.nivel4+' '+item.nivel6+ ' '+item.nivel8+' '+item.nivel10 + ' '+item.nivel12+ ' '+item.nivel14+"</option>";
+                });
+              $("#Combounidad").append(html);
+              $('.selectpicker').selectpicker('refresh');
+          }});
+    } 
+
     function listarCargos(idPersona,nombrepersona)
     {
        $("#idPersonaC").val(idPersona);
@@ -303,7 +325,7 @@
             
             var html1="";
               $.each(result.data, function(grado, item) {
-                html1 = html1 + "<option value='"+item.id+"' data-tokens='"+item.nombre+"'>"+item.nombre+"</option>";
+                html1 = html1 + "<option value='"+item.id+"' data-tokens='"+item.nombre+' '+item.nombrecorto+"'>"+item.nombre+' - '+item.nombrecorto+"</option>";
                 });
 
               $("#Combogrado").append(html1);
@@ -311,7 +333,7 @@
           }});
     }
 
-    function listarUnidadLaboral()
+    function listarUnidadlaboral()
     {
       
     }
