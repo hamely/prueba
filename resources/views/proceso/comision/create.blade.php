@@ -83,6 +83,13 @@
 
                       <div class="col-sm-6">
                         <div class="form-group">
+                            <label for="email">Grado</label>
+                            <input type="text" class="form-control" id="gradopersona"  name="gradopersona" placeholder="Grado" readonly>
+                          
+                        </div>
+                      </div> 
+                      <div class="col-sm-12">
+                        <div class="form-group">
                             <label for="email">Nombres y apellidos</label>
                             <input type="text" class="form-control" id="nombrecompletopersona"  name="nombrecompletopersona" placeholder="Nombres y Apellidos" readonly>
                           
@@ -453,8 +460,10 @@
                     var ape=dato.apellidopaterno;
                     var apm=dato.apellidomaterno;
                     var nombre=dato.nombres;
+                    var grado=dato.grado;
                     $("#cippersona").val(cip);
                     $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
+                    $("#gradopersona").val(grado);
 
                   }
               });
@@ -487,10 +496,11 @@
                     var apm=dato.apellidomaterno;
                     var nombre=dato.nombres;
                     var id=dato.id;
+                    var grado=dato.grado;
                     $("#cippersona").val(cip);
                     $("#idpersonaBuscador").val(id);
                     $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
-
+                    $("#gradopersona").val(grado);
                   }
               });
       });
