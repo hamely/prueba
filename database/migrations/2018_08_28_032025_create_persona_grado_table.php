@@ -15,12 +15,11 @@ class CreatePersonaGradoTable extends Migration
     {
         Schema::create('persona_grado', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('persona_id')->unsigned()->index();
-            $table->integer('grado_id')->unsigned()->index()->nullable();
+            $table->integer('persona_id');
+            $table->integer('grado_id');
+            $table->integer('ordenmerito')->nullable();
             $table->date('fechaAsignacion')->nullable();
             $table->string('observacion')->nullable();
-            $table->foreign('persona_id')->references('id')->on('persona');
-            $table->foreign('grado_id')->references('id')->on('grado');
             $table->timestamps();
         });
     }

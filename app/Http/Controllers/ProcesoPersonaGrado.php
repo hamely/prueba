@@ -22,7 +22,7 @@ class ProcesoPersonaGrado extends Controller
         ->select('persona.cip','persona.dni','persona.cuenta','persona.fechanacimiento','persona.sexo','persona.estadocivil','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','persona.celular','persona.email','grado.codigo','grado.nombre','persona_grado.observacion','persona_grado.fechaAsignacion')
         ->join('persona', 'persona.id', '=', 'persona_grado.persona_id')
         ->join('grado', 'grado.id', '=', 'persona_grado.grado_id')
-        ->get();
+        ->paginate(8);
        // dd($personagrado);
         return  view('proceso.personagrado.index',['personagrado' => $personagrado]);
       
