@@ -91,13 +91,14 @@
                       @endforeach
                     </tbody>
                   </table>
+                  {{$personagrado->links()}}
                 </div>
 
                   
                 </div>
               </div>
 
-
+    
             </div>
           </div>
         </div>
