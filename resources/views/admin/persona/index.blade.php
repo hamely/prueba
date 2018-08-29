@@ -83,7 +83,7 @@
                                           </button>
                                           <button type="button" onclick="listarGrados({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
                                           </button>
-                                          <button type="button" onclick="listarUnidadlaboral()" class="btn btn-ling" data-toggle="modal" data-target="#unidadlaboral">unidad
+                                          <button type="button" onclick="listarUnidad({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#unidadlaboral">unidad
                                           </button>
                                        </li>
                                       </ul>
@@ -214,9 +214,9 @@
               <h4 class="modal-title">Asignar unidad laboral</h4>
             </div>
             <div class="modal-body">
-            <form>
+            {!! Form::open(['route' => ['personaunidad.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
               
-            <input type="hidden" name="idPersonaG" id="idPersonaG">
+            <input type="text" name="idPersonaU" id="idPersonaU">
             
             <br/>
 
@@ -244,7 +244,7 @@
 
                  <button id="send" type="submit" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
                           <button type="submit" class="btn btn-danger"><i class="fa fa-times-circle"> Cancelar</i></button>
-            </form>
+            {!! Form::close() !!}
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -260,7 +260,7 @@
 @section('script')
    <script>
 
-     listarUnidad();
+     /*listarUnidad();
      function listarUnidad()
     {
 
@@ -280,7 +280,29 @@
               $("#Combounidad").append(html);
               $('.selectpicker').selectpicker('refresh');
           }});
-    } 
+    } */
+    function listarUnidad(idPersona,nombrepersona)
+    {
+      $("#idPersonaU").val(idPersona);
+      $("#nombrepersonaU").val(nombrepersona);
+
+       $.ajaxSetup({
+          headers: {
+              'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+          }
+      });
+       jQuery.ajax({
+          url: "/selectListadoUnidadLaboral",
+          method: 'GET',
+          success: function(result){
+           var html="";
+              $.each(result.data, function(unidad, item) {
+                    html = html + "<option value='"+item.id+"' data-tokens='"+item.nivel2+' '+item.nivel4+' '+item.nivel6+ ' '+item.nivel8+ ' '+item.nivel10+' '+item.nivel12 +' '+item.nivel14 +"'>"+item.nivel2+' '+item.nivel4+' '+item.nivel6+ ' '+item.nivel8+' '+item.nivel10 + ' '+item.nivel12+ ' '+item.nivel14+"</option>";
+                });
+              $("#Combounidad").append(html);
+              $('.selectpicker').selectpicker('refresh');
+          }});
+    }
 
     function listarCargos(idPersona,nombrepersona)
     {

@@ -75,7 +75,7 @@
                     <ul class="nav child_menu">
                       <li><a href="{{ url('personagrado') }}">Grados asignados</a></li>
                       <li><a href="{{ url('personacargo') }}">Cargos asignados</a></li>
-                      <li><a href="{{ url('personaunidadcargo') }}">Unidades y cargos asignados</a></li>
+                      <li><a href="{{ url('personaunidad') }}">Unidades asignadas</a></li>
                     </ul>
                   </li>
                 </ul>

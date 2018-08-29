@@ -11,8 +11,19 @@ class UnidadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+       /* if($request->ajax()){ 
+
+            $unidad=Unidad::all();
+            return response(['data' => $unidad]);
+
+        }else {
+
+            $unidad=Unidad::all();
+            return  view('admin.unidad.index',['unidad' => $unidad]);
+        }*/
+
         
         return view('admin/unidad/index');
     }

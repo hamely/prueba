@@ -42,7 +42,7 @@ Route::resource('personagrado','ProcesoPersonaGrado');
 Route::resource('personacargo','ProcesoPersonaCargo');
 Route::resource('personaunidad','ProcesoPersonaUnidad');
 //Route::resource('personaunidadcargo','ProcesoPersonaUnidadCargoController');
-Route::resource('unidad','UnidadController');
+
 Route::resource('licencia','LicenciaController');
 Route::resource('ubigeo','UbigeoController');
 Route::post('list/provincia','UbigeoController@provincia')->name('listProvincia');

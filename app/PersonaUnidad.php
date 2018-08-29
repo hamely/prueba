@@ -11,6 +11,6 @@ class PersonaUnidad extends Model
         'fechaAsignacion',
         'observacion',
         'persona_id',
-        'unidad_id'
+        'unidad_id',
       ];
 }

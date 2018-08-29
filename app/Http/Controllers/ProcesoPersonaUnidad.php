@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 use App\PersonaUnidad;
+use App\Unidad;
+use App\Persona;
 class ProcesoPersonaUnidad extends Controller
 {
     /**
@@ -13,7 +15,13 @@ class ProcesoPersonaUnidad extends Controller
      */
     public function index()
     {
-        //
+        $personaunidad = DB::table('persona_unidad')
+        ->select('persona.cip','persona.dni','persona.cuenta','persona.fechanacimiento','persona.sexo','persona.estadocivil','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','persona.celular','persona.email','unidad.codigo','unidad.nivel1','persona_unidad.observacion','persona_unidad.fechaAsignacion')
+        ->join('persona', 'persona.id', '=', 'persona_unidad.persona_id')
+        ->join('unidad', 'unidad.id', '=', 'persona_unidad.unidad_id')
+        ->paginate(8);
+       // dd($personagrado);
+        return  view('proceso.personaunidad.index',['personaunidad' => $personaunidad]);
     }
 
     /**
@@ -34,12 +42,12 @@ class ProcesoPersonaUnidad extends Controller
      */
     public function store(Request $request)
     {
+        return $request;
         $PersonaUnidad=new PersonaUnidad;
         $PersonaUnidad->fechaAsignacion = $request->fechaAsignacionU;
-
         $PersonaUnidad->observacion = $request->observacionU;
         $PersonaUnidad->persona_id = $request->idPersonaU;
-        $PersonaUnidad->grado_id = $request->Combounidad;
+        $PersonaUnidad->unidad_id = $request->Combounidad;
         $PersonaUnidad->save();
         return redirect()->route('personaunidad.index')->with('info' , 'Se registro correctamente');
     }

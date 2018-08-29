@@ -5,14 +5,16 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>PERSONA-GRADO<small></small></h3>
+                <h3>PERSONA-UNIDAD<small></small></h3>
               </div>
             </div>
+
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Lista de personas con unidades y cargos<small></small></h2>
+                  <!--<a href="" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>-->
+                    <h2>Lista de personas con sus unidades<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -39,37 +41,64 @@
                   <table id="datatable" class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th>CIP</th>
+                        <th> CIP</th>
                         <th>DNI</th>
                         <th>N° de Cuenta</th>
                         <th>Fecha nacimiento</th>
                         <th>Sexo</th>
                         <th>Apellidos y Nombres </th>
                         <th>N° de celular</th>
-                        <th>Grupo sanguineo</th>
+                      
                         <th>Email</th>
                         <th>Estado civil</th>
                         <th>Codigo unidad</th>
                         <th>Unidad</th>
-                        <th>Fecha Asignacion unidad</th>
-                        <th>Cargo</th>
-                        <th>Fecha Asignacion cargo</th>
+                        <th>Fecha asignacion</th>
+                        <th>Observación</th>
                         <th></th>
 
                       </tr>
                     </thead>
                     <tbody>
-                   
-                   
+                      @foreach($personaunidad as $item)
+                          <tr>
+                              <td>{{$item->cip }}</td>
+                              <td>{{$item->dni }}</td>
+                              <td>{{$item->cuenta }}</td>
+                              <td>{{$item->fechanacimiento }}</td>
+                              <td>{{$item->sexo }}</td>
+                              <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
+                              <td>{{$item->celular }}</td>
+                       
+                              <td>{{$item->email}}                   
+                              </td>
+                              <td>{{$item->estadocivil }}</td>
+                              <td>{{$item->codigo }}</td>
+                              <td>{{$item->nivel1 }}</td>
+                              <td>{{$item->fechaAsignacion }}</td>
+                              <td>{{$item->observacion }}</td>
+                              <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Proceso
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                      <li><a href="#">Unidad</a></li>
+                                    
+                                    </ul>
+                                </div>
+                              </td>
+                          </tr>
+                      @endforeach
                     </tbody>
                   </table>
+                  {{$personaunidad->links()}}
                 </div>
 
                   
                 </div>
               </div>
 
-
+    
             </div>
           </div>
         </div>
