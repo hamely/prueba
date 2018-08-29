@@ -25,6 +25,7 @@
     <thead>
         <tr>
             <th>N° comisión</th>
+            <th> Tipo comisión </th>
             <th>Lugar comision</th>
             <th>Motivo</th>
             <th>Disposición</th>
@@ -37,6 +38,7 @@
         @foreach($historialcomisionpersona as $item)
             <tr>
                 <td>{{$item->numerocomision }}</td>
+                <td>{{$item->nombrecomision }}</td>
                 <td>{{$item->departamento}}-{{$item->provincia}}-{{$item->distrito}}, {{$item->lugarcomision}}</td>
                 <td>{{$item->motivo }}</td>
                 <td>{{$item->disposicion }}</td>

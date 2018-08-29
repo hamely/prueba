@@ -208,7 +208,7 @@ class ProcesoComisionController extends Controller
     public function pdfhistorialpersonacomision($id)
     {
         $historialcomisionpersona = DB :: table('asignar_comision')
-        ->select('persona.id' ,'persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','grado.nombrecorto')
+        ->select('persona.id' ,'persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','grado.nombrecorto', 'comision.nombre as nombrecomision')
             ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
             ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
             ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
