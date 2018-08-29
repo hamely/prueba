@@ -49,9 +49,11 @@ Route::post('list/provincia','UbigeoController@provincia')->name('listProvincia'
 Route::post('list/distrito','UbigeoController@distrito')->name('listDistrito');
 
 Route::get('papeletacomision/{id?}', 'ProcesoComisionController@pdfpapeletacomision')->name('papeletacomision');
+Route::get('historialpersonacomision/{id?}','ProcesoComisionController@pdfhistorialpersonacomision')->name('historialpersonacomision');
 //Route::get('culminarcomision', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 Route::get('culminarcomision/{id?}', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 //Route::post('post/cargo','CargoController@asignar');
 Route::post('terminarcomision/','ProcesoComisionController@terminarcomision')->name('terminarcomision');
+Route::get('historialcomisionpersona/','ProcesoComisionController@historialcomisionpersona')->name('historialcomisionpersona');
 
 Route::get('tags','PersonaController@buscar');

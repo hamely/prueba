@@ -28,7 +28,7 @@ class ProcesoComisionController extends Controller
         //return $diasDiferencia;
 
         $comisionpersona = DB::table('asignar_comision')
-        ->select(DB::raw('DATEDIFF("'.$fechaSistema.'",fechasalida) as dia'),'asignar_comision.id as id_as_co','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado')
+        ->select(DB::raw('DATEDIFF("'.$fechaSistema.'",fechasalida) as dia'),'asignar_comision.id as id_as_co','persona.id as personaid','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado')
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
         ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
@@ -49,7 +49,7 @@ class ProcesoComisionController extends Controller
         $fechaSistema = Carbon::parse($fechaSistema);
         
         $comisionpersona = DB::table('asignar_comision')
-        ->select(DB::raw('DATEDIFF("'.$fechaSistema.'",fechasalida) as dia'),'asignar_comision.id as id_as_co','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado','persona.id')
+        ->select(DB::raw('DATEDIFF("'.$fechaSistema.'",fechasalida) as dia'),'asignar_comision.id as id_as_co','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado','persona.id as personaid')
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
         ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
@@ -199,13 +199,26 @@ class ProcesoComisionController extends Controller
             ->where('asignar_comision.id',$id)
             ->get();
        }
-        
-
 
         $pdf = PDF::loadView('reportes.papeletacomision', compact('papeletacomision'));
 
-        return $pdf->download('listado.pdf');      
+        return $pdf->download('papeletacomision.pdf');      
     }  
+
+    public function pdfhistorialpersonacomision($id)
+    {
+        $historialcomisionpersona = DB :: table('asignar_comision')
+        ->select('persona.id' ,'persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','grado.nombrecorto')
+            ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
+            ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
+            ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
+            ->join('persona_grado','persona_grado.persona_id','=','persona.id')
+            ->join('grado','grado.id','=','persona_grado.grado_id')
+            ->where('persona.id',$id)
+            ->get();
+        $pdf = PDF::loadView('reportes.historialcomisionpersona', compact('historialcomisionpersona'));
+        return $pdf->download('historialcomisionpersona.pdf');      
+    }
 
     public function culminarcomision($id)
     {   
@@ -235,6 +248,12 @@ class ProcesoComisionController extends Controller
         $terminarcomision->save();
      
         return redirect()->route('asignarcomision.index');
+    }
+
+    public function historialcomisionpersona()
+    {
+        return  view('proceso.comision.historialcomisionpersona');
+
     }
     
 }
