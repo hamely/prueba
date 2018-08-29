@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\PersonaUnidad;
 class ProcesoPersonaUnidad extends Controller
 {
     /**
@@ -34,7 +34,14 @@ class ProcesoPersonaUnidad extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $PersonaUnidad=new PersonaUnidad;
+        $PersonaUnidad->fechaAsignacion = $request->fechaAsignacionU;
+
+        $PersonaUnidad->observacion = $request->observacionU;
+        $PersonaUnidad->persona_id = $request->idPersonaU;
+        $PersonaUnidad->grado_id = $request->Combounidad;
+        $PersonaUnidad->save();
+        return redirect()->route('personaunidad.index')->with('info' , 'Se registro correctamente');
     }
 
     /**

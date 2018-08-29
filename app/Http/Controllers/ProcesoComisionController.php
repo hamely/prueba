@@ -177,21 +177,25 @@ class ProcesoComisionController extends Controller
        {
             $idMax =DB::table('asignar_comision')->max('id');
             $papeletacomision = DB::table('asignar_comision')
-            ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision',
+            ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','grado.nombrecorto',
             'ubigeo.departamento','ubigeo.provincia','ubigeo.distrito')
             ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
             ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
             ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
+            ->join('persona_grado','persona_grado.persona_id','=','persona.id')
+            ->join('grado','grado.id','=','persona_grado.grado_id')
             ->where('asignar_comision.id',$idMax)
             ->get();
        }else 
        {
 
             $papeletacomision = DB::table('asignar_comision')
-            ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision')
+            ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','grado.nombrecorto')
             ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
             ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
             ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
+            ->join('persona_grado','persona_grado.persona_id','=','persona.id')
+            ->join('grado','grado.id','=','persona_grado.grado_id')
             ->where('asignar_comision.id',$id)
             ->get();
        }

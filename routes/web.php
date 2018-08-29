@@ -40,7 +40,8 @@ Route::post('insertComision','ProcesoComisionController@asignarComision')->name(
 
 Route::resource('personagrado','ProcesoPersonaGrado');
 Route::resource('personacargo','ProcesoPersonaCargo');
-Route::resource('personaunidadcargo','ProcesoPersonaUnidadCargoController');
+Route::resource('personaunidad','ProcesoPersonaUnidad');
+//Route::resource('personaunidadcargo','ProcesoPersonaUnidadCargoController');
 Route::resource('unidad','UnidadController');
 Route::resource('licencia','LicenciaController');
 Route::resource('ubigeo','UbigeoController');

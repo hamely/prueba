@@ -227,7 +227,13 @@
                           </div>
                           </div>
                     </div> 
-                
+                    <div class="col-sm-2">
+                      <div class="form-group">
+                            <label for="email">Retorno</label>
+                            <input id="retorno"  name="retorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text" readonly>
+
+                          </div>
+                    </div> 
                     <div class="col-md-6">
                             <label class="control-label" for="name">Observación <span class="required">*</span>
                             </label>

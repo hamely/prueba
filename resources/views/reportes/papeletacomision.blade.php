@@ -6,14 +6,15 @@
     @foreach($papeletacomision as $itemp)
     <center> <strong><u>POLICÍA NACIONAL DEL PERÚ</u></strong></center>
     <center> <strong><u>VII-MACROPOL CUSCO-APURÍMAC/OFAD-UNIPER</u></strong></center>
-    <center> <strong><u>ORDEN DE COMISIÓN N° {{$itemp->numerocomision}}-2018-VII-MRP-CUS-APU/SEC-OFAD-AREREHUM-AC.</u></strong></center><br/>
+    <center> <strong><u>ORDEN DE COMISIÓN N° {{$itemp->numerocomision}} - <?php    $fecha= date ("Y"); echo $fecha;  ?>  
+    -VII-MRP-CUS-APU/SEC-OFAD-AREREHUM-AC.</u></strong></center><br/>
 </div>
 <div style="text-align:center;">
     <table  WIDTH="90%" style="font-size:14px; margin-left:35px">
      
         <tr>
             <td width="30%">GRADO Y NOMBRES </td>
-            <td >: {{$itemp->apellidopaterno}} {{$itemp->apellidomaterno}}, {{$itemp->nombres}}           
+            <td >: {{$itemp->nombrecorto}} {{$itemp->apellidopaterno}} {{$itemp->apellidomaterno}}, {{$itemp->nombres}}           
             </td>          
         </tr>       
         <tr>
@@ -99,14 +100,15 @@
     </div>
     <center> <strong><u>POLICÍA NACIONAL DEL PERÚ</u></strong></center>
     <center> <strong><u>VII-MACROPOL CUSCO-APURÍMAC/OFAD-UNIPER</u></strong></center>
-    <center> <strong><u>ORDEN DE COMISIÓN N° {{$itemp->numerocomision}}-2018-VII-MRP-CUS-APU/SEC-OFAD-AREREHUM-AC.</u></strong></center><br/>
+    <center> <strong><u>ORDEN DE COMISIÓN N° {{$itemp->numerocomision}}- <?php    $fecha= date ("Y"); echo $fecha;  ?>  
+    -VII-MRP-CUS-APU/SEC-OFAD-AREREHUM-AC.</u></strong></center><br/>
 </div>
 <div style="text-align:center;">
     <table  WIDTH="90%" style="font-size:14px; margin-left:35px">
      
         <tr>
             <td width="30%">GRADO Y NOMBRES </td>
-            <td >: {{$itemp->apellidopaterno}} {{$itemp->apellidomaterno}}, {{$itemp->nombres}}           
+            <td >: {{$itemp->nombrecorto}} {{$itemp->apellidopaterno}} {{$itemp->apellidomaterno}}, {{$itemp->nombres}}           
             </td>          
         </tr>       
         <tr>
