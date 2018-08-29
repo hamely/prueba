@@ -460,7 +460,7 @@
                     var ape=dato.apellidopaterno;
                     var apm=dato.apellidomaterno;
                     var nombre=dato.nombres;
-                    var grado=dato.grado;
+                    var grado=dato.nombrecorto;
                     $("#cippersona").val(cip);
                     $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
                     $("#gradopersona").val(grado);
@@ -489,6 +489,7 @@
                  error: function() {
                  },
                   success: function(respuesta) {
+                    console.log(respuesta);
                     var dato=respuesta.data;
                     
                     var cip=dato.cip;
@@ -496,7 +497,7 @@
                     var apm=dato.apellidomaterno;
                     var nombre=dato.nombres;
                     var id=dato.id;
-                    var grado=dato.grado;
+                    var grado=dato.nombrecorto;
                     $("#cippersona").val(cip);
                     $("#idpersonaBuscador").val(id);
                     $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);

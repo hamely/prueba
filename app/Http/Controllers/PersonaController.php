@@ -115,18 +115,12 @@ class PersonaController extends Controller
         {
             $idPersona =$_POST['idPersona'];
 
-           /* $Persona=Persona::select('id', DB::raw('CONCAT(apellidopaterno," ",apellidomaterno," ", nombres) AS full_name'))
-                            ->get()[5];
-
-            foreach ($Persona as $item) 
-            {
-                if($nombreCompleto==$item->full_name)
-                {
-                    $id=$item->id;  
-                }
-            }*/
-
-            $search=Persona::find($idPersona);
+            $search = DB::table('persona_grado')
+            ->select('persona.*', 'grado.id as idgrado', 'grado.nombrecorto')
+            ->join('persona', 'persona.id', '=', 'persona_grado.persona_id')
+            ->join('grado', 'grado.id', '=', 'persona_grado.grado_id')
+            ->where('persona.id', $idPersona)
+            ->get()[0];
 
             return response(["data" => $search]);
         }
@@ -138,8 +132,15 @@ class PersonaController extends Controller
         {
             $cip =$_POST['cip'];
 
-            $Persona=Persona::where('cip', $cip)
-                              ->get()[0];
+            $Persona = DB::table('persona_grado')
+            ->select('persona.*', 'grado.id as idgrado', 'grado.nombrecorto')
+            ->join('persona', 'persona.id', '=', 'persona_grado.persona_id')
+            ->join('grado', 'grado.id', '=', 'persona_grado.grado_id')
+            ->where('persona.cip', $cip)
+            ->get()[0];
+           /* $Persona=Persona::
+            where('cip', $cip)
+                              ->get()[0];*/
             return response(["data" => $Persona]);
         }
     }
