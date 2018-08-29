@@ -54,7 +54,7 @@
                             </div>
                             <div class="x_content">
                             
-                              <table id="datatable" class="table table-striped table-bordered">
+                              <table id="datatable" class="table table-striped table-bordered" style="color:#1A5276;">
                                  <h2>Comisiones<small></small></h2>
                                   <a href="{{url('asignarcomision')}}" class="btn btn-success">Todo</a> 
                                    <a href="{{route('selectListadoComision', 'proceso')}}" class="btn btn-success">Proceso</a> 
@@ -85,20 +85,12 @@
                                 <tbody>
                                 @foreach($comisionpersona as $item)
                                       <tr>
+                                      <td>{{$item->cip }}</td>
                                       @if($item->estado=='proceso')
-                                      <td style="background: red;">
-
-                                        {{$item->cip }}
-
-                                      </td>
+                                      <td style="background: #D98880;">{{$item->dia}}</td>
                                       @else
-                                      <td>
-
-                                        {{$item->cip }}
-
-                                      </td>
+                                      <td>Terminado</td>
                                       @endif
-                                      <td>{{$item->dia}}</td>
                                       <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
                                       <td>{{$item->numerocomision}}</td>
                                       <td>{{$item->nombre }}</td>
@@ -110,8 +102,15 @@
                                       <td>{{$item->motivo}}</td>
                                       <td>{{$item->fechasalida}}</td>
                                       <td>{{$item->horasalida}}</td>
+                                     
                                       <td>{{$item->observacion}}</td>
-                                      <td>{{$item->estado}}</td>
+                                      @if($item->estado=='proceso')
+                                      <td style="background: #D98880;">{{$item->estado}}</td>
+                                      @else
+                                     
+                                      <td style="background: #73C6B6;">{{$item->estado}}</td>
+                                      </td>
+                                      @endif
                                       <td>
                                      @if($item->estado=='proceso')
                                       <a href="{{route('culminarcomision', $item->id_as_co)}}" class="btn btn-default btn-xs">Estado</a> 
@@ -119,6 +118,7 @@
                                       
                                       @endif
                                       <a href="{{route('papeletacomision', $item->id_as_co)}}" class="btn btn-default btn-xs btn-primary"><i class="fa fa-file-pdf-o"> Papeleta</i></a>
+                                      <a href="" class="btn btn-default btn-xs btn-success"><i class="fa fa-file-pdf-o"> Historial</i></a>
                                       </td>
                                       
                                       </tr>
