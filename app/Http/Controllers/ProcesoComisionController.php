@@ -21,20 +21,19 @@ class ProcesoComisionController extends Controller
     public function index()
     {
         
+        
         $date = Carbon::now();
         $fechaSistema=$date->format('Y-m-d');
         //return $fechaSistema;
         $fechaSistema = Carbon::parse($fechaSistema);
         //return $diasDiferencia;
-
         $comisionpersona = DB::table('asignar_comision')
-        ->select(DB::raw('DATEDIFF("'.$fechaSistema.'",fechasalida) as dia, max(asignar_comision.id) as id_as_co, max(persona.id as personaid), max(persona.cip),max(persona.fechanacimiento), max( persona.apellidopaterno), max(persona.apellidomaterno), max(persona.nombres), max(comision.nombre), max(ubigeo.departamento), max(ubigeo.provincia),max(ubigeo.distrito),max(asignar_comision.numerocomision),max(asignar_comision.fechaemision),max(asignar_comision.fechallegada), max(asignar_comision.horallegada),max(asignar_comision.disposicion),max(asignar_comision.motivo),max(asignar_comision.fechasalida), max(asignar_comision.horasalida),max(asignar_comision.observacion),max(asignar_comision.estado)')
+        ->select(DB::raw('max(DATEDIFF("'.$fechaSistema.'",fechasalida)) as dia, max(persona.cip) as cip ,max(asignar_comision.id) as id_as_co, max(persona.id) as personaid,max(persona.fechanacimiento) as fechanacimiento,max(persona.apellidopaterno) as apellidopaterno,max(persona.apellidomaterno) as apellidomaterno,max(persona.nombres) as nombres,max(comision.nombre) as nombre,max(ubigeo.departamento) as departamento,max(ubigeo.provincia) as provincia, max(ubigeo.distrito) as distrito , max(asignar_comision.numerocomision) as numerocomision, max(asignar_comision.fechaemision) as fechaemision, max(asignar_comision.fechallegada) as fechallegada, max(asignar_comision.horallegada) as horallegada, max(asignar_comision.disposicion) as disposicion, max(asignar_comision.motivo) as motivo, max(asignar_comision.fechasalida) as fechasalida, max(asignar_comision.horasalida) as horasalida,max(asignar_comision.observacion) as observacion, max(asignar_comision.estado) as estado'))
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
         ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
         ->groupby('asignar_comision.persona_id')
         ->get();
-
         
         //return $comisionpersona;
        //dd($comisionpersona);
