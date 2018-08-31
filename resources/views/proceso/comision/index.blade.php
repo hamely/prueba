@@ -9,8 +9,6 @@
                 <h3>COMISIONES<small></small></h3>
               </div>
             </div>
-
-
             <div class="col-md-12 col-sm-6 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
@@ -48,7 +46,7 @@
                           <div class="x_panel">
                             <div class="x_title">
                             <a href="{{('/asignarcomision/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
-                            <a href="" class="btn btn-primary">Reporte unidad</a>  
+                            <a href="{{route('comisionporunidad')}}" class="btn btn-primary" target="_blank">Reporte unidad</a>  
                               
                               <div class="clearfix"></div>
                             </div>

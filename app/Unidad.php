@@ -12,7 +12,7 @@ class Unidad extends Model
         'nombre',
         'pariente'
       ];*/
-    protected $table = 'unidad';
+    protected $table = 'unidadlaboral';
     protected $fillable = [
         'codigo',
         'nivel1',

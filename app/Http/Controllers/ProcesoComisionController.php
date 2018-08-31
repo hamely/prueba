@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Persona;
 use App\Ubigeo;
 use App\Comision;
+use App\Unidad;
 use DB;
 use App\AsignarComision;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -224,6 +225,19 @@ class ProcesoComisionController extends Controller
             ->get();
         $pdf = PDF::loadView('reportes.historialcomisionpersona', compact('historialcomisionpersona'));
         return $pdf->download('historialcomisionpersona.pdf');      
+    }
+    public function pdfcomisionporunidad()
+    {
+        $unidad=Unidad::all();   
+        $comisionunidad= DB::table('persona_unidad')
+        ->select(DB::raw('count(persona_unidad.persona_id) as personaid, unidadlaboral.nivel2'))
+        ->join('persona','persona.id','=','persona_unidad.persona_id')
+        ->join('unidadlaboral','unidadlaboral.id','=','persona_unidad.unidad_id')
+        ->groupby('unidadlaboral.nivel2')
+        ->get();
+        $pdf=PDF::loadView('reportes.comisionporunidad', compact('comisionunidad','unidad'));
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->stream('comisionunidad.pdf'); 
     }
 
     public function culminarcomision($id)
