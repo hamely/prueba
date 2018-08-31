@@ -6,6 +6,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\PersonaCargo;
 use App\Persona;
+use Session;
 class ProcesoPersonaCargo extends Controller
 {
     /**
@@ -49,6 +50,7 @@ class ProcesoPersonaCargo extends Controller
         $PersonaCargo->persona_id = $request->idPersonaC;
         $PersonaCargo->cargo_id = $request->Combocargo;
         $PersonaCargo->save();
+        Session::flash('Mensaje','Se asignó correctamente el cargo a la persona');
         return redirect()->route('personacargo.index')->with('info' , 'Se registro correctamente');
     }
 

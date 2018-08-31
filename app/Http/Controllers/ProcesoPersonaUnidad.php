@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\PersonaUnidad;
 use App\Unidad;
 use App\Persona;
+use Session;
 class ProcesoPersonaUnidad extends Controller
 {
     /**
@@ -51,6 +52,7 @@ class ProcesoPersonaUnidad extends Controller
         $PersonaUnidad->persona_id = $request->idPersonaU;
         $PersonaUnidad->unidad_id = $request->Combounidad;
         $PersonaUnidad->save();
+        Session::flash('Mensaje','Se asignó correctamente la unidad');
         return redirect()->route('personaunidad.index')->with('info' , 'Se registro correctamente');
     }
 
