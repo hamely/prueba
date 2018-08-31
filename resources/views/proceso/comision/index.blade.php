@@ -48,7 +48,7 @@
                           <div class="x_panel">
                             <div class="x_title">
                             <a href="{{('/asignarcomision/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
-                            <a href="{{url('asignarcomision')}}" class="btn btn-primary">Reporte unidad</a>  
+                            <a href="" class="btn btn-primary">Reporte unidad</a>  
                               
                               <div class="clearfix"></div>
                             </div>

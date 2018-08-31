@@ -19,6 +19,7 @@ class ProcesoPersonaCargo extends Controller
         ->select('persona.cip','persona.dni','persona.cuenta','persona.fechanacimiento','persona.sexo','persona.estadocivil','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','persona.celular','persona.email','cargo.codigo','cargo.nombrecorto','persona_cargo.observacion','persona_cargo.fechaAsignacion')
         ->join('persona', 'persona.id', '=', 'persona_cargo.persona_id')
         ->join('cargo', 'cargo.id', '=', 'persona_cargo.cargo_id')
+        ->orderby('persona_cargo.id','desc')
         ->get();
 
         return  view('proceso.personacargo.index',['personacargo' => $personacargo]);

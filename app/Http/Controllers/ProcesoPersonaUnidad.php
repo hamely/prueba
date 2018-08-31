@@ -16,11 +16,13 @@ class ProcesoPersonaUnidad extends Controller
     public function index()
     {
         $personaunidad = DB::table('persona_unidad')
-        ->select('persona.cip','persona.dni','persona.cuenta','persona.fechanacimiento','persona.sexo','persona.estadocivil','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','persona.celular','persona.email','unidad.codigo','unidad.nivel1','persona_unidad.observacion','persona_unidad.fechaAsignacion')
+        ->select('persona.cip','persona.dni','persona.cuenta','persona.fechanacimiento','persona.sexo','persona.estadocivil','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','persona.celular','persona.email','unidadlaboral.codigo','unidadlaboral.nivel2','unidadlaboral.nivel4','unidadlaboral.nivel6','unidadlaboral.nivel8','unidadlaboral.nivel10','unidadlaboral.nivel12','unidadlaboral.nivel14','persona_unidad.fechaAsignacion','persona_unidad.observacion')
         ->join('persona', 'persona.id', '=', 'persona_unidad.persona_id')
-        ->join('unidad', 'unidad.id', '=', 'persona_unidad.unidad_id')
+        ->join('unidadlaboral', 'unidadlaboral.id', '=', 'persona_unidad.unidad_id')
+        ->orderby('persona_unidad.id','desc')
         ->paginate(8);
        // dd($personagrado);
+       //return $personaunidad;
         return  view('proceso.personaunidad.index',['personaunidad' => $personaunidad]);
     }
 

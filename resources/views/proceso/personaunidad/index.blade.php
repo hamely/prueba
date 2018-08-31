@@ -14,7 +14,7 @@
                 <div class="x_panel">
                   <div class="x_title">
                   <!--<a href="" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>-->
-                    <h2>Lista de personas con sus unidades<small></small></h2>
+                    <h2>Lista de personas con unidad<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -41,12 +41,12 @@
                   <table id="datatable" class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th> CIP</th>
+                        <th>CIP</th>
+                        <th>Apellidos y Nombres </th>
                         <th>DNI</th>
                         <th>N° de Cuenta</th>
                         <th>Fecha nacimiento</th>
                         <th>Sexo</th>
-                        <th>Apellidos y Nombres </th>
                         <th>N° de celular</th>
                       
                         <th>Email</th>
@@ -55,7 +55,6 @@
                         <th>Unidad</th>
                         <th>Fecha asignacion</th>
                         <th>Observación</th>
-                        <th></th>
 
                       </tr>
                     </thead>
@@ -63,30 +62,21 @@
                       @foreach($personaunidad as $item)
                           <tr>
                               <td>{{$item->cip }}</td>
+                              <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
                               <td>{{$item->dni }}</td>
                               <td>{{$item->cuenta }}</td>
                               <td>{{$item->fechanacimiento }}</td>
                               <td>{{$item->sexo }}</td>
-                              <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
+                  
                               <td>{{$item->celular }}</td>
                        
                               <td>{{$item->email}}                   
                               </td>
                               <td>{{$item->estadocivil }}</td>
-                              <td>{{$item->codigo }}</td>
-                              <td>{{$item->nivel1 }}</td>
-                              <td>{{$item->fechaAsignacion }}</td>
-                              <td>{{$item->observacion }}</td>
-                              <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Proceso
-                                    <span class="caret"></span></button>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                      <li><a href="#">Unidad</a></li>
-                                    
-                                    </ul>
-                                </div>
-                              </td>
+                              <td>{{$item->codigo}}</td>
+                              <td>{{$item->nivel2}}-{{$item->nivel4}}-{{$item->nivel6}}-{{$item->nivel8}}-{{$item->nivel10}}-{{$item->nivel12}}</td>
+                              <td>{{$item->fechaAsignacion}}</td>
+                              <td>{{$item->observacion}}</td>
                           </tr>
                       @endforeach
                     </tbody>

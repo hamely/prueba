@@ -55,8 +55,6 @@
                         <th>Grado</th>
                         <th>Fecha asignacion</th>
                         <th>Observación</th>
-                        <th></th>
-
                       </tr>
                     </thead>
                     <tbody>
@@ -77,16 +75,6 @@
                               <td>{{$item->nombre }}</td>
                               <td>{{$item->fechaAsignacion }}</td>
                               <td>{{$item->observacion }}</td>
-                              <td>
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Proceso
-                                    <span class="caret"></span></button>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                      <li><a href="#">Unidad</a></li>
-                                    
-                                    </ul>
-                                </div>
-                              </td>
                           </tr>
                       @endforeach
                     </tbody>
