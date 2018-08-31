@@ -1,3 +1,4 @@
+<div style="color:red">ORIGINAL</div>
 <div style="font-size:16px;">
 <center><strong><u>HISTORIAL DE COMISIONES</u></strong></center>
 </div>
@@ -20,7 +21,7 @@
             </td>          
         </tr>
 </table>
- 
+ <br/>
 <table style="font-size:13px; margin-left:35px; border: solid 1px;">
     <thead>
         <tr>

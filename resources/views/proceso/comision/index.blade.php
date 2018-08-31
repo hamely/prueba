@@ -48,7 +48,7 @@
                           <div class="x_panel">
                             <div class="x_title">
                             <a href="{{('/asignarcomision/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
-                             
+                            <a href="{{url('asignarcomision')}}" class="btn btn-primary">Reporte unidad</a>  
                               
                               <div class="clearfix"></div>
                             </div>
@@ -56,7 +56,7 @@
                             
                               <table id="datatable" class="table table-striped table-bordered" style="color:#1A5276;">
                                  <h2>Comisiones<small></small></h2>
-                                  <a href="{{url('asignarcomision')}}" class="btn btn-success">Todo</a> 
+                                  <a href="{{url('asignarcomision')}}" class="btn btn-warning">Todo</a> 
                                    <a href="{{route('selectListadoComision', 'proceso')}}" class="btn btn-success">Proceso</a> 
                                     <a href="{{route('selectListadoComision', 'culminado')}}" class="btn btn-primary"><i class="fa fa-file-pdf-o"> Culminado</i></a>
                                  <hr/>
@@ -66,19 +66,17 @@
                                     <th>Cip</th>
                                     <th>Dias</th>
                                     <th>Persona</th>
+                                    <th>Grado</th>
                                     <th>N° Comisión</th>
                                     <th>Tipo comision</th>
                                     <th>Destino</th>
-                                    <th>Fecha emisión</th>
+                                    <th>Lugar</th>
                                     <th>Fecha llegada</th>
-                                    <th>Hora llegada</th>
                                     <th>Por disposición superior</th>
                                     <th>Motivo</th>
                                     <th>Fecha salida</th>
-                                    <th>Hora salida</th>
                                     <th>Observación</th>
                                     <th>Estado</th>
-                                    
                                     <th></th>
                                   </tr>
                                 </thead>
@@ -92,16 +90,17 @@
                                       <td>Terminado</td>
                                       @endif
                                       <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
+                                      <td>{{$item->nombrecorto}}</td>
                                       <td>{{$item->numerocomision}}</td>
                                       <td>{{$item->nombre }}</td>
                                       <td><strong>Departamento:</strong> {{$item->departamento}} <br/><strong>Provincia:</strong> {{$item->provincia}} </br> <strong>Distrito:</strong> {{$item->distrito}}</td>
-                                      <td>{{$item->fechaemision }}</td>
-                                      <td>{{$item->fechallegada }}</td>
-                                      <td>{{$item->horallegada }}</td>
+                                      <td>{{$item->lugarcomision}}</td>
+                                      <td>{{$item->fechallegada }} {{$item->horallegada }}</td>
+                                  
                                       <td>{{$item->disposicion}}</td>
                                       <td>{{$item->motivo}}</td>
-                                      <td>{{$item->fechasalida}}</td>
-                                      <td>{{$item->horasalida}}</td>
+                                      <td>{{$item->fechasalida}}<br/> {{$item->horasalida}}</td>
+                          
                                      
                                       <td>{{$item->observacion}}</td>
                                       @if($item->estado=='proceso')
