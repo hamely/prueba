@@ -54,7 +54,7 @@
                   </div>
                   <div class="x_content">
                   
-                    <table id="datatable" class="table table-striped table-bordered">
+                    <table id="example" class="table table-striped table-bordered">
                       <thead>
                         <tr>
                           <th>Código</th>
@@ -98,6 +98,15 @@
 
 @section('script')
    <script>
-    
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+      } );
+    } );
   </script>
 @endsection
+
+
