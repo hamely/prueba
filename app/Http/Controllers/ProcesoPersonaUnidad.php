@@ -42,7 +42,7 @@ class ProcesoPersonaUnidad extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        //return $request;
         $PersonaUnidad=new PersonaUnidad;
         $PersonaUnidad->fechaAsignacion = $request->fechaAsignacionU;
         $PersonaUnidad->observacion = $request->observacionU;

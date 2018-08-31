@@ -28,12 +28,13 @@ class ProcesoComisionController extends Controller
         //return $diasDiferencia;
 
         $comisionpersona = DB::table('asignar_comision')
-        ->select(DB::raw('DATEDIFF("'.$fechaSistema.'",fechasalida) as dia'),'asignar_comision.id as id_as_co','persona.id as personaid','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.estado')
+        ->select(DB::raw('DATEDIFF("'.$fechaSistema.'",fechasalida) as dia, max(asignar_comision.id) as id_as_co, max(persona.id as personaid), max(persona.cip),max(persona.fechanacimiento), max( persona.apellidopaterno), max(persona.apellidomaterno), max(persona.nombres), max(comision.nombre), max(ubigeo.departamento), max(ubigeo.provincia),max(ubigeo.distrito),max(asignar_comision.numerocomision),max(asignar_comision.fechaemision),max(asignar_comision.fechallegada), max(asignar_comision.horallegada),max(asignar_comision.disposicion),max(asignar_comision.motivo),max(asignar_comision.fechasalida), max(asignar_comision.horasalida),max(asignar_comision.observacion),max(asignar_comision.estado)')
         ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
         ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
         ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
-         
+        ->groupby('asignar_comision.persona_id')
         ->get();
+
         
         //return $comisionpersona;
        //dd($comisionpersona);
