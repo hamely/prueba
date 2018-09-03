@@ -18,8 +18,17 @@
 
 
 <script type="text/php">
-    if (isset($pdf)){
-        $font = Font_Metrics::get_font("Arial", "bold");
-        $pdf->page_text(765, 550, "Pagina {PAGE_NUM} de {PAGE_COUNT}", $font, 9, array(0, 0, 0));
-    }
+if ( isset($pdf) ) { 
+    $pdf->page_script('
+        if ($PAGE_COUNT > 1) {
+            $font = $fontMetrics->get_font("Arial, Helvetica, sans-serif", "normal");
+            $size = 12;
+            $pageText = "Página " . $PAGE_NUM . " de " . $PAGE_COUNT;
+            $y = 15;
+            $x = 735;
+            $pdf->text($x, $y, $pageText, $font, $size);
+        } 
+    ');
+}
+
 </script>
