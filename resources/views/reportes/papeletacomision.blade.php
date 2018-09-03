@@ -39,8 +39,12 @@
         </tr>
         <tr>
             <td width="30%">DEBIENDO RETORNAR  </td>
-            <td > : AL TERMINO DE SU COMETIDO            
-            </td>          
+            @if(is_null($itemp->fecharetorno))
+            <td >: AL TERMINO DE SU COMETIDO         
+            </td>    
+            @else
+            <td>{{$itemp->fecharetorno}}</td>
+            @endif      
         </tr>
         
     </table>

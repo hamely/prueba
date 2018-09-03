@@ -22,6 +22,7 @@ class AsignarComision extends Model
         'horallegada',
         'fecharetorno',
         'horaretorno',
+        'retorno',
         'observacion',
         'estado',
       ];

@@ -155,6 +155,13 @@
                           </div>
                           </div>
                     </div> 
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="email">Retorno</label>
+                            <input type="text" class="form-control" id="retorno"  name="retorno" placeholder="retorno" >
+                          
+                        </div>
+                      </div> 
                     <div class="col-md-6">
                             <label class="control-label" for="name">Observación <span class="required">*</span>
                             </label>
