@@ -72,22 +72,29 @@
                                 </td>
                                 <td>{{$item->estadocivil }}</td>
                                 <td>
+                                  <a class="btn btn-default btn-xs btn-success" href="{{route('persona.edit',$item->id)}}">Modificar</a>
+                                  <!--<button  type="button" class="btn btn-default btn-xs" onclick="listarCargos({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#unidad">cargo
+                                  </button>
+                                  <button type="button" class="btn btn-default btn-xs" onclick="listarGrados({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
+                                  </button>
+                                  <button type="button" class="btn btn-default btn-xs" onclick="listarUnidad({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#unidadlaboral">unidad
+                                  </button>-->
+                                  
                                   <div class="dropdown">
-                                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Proceso
-                                      <span class="caret"></span></button>
-                                      <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="{{route('persona.edit',$item->id)}}">Modificar</a></li>
-                                        <li><a href="#">Unidad</a></li>
-                                        <li>
-                                          <button type="button" onclick="listarCargos({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#unidad">cargo
-                                          </button>
-                                          <button type="button" onclick="listarGrados({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#grado">grado
-                                          </button>
-                                          <button type="button" onclick="listarUnidad({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-ling" data-toggle="modal" data-target="#unidadlaboral">unidad
-                                          </button>
-                                       </li>
-                                      </ul>
+                                    <button class="btn btn-primary dropdown-toggle btn-sm" type="button" data-toggle="dropdown">Proceso
+                                    <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                      
+                                      <li><a onclick="listarCargos({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-sm" data-toggle="modal" data-target="#unidad">cargo
+                                      </button></a></li>
+                                      <li><a onclick="listarUnidad({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-sm" data-toggle="modal" data-target="#unidadlaboral">unidad
+                                      </button></a></li>
+                                      <li><a onclick="listarGrados({!! $item->id !!},'{!! $item->nombres !!}')" class="btn btn-sm" data-toggle="modal" data-target="#grado">grado
+                                      </button></a></li>
+                                    </ul>
                                   </div>
+
+                                  
                                 </td>
                             </tr>
                         @endforeach
@@ -103,8 +110,6 @@
           </div>
         </div>
 
-
-
     <div class="modal fade" id="unidad" role="dialog">
         <div class="modal-dialog">
         <div class="modal-content">
@@ -115,13 +120,15 @@
             <div class="modal-body">
             {!! Form::open(['route' => ['personacargo.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
               
-            <input type="text" name="idPersonaC" id="idPersonaC">
+            
+            <input type="hidden" name="idPersonaC" id="idPersonaC">
             
             <br/>
 
-            <div class="form-group">
-              <label for="usr">Persona</label>
-              <input type="text" id="nombrepersonaC" name="nombrepersonaC"  readonly>
+             <div class="item form-group">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="nombrepersonaC"  name="nombrepersonaC" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" type="text" readonly>
+              </div>
             </div>
 
             <div class="form-group">
@@ -169,10 +176,11 @@
             <input type="hidden" name="idPersonaG" id="idPersonaG">
             
             <br/>
-
-            <div class="form-group">
-              <label for="usr">Persona</label>
-              <input type="text" name="nombrepersona" id="nombrepersona" readonly>
+      
+            <div class="item form-group">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="nombrepersona"  name="nombrepersona" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" type="text" readonly>
+              </div>
             </div>
 
             <div class="form-group">
@@ -216,14 +224,15 @@
             <div class="modal-body">
             {!! Form::open(['route' => ['personaunidad.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
               
-            <input type="text" name="idPersonaU" id="idPersonaU">
+            <input type="hidden" name="idPersonaU" id="idPersonaU">
             
-            <br/>
-
-            <div class="form-group">
-              <label for="usr">Persona</label>
-              <input type="text" name="nombrepersonaU" id="nombrepersonaU" readonly>
+            <div class="item form-group">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <input id="nombrepersonaU"  name="nombrepersonaU" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" type="text" readonly>
+              </div>
             </div>
+
+            <br/>
 
             <div class="form-group">
               <label for="usr">Unidad:</label>
