@@ -185,24 +185,29 @@ class ProcesoComisionController extends Controller
             $idMax =DB::table('asignar_comision')->max('id');
             $papeletacomision = DB::table('asignar_comision')
             ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','grado.nombrecorto',
-            'ubigeo.departamento','ubigeo.provincia','ubigeo.distrito','asignar_comision.fecharetorno')
+            'ubigeo.departamento','ubigeo.provincia','ubigeo.distrito','asignar_comision.fecharetorno','unidadlaboral.nivel1','unidadlaboral.nivel2','unidadlaboral.nivel3','unidadlaboral.nivel4','unidadlaboral.nivel5','unidadlaboral.nivel6','unidadlaboral.nivel7','unidadlaboral.nivel8','unidadlaboral.nivel9','unidadlaboral.nivel10','unidadlaboral.nivel12','unidadlaboral.nivel13','unidadlaboral.nivel14')
             ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
             ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
             ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
             ->join('persona_grado','persona_grado.persona_id','=','persona.id')
             ->join('grado','grado.id','=','persona_grado.grado_id')
+            ->join('persona_unidad','persona_unidad.persona_id','=','persona.id')
+            ->join('unidadlaboral','unidadlaboral.id','=','persona_unidad.unidad_id')
             ->where('asignar_comision.id',$idMax)
             ->get();
        }else 
        {
 
             $papeletacomision = DB::table('asignar_comision')
-            ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','grado.nombrecorto','asignar_comision.fecharetorno')
+            ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','grado.nombrecorto',
+            'asignar_comision.fecharetorno','unidadlaboral.nivel1','unidadlaboral.nivel2','unidadlaboral.nivel3','unidadlaboral.nivel4','unidadlaboral.nivel5','unidadlaboral.nivel6','unidadlaboral.nivel7','unidadlaboral.nivel8','unidadlaboral.nivel9','unidadlaboral.nivel10','unidadlaboral.nivel12','unidadlaboral.nivel13','unidadlaboral.nivel14')
             ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
             ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
             ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
             ->join('persona_grado','persona_grado.persona_id','=','persona.id')
             ->join('grado','grado.id','=','persona_grado.grado_id')
+            ->join('persona_unidad','persona_unidad.persona_id','=','persona.id')
+            ->join('unidadlaboral','unidadlaboral.id','=','persona_unidad.unidad_id')
             ->where('asignar_comision.id',$id)
             ->get();
        }
@@ -230,16 +235,24 @@ class ProcesoComisionController extends Controller
     }
     public function pdfcomisionporunidad()
     {
-        $unidad=Unidad::all();   
-        $comisionunidad= DB::table('persona_unidad')
-        ->select(DB::raw('count(persona_unidad.persona_id) as personaid, unidadlaboral.nivel2'))
-        ->join('persona','persona.id','=','persona_unidad.persona_id')
-        ->join('unidadlaboral','unidadlaboral.id','=','persona_unidad.unidad_id')
-        ->groupby('unidadlaboral.nivel2')
+        //$unidad=Unidad::all();   
+        $comisionunidad= DB::table('asignar_comision')
+        ->select(DB::raw('count(persona_unidad.persona_id) as cantidad, unidadlaboral.codigo, unidadlaboral.nivel2, unidadlaboral.nivel4,unidadlaboral.nivel6, unidadlaboral.nivel8, unidadlaboral.nivel10, unidadlaboral.nivel12, unidadlaboral.nivel14'))
+        ->rightJoin('comision','asignar_comision.comision_id','=','comision.id')
+        ->leftJoin('persona','asignar_comision.persona_id','=','persona.id')
+        ->leftJoin('persona_unidad','persona.id','=','persona_unidad.persona_id')
+        ->rightJoin('unidadlaboral','persona_unidad.unidad_id','=','unidadlaboral.id')
+        ->groupby('unidadlaboral.codigo','unidadlaboral.nivel2','unidadlaboral.nivel4','unidadlaboral.nivel6', 'unidadlaboral.nivel8','unidadlaboral.nivel10','unidadlaboral.nivel12','unidadlaboral.nivel14')
         ->get();
-        $pdf=PDF::loadView('reportes.comisionporunidad', compact('comisionunidad','unidad'));
+       // return $comisionunidad;
+       // return $comisionunidad;
+        $pdf=PDF::loadView('reportes.comisionporunidad', compact('comisionunidad'));
+        
         $pdf->setPaper('A4', 'landscape');
+        //return $pdf::download('historialcomisionpersona.pdf');
         return $pdf->stream('comisionunidad.pdf'); 
+
+        //SELECT unidadlaboral.codigo, count(persona_unidad.persona_id) as cantidad FROM `asignar_comision` RIGHT join comision on asignar_comision.comision_id=comision.id left join persona on asignar_comision.persona_id=persona.id left join persona_unidad on persona.id=persona_unidad.persona_id RIGHT join unidadlaboral on persona_unidad.unidad_id=unidadlaboral.id GROUP by (unidadlaboral.codigo)
     }
 
     public function culminarcomision($id)

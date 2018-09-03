@@ -6,21 +6,26 @@
         foreach($persona as $item)
         {
             $i=$i+1;
-            $htmlTemp.='<tr>'.
-                         '<td width="30%">GRADO </td>'.
-                         '<td >:'.' '. $item->nombrecorto.' '.
+            $htmlTemp.=
+                        '<tr>'.
+                        '<td width="30%">UNIDAD</td>'.
+                        '<td>:'.' '. $item->nivel2.' '.$item->nivel4.' '.$item->nivel6.' '.$item->nivel8.' '.$item->nivel10.' '.$item->nivel12.' '.$item->nivel14.' '.
+                        '</td>'.
+                        '<tr>'.
+                        '<td width="30%">GRADO </td>'.
+                        '<td >:'.' '. $item->nombrecorto.' '.
                         '</td>'.      
-                     '</tr>'.       
-                     '<tr>'.
-                     '<td width="30%">APELLIDOS Y NOMBRES </td>'.
-                     '<td >:'.' '. $item->apellidopaterno.' '.$item->apellidomaterno.' '.$item->nombres.' '.        
-                     '</td> '.        
-                     '</tr>'.
-                     '<tr>'.
-                     '<td width="30%">UNIDAD</td>'.
-                     ' <td >:'. ' '.$item->nivel2.' '.$item->nivel4.' '.$item->nivel6.' '.$item->nivel8.' '.$item->nivel10.' '.$item->nivel12.' '.$item->nivel14.' '.
-                     ' </td> '.     
-                     '</tr>	';
+                        '</tr>'.       
+                        '<tr>'.
+                        '<td width="30%">APELLIDOS Y NOMBRES </td>'.
+                        '<td >:'.' '. $item->apellidopaterno.' '.$item->apellidomaterno.' '.$item->nombres.' '.        
+                        '</td> '.        
+                        '</tr>'.
+                        '<tr>'.
+                        '<td width="30%">UNIDAD</td>'.
+                        ' <td >:'. ' '.$item->nivel2.' '.$item->nivel4.' '.$item->nivel6.' '.$item->nivel8.' '.$item->nivel10.' '.$item->nivel12.' '.$item->nivel14.' '.
+                        ' </td> '.     
+                        '</tr>	';
                              
             if($i==1)
             break;

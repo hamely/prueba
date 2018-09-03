@@ -19,7 +19,7 @@
         </tr>       
         <tr>
             <td width="30%">PERTENECIENTE</td>
-            <td >           
+            <td >: {{$itemp->nivel2}} {{$itemp->nivel4}} {{$itemp->nivel6}} {{$itemp->nivel8}} {{$itemp->nivel10}}        
             </td>          
         </tr>
         <tr>
@@ -117,7 +117,7 @@
         </tr>       
         <tr>
             <td width="30%">PERTENECIENTE</td>
-            <td >           
+            <td >: {{$itemp->nivel2}}  {{$itemp->nivel4}} {{$itemp->nivel6}} {{$itemp->nivel8}} {{$itemp->nivel10}}      
             </td>          
         </tr>
         <tr>
