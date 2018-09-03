@@ -10,17 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
+    return view('login');
+});
+
+Route::get('/administracion', function () {
     return view('admin/inicio/index');
 });
+
+/*Route::get('/', function () {
+    return view('login');
+});*/
 
 Route::get('/modulos', function () { 
     return view('index');
 });
-Route::get('/login', function () {
-    return view('welcome');
-});
+
 
 
 Route::resource('sancion', 'SancionController'); //LLAMAR AL CONTROLADOR TypesanctionController
@@ -58,3 +63,7 @@ Route::post('terminarcomision/','ProcesoComisionController@terminarcomision')->n
 Route::get('historialcomisionpersona/','ProcesoComisionController@historialcomisionpersona')->name('historialcomisionpersona');
 
 Route::get('tags','PersonaController@buscar');
+
+Route::get('login','Auth\LoginController@showLogForm');
+Route::post('login','Auth\LoginController@login');
+Route::get('logout','Auth\LoginController@logout');

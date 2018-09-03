@@ -25,7 +25,7 @@
             <div class="row top_tiles">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#229954; box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}">  
+                <a href="{{('/administracion')}}">  
                     <div class="icon"><i class="fa fa-credit-card"></i></div>
                     <div class="count">1</div>
                     <h3>Pérdida de carnet</h3>
@@ -35,7 +35,7 @@
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#3498DB;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}"> 
+                <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-medkit"></i></div>
                     <div class="count">2</div>
                     <h3>Descanso médico</h3>
@@ -46,7 +46,7 @@
 
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#F1C40F;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}"> 
+                <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-comments-o"></i></div>
                     <div class="count">3</div>
                     <h3>Disponibilidad o retiro</h3>
@@ -57,7 +57,7 @@
 
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#F5B041;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}"> 
+                <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-pencil"></i></div>
                     <div class="count">4</div>
                     <h3>Licencias</h3>
@@ -68,7 +68,7 @@
 
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#28B463;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}"> 
+                <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-pencil-square"></i></div>
                     <div class="count">5</div>
                     <h3>Permisos</h3>
@@ -79,7 +79,7 @@
 
                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#5DADE2;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}"> 
+                <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-hand-o-down"></i></div>
                     <div class="count">6</div>
                     <h3>Sanciones</h3>
@@ -90,7 +90,7 @@
 
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#F4D03F;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}"> 
+                <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-car"></i></div>
                     <div class="count">7</div>
                     <h3>Comisiones</h3>
@@ -101,7 +101,7 @@
 
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#EB984E;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}"> 
+                <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-spinner"></i></div>
                     <div class="count">8</div>
                     <h3> Mov. Personal</h3>
@@ -112,7 +112,7 @@
 
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#17A589;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}"> 
+                <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-umbrella"></i></div>
                     <div class="count">9</div>
                     <h3>Vacaciones</h3>
@@ -123,7 +123,7 @@
 
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#2874A6;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}"> 
+                <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-institution"></i></div>
                     <div class="count">10</div>
                     <h3>Incorporaciones</h3>
@@ -134,7 +134,7 @@
 
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#B7950B;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}"> 
+                <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-file-pdf-o"></i></div>
                     <div class="count">11</div>
                     <h3>Reportes</h3>
@@ -145,7 +145,7 @@
 
                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#E67E22;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/')}}"> 
+                <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-user"></i></div>
                     <div class="count">12</div>
                     <h3>Mant. y Usuarios</h3>

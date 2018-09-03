@@ -215,12 +215,14 @@ class ProcesoComisionController extends Controller
     public function pdfhistorialpersonacomision($id)
     {
         $historialcomisionpersona = DB :: table('asignar_comision')
-        ->select('persona.id' ,'persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','grado.nombrecorto', 'comision.nombre as nombrecomision')
+        ->select('persona.id' ,'persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','grado.nombrecorto', 'comision.nombre as nombrecomision','unidadlaboral.nivel1','unidadlaboral.nivel2','unidadlaboral.nivel3','unidadlaboral.nivel4','unidadlaboral.nivel5','unidadlaboral.nivel6','unidadlaboral.nivel7','unidadlaboral.nivel8','unidadlaboral.nivel10','unidadlaboral.nivel11','unidadlaboral.nivel12','unidadlaboral.nivel13','unidadlaboral.nivel14')
             ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
             ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
             ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
             ->join('persona_grado','persona_grado.persona_id','=','persona.id')
             ->join('grado','grado.id','=','persona_grado.grado_id')
+            ->join('persona_unidad','persona_unidad.persona_id','=','persona.id')
+            ->join('unidadlaboral','unidadlaboral.id','=','persona_unidad.unidad_id')
             ->where('persona.id',$id)
             ->get();
         $pdf = PDF::loadView('reportes.historialcomisionpersona', compact('historialcomisionpersona'));
