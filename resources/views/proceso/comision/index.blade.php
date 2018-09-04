@@ -54,10 +54,12 @@
                             
                               <table id="datatable" class="table table-striped table-bordered" style="color:#1A5276;">
                                  <h2>Comisiones<small></small></h2>
-                                  <a href="{{url('asignarcomision')}}" class="btn btn-warning">Todo</a> 
-                                   <a href="{{route('selectListadoComision', 'proceso')}}" class="btn btn-success">Proceso</a> 
+                                 
+                                    <a href="{{url('asignarcomision')}}" class="btn btn-warning">Todo</a> 
+                                    <a href="{{route('selectListadoComision', 'proceso')}}" class="btn btn-success">Proceso</a> 
                                     <a href="{{route('selectListadoComision', 'culminado')}}" class="btn btn-primary"><i class="fa fa-file-pdf-o"> Culminado</i></a>
-                                 <hr/>
+                            
+                                  <hr/>
                                 <thead>
                                   <tr>
                                     
