@@ -60,7 +60,6 @@ Route::get('comisionporunidad','ProcesoComisionController@pdfcomisionporunidad')
 Route::get('culminarcomision/{id?}', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 //Route::post('post/cargo','CargoController@asignar');
 Route::post('terminarcomision/','ProcesoComisionController@terminarcomision')->name('terminarcomision');
-Route::get('historialcomisionpersona/','ProcesoComisionController@historialcomisionpersona')->name('historialcomisionpersona');
 
 Route::get('tags','PersonaController@buscar');
 

@@ -115,7 +115,6 @@
                                       
                                       @endif
                                       <a href="{{route('papeletacomision', $item->id_as_co)}}" class="btn btn-default btn-xs btn-primary"><i class="fa fa-file-pdf-o"> Papeleta</i></a>
-                                      <a href="{{route('historialcomisionpersona')}}" class="btn btn-default btn-xs btn-success"><i class="fa fa-file-pdf-o"> Historial</i></a>
                                       <a href="{{route('historialpersonacomision', $item->personaid)}}" class="btn btn-default btn-xs btn-warning"><i class="fa fa-file-pdf-o"> Historial</i></a>
                                       </td>
                                       

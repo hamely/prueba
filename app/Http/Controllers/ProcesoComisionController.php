@@ -284,11 +284,5 @@ class ProcesoComisionController extends Controller
      
         return redirect()->route('asignarcomision.index');
     }
-
-    public function historialcomisionpersona()
-    {
-        return  view('proceso.comision.historialcomisionpersona');
-
-    }
-    
+   
 }
