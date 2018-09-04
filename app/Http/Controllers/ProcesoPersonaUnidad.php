@@ -17,9 +17,10 @@ class ProcesoPersonaUnidad extends Controller
     public function index()
     {
         $personaunidad = DB::table('persona_unidad')
-        ->select('persona.cip','persona.dni','persona.cuenta','persona.fechanacimiento','persona.sexo','persona.estadocivil','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','persona.celular','persona.email','unidadlaboral.codigo','unidadlaboral.nivel2','unidadlaboral.nivel4','unidadlaboral.nivel6','unidadlaboral.nivel8','unidadlaboral.nivel10','unidadlaboral.nivel12','unidadlaboral.nivel14','persona_unidad.fechaAsignacion','persona_unidad.observacion')
+        ->select(DB::raw('max(persona.cip) as cip, max(persona.dni) as dni, max(persona.cuenta) as cuenta, max(persona.fechanacimiento) as fechanacimiento, max(persona.sexo) as sexo, max(persona.estadocivil) as estadocivil, max(persona.apellidopaterno) as apellidopaterno, max(persona.apellidomaterno) as apellidomaterno, max(persona.nombres) as nombres, max(persona.celular) as celular, max(persona.email) as email, max(unidadlaboral.codigo) as codigo, max(unidadlaboral.nivel2) as nivel2, max(unidadlaboral.nivel4) as nivel4, max(unidadlaboral.nivel6) as nivel6, max(unidadlaboral.nivel8) as nivel8, max(unidadlaboral.nivel10) as nivel10, max(unidadlaboral.nivel12) as nivel12, max(unidadlaboral.nivel14) as nivel14, max(persona_unidad.fechaAsignacion) as fechaAsignacion, max(persona_unidad.observacion) as observacion'))
         ->join('persona', 'persona.id', '=', 'persona_unidad.persona_id')
         ->join('unidadlaboral', 'unidadlaboral.id', '=', 'persona_unidad.unidad_id')
+        ->groupby('persona_unidad.persona_id')
         ->orderby('persona_unidad.id','desc')
         ->paginate(8);
        // dd($personagrado);
