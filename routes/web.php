@@ -46,7 +46,7 @@ Route::post('insertComision','ProcesoComisionController@asignarComision')->name(
 Route::resource('personagrado','ProcesoPersonaGrado');
 
 Route::resource('personacargo','ProcesoPersonaCargo');
-Route::get('historialpersonacargo','ProcesoPersonaCargo@pdfhistorialpersonacargo')->name('historialpersonacargo');
+Route::get('historialpersonacargo/{id}','ProcesoPersonaCargo@pdfhistorialpersonacargo')->name('historialpersonacargo');
 
 Route::resource('personaunidad','ProcesoPersonaUnidad');
 
