@@ -83,6 +83,7 @@
                               <td>{{$item->fechaAsignacion }}</td>
                               <td>{{$item->observacion }}</td>
                               <td>
+                              <a href="{{route('historialpersonacargo')}}" class="btn btn-default btn-xs btn-warning"><i class="fa fa-file-pdf-o"> Historial</i></a>
                                 <div class="dropdown">
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Proceso
                                     <span class="caret"></span></button>

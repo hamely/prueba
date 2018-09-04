@@ -6,6 +6,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\PersonaCargo;
 use App\Persona;
+use Barryvdh\DomPDF\Facade as PDF;
 use Session;
 class ProcesoPersonaCargo extends Controller
 {
@@ -99,5 +100,10 @@ class ProcesoPersonaCargo extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function pdfhistorialpersonacargo()
+    {
+        $pdf = PDF::loadView('reportes.personacargo.historialpersonacargo');
+        return $pdf->stream('historialpersonacargo.pdf');      
     }
 }

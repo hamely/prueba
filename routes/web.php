@@ -44,9 +44,12 @@ Route::get('selectListadoComision/{estado?}','ProcesoComisionController@selectLi
 Route::post('insertComision','ProcesoComisionController@asignarComision')->name('insertComision');
 
 Route::resource('personagrado','ProcesoPersonaGrado');
+
 Route::resource('personacargo','ProcesoPersonaCargo');
+Route::get('historialpersonacargo','ProcesoPersonaCargo@pdfhistorialpersonacargo')->name('historialpersonacargo');
+
 Route::resource('personaunidad','ProcesoPersonaUnidad');
-//Route::resource('personaunidadcargo','ProcesoPersonaUnidadCargoController');
+
 
 Route::resource('licencia','LicenciaController');
 Route::resource('ubigeo','UbigeoController');
