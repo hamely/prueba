@@ -22,8 +22,9 @@
               </div>
             </div>
         @if(auth()->check())
-            @if(auth()->user()->hasRoles(['admin']))
+        
             <div class="row top_tiles">
+            @if(auth()->user()->hasRoles(['admin']))
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#229954; box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}">  
@@ -34,7 +35,7 @@
                     </div>
                 </a>
               </div>
-            
+         
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#3498DB;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -45,7 +46,7 @@
                     </div>
                   </a>
               </div>
-
+             
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#F1C40F;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -56,7 +57,7 @@
                     </div>
                   </a>
               </div>
-
+           
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#F5B041;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -67,7 +68,7 @@
                     </div>
                   </a>
               </div>
-
+             
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#28B463;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -78,7 +79,7 @@
                     </div>
                   </a>
               </div>
-
+            
                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#5DADE2;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -90,7 +91,7 @@
                   </a>
               </div>
               @endif
-              @if(auth()->user()->hasRoles(['com','admin']))
+              @if(auth()->user()->hasRoles(['admin','com']))
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#F4D03F;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -113,7 +114,6 @@
                     </div>
                   </a>
               </div>
-
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#17A589;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -124,7 +124,7 @@
                     </div>
                   </a>
               </div>
-
+            
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#2874A6;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -135,7 +135,7 @@
                     </div>
                   </a>
               </div>
-
+              
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#B7950B;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -146,22 +146,23 @@
                     </div>
                   </a>
               </div>
-
-               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+          
+              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#E67E22;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-user"></i></div>
                     <div class="count">12</div>
                     <h3>Mant. y Usuarios</h3>
                     <p>Ingresar</p>
-                    </div>
+                </div>
                   </a>
               </div>
+              @endif
             </div>
           </div>
         </div>
         @endif
-        @endif
+   
         <!-- /page content -->
         @endsection
 
