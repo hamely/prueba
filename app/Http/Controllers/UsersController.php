@@ -75,7 +75,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data= User::find($id);
+        return  view('admin.usuario.update',['data'=>$data]);
     }
 
     /**
