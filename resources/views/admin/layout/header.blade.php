@@ -4,48 +4,58 @@
               <h3>General</h3>
                 
                 <ul class="nav side-menu">
+                @if(auth()->user()->hasRoles(['admin']))
                   <li><a><i class="fa fa-file-o"></i>Pérdida de carnet<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">Registro</a></li>
                       <li><a href="form_advanced.html">Reporte</a></li>
                     </ul>
                   </li>
+           
                   <li><a><i class="fa fa-stethoscope"></i>Descanso médico<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">Registro</a></li>
                       <li><a href="form_advanced.html">Reporte</a></li>
                     </ul>
                   </li>
+                 
                   <li><a><i class="fa fa-frown-o"></i>Retiro o disponibilidad<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">Registro</a></li>
                       <li><a href="form_advanced.html">Reporte</a></li>
                     </ul>
                   </li>
+               
                   <li><a><i class="fa fa-edit"></i>Licencias<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">Registro</a></li>
                       <li><a href="form_advanced.html">Reporte</a></li>
                     </ul>
                   </li>
+                  
                   <li><a><i class="fa fa-pencil-square"></i>Permisos<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">Registro</a></li>
                       <li><a href="form_advanced.html">Reporte</a></li>
                     </ul>
                   </li>
+                  
                   <li><a><i class="fa fa-hand-o-down"></i>Sanciones<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">Registro</a></li>
                       <li><a href="form_advanced.html">Reporte</a></li>
                     </ul>
                   </li>
+                  @endif
+                  @if(auth()->user()->hasRoles(['admin','com']))
                   <li><a><i class="fa fa-automobile"></i>Comisiones<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ url('asignarcomision') }}">Registro</a></li>
                       <li><a href="form_advanced.html">Reporte</a></li>
                     </ul>
                   </li>
+                  @endif
+                  @if(auth()->user()->hasRoles(['admin']))
                   <li><a><i class="fa fa-spinner"></i>Movimiento de personal<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">Incluir</a></li>
@@ -53,6 +63,7 @@
                       <li><a href="form_advanced.html">Cambio de personal</a></li>
                     </ul>
                   </li>
+                  
                   <li><a><i class="fa fa-umbrella"></i>Vacaciones<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">Registro</a></li>
@@ -66,8 +77,10 @@
                       <li><a href="form_advanced.html">Reporte</a></li>
                     </ul>
                   </li>
+                  @endif
                 </ul>
               </div>
+              @if(auth()->user()->hasRoles(['admin']))
               <div class="menu_section">
                 <h3>REPORTES</h3>
                 <ul class="nav side-menu">
@@ -80,6 +93,8 @@
                   </li>
                 </ul>
               </div>
+              @endif
+              @if(auth()->user()->hasRoles(['admin']))
               <div class="menu_section">
                 <h3>MANTENIMIENT0S</h3>
                 <ul class="nav side-menu">
@@ -120,13 +135,13 @@
                   </li> 
                   <li><a><i class="fa fa-user"></i>Usuarios<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="s.html">Registro</a></li>
+                      <li><a href="{{ url('usuario')}}">Registro</a></li>
                     </ul>
                   </li>                             
                  
                 </ul>
               </div>
-       
+              @endif
 
             </div>
 
