@@ -1,10 +1,11 @@
-<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-              
-              </div>
-              
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">          
+    </div>
+            <div class="sidebar-footer hidden-small">
+              <a >
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
             </div>
-
+            <!-- /menu footer buttons -->
           </div>
         </div>
 
