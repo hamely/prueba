@@ -22,10 +22,8 @@ Route::get('/administracion', function () {
     return view('login');
 });*/
 
-Route::get('/modulos', function () { 
-    return view('index');
-});
 
+Route::get('/modulos','ModuloController@index');
 
 
 Route::resource('sancion', 'SancionController'); //LLAMAR AL CONTROLADOR TypesanctionController

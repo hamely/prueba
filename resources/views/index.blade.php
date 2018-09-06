@@ -2,7 +2,7 @@
 
 @section('content')
   <!-- page content -->
-
+  
   <div class="right_col" role="main">
   
           <div class="">
@@ -21,7 +21,8 @@
                 </div>
               </div>
             </div>
-
+        @if(auth()->check())
+            @if(auth()->user()->hasRoles(['admin']))
             <div class="row top_tiles">
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#229954; box-shadow:6px 6px 0px #CCD1D1">
@@ -33,6 +34,7 @@
                     </div>
                 </a>
               </div>
+            
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#3498DB;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -87,7 +89,8 @@
                     </div>
                   </a>
               </div>
-
+              @endif
+              @if(auth()->user()->hasRoles(['com','admin']))
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#F4D03F;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -98,7 +101,8 @@
                     </div>
                   </a>
               </div>
-
+              @endif
+              @if(auth()->user()->hasRoles(['admin']))
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#EB984E;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -156,6 +160,8 @@
             </div>
           </div>
         </div>
+        @endif
+        @endif
         <!-- /page content -->
         @endsection
 

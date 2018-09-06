@@ -8,6 +8,10 @@ use Session;
 use App\Http\Requests\CargoRequest;
 class CargoController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware(['auth' ,'roles:admin,com']);
+    }
     /**
      * Display a listing of the resource.
      *
