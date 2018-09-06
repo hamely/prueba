@@ -35,20 +35,36 @@
                   </div>
                   <div class="x_content">
 
-                    {!! Form::open(['route' => ['usuario.update',$data->id] , 'method' => 'PUT', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
+                    {!! Form::open(['route' => ['usuario.update',$usuario->id] , 'method' => 'PUT', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
                 
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="name"  name="name" value="" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"type="text">
+                          <input id="name"  name="name" value="{{ $usuario->name}}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"type="text">
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Email<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="email"  name="email" value="" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" type="text">
+                          <input id="email"  name="email" value="{{$usuario->email}}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name"><span class="required">Áreas asignadas</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        @foreach ($roles as $id => $name)
+                            <label>
+                                <input type="checkbox" value="{{$id}}" 
+                                name="roles[]"  {{$usuario->roles->pluck('id')->contains($id) ? 'checked' : '' }}>
+                                
+                                {{ $name}}
+
+                            </label>
+
+                            @endforeach                        
                         </div>
                       </div>
                       <div class="ln_solid"></div>

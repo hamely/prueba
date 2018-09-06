@@ -75,8 +75,10 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $data= User::find($id);
-        return  view('admin.usuario.update',['data'=>$data]);
+
+        $usuario= User::findOrFail($id);
+        $roles =Role::pluck('displayname', 'id');
+        return  view('admin.usuario.update',['usuario'=>$usuario,'roles'=>$roles]);
     }
 
     /**
