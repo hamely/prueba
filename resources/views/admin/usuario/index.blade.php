@@ -60,9 +60,7 @@
                             <a href="{{route('usuario.edit',$item->id)}}" class="btn btn-primary btn-xs">
 								Editar
 							</a>		
-							<a href="" class="btn btn-danger btn-xs">
-								Eliminar
-							</a>
+
                             </td>
                             </tr>
                         @endforeach
