@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
-
+use Session;
 class UsersController extends Controller
 {
+    function __construct()
+    {
+         $this->middleware(['auth' ,'roles:admin,com'],['except' => ['edit', 'update']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('admin/usuario/index');
+        $Users =User::all();
+        return view('admin/usuario/index',["Users" => $Users]);
     }
 
     /**
@@ -37,7 +42,18 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
+        $user = new User;
+        $user->name =$request->name;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        //return $user;
+        $user->save();
+        
+        $userBuscar=User::find($user->id);
+        $userBuscar->roles()->attach($request->role);
+        Session::flash('success', 'Se Agrego correctamente');
+        return redirect()->route('usuarios.index');
     }
 
     /**

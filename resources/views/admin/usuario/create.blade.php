@@ -41,21 +41,22 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de usuario <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="sancion"  name="sancion"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre del usuario" type="text">
+                        {!!Form::text('name',null, ['class' => 'form-control btn-sm' , 'id' => 'nombre','autocomplete' => 'off'])!!}
+                          <!--<input id="nombre"  name="nombre"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre del usuario" type="text">-->
                         </div>
                       </div>
                       <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Email <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="sancion"  name="sancion"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese su correo electrónico" type="text">
+                          <input id="email"  name="email"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese su correo electrónico" type="text">
                         </div>
                       </div>
                         <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Contraseña <span class="required">*</span>
                         </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="sancion"  name="sancion"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese contraseña" type="password">
+                            <input id="password"  name="password"  class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese contraseña" type="password">
                             </div>
                         </div>
                         <div class="item form-group">

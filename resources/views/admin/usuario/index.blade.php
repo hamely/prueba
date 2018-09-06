@@ -48,14 +48,19 @@
                         </tr>
                       </thead>
                       <tbody>
-                       
+                        @foreach( $Users as $item)
                             <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->email}}</td>
+                            <td>
+                                @foreach ($item->roles as $role)
+					     		{{$role->displayname }}</br>
+								@endforeach</td>
+                            <td>
+                                
+                            </td>
                             </tr>
-               
+                        @endforeach
                       </tbody>
                     </table>
                   </div>
