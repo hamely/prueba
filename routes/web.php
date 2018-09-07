@@ -26,6 +26,10 @@ Route::get('/modulodescansomedico',function(){
     return view('admin/inicio/modulos/descansomedico/index');
 });
 
+Route::get('modulolicencia',function(){
+    return view('admin/inicio/modulos/licencia/index');
+});
+
 /*Route::get('/', function () {
     return view('login');
 });*/
