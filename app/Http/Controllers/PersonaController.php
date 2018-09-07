@@ -15,12 +15,20 @@ class PersonaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if(isset($request->cip))
+        {
+            $persona=Persona::select('*')
+            ->where('cip',$request->cip)
+            ->paginate(1);
+            return  view('admin.persona.index',['persona' => $persona]);
+        }else{
+            $persona=Persona::paginate(8);
+             //dd($persona);
+            return  view('admin.persona.index',['persona' => $persona]);
+        }
         
-        $persona=Persona::paginate(8);
-        //dd($persona);
-        return  view('admin.persona.index',['persona' => $persona]);
         //return view('admin/persona/index');
     }
 

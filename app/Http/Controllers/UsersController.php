@@ -53,7 +53,7 @@ class UsersController extends Controller
         $userBuscar=User::find($user->id);
         $userBuscar->roles()->attach($request->role);
         Session::flash('success', 'Se Agrego correctamente');
-        return redirect()->route('usuarios.index');
+        return redirect()->route('usuario.index');
     }
 
     /**

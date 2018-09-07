@@ -40,8 +40,15 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                  
-                    <table id="example" class="table table-striped table-bordered">
+                  {!! Form::open(['route' => ['persona.index'] , 'method' => 'GET', 'class' => 'navbar-form pull-right']) !!}
+                  <div class="input-group">
+                  {!! Form::text('cip',null,['class'=>'form-control','placeholder'=>'Buscar','aria-describedby'=>'search'])
+                  !!}
+                  <span id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                  </span>
+                  </div>
+                  {!! form::close()!!}
+                    <table id="" class="table table-striped table-bordered">
                       <thead>
                         <tr>
                           <th> CIP</th>
