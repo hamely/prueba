@@ -56,6 +56,7 @@ Route::post('list/distrito','UbigeoController@distrito')->name('listDistrito');
 
 Route::get('papeletacomision/{id?}', 'ProcesoComisionController@pdfpapeletacomision')->name('papeletacomision');
 Route::get('historialpersonacomision/{id?}','ProcesoComisionController@pdfhistorialpersonacomision')->name('historialpersonacomision');
+Route::get('papeletareincorporacioncomision/{id?}','ProcesoComisionController@pdfpapeletareincorporacioncomision')->name('papeletareincorporacioncomision');
 Route::get('comisionporunidad','ProcesoComisionController@pdfcomisionporunidad')->name('comisionporunidad');
 //Route::get('culminarcomision', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 Route::get('culminarcomision/{id?}', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');

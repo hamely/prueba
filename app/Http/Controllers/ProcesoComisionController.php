@@ -217,6 +217,25 @@ class ProcesoComisionController extends Controller
         return $pdf->download('papeletacomision.pdf');      
     }  
 
+    public function pdfpapeletareincorporacioncomision($id)
+    {
+        $papeletareincorporacioncomision = DB::table('asignar_comision')
+        ->select('asignar_comision.id','persona.cip','persona.fechanacimiento','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','comision.nombre','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.numerocomision','asignar_comision.fechaemision','asignar_comision.fechallegada','asignar_comision.horallegada','asignar_comision.disposicion','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.observacion','asignar_comision.lugarcomision','grado.nombrecorto',
+        'asignar_comision.fecharetorno','unidadlaboral.nivel1','unidadlaboral.nivel2','unidadlaboral.nivel3','unidadlaboral.nivel4','unidadlaboral.nivel5','unidadlaboral.nivel6','unidadlaboral.nivel7','unidadlaboral.nivel8','unidadlaboral.nivel9','unidadlaboral.nivel10','unidadlaboral.nivel12','unidadlaboral.nivel13','unidadlaboral.nivel14')
+        ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
+        ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
+        ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
+        ->join('persona_grado','persona_grado.persona_id','=','persona.id')
+        ->join('grado','grado.id','=','persona_grado.grado_id')
+        ->join('persona_unidad','persona_unidad.persona_id','=','persona.id')
+        ->join('unidadlaboral','unidadlaboral.id','=','persona_unidad.unidad_id')
+        ->where('asignar_comision.id',$id)
+        ->get();
+        $pdf = PDF::loadView('reportes.personacomision.papeletareincorporacioncomision', compact('papeletareincorporacioncomision'));
+
+        return $pdf->stream('papeletacomision.pdf'); 
+    }
+
     public function pdfhistorialpersonacomision($id)
     {
         $historialcomisionpersona = DB :: table('asignar_comision')
@@ -273,6 +292,7 @@ class ProcesoComisionController extends Controller
         //return view('proceso/comision/culminarcomision');
     }  
     
+  
     public function terminarcomision(Request $request)
     {
         $terminarcomision= AsignarComision::find($request->id);

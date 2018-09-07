@@ -113,10 +113,11 @@
                                       <td>
                                      @if($item->estado=='proceso')
                                       <a href="{{route('culminarcomision', $item->id_as_co)}}" class="btn btn-default btn-xs">Estado</a> 
+                                      <a href="{{route('papeletacomision', $item->id_as_co)}}" class="btn btn-default btn-xs btn-primary"><i class="fa fa-file-pdf-o"> Papeleta com.</i></a>
                                       @else
                                       
                                       @endif
-                                      <a href="{{route('papeletacomision', $item->id_as_co)}}" class="btn btn-default btn-xs btn-primary"><i class="fa fa-file-pdf-o"> Papeleta</i></a>
+                                      <a href="{{route('papeletareincorporacioncomision', $item->id_as_co)}}" class="btn btn-default btn-xs btn-primary" target="_blank"><i class="fa fa-file-pdf-o"> Papeleta reinc.</i></a>
                                       <a href="{{route('historialpersonacomision', $item->personaid)}}" class="btn btn-default btn-xs btn-warning"><i class="fa fa-file-pdf-o"> Historial</i></a>
                                       </td>
                                       
