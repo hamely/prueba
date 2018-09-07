@@ -53,7 +53,7 @@
                 <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-comments-o"></i></div>
                     <div class="count">3</div>
-                    <h3>Disponibilidad o retiro</h3>
+                    <h3> Cambio de situación</h3>
                     <p>Ingresar</p>
                     </div>
                   </a>
@@ -83,7 +83,7 @@
             
                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#5DADE2;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/administracion')}}"> 
+                <a href="{{('/modulosancion')}}"> 
                     <div class="icon"><i class="fa fa-hand-o-down"></i></div>
                     <div class="count">6</div>
                     <h3>Sanciones</h3>

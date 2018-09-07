@@ -38,6 +38,10 @@ Route::get('modulovacaciones',function(){
     return view('admin/inicio/modulos/vacaciones/index');
 });
 
+Route::get('modulosancion',function(){
+    return view('admin/inicio/modulos/sancion/index');
+});
+
 /*Route::get('/', function () {
     return view('login');
 });*/
