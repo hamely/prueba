@@ -30,6 +30,14 @@ Route::get('modulolicencia',function(){
     return view('admin/inicio/modulos/licencia/index');
 });
 
+Route::get('modulomovimientopersonal',function(){
+    return view('admin/inicio/modulos/movimientopersonal/index');
+});
+
+Route::get('modulovacaciones',function(){
+    return view('admin/inicio/modulos/vacaciones/index');
+});
+
 /*Route::get('/', function () {
     return view('login');
 });*/

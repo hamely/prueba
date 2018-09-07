@@ -107,7 +107,7 @@
               @if(auth()->user()->hasRoles(['admin']))
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#EB984E;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/administracion')}}"> 
+                <a href="{{('/modulomovimientopersonal')}}"> 
                     <div class="icon"><i class="fa fa-spinner"></i></div>
                     <div class="count">8</div>
                     <h3> Mov. Personal</h3>
@@ -117,7 +117,7 @@
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#17A589;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/administracion')}}"> 
+                <a href="{{('/modulovacaciones')}}"> 
                     <div class="icon"><i class="fa fa-umbrella"></i></div>
                     <div class="count">9</div>
                     <h3>Vacaciones</h3>
