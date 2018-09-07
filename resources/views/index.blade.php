@@ -24,7 +24,7 @@
         @if(auth()->check())
         
             <div class="row top_tiles">
-            @if(auth()->user()->hasRoles(['admin']))
+            @if(auth()->user()->hasRoles(['admin','carnet']))
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#229954; box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/moduloperdidacarnet')}}">  
@@ -35,7 +35,8 @@
                     </div>
                 </a>
               </div>
-         
+              @endif
+              @if(auth()->user()->hasRoles(['admin']))
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#3498DB;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 

@@ -10,7 +10,7 @@ class CargoController extends Controller
 {
     function __construct()
     {
-         $this->middleware(['auth' ,'roles:admin,com']);
+        $this->middleware(['auth' ,'roles:admin,com,carnet']);
     }
     /**
      * Display a listing of the resource.
@@ -28,7 +28,6 @@ class CargoController extends Controller
 
             $cargo=Cargo::all();
             return  view('admin.cargo.index',['cargo' => $cargo]);
-
         }
 
     }

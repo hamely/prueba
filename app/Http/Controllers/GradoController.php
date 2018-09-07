@@ -8,6 +8,10 @@ use Session;
 use App\Http\Requests\GradoRequest;
 class GradoController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware(['auth' ,'roles:admin,com,carnet']);
+    }
     /**
      * Display a listing of the resource.
      *

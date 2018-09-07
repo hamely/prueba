@@ -10,9 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ModuloController extends Controller
 {
+    
     function __construct()
     {
-         $this->middleware(['auth' ,'roles:admin,com']);
+         $this->middleware(['auth' ,'roles:admin,com,carnet']);
     }
 
     public function index()

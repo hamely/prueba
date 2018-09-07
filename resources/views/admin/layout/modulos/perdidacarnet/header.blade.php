@@ -4,7 +4,7 @@
               <h3>General</h3>
                 
                 <ul class="nav side-menu">
-                @if(auth()->user()->hasRoles(['admin']))
+                @if(auth()->user()->hasRoles(['admin','carnet']))
                   <li><a><i class="fa fa-file-o"></i>Pérdida de carnet<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="form.html">Registro</a></li>
