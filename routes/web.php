@@ -18,6 +18,10 @@ Route::get('/administracion', function () {
     return view('admin/inicio/index');
 });
 
+Route::get('/moduloperdidacarnet',function(){
+    return view('admin/inicio/modulos/perdidacarnet/index');
+});
+
 /*Route::get('/', function () {
     return view('login');
 });*/

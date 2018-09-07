@@ -27,7 +27,7 @@
             @if(auth()->user()->hasRoles(['admin']))
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#229954; box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/administracion')}}">  
+                <a href="{{('/moduloperdidacarnet')}}">  
                     <div class="icon"><i class="fa fa-credit-card"></i></div>
                     <div class="count">1</div>
                     <h3>Pérdida de carnet</h3>
