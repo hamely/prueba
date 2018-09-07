@@ -39,7 +39,7 @@
               @if(auth()->user()->hasRoles(['admin']))
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#3498DB;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/administracion')}}"> 
+                <a href="{{('/modulodescansomedico')}}"> 
                     <div class="icon"><i class="fa fa-medkit"></i></div>
                     <div class="count">2</div>
                     <h3>Descanso médico</h3>

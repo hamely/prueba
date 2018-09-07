@@ -22,6 +22,10 @@ Route::get('/moduloperdidacarnet',function(){
     return view('admin/inicio/modulos/perdidacarnet/index');
 });
 
+Route::get('/modulodescansomedico',function(){
+    return view('admin/inicio/modulos/descansomedico/index');
+});
+
 /*Route::get('/', function () {
     return view('login');
 });*/
