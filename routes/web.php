@@ -89,6 +89,8 @@ Route::post('terminarcomision/','ProcesoComisionController@terminarcomision')->n
 
 Route::get('tags','PersonaController@buscar');
 
+Route::resource('movimientoincluir','ProcesoMovimientoIncluir');
+
 Route::get('login','Auth\LoginController@showLogForm');
 Route::post('login','Auth\LoginController@login');
 Route::get('logout','Auth\LoginController@logout');
