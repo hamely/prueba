@@ -23,7 +23,7 @@ class ProcesoMovimientoIncluir extends Controller
      */
     public function create()
     {
-        //proceso de incluir
+        return view('proceso.movimientopersonal.incluir.create');
     }
 
     /**
