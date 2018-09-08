@@ -50,7 +50,7 @@
              
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#F1C40F;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/administracion')}}"> 
+                <a href="{{('/modulocambiosituacion')}}"> 
                     <div class="icon"><i class="fa fa-comments-o"></i></div>
                     <div class="count">3</div>
                     <h3> Cambio de situación</h3>
@@ -150,7 +150,7 @@
           
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#E67E22;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/administracion')}}"> 
+                <a href="{{('/modulomantenimientoyusuarios')}}"> 
                     <div class="icon"><i class="fa fa-user"></i></div>
                     <div class="count">12</div>
                     <h3>Mant. y Usuarios</h3>

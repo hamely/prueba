@@ -42,6 +42,13 @@ Route::get('modulosancion',function(){
     return view('admin/inicio/modulos/sancion/index');
 });
 
+Route::get('modulocambiosituacion',function(){
+    return view('admin/inicio/modulos/cambiosituacion/index');
+});
+
+Route::get('modulomantenimientoyusuarios', function(){
+    return view('admin/inicio/modulos/mantenimientoyusuarios/index');
+});
 /*Route::get('/', function () {
     return view('login');
 });*/
