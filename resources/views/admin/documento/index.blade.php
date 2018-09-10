@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('admin.layout.modulos.mantenimientoyusuarios.master')
 
 @section('content')
 <div class="right_col" role="main">
@@ -44,11 +44,13 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach($documento as $item)
                             <tr>
-                            <td></td>
+                            <td>{{$item->nombre}}</td>
                             <td><a style= "color:blue" href="" >editar<a/> 
                             </td>
                             </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

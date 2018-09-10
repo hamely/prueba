@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Documento;
 
 class DocumentoController extends Controller
 {
@@ -13,7 +14,8 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        return view('admin/documento/index');
+        $documento=Documento::all();
+        return view('admin.documento.index',['documento' => $documento]);
     }
 
     /**
@@ -23,7 +25,7 @@ class DocumentoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.documento.create');
     }
 
     /**
@@ -34,7 +36,10 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $documento = new Documento;
+        $documento->nombre = $request->nombre;
+        $documento->save();
+        return redirect()->route('documento.index');
     }
 
     /**
