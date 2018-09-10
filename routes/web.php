@@ -68,6 +68,7 @@ Route::resource('cargo','CargoController');
 Route::resource('grado','GradoController');
 Route::resource('documento','DocumentoController');
 Route::resource('movimiento','MovimientoController');
+Route::resource('horario','HorarioController');
 
 Route::resource('asignarcomision','ProcesoComisionController');
 Route::get('selectListadoComision/{estado?}','ProcesoComisionController@selectListadoPorComisionEstado')->name('selectListadoComision');

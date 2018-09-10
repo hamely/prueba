@@ -52,6 +52,11 @@
                       <li><a href="{{ url('movimiento') }}">Tipos de movimiento</a></li>
                     </ul>
                   </li> 
+                  <li><a><i class="fa fa-toggle-down"></i>Horario<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('horario') }}">Tipos de horario</a></li>
+                    </ul>
+                  </li> 
                   <li><a><i class="fa fa-user"></i>Usuarios<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ url('usuario')}}">Registro</a></li>
