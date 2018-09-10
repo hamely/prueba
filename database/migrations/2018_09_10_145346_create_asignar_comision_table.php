@@ -20,13 +20,13 @@ class CreateAsignarComisionTable extends Migration
             $table->integer('comision_id')->unsigned()->index();
             $table->integer('ubigeo_id')->unsigned()->index();
             $table->string('lugarcomision');       
-            $table->date('fechaemision')->nullable(); ; //fecha del sistema
+            $table->date('fechaemision')->nullable();  //fecha del sistema
             $table->string('motivo');
             $table->string('disposicion');
-            $table->date('fechasalida'); //Ejemplo sale hoy 20 de agosto 1 las 19 horas
-            $table->string('horasalida');
-            $table->date('fechallegada'); //Ejemplo llega viernes 24 de agosto a las 19 horas (habilitado)
-            $table->string('horallegada'); //(habilitado)
+            $table->date('fechasalida')->nullable(); //Ejemplo sale hoy 20 de agosto 1 las 19 horas
+            $table->string('horasalida')->nullable();
+            $table->date('fechallegada')->nullable(); //Ejemplo llega viernes 24 de agosto a las 19 horas (habilitado)
+            $table->string('horallegada')->nullable(); //(habilitado)
             $table->date('fecharetorno')->nullable(); //Deberia coincidir si realmente llego o retorno el dia que pusieron
             $table->string('horaretorno')->nullable();
             $table->string('retorno')->nullable(); 

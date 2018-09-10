@@ -165,8 +165,8 @@ class ProcesoComisionController extends Controller
             $insert->disposicion=$_POST['disposicion'];
             $insert->fechasalida=$_POST['fechaSalida'];
             $insert->horasalida=$_POST['horaSalida'];
-            $insert->fechallegada=$_POST['fechaLlegada'];
-            $insert->horallegada=$_POST['horaLlegada'];
+            /*$insert->fechallegada=$_POST['fechaLlegada'];
+            $insert->horallegada=$_POST['horaLlegada'];*/
             /*$insert->fecharetorno=$_POST['fechaRetorno'];
             $insert->horaretorno=$_POST['fechaRetorno'];
             $insert->observacion=$_POST['observacion'];*/

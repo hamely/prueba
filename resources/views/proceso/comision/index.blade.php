@@ -71,10 +71,10 @@
                                     <th>Tipo comision</th>
                                     <th>Destino</th>
                                     <th>Lugar</th>
-                                    <th>Fecha llegada</th>
                                     <th>Por disposición superior</th>
                                     <th>Motivo</th>
                                     <th>Fecha salida</th>
+                                    <th>Fecha llegada</th>
                                     <th>Observación</th>
                                     <th>Estado</th>
                                     <th></th>
@@ -95,13 +95,10 @@
                                       <td>{{$item->nombre }}</td>
                                       <td><strong>Departamento:</strong> {{$item->departamento}} <br/><strong>Provincia:</strong> {{$item->provincia}} </br> <strong>Distrito:</strong> {{$item->distrito}}</td>
                                       <td>{{$item->lugarcomision}}</td>
-                                      <td>{{$item->fechallegada }} {{$item->horallegada }}</td>
-                                  
                                       <td>{{$item->disposicion}}</td>
                                       <td>{{$item->motivo}}</td>
                                       <td>{{$item->fechasalida}}<br/> {{$item->horasalida}}</td>
-                          
-                                     
+                                      <td>Al termino de su cometido</td>
                                       <td>{{$item->observacion}}</td>
                                       @if($item->estado=='proceso')
                                       <td style="background: #D98880;">{{$item->estado}}</td>

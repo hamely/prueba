@@ -138,7 +138,7 @@
                            <input id="horallegada"  name="horallegada" value="{!!$culminarcomision->horallegada !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de salida" readonly>  
                           </div>
                           </div>
-                    </div> 
+                    </div>
                     <div class="col-sm-2">
                       <div class="form-group">
                             <label for="email">Fecha de retorno</label>
@@ -155,13 +155,13 @@
                           </div>
                           </div>
                     </div> 
-                    <div class="col-sm-6">
+                   <!-- <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">Retorno</label>
                             <input type="text" class="form-control" id="retorno"  name="retorno" placeholder="retorno" >
                           
                         </div>
-                      </div> 
+                      </div> -->
                     <div class="col-md-6">
                             <label class="control-label" for="name">Observación <span class="required">*</span>
                             </label>
