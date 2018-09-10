@@ -62,7 +62,8 @@ class MovimientoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $movimiento= Movimiento::find($id);
+        return  view('admin.movimiento.update',['movimiento' => $movimiento]);
     }
 
     /**
@@ -74,7 +75,10 @@ class MovimientoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $movimiento= Movimiento::findOrFail($id);
+        $movimiento->update($request->all());
+        Session::flash('MensajeActualizar','Se actualizó correctamente el movimiento');
+        return redirect()->route('movimiento.index');
     }
 
     /**

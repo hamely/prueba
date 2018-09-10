@@ -17,6 +17,12 @@
                   {{Session::get('Mensaje')}}
                     </div>
                 @endif
+                @if(Session::has('MensajeActualizar'))
+                    <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  {{Session::get('MensajeActualizar')}}
+                    </div>
+                @endif
               
                 <div class="x_panel">
                   <div class="x_title">
