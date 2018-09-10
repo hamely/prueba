@@ -8,6 +8,7 @@ class Horario extends Model
 {
     protected $table = 'horario';
     protected $fillable = [
+        'codigo',
         'nombre',
-      ];
+    ];
 }

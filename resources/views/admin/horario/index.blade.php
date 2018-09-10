@@ -51,13 +51,15 @@
                     <table id="example" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Horario</th>
-                          <th>Acciones</th>
+                            <th>Código</th>
+                            <th>Horario</th>
+                            <th>Acciones</th>
                         </tr>
                       </thead>
                       <tbody>
                         @foreach($horario as $item)
                             <tr>
+                            <td>{{$item->codigo}}</td>
                             <td>{{$item->nombre}}</td>
                             <td><a style= "color:blue" href="{{route('horario.edit',$item->id)}}" >editar<a/> 
                             </td>

@@ -37,6 +37,7 @@ class HorarioController extends Controller
     public function store(Request $request)
     {
         $horario = new Horario;
+        $horario->codigo= $request->codigo;
         $horario->nombre= $request->nombre;
         $horario->save();
         Session::flash('Mensaje','Se guardo correctamente el horario');
