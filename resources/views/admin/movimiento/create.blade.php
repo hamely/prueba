@@ -5,7 +5,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Tipos de documentos</h3>
+                <h3>Tipos de movimiento</h3>
               </div>
 
             </div>
@@ -15,7 +15,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Editar o modificar tipo documento <small></small></h2>
+                    <h2>Registrar movimiento <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -35,14 +35,15 @@
                   </div>
                   <div class="x_content">
 
-                    {!! Form::open(['route' => ['documento.update',$documento->id] , 'method' => 'PUT', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
-                      <div class="item form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de comisión<span class="required">*</span>
+                    {!! Form::open(['route' => ['movimiento.store'] , 'method' => 'POST', 'class' => 'form-horizontal']) !!}
+                   
+                    <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de movimiento<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="nombre"  name="nombre" value="{!! $documento->nombre !!}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese nombre de comisión" type="text">
+                          <input id="nombre"  name="nombre" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese tipo de movimiento" type="text">
                         </div>
-                      </div>
+                    </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">

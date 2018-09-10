@@ -17,16 +17,11 @@
                   {{Session::get('Mensaje')}}
                     </div>
                 @endif
-                @if(Session::has('MensajeActualizar'))
-                    <div class="alert alert-success alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  {{Session::get('MensajeActualizar')}}
-                    </div>
-                @endif
+              
                 <div class="x_panel">
                   <div class="x_title">
-                  <a href="{{('/documento/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
-                    <h2>Lista de documentos<small></small></h2>
+                  <a href="{{('/movimiento/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
+                    <h2>Lista de tipos de movimiento<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -51,15 +46,15 @@
                     <table id="example" class="table table-striped table-bordered">
                       <thead>
                         <tr>
-                          <th>Tipo de documento</th>
+                          <th>Tipo de movimiento</th>
                           <th>Acciones</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($documento as $item)
+                        @foreach($movimiento as $item)
                             <tr>
                             <td>{{$item->nombre}}</td>
-                            <td><a style= "color:blue" href="{{route('documento.edit',$item->id)}}" >editar<a/> 
+                            <td><a style= "color:blue" href="{{route('movimiento.edit',$item->id)}}" >editar<a/> 
                             </td>
                             </tr>
                         @endforeach

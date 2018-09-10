@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Documento;
+use App\Movimiento;
 use Session;
-class DocumentoController extends Controller
+class MovimientoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        $documento=Documento::all();
-        return view('admin.documento.index',['documento' => $documento]);
+        $movimiento=Movimiento::all();
+        return view ('admin.movimiento.index',['movimiento'=>$movimiento]);
     }
 
     /**
@@ -25,7 +25,7 @@ class DocumentoController extends Controller
      */
     public function create()
     {
-        return view('admin.documento.create');
+        return view ('admin.movimiento.create');
     }
 
     /**
@@ -36,11 +36,11 @@ class DocumentoController extends Controller
      */
     public function store(Request $request)
     {
-        $documento = new Documento;
-        $documento->nombre = $request->nombre;
-        $documento->save();
-        Session::flash('Mensaje', 'Se registro correctamente el tipo de documento');
-        return redirect()->route('documento.index');
+        $movimiento = new Movimiento;
+        $movimiento->nombre = $request->nombre;
+        $movimiento->save();
+        Session::flash('Mensaje', 'Se registro correctamente el tipo de movimiento');
+        return redirect()->route('movimiento.index');
     }
 
     /**
@@ -62,9 +62,9 @@ class DocumentoController extends Controller
      */
     public function edit($id)
     {
-        $documento= Documento::find($id);
-        return  view('admin.documento.update',['documento' => $documento]);
+        //
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -74,10 +74,7 @@ class DocumentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $documento= Documento::findOrFail($id);
-        $documento->update($request->all());
-        Session::flash('MensajeActualizar','Se actualizó correctamente tipo de documento');
-        return redirect()->route('documento.index');
+        //
     }
 
     /**
