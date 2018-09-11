@@ -7,7 +7,7 @@
                 @if(auth()->user()->hasRoles(['admin']))
                   <li><a><i class="fa fa-cog"></i>Cambio de situación<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="form.html">Policial</a></li>
+                      <li><a href="{{('/cambiosituacionpolicial')}}">Policial</a></li>
                       <li><a href="form_advanced.html">Especial</a></li>
                     </ul>
                   </li>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 class ProcesoSituacionPolicial extends Controller
 {
     /**
@@ -13,7 +13,7 @@ class ProcesoSituacionPolicial extends Controller
      */
     public function index()
     {
-        //
+        return view('proceso.cambiosituacion.policial.index');
     }
 
     /**
@@ -23,7 +23,10 @@ class ProcesoSituacionPolicial extends Controller
      */
     public function create()
     {
-        //
+        $documento=DB::table('documento')
+        ->select('id','nombre')
+        ->get();
+        return view('proceso.cambiosituacion.policial.create',['documento'=>$documento]);
     }
 
     /**

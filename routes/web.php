@@ -100,7 +100,7 @@ Route::get('tags','PersonaController@buscar');
 
 Route::resource('movimientoincluir','ProcesoMovimientoIncluir');
 Route::resource('movimientoexcluir','ProcesoMovimientoExcluir');
-
+Route::resource('cambiosituacionpolicial','ProcesoSituacionPolicial');
 
 Route::get('login','Auth\LoginController@showLogForm');
 Route::post('login','Auth\LoginController@login');
