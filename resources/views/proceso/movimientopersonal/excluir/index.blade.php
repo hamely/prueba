@@ -15,8 +15,8 @@
                 <div class="x_panel">
                   <div class="x_title">
                   <!--<a href="" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>-->
-                  <a href="" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
-                    <h2>Lista de personas incluidas<small></small></h2>
+                  <a href="{{('/movimientoexcluir/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
+                    <h2>Lista de personas excluidas<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>

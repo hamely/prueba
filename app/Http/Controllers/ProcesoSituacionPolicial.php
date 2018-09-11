@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-class ProcesoMovimientoExcluir extends Controller
+
+class ProcesoSituacionPolicial extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ProcesoMovimientoExcluir extends Controller
      */
     public function index()
     {
-        return view('proceso.movimientopersonal.excluir.index');
+        //
     }
 
     /**
@@ -23,16 +23,7 @@ class ProcesoMovimientoExcluir extends Controller
      */
     public function create()
     {
-        $documento=DB::table('documento')
-        ->select('id','nombre')
-        ->get();
-        $movimiento=DB::table('movimiento')
-        ->select('id','nombre')
-        ->get();
-        $unidad=DB::table('unidadlaboral')
-        ->select('id','codigo','nivel2','nivel4','nivel6','nivel8','nivel10','nivel12','nivel14')
-        ->get();
-        return view('proceso.movimientopersonal.excluir.create',['documento'=>$documento,'movimiento'=>$movimiento,'unidad'=>$unidad]);
+        //
     }
 
     /**
