@@ -98,12 +98,11 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">Tipo documento</label>
-                            <select class='selectpicker' id='Combocomision' name="Combocomision" data-live-search='true'>
-                            
-                                  <option value="">
-                                  
+                            <select class='selectpicker' id='Combodocumento' name="Combodocumento" data-live-search='true'>
+                                @foreach($documento as $item)
+                                  <option value="{{ $item->id }}">{{$item->nombre}}
                                   </option>
-                   
+                                @endforeach
                             </select>
                           
                         </div>
@@ -124,6 +123,26 @@
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
+                            <label for="email">Fecha de inclusión</label>
+                            <input type="date" class="form-control" id="numerocomision" name="numerocomision" placeholder="N° de comisión">
+                            
+                        </div>
+                      </div> 
+                
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="email">Tipo de movimiento</label>
+                            <select class='selectpicker' id='Combomovimiento' name="Combomovimiento" data-live-search='true'>
+                            @foreach($movimiento as $item)
+                                  <option value="{{$item->id}}">{{$item->nombre}}
+                                  </option>
+                            @endforeach
+                            </select>
+                          
+                        </div>
+                      </div> 
+                      <div class="col-sm-6">
+                        <div class="form-group">
                             <label for="email">Fecha del documento</label>
                             <input type="date" class="form-control" id="numerocomision" name="numerocomision" placeholder="N° de comisión">
                             
@@ -133,12 +152,12 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">Elija unidad</label>
-                            <select class='selectpicker' id='Combocomision' name="Combocomision" data-live-search='true'>
-                            
-                                  <option value="">
+                            <select class='selectpicker' id='Combounidad' name="Combounidad" data-live-search='true'>
+                            @foreach($unidad as $item)
+                                  <option value="{{$item->id}}">{{$item->codigo}} : {{$item->nivel2}} {{$item->nivel4}} {{$item->nivel6}} {{$item->nivel8}} {{$item->nivel8}} {{$item->nivel10}} {{$item->nivel12}} {{$item->nivel14}}
                                   
                                   </option>
-                   
+                            @endforeach
                             </select>
                           
                         </div>
@@ -146,39 +165,12 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">Elija cargo</label>
-                            <select class='selectpicker' id='Combocomision' name="Combocomision" data-live-search='true'>
-                            
-                                  <option value="">
+                            <select class='selectpicker' id='Combocargo' name="Combocargo" data-live-search='true'>
+                              @foreach($cargo as $item)
+                                  <option value="{{$item->id}}">{{$item->codigo}} : {{$item->nombrecorto}}
                                   
                                   </option>
-                   
-                            </select>
-                          
-                        </div>
-                      </div> 
-                      
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Elija unidad</label>
-                            <select class='selectpicker' id='Combocomision' name="Combocomision" data-live-search='true'>
-                            
-                                  <option value="">
-                                  
-                                  </option>
-                   
-                            </select>
-                          
-                        </div>
-                      </div> 
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Elija cargo</label>
-                            <select class='selectpicker' id='Combocomision' name="Combocomision" data-live-search='true'>
-                            
-                                  <option value="">
-                                  
-                                  </option>
-                   
+                              @endforeach
                             </select>
                           
                         </div>
@@ -200,12 +192,11 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">Función policial y modalidad de horario</label>
-                            <select class='selectpicker' id='Combocomision' name="Combocomision" data-live-search='true'>
-                            
-                                  <option value="">
-                                  
+                            <select class='selectpicker' id='Combohorario' name="Combohorario" data-live-search='true'>
+                                @foreach($horario as $item)
+                                  <option value="{{$item->id}}">{{$item->codigo}} : {{$item->nombre}}
                                   </option>
-                   
+                                @endforeach
                             </select>
                           
                         </div>

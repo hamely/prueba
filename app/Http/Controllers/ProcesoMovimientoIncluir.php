@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 class ProcesoMovimientoIncluir extends Controller
 {
     /**
@@ -23,7 +23,24 @@ class ProcesoMovimientoIncluir extends Controller
      */
     public function create()
     {
-        return view('proceso.movimientopersonal.incluir.create');
+        $documento = DB::table('documento')
+        ->select('id','nombre')
+        ->get();
+        $movimiento = DB::table('movimiento')
+        ->select('id','nombre')
+        ->get();
+        $unidad = DB::table('unidadlaboral')
+        ->select('id','codigo','nivel2','nivel4','nivel6','nivel8','nivel10','nivel12','nivel14')
+        ->get();
+        $cargo = DB::table('cargo')
+        ->select('id','codigo','nombrecorto')
+        ->get();
+        $horario = DB::table('horario')
+        ->select('id','codigo','nombre')
+        ->get();
+        // $documento=Documento::all();
+        //dd ($horario);
+        return view('proceso.movimientopersonal.incluir.create',['documento' => $documento,'movimiento'=>$movimiento,'unidad'=>$unidad,'cargo'=>$cargo,'horario'=>$horario]);
     }
 
     /**
