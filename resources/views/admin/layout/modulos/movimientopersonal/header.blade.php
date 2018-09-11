@@ -8,7 +8,7 @@
                   <li><a><i class="fa fa-spinner"></i>Movimiento de personal<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ url('movimientoincluir') }}">Incluir</a></li>
-                      <li><a href="form_advanced.html">Excluir</a></li>
+                      <li><a href="{{ url('movimientoexcluir') }}">Excluir</a></li>
                       <li><a href="form_advanced.html">Cambio de personal</a></li>
                     </ul>
                   </li>

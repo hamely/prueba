@@ -72,7 +72,7 @@
 
                     <div align="center">
                     GRADO: <br/>
-                    CIP:<br/>
+                    CIP: <br/>
                     APELLIDOS Y NOMBRES: <br/>
                     </div>
                     <br/>

@@ -13,7 +13,7 @@ class ProcesoMovimientoExcluir extends Controller
      */
     public function index()
     {
-        //
+        return view('proceso.movimientopersonal.excluir.index');
     }
 
     /**
