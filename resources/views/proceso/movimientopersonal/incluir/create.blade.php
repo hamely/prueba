@@ -70,6 +70,137 @@
                       </div>
                     </div>
 
+                    <div align="center">
+                    GRADO: <br/>
+                    CIP:<br/>
+                    APELLIDOS Y NOMBRES: <br/>
+                    </div>
+                    <br/>
+
+
+                    <div class="panel panel-default">
+                      <div class="panel-body">
+
+                        <div class="col-sm-6">
+                          
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                              <label for="email">Tipo documento</label>
+                              <select class='selectpicker form-control input-sm' id='Combodocumento' name="Combodocumento" data-live-search='true'>
+                                @foreach($documento as $item)
+                                  <option value="{{ $item->id }}">{{$item->nombre}}
+                                  </option>
+                                @endforeach
+                              </select>
+                            </div>
+                          </div> 
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Número documento</label>
+                                <input type="number" class="form-control" id="numerodocumento" name="numerodocumento" placeholder="N° DOC.">
+                            </div>
+                          </div> 
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Siglas documento</label>
+                                <input type="text" class="form-control" id="sigla" name="sigla" placeholder="SIGLAS">
+                            </div>
+                          </div> 
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Fecha de documento</label>
+                                <input type="date" class="form-control" id="fechadocumento" name="fechadocumento" placeholder="SIGLAS">
+                            </div>
+                          </div> 
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Fecha de inclusion</label>
+                                <input type="date" class="form-control" id="fechainclusion" name="fechainclusion" placeholder="SIGLAS">
+                            </div>
+                          </div> 
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Días</label>
+                                <input type="number" class="form-control" id="dia" name="dia" placeholder="Días">
+                            </div>
+                          </div> 
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Tipo de movimiento</label>
+                                <select class='selectpicker form-control input-sm' id='Combomovimiento' name="Combomovimiento" data-live-search='true'>
+                                @foreach($movimiento as $item)
+                                      <option value="{{$item->id}}">{{$item->nombre}}
+                                      </option>
+                                @endforeach
+                                </select>
+                            </div>
+                          </div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Unidad</label>
+                                <select class='selectpicker form-control input-sm' id='Combounidad' name="Combounidad" data-live-search='true'>
+                                @foreach($unidad as $item)
+                                  <option value="{{$item->id}}">{{$item->codigo}} : {{$item->nivel2}} {{$item->nivel4}} {{$item->nivel6}} {{$item->nivel8}} {{$item->nivel8}} {{$item->nivel10}} {{$item->nivel12}} {{$item->nivel14}}
+                                  </option>
+                                @endforeach
+                                </select>
+                            </div>
+                          </div> 
+                          
+                          
+                        </div>
+
+
+                        <div class="col-sm-6">
+
+                                                
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Cargo</label>
+                                <select class='selectpicker form-control input-sm' id='Combocargo' name="Combocargo" data-live-search='true'>
+                                @foreach($cargo as $item)
+                                  <option value="{{$item->id}}"> {{$item->codigo}} : {{$item->nombrecorto}}
+                                  </option>
+                                @endforeach
+                                </select>
+                            </div>
+                          </div> 
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Estado de cip</label>
+                                <select class='selectpicker form-control input-sm' id='Comboestadocip' name="Comboestadocip" data-live-search='true'>
+                                @foreach($cargo as $item)
+                                  <option value="{{$item->id}}"> {{$item->codigo}} : {{$item->nombrecorto}}
+                                  </option>
+                                @endforeach
+                                </select>
+                            </div>
+                          </div> 
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Función policial y modalidad de horario</label>
+                                <select class='selectpicker form-control input-sm' id='Combohorario' name="Combohorario" data-live-search='true'>
+                                @foreach($horario as $item)
+                                  <option value="{{$item->id}}"> {{$item->codigo}} : {{$item->nombre}}
+                                  </option>
+                                @endforeach
+                                </select>
+                            </div>
+                          </div> 
+                          <div class="col-md-12">
+                            <label class="control-label" for="name">Observación <span class="required">*</span>
+                            </label>
+                            <div class="col-md-12">
+                              <textarea id="observacion" name="observacion" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                              data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones"></textarea>
+                            </div>
+                          </div>
+
+                    </div>
+
+
+                      </div>
+                    </div>
 
                      <div class="col-sm-6">
                       
@@ -95,124 +226,9 @@
                           
                         </div>
                       </div> 
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Tipo documento</label>
-                            <select class='selectpicker' id='Combodocumento' name="Combodocumento" data-live-search='true'>
-                                @foreach($documento as $item)
-                                  <option value="{{ $item->id }}">{{$item->nombre}}
-                                  </option>
-                                @endforeach
-                            </select>
-                          
-                        </div>
-                      </div> 
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Número documento</label>
-                            <input type="number" class="form-control" id="numerocomision" name="numerocomision" placeholder="N° de comisión">
-                            
-                        </div>
-                      </div> 
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Siglas del documento</label>
-                            <input type="text" class="form-control" id="numerocomision" name="numerocomision" placeholder="N° de comisión">
-                            
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Fecha de inclusión</label>
-                            <input type="date" class="form-control" id="numerocomision" name="numerocomision" placeholder="N° de comisión">
-                            
-                        </div>
-                      </div> 
-                
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Tipo de movimiento</label>
-                            <select class='selectpicker' id='Combomovimiento' name="Combomovimiento" data-live-search='true'>
-                            @foreach($movimiento as $item)
-                                  <option value="{{$item->id}}">{{$item->nombre}}
-                                  </option>
-                            @endforeach
-                            </select>
-                          
-                        </div>
-                      </div> 
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Fecha del documento</label>
-                            <input type="date" class="form-control" id="numerocomision" name="numerocomision" placeholder="N° de comisión">
-                            
-                        </div>
-                      </div> 
-                
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Elija unidad</label>
-                            <select class='selectpicker' id='Combounidad' name="Combounidad" data-live-search='true'>
-                            @foreach($unidad as $item)
-                                  <option value="{{$item->id}}">{{$item->codigo}} : {{$item->nivel2}} {{$item->nivel4}} {{$item->nivel6}} {{$item->nivel8}} {{$item->nivel8}} {{$item->nivel10}} {{$item->nivel12}} {{$item->nivel14}}
-                                  
-                                  </option>
-                            @endforeach
-                            </select>
-                          
-                        </div>
-                      </div> 
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Elija cargo</label>
-                            <select class='selectpicker' id='Combocargo' name="Combocargo" data-live-search='true'>
-                              @foreach($cargo as $item)
-                                  <option value="{{$item->id}}">{{$item->codigo}} : {{$item->nombrecorto}}
-                                  
-                                  </option>
-                              @endforeach
-                            </select>
-                          
-                        </div>
-                      </div> 
-
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Elija estado de cip</label>
-                            <select class='selectpicker' id='Combocomision' name="Combocomision" data-live-search='true'>
-                            
-                                  <option value="">
-                                  
-                                  </option>
-                   
-                            </select>
-                          
-                        </div>
-                      </div> 
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Función policial y modalidad de horario</label>
-                            <select class='selectpicker' id='Combohorario' name="Combohorario" data-live-search='true'>
-                                @foreach($horario as $item)
-                                  <option value="{{$item->id}}">{{$item->codigo}} : {{$item->nombre}}
-                                  </option>
-                                @endforeach
-                            </select>
-                          
-                        </div>
-                      </div> 
-                  
 
                     </div> 
-                   
-                    <div class="col-md-6">
-                            <label class="control-label" for="name">Observación <span class="required">*</span>
-                            </label>
-                          <div class="col-md-12">
-                            <textarea id="observacion" name="observacion" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
-                                data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones"></textarea>
-                          </div>
-                     </div>
+
                    
                   </div>
                    <div class="form-group">
