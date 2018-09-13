@@ -71,7 +71,7 @@
                     </div>
 
                     <div align="center">
-                    GRADO: <br/>
+                    GRADO:  <br/>
                     CIP: <br/>
                     APELLIDOS Y NOMBRES: <br/>
                     </div>
@@ -169,8 +169,8 @@
                             <div class="form-group">
                                 <label for="email">Estado de cip</label>
                                 <select class='selectpicker form-control input-sm' id='Comboestadocip' name="Comboestadocip" data-live-search='true'>
-                                @foreach($cargo as $item)
-                                  <option value="{{$item->id}}"> {{$item->codigo}} : {{$item->nombrecorto}}
+                                @foreach($cip as $item)
+                                  <option value="{{$item->id}}"> {{$item->codigo}} : {{$item->nombre}}
                                   </option>
                                 @endforeach
                                 </select>
@@ -313,37 +313,6 @@
 
     	
    	
-
-   
-
-   	$("#ComboProvincia").change(function( event ) {
-        event.preventDefault();
-        
-        var provincia=$("#ComboProvincia").val();
-        $("#ComboDistrito").html('');
-        var html;
-        $.ajax({
-                 url:'{{ route('listDistrito') }}',
-                 type: 'POST',
-                 data:{
-                        "_token": "{{ csrf_token() }}",
-                        "provincia":provincia
-                    },
-                 dataType: 'JSON',
-                 beforeSend: function() {
-                 },
-                 error: function() {
-                 },
-                  success: function(respuesta) {
-                    $.each(respuesta.data, function(index, val) {
-                    	 html=html+' <option value="'+val.id+' ">'+val.distrito+'</option>';
-                    });
-                    $("#ComboDistrito").append(html);
-                  }
-              });
-        
-
-      });
    	
       $("#idPersona").change(function( event ) {
         event.preventDefault();

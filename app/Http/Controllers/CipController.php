@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use DB;
-class ProcesoMovimientoPersonal extends Controller
+use App\Cip;
+use Session;
+
+class CipController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class ProcesoMovimientoPersonal extends Controller
      */
     public function index()
     {
-        //
+        $cip=Cip::all();
+        return view('admin.cip.index',['cip'=>$cip]);
     }
 
     /**
@@ -23,7 +25,7 @@ class ProcesoMovimientoPersonal extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.cip.create');
     }
 
     /**
@@ -34,7 +36,13 @@ class ProcesoMovimientoPersonal extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cip = new Cip;
+        $cip->codigo = $request->codigo;
+        $cip->nombre = $request->nombre;
+        $cip->save();
+        Session::flash('Mensaje','Se guardo correctamente el estado del cip');
+        
+        return redirect()->route('cip.index')->with('info' , 'Se registro correctamente');
     }
 
     /**
@@ -56,7 +64,8 @@ class ProcesoMovimientoPersonal extends Controller
      */
     public function edit($id)
     {
-        //
+        $cip= Cip::find($id);
+        return  view('admin.cip.update',['cip' => $cip]);
     }
 
     /**
@@ -68,7 +77,10 @@ class ProcesoMovimientoPersonal extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cip= Cip::findOrFail($id);
+        $cip->update($request->all());
+        Session::flash('MensajeActualizar','Se actualizó correctamente estado del cip');
+        return redirect()->route('cip.index');
     }
 
     /**
@@ -80,36 +92,5 @@ class ProcesoMovimientoPersonal extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function movimientoincluir()
-    {
-        return view('proceso.movimientopersonal.incluir.index');
-    }
-
-    public function movimientoincluircreate(){
-        $documento = DB::table('documento')
-        ->select('id','nombre')
-        ->get();
-        $movimiento = DB::table('movimiento')
-        ->select('id','nombre')
-        ->get();
-        $unidad = DB::table('unidadlaboral')
-        ->select('id','codigo','nivel2','nivel4','nivel6','nivel8','nivel10','nivel12','nivel14')
-        ->get();
-        $cargo = DB::table('cargo')
-        ->select('id','codigo','nombrecorto')
-        ->get();
-        $horario = DB::table('horario')
-        ->select('id','codigo','nombre')
-        ->get();
-        $cip = DB::table('cip')
-        ->select('id','codigo','nombre')
-        ->get();
-        return view('proceso.movimientopersonal.incluir.create',['documento' => $documento,'movimiento'=>$movimiento,'unidad'=>$unidad,'cargo'=>$cargo,'horario'=>$horario,'cip'=>$cip]);
-    } 
-
-    public function movimientoexcluir()
-    {
-        return view('proceso.movimientopersonal.excluir.index');
     }
 }
