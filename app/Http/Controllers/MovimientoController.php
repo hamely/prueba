@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Movimiento;
 use Session;
+use App\Http\Requests\MovimientoRequest;
+
 class MovimientoController extends Controller
 {
     /**
@@ -34,7 +36,7 @@ class MovimientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MovimientoRequest $request)
     {
         $movimiento = new Movimiento;
         $movimiento->nombre = $request->nombre;

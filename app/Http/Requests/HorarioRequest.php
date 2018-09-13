@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DocumentoRequest extends FormRequest
+class HorarioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,16 @@ class DocumentoRequest extends FormRequest
     public function rules()
     {
         return [
+            'codigo' => ['required','unique:horario,codigo,$id'],
             'nombre'=>'required',
         ];
     }
     public function messages()
     {
         return [
-            'nombre.required'=>'Debe ingresar el tipo de documento',
+            'codigo.required'=>'Debe ingresar el código del horario', 
+            'codigo.unique'=>'El código de tipo de horario ya existe. Ingrese otro código',
+            'nombre.required'=>'Debe ingresar el tipo de horario',
         ];
     }
 }

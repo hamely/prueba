@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DocumentoRequest extends FormRequest
+class CipRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,16 @@ class DocumentoRequest extends FormRequest
     public function rules()
     {
         return [
+            'codigo' => ['required','unique:cip,codigo,$id'],
             'nombre'=>'required',
         ];
     }
     public function messages()
     {
         return [
-            'nombre.required'=>'Debe ingresar el tipo de documento',
+            'codigo.required'=>'Debe ingresar el código del estado de cip', 
+            'codigo.unique'=>'El código de estado de cip ya existe. Ingrese otro código',
+            'nombre.required'=>'Debe ingresar el estado del cip',
         ];
     }
 }

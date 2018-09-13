@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cip;
 use Session;
+use App\Http\Requests\CipRequest;
 
 class CipController extends Controller
 {
@@ -34,7 +35,7 @@ class CipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CipRequest $request)
     {
         $cip = new Cip;
         $cip->codigo = $request->codigo;
@@ -42,7 +43,7 @@ class CipController extends Controller
         $cip->save();
         Session::flash('Mensaje','Se guardo correctamente el estado del cip');
         
-        return redirect()->route('cip.index')->with('info' , 'Se registro correctamente');
+        return redirect()->route('cip.index');
     }
 
     /**

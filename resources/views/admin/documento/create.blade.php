@@ -41,7 +41,8 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Nombre de documento<span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input id="nombre"  name="nombre" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese tipo de documento" type="text">
+                          <input id="nombre"  name="nombre" value="{{ old('nombre') }}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingrese tipo de documento" type="text">
+                          <p style="color:red;">{{ $errors->first('nombre') }}</p>
                         </div>
                     </div>
                       <div class="ln_solid"></div>

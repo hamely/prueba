@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DocumentoRequest extends FormRequest
+class MovimientoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +30,7 @@ class DocumentoRequest extends FormRequest
     public function messages()
     {
         return [
-            'nombre.required'=>'Debe ingresar el tipo de documento',
+            'nombre.required'=>'Debe ingresar el tipo de movimiento',
         ];
     }
 }

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Horario;
 use Session;
+use App\Http\Requests\HorarioRequest;
+
 class HorarioController extends Controller
 {
     /**
@@ -34,7 +36,7 @@ class HorarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HorarioRequest $request)
     {
         $horario = new Horario;
         $horario->codigo= $request->codigo;

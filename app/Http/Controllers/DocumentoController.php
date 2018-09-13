@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Documento;
 use Session;
+use App\Http\Requests\DocumentoRequest;
 class DocumentoController extends Controller
 {
     /**
@@ -34,7 +35,7 @@ class DocumentoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DocumentoRequest $request)
     {
         $documento = new Documento;
         $documento->nombre = $request->nombre;
