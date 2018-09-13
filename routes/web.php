@@ -104,6 +104,8 @@ Route::get('tags','PersonaController@buscar');
 Route::resource('cambiosituacionpolicial','ProcesoSituacionPolicial');
 Route::get('movimientoincluir','ProcesoMovimientoPersonal@movimientoincluir')->name('movimientoincluir');
 Route::get('movimientoincluircreate','ProcesoMovimientoPersonal@movimientoincluircreate')->name('movimmovimientoincluircreate');
+Route::post('insertMovimientoIncluir','ProcesoMovimientoPersonal@movimientoincluirinsertar')->name('insertMovimientoIncluir');
+
 Route::get('movimientoexcluir','ProcesoMovimientoPersonal@movimientoexcluir')->name('movimientoexcluir');
 
 Route::get('login','Auth\LoginController@showLogForm');

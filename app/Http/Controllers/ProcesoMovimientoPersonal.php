@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\MovimientoPersonal;
+
 class ProcesoMovimientoPersonal extends Controller
 {
     /**
@@ -107,6 +109,33 @@ class ProcesoMovimientoPersonal extends Controller
         ->get();
         return view('proceso.movimientopersonal.incluir.create',['documento' => $documento,'movimiento'=>$movimiento,'unidad'=>$unidad,'cargo'=>$cargo,'horario'=>$horario,'cip'=>$cip]);
     } 
+
+    public function movimientoincluirinsertar(Request $request)
+    {
+        if($request->ajax())
+        {
+            $insert=new MovimientoPersonal;
+            $insert->persona_id=$_POST['idPersona'];
+            $insert->documento_id=$_POST['comboDocumento'];
+            $insert->numerodocumento=$_POST['numerodocumento'];
+            $insert->sigladocumento=$_POST['sigladocumento'];
+            $insert->fechadocumento=$_POST['fechadocumento'];
+            $insert->fechainclusion=$_POST['fechainclusion'];
+            $insert->movimiento_id=$_POST['comboMovimiento'];
+            $insert->tiempo=$_POST['tiempo'];
+            $insert->unidad_id=$_POST['comboUnidad'];
+            $insert->cargo_id=$_POST['comboCargo'];
+            $insert->cip_id=$_POST['comboCip'];
+            $insert->horario_id=$_POST['comboHorario'];
+            $insert->observacion=$_POST['observacion'];
+            $insert->tipo='incluir';
+            $insert->estado='activo';
+
+            $insert->save();
+        }
+       
+        return Response(['data'=>$_POST['idPersona']]);
+    }
 
     public function movimientoexcluir()
     {

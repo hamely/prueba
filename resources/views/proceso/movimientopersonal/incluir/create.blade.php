@@ -86,7 +86,7 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                               <label for="email">Tipo documento</label>
-                              <select class='selectpicker form-control input-sm' id='Combodocumento' name="Combodocumento" data-live-search='true'>
+                              <select class='selectpicker form-control input-sm' id='comboDocumento' name="comboDocumento" data-live-search='true'>
                                 @foreach($documento as $item)
                                   <option value="{{ $item->id }}">{{$item->nombre}}
                                   </option>
@@ -103,7 +103,7 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="email">Siglas documento</label>
-                                <input type="text" class="form-control" id="sigla" name="sigla" placeholder="SIGLAS">
+                                <input type="text" class="form-control" id="sigladocumento" name="sigladocumento" placeholder="SIGLAS">
                             </div>
                           </div> 
                           <div class="col-sm-6">
@@ -121,13 +121,13 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="email">Días</label>
-                                <input type="number" class="form-control" id="dia" name="dia" placeholder="Días">
+                                <input type="number" class="form-control" id="tiempo" name="tiempo" placeholder="Días">
                             </div>
                           </div> 
                           <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="email">Tipo de movimiento</label>
-                                <select class='selectpicker form-control input-sm' id='Combomovimiento' name="Combomovimiento" data-live-search='true'>
+                                <select class='selectpicker form-control input-sm' id='comboMovimiento' name="comboMovimiento" data-live-search='true'>
                                 @foreach($movimiento as $item)
                                       <option value="{{$item->id}}">{{$item->nombre}}
                                       </option>
@@ -138,7 +138,7 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="email">Unidad</label>
-                                <select class='selectpicker form-control input-sm' id='Combounidad' name="Combounidad" data-live-search='true'>
+                                <select class='selectpicker form-control input-sm' id='comboUnidad' name="comboUnidad" data-live-search='true'>
                                 @foreach($unidad as $item)
                                   <option value="{{$item->id}}">{{$item->codigo}} : {{$item->nivel2}} {{$item->nivel4}} {{$item->nivel6}} {{$item->nivel8}} {{$item->nivel8}} {{$item->nivel10}} {{$item->nivel12}} {{$item->nivel14}}
                                   </option>
@@ -157,7 +157,7 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="email">Cargo</label>
-                                <select class='selectpicker form-control input-sm' id='Combocargo' name="Combocargo" data-live-search='true'>
+                                <select class='selectpicker form-control input-sm' id='comboCargo' name="comboCargo" data-live-search='true'>
                                 @foreach($cargo as $item)
                                   <option value="{{$item->id}}"> {{$item->codigo}} : {{$item->nombrecorto}}
                                   </option>
@@ -168,7 +168,7 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="email">Estado de cip</label>
-                                <select class='selectpicker form-control input-sm' id='Comboestadocip' name="Comboestadocip" data-live-search='true'>
+                                <select class='selectpicker form-control input-sm' id='comboCip' name="comboCip" data-live-search='true'>
                                 @foreach($cip as $item)
                                   <option value="{{$item->id}}"> {{$item->codigo}} : {{$item->nombre}}
                                   </option>
@@ -179,7 +179,7 @@
                           <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="email">Función policial y modalidad de horario</label>
-                                <select class='selectpicker form-control input-sm' id='Combohorario' name="Combohorario" data-live-search='true'>
+                                <select class='selectpicker form-control input-sm' id='comboHorario' name="comboHorario" data-live-search='true'>
                                 @foreach($horario as $item)
                                   <option value="{{$item->id}}"> {{$item->codigo}} : {{$item->nombre}}
                                   </option>
@@ -233,7 +233,7 @@
                   </div>
                    <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                            <button id="enviarComision" type="button" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
+                            <button id="enviarMovimientoPersonalIncluir" type="button" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
                               <a href="{{('/asignarcomision/create')}}" class="btn btn-default  "><i class="fa fa-eraser"> Limpiar</i></a>
                               <a href="{{('/movimientoincluir/')}}" class="btn btn-info"><i class="fa fa-mail-reply"> Retroceder</i></a>
 
@@ -252,7 +252,7 @@
 @section('script')
    <script>
 
-   	$("#enviarComision").click(function( event ) {
+   	$("#enviarMovimientoPersonalIncluir").click(function( event ) {
         event.preventDefault();
         if($("#idpersonaBuscador").val()===''){
           var Idpersona=$("#idPersona").val();
@@ -261,41 +261,37 @@
         {
           var Idpersona=$("#idpersonaBuscador").val();
         }
-       
-        var Numerocomision=$("#numerocomision").val();
-        var Combocomision=$("#Combocomision").val();
-        var ComboDistrito=$("#ComboDistrito").val();
-        var Lugarcomision=$("#lugarcomision").val();
-        var Fechaemision=$("#fechaemision").val();
-        var Motivo=$("#motivo").val();
-        var Disposicion=$("#disposicion").val();
-        var Fechasalida=$("#fechasalida").val();
-        var Horasalida=$("#horasalida").val();
-        var Fechallegada=$("#fechallegada").val();
-        var Horallegada=$("#horallegada").val();
-        var Fecharetorno=$("#fecharetorno").val();
-        var Horaretorno=$("#horaretorno").val();
-        var Observacion=$("#observacion").val();
+        
+        var Combodocumento=$("#comboDocumento").val();
+        var Numerodocumento=$('#numerodocumento').val();
+        var Sigladocumento=$('#sigladocumento').val();
+        var Fechadocumento=$('#fechadocumento').val();
+        var Fechainclusion=$('#fechainclusion').val();
+        var Combomovimiento=$('#comboMovimiento').val();
+        var Tiempo=$('#tiempo').val();
+        var Combounidad=$('#comboUnidad').val();
+        var Combocargo=$('#comboCargo').val();
+        var Combocip=$('#comboCip').val();
+        var Combohorario=$('#comboHorario').val();
+        var Observacion=$('#observacion').val();
 
         $.ajax({
-                 url:'{{ route('insertComision') }}',
+                 url:'{{ route('insertMovimientoIncluir') }}',
                  type: 'POST',
                  data:{
                         "_token": "{{ csrf_token() }}",
                         "idPersona":Idpersona,
-                        "numeroComision":Numerocomision,
-                        'comboComision':Combocomision,
-                        "comboDistrito":ComboDistrito,
-                        "lugarComision":Lugarcomision,
-                        "fechaEmision":Fechaemision,
-                        "motivo":Motivo,
-                        "disposicion":Disposicion,
-                        "fechaSalida":Fechasalida,
-                        "horaSalida":Horasalida,
-                        "fechaLlegada":Fechallegada,
-                        "horaLlegada":Horallegada,
-                        "fechaRetorno":Fecharetorno,
-                        "horaRetorno":Horaretorno,
+                        'comboDocumento':Combodocumento,
+                        "numerodocumento":Numerodocumento,
+                        "sigladocumento":Sigladocumento,
+                        "fechadocumento":Fechadocumento,
+                        "fechainclusion":Fechainclusion,
+                        "comboMovimiento":Combomovimiento,
+                        "tiempo":Tiempo,
+                        "comboUnidad":Combounidad,
+                        "comboCargo":Combocargo,
+                        "comboCip":Combocip,
+                        "comboHorario":Combohorario,
                         "observacion":Observacion,
                     },
                  dataType: 'JSON',
@@ -307,12 +303,7 @@
                    console.log(respuesta);
                   }
               });
-        
-
       });
-
-    	
-   	
    	
       $("#idPersona").change(function( event ) {
         event.preventDefault();
