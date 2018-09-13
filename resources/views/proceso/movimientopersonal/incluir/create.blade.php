@@ -35,7 +35,7 @@
                   </div>
                   <div class="x_content">
                     
-                   {!! Form::open(['route' => ['movimientoincluir.store'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
+                  
                     
                     <div class="panel panel-default">
                       <div class="panel-heading">BUSCADOR</div>
@@ -239,7 +239,7 @@
 
                         </div>
                       </div><br>
-                      {!! Form::close() !!}
+                    
                 </div>
               </div>
             </div>
