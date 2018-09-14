@@ -175,4 +175,44 @@ class ProcesoMovimientoPersonal extends Controller
     {
         return view('proceso.movimientopersonal.excluir.index');
     }
+
+    public function movimientoexcluircreate()
+    {
+        $documento=DB::table('documento')
+        ->select('id','nombre')
+        ->get();
+        $movimiento=DB::table('movimiento')
+        ->select('id','nombre')
+        ->get();
+        $unidad=DB::table('unidadlaboral')
+        ->select('id','codigo','nivel2','nivel4','nivel6','nivel8','nivel10','nivel12','nivel14')
+        ->where('nivel8','like','%CONFRONTA%')
+        ->get();
+        return view('proceso.movimientopersonal.excluir.create',['documento'=>$documento,'movimiento'=>$movimiento,'unidad'=>$unidad]);
+    }
+
+    public function movimientoexcluirinsertar(Request $request)
+    {
+        if($request->ajax())
+        {         
+            $insert=new MovimientoPersonal;
+            $insert->persona_id=$_POST['idPersona'];
+            $insert->documento_id=$_POST['comboDocumento'];
+            $insert->numerodocumento=$_POST['numerodocumento'];
+            $insert->sigladocumento=$_POST['sigladocumento'];
+            $insert->fechadocumento=$_POST['fechadocumento'];
+            $insert->fechainclusion=$_POST['fechaexclusion'];
+            $insert->movimiento_id=$_POST['comboMovimiento'];
+            $insert->unidad_id=$_POST['comboUnidad'];
+            $insert->cargo_id='0';
+            $insert->cip_id='0';
+            $insert->horario_id='0';
+            $insert->observacion=$_POST['observacion'];
+            $insert->tipo='excluir';
+            $insert->estado='activo';
+            $insert->save();
+        }
+        return Response(['data'=>$_POST['idPersona']]);
+    }
+    
 }

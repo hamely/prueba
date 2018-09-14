@@ -99,14 +99,14 @@ Route::post('terminarcomision/','ProcesoComisionController@terminarcomision')->n
 
 Route::get('tags','PersonaController@buscar');
 
-//Route::resource('movimientoincluir','ProcesoMovimientoIncluir');
-//Route::resource('movimientoexcluir','ProcesoMovimientoExcluir');
 Route::resource('cambiosituacionpolicial','ProcesoSituacionPolicial');
 Route::get('movimientoincluir','ProcesoMovimientoPersonal@movimientoincluir')->name('movimientoincluir');
 Route::get('movimientoincluircreate','ProcesoMovimientoPersonal@movimientoincluircreate')->name('movimmovimientoincluircreate');
 Route::post('insertMovimientoIncluir','ProcesoMovimientoPersonal@movimientoincluirinsertar')->name('insertMovimientoIncluir');
 
 Route::get('movimientoexcluir','ProcesoMovimientoPersonal@movimientoexcluir')->name('movimientoexcluir');
+Route::get('movimientoexcluircreate','ProcesoMovimientoPersonal@movimientoexcluircreate')->name('movimientoexcluircreate');
+Route::post('insertMovimientoExcluir','ProcesoMovimientoPersonal@movimientoexcluirinsertar')->name('insertMovimientoExcluir');
 
 Route::get('login','Auth\LoginController@showLogForm');
 Route::post('login','Auth\LoginController@login');
