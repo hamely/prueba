@@ -72,8 +72,8 @@
 
                     <div align="center">
                     GRADO:<label id="grado"> </label> <br/>
-                    CIP: <br/>
-                    APELLIDOS Y NOMBRES: <br/>
+                    CIP: <label id="cipP"> </label> <br/>
+                    APELLIDOS Y NOMBRES: <label id="nombrecompletopersona"></label> <br/>
                     </div>
                     <br/>
 
@@ -206,7 +206,7 @@
                       
                       <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="email">CIP</label>
+                            
                             <input type="hidden" id="idpersonaBuscador" name="idpersonaBuscador">
                         </div>
                       </div> 
@@ -317,8 +317,10 @@
                     var nombre=dato.nombres;
                     var grado=dato.nombrecorto;
                     $("#cippersona").val(cip);
-                    $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
+                    $("#nombrecompletopersona").html(nombre+' '+ape+' '+apm);
                     $("#gradopersona").val(grado);
+                    $("#grado").html(grado);
+                    $("#cipP").html(cip);
 
                   }
               });
@@ -355,9 +357,10 @@
                     var grado=dato.nombrecorto;
                     $("#cippersona").val(cip);
                     $("#idpersonaBuscador").val(id);
-                    $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
+                    $("#nombrecompletopersona").html(nombre+' '+ape+' '+apm);
                     $("#gradopersona").val(grado);
                     $("#grado").html(grado);
+                    $("#cipP").html(cip);
                   }
               });
       });
