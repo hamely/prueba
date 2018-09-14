@@ -128,9 +128,7 @@ class ProcesoMovimientoPersonal extends Controller
                             ->get()[0];
                 $numero=$numeroRegistro->numeroregistro; 
             }
-        
-           
-            
+
             $insert=new MovimientoPersonal;
             $insert->persona_id=$_POST['idPersona'];
             $insert->documento_id=$_POST['comboDocumento'];
@@ -164,8 +162,6 @@ class ProcesoMovimientoPersonal extends Controller
                 $insert->save();
             }
            
-
-           
         }
        
         return Response(['data'=>$_POST['idPersona']]);
@@ -190,11 +186,26 @@ class ProcesoMovimientoPersonal extends Controller
         ->get();
         return view('proceso.movimientopersonal.excluir.create',['documento'=>$documento,'movimiento'=>$movimiento,'unidad'=>$unidad]);
     }
-
+    
     public function movimientoexcluirinsertar(Request $request)
     {
         if($request->ajax())
-        {         
+        {
+            $nCount= DB::table('movimiento_personal')
+                            ->where('movimiento_personal.persona_id',$_POST['idPersona'])
+                            ->get();
+            if(count($nCount)==0){
+                $numero=null;
+            }else
+            {
+                $numeroRegistro= DB::table('movimiento_personal')
+                            ->select(DB::raw('max(movimiento_personal.numeroregistro) as numeroregistro'))
+                            ->groupby('movimiento_personal.persona_id')
+                            ->where('movimiento_personal.persona_id',$_POST['idPersona'])
+                            ->get()[0];
+                $numero=$numeroRegistro->numeroregistro; 
+            }
+        
             $insert=new MovimientoPersonal;
             $insert->persona_id=$_POST['idPersona'];
             $insert->documento_id=$_POST['comboDocumento'];
@@ -209,10 +220,24 @@ class ProcesoMovimientoPersonal extends Controller
             $insert->horario_id='0';
             $insert->observacion=$_POST['observacion'];
             $insert->tipo='excluir';
-            $insert->estado='activo';
-            $insert->save();
+            if($numero==null)
+            {
+                
+                $insert->numeroregistro=1;
+                $insert->estado='activo';
+                $insert->save();
+            }else {
+                           
+                MovimientoPersonal::where('persona_id', '=',$_POST['idPersona'])
+                                    ->where('numeroregistro', '=',$numero)
+                                    ->update(['estado' => 'inactivo']);
+                $numeroRe=$numero+1;
+                $insert->numeroregistro=$numeroRe;
+                $insert->estado='activo';
+                $insert->save();
+            }
         }
+       
         return Response(['data'=>$_POST['idPersona']]);
     }
-    
 }
