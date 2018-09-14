@@ -71,7 +71,7 @@
                     </div>
 
                     <div align="center">
-                    GRADO:  <br/>
+                    GRADO:<label id="grado"> </label> <br/>
                     CIP: <br/>
                     APELLIDOS Y NOMBRES: <br/>
                     </div>
@@ -208,25 +208,11 @@
                         <div class="form-group">
                             <label for="email">CIP</label>
                             <input type="hidden" id="idpersonaBuscador" name="idpersonaBuscador">
-                            <input type="number" class="form-control" id="cippersona" name="cippersona" placeholder="CIP" readonly>
                         </div>
                       </div> 
 
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Grado</label>
-                            <input type="text" class="form-control" id="gradopersona"  name="gradopersona" placeholder="Grado" readonly>
-                          
-                        </div>
-                      </div> 
-                      <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="email">Nombres y apellidos</label>
-                            <input type="text" class="form-control" id="nombrecompletopersona"  name="nombrecompletopersona" placeholder="Nombres y Apellidos" readonly>
-                          
-                        </div>
-                      </div> 
-
+                     
+                     
                     </div> 
 
                    
@@ -371,6 +357,7 @@
                     $("#idpersonaBuscador").val(id);
                     $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
                     $("#gradopersona").val(grado);
+                    $("#grado").html(grado);
                   }
               });
       });

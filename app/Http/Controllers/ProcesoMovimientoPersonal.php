@@ -99,8 +99,8 @@ class ProcesoMovimientoPersonal extends Controller
         ->select('id','codigo','nivel2','nivel4','nivel6','nivel8','nivel10','nivel12','nivel14')
         ->get();
         $cargo = DB::table('cargo')
-        ->select('id','codigo','nombrecorto')
-        ->get();
+                    ->select('id','codigo','nombrecorto')
+                    ->get();
         $horario = DB::table('horario')
         ->select('id','codigo','nombre')
         ->get();
@@ -114,6 +114,23 @@ class ProcesoMovimientoPersonal extends Controller
     {
         if($request->ajax())
         {
+            $nCount= DB::table('movimiento_personal')
+                            ->where('movimiento_personal.persona_id',$_POST['idPersona'])
+                            ->get();
+            if(count($nCount)==0){
+                $numero=null;
+            }else
+            {
+                $numeroRegistro= DB::table('movimiento_personal')
+                            ->select(DB::raw('max(movimiento_personal.numeroregistro) as numeroregistro'))
+                            ->groupby('movimiento_personal.persona_id')
+                            ->where('movimiento_personal.persona_id',$_POST['idPersona'])
+                            ->get()[0];
+                $numero=$numeroRegistro->numeroregistro; 
+            }
+        
+           
+            
             $insert=new MovimientoPersonal;
             $insert->persona_id=$_POST['idPersona'];
             $insert->documento_id=$_POST['comboDocumento'];
@@ -129,9 +146,26 @@ class ProcesoMovimientoPersonal extends Controller
             $insert->horario_id=$_POST['comboHorario'];
             $insert->observacion=$_POST['observacion'];
             $insert->tipo='incluir';
-            $insert->estado='activo';
+            if($numero==null)
+            {
+                
+                $insert->numeroregistro=1;
+                $insert->estado='activo';
+                $insert->save();
+            }else {
+                
+                
+                MovimientoPersonal::where('persona_id', '=',$_POST['idPersona'])
+                                    ->where('numeroregistro', '=',$numero)
+                                    ->update(['estado' => 'inactivo']);
+                $numeroRe=$numero+1;
+                $insert->numeroregistro=$numeroRe;
+                $insert->estado='activo';
+                $insert->save();
+            }
+           
 
-            $insert->save();
+           
         }
        
         return Response(['data'=>$_POST['idPersona']]);
