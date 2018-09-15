@@ -23,6 +23,8 @@ class CreateMovimientoPersonalTable extends Migration
             $table->date('fechainclusion')->nullable();
             $table->date('fechaexclusion')->nullable();
             $table->date('fechacambiounidad')->nullable();
+            $table->date('fechacambiocargo')->nullable();
+            $table->date('fechacambiohorario')->nullable();
             $table->integer('movimiento_id')->unsigned()->index();
             $table->integer('tiempo')->nullable(); 
             $table->integer('unidad_id')->unsigned()->index();

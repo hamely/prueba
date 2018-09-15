@@ -16,6 +16,8 @@ class MovimientoPersonal extends Model
         'fechainclusion',
         'fechaexclusion',
         'fechacambiounidad',
+        'fechacambiocargo',
+        'fechacambiohorario',
         'movimiento_id',
         'tiempo',
         'unidad_id',
