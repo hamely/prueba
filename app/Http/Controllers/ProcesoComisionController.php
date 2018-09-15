@@ -20,9 +20,7 @@ class ProcesoComisionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
-        
+    {      
         $date = Carbon::now();
         $fechaSistema=$date->format('Y-m-d');
         //return $fechaSistema;

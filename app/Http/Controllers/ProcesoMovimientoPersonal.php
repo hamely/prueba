@@ -90,23 +90,23 @@ class ProcesoMovimientoPersonal extends Controller
 
     public function movimientoincluircreate(){
         $documento = DB::table('documento')
-        ->select('id','nombre')
-        ->get();
+                    ->select('id','nombre')
+                    ->get();
         $movimiento = DB::table('movimiento')
-        ->select('id','nombre')
-        ->get();
+                    ->select('id','nombre')
+                    ->get();
         $unidad = DB::table('unidadlaboral')
-        ->select('id','codigo','nivel2','nivel4','nivel6','nivel8','nivel10','nivel12','nivel14')
-        ->get();
+                    ->select('id','codigo','nivel2','nivel4','nivel6','nivel8','nivel10','nivel12','nivel14')
+                    ->get();
         $cargo = DB::table('cargo')
                     ->select('id','codigo','nombrecorto')
                     ->get();
         $horario = DB::table('horario')
-        ->select('id','codigo','nombre')
-        ->get();
+                    ->select('id','codigo','nombre')
+                    ->get();
         $cip = DB::table('cip')
-        ->select('id','codigo','nombre')
-        ->get();
+                    ->select('id','codigo','nombre')
+                    ->get();
         return view('proceso.movimientopersonal.incluir.create',['documento' => $documento,'movimiento'=>$movimiento,'unidad'=>$unidad,'cargo'=>$cargo,'horario'=>$horario,'cip'=>$cip]);
     } 
 
@@ -212,7 +212,7 @@ class ProcesoMovimientoPersonal extends Controller
             $insert->numerodocumento=$_POST['numerodocumento'];
             $insert->sigladocumento=$_POST['sigladocumento'];
             $insert->fechadocumento=$_POST['fechadocumento'];
-            $insert->fechainclusion=$_POST['fechaexclusion'];
+            $insert->fechaexclusion=$_POST['fechaexclusion'];
             $insert->movimiento_id=$_POST['comboMovimiento'];
             $insert->unidad_id=$_POST['comboUnidad'];
             $insert->cargo_id='0';
@@ -223,6 +223,75 @@ class ProcesoMovimientoPersonal extends Controller
             if($numero==null)
             {
                 
+                $insert->numeroregistro=1;
+                $insert->estado='activo';
+                $insert->save();
+            }else {
+                           
+                MovimientoPersonal::where('persona_id', '=',$_POST['idPersona'])
+                                    ->where('numeroregistro', '=',$numero)
+                                    ->update(['estado' => 'inactivo']);
+                $numeroRe=$numero+1;
+                $insert->numeroregistro=$numeroRe;
+                $insert->estado='activo';
+                $insert->save();
+            }
+        }
+       
+        return Response(['data'=>$_POST['idPersona']]);
+    }
+    public function movimientocambiounidad()
+    {
+        return view('proceso.movimientopersonal.cambiounidad.index');
+    }
+    public function movimientocambiounidadcreate()
+    {
+        $documento=DB::table('documento')
+                    ->select('id','nombre')
+                    ->get();
+        $unidad = DB::table('unidadlaboral')
+                    ->select('id','codigo','nivel2','nivel4','nivel6','nivel8','nivel10','nivel12','nivel14')
+                    ->get();
+        $cargo = DB::table('cargo')
+                    ->select('id','codigo','nombrecorto')
+                    ->get();
+        return view('proceso.movimientopersonal.cambiounidad.create',['documento'=>$documento,'unidad'=>$unidad,'cargo'=>$cargo]);
+    }
+    public function movimientocambiounidadinsertar(Request $request)
+    {
+        if($request->ajax())
+        {
+            $nCount= DB::table('movimiento_personal')
+                            ->where('movimiento_personal.persona_id',$_POST['idPersona'])
+                            ->get();
+            if(count($nCount)==0){
+                $numero=null;
+            }else
+            {
+                $numeroRegistro= DB::table('movimiento_personal')
+                            ->select(DB::raw('max(movimiento_personal.numeroregistro) as numeroregistro'))
+                            ->groupby('movimiento_personal.persona_id')
+                            ->where('movimiento_personal.persona_id',$_POST['idPersona'])
+                            ->get()[0];
+                $numero=$numeroRegistro->numeroregistro; 
+            }
+        
+            $insert=new MovimientoPersonal;
+            $insert->persona_id=$_POST['idPersona'];
+            $insert->documento_id=$_POST['comboDocumento'];
+            $insert->numerodocumento=$_POST['numerodocumento'];
+            $insert->sigladocumento=$_POST['sigladocumento'];
+            $insert->fechadocumento=$_POST['fechadocumento'];
+            $insert->fechacambiounidad=$_POST['fechacambiounidad'];
+            $insert->movimiento_id='0';
+            $insert->unidad_id=$_POST['comboUnidad'];
+            $insert->cargo_id='0';
+            $insert->cip_id='0';
+            $insert->horario_id='0';
+            $insert->observacion=$_POST['observacion'];
+            $insert->tipo='cambiounidad';
+            if($numero==null)
+            {
                 $insert->numeroregistro=1;
                 $insert->estado='activo';
                 $insert->save();
