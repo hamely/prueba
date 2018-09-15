@@ -11,7 +11,7 @@
                       <li><a href="{{ url('movimientoexcluir') }}">Excluir</a></li>
                       <li><a href="{{ url('movimientocambiounidad')}}">Cambio de unidad </a></li>
                       <li><a href="{{ url('movimientocambiocargo')}}">Cambio de cargo</a></li>
-                      <li><a href="">Cambio de situación cip</a></li>
+                      <li><a href="{{ url('movimientocambiosituacioncip')}}">Cambio de situación cip</a></li>
                       <li><a href="">Cambio de funcion policial y modalidad de horario</a></li>
 
                     </ul>

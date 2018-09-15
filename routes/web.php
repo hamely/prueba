@@ -117,6 +117,10 @@ Route::get('movimientocambiocargo','ProcesoMovimientoPersonal@movimientocambioca
 Route::get('movimientocambiocargocreate','ProcesoMovimientoPersonal@movimientocambiocargocreate')->name('movimientocambiocargocreate');
 Route::post('insertMovimientoCambioCargo','ProcesoMovimientoPersonal@movimientocambiocargoinsertar')->name('insertMovimientoCambioCargo');
 
+Route::get('movimientocambiosituacioncip','ProcesoMovimientoPersonal@movimientocambiosituacioncip')->name('movimientocambiosituacioncip');
+Route::get('movimientocambiositucioncipcreate','ProcesoMovimientoPersonal@movimientocambiosituacioncipcreate')->name('movimientocambiositucioncipcreate');
+Route::post('insertMovimientoCambioSituacionCip','ProcesoMovimientoPersonal@movimientocambiosituacioncipinsertar')->name('insertMovimientoCambioSituacionCip');
+
 Route::get('login','Auth\LoginController@showLogForm');
 Route::post('login','Auth\LoginController@login');
 Route::get('logout','Auth\LoginController@logout');
