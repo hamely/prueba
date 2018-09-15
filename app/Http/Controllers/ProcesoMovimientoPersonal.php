@@ -444,4 +444,72 @@ class ProcesoMovimientoPersonal extends Controller
        
         return Response(['data'=>$_POST['idPersona']]);
     }
+
+    public function movimientocambiohorario()
+    {
+        return view('proceso.movimientopersonal.cambiohorario.index');
+    }
+    public function movimientocambiohorariocreate()
+    {
+        $documento=DB::table('documento')
+                    ->select('id','nombre')
+                    ->get();
+        $horario = DB::table('horario')
+                    ->select('id','codigo','nombre')
+                    ->get();
+        return view('proceso.movimientopersonal.cambiohorario.create',['documento'=>$documento,'horario'=>$horario]);
+    }
+
+    public function movimientocambiohorarioinsert(Request $request)
+    {
+        if($request->ajax())
+        {
+            $nCount= DB::table('movimiento_personal')
+                            ->where('movimiento_personal.persona_id',$_POST['idPersona'])
+                            ->get();
+            if(count($nCount)==0){
+                $numero=null;
+            }else
+            {
+                $numeroRegistro= DB::table('movimiento_personal')
+                            ->select(DB::raw('max(movimiento_personal.numeroregistro) as numeroregistro'))
+                            ->groupby('movimiento_personal.persona_id')
+                            ->where('movimiento_personal.persona_id',$_POST['idPersona'])
+                            ->get()[0];
+                $numero=$numeroRegistro->numeroregistro; 
+            }
+        
+            $insert=new MovimientoPersonal;
+            $insert->persona_id=$_POST['idPersona'];
+            $insert->documento_id=$_POST['comboDocumento'];
+            $insert->numerodocumento=$_POST['numerodocumento'];
+            $insert->sigladocumento=$_POST['sigladocumento'];
+            $insert->fechadocumento=$_POST['fechadocumento'];
+            $insert->fechacambiohorario=$_POST['fechacambiohorario'];
+            $insert->movimiento_id='0';
+            $insert->unidad_id='0';
+            $insert->cargo_id='0';
+            $insert->cip_id='0';
+            $insert->horario_id=$_POST['comboHorario'];
+            $insert->observacion=$_POST['observacion'];
+            $insert->tipo='cambiohorario';
+            if($numero==null)
+            {
+                $insert->numeroregistro=1;
+                $insert->estado='activo';
+                $insert->save();
+            }else {
+                           
+                MovimientoPersonal::where('persona_id', '=',$_POST['idPersona'])
+                                    ->where('numeroregistro', '=',$numero)
+                                    ->update(['estado' => 'inactivo']);
+                $numeroRe=$numero+1;
+                $insert->numeroregistro=$numeroRe;
+                $insert->estado='activo';
+                $insert->save();
+            }
+        }
+       
+        return Response(['data'=>$_POST['idPersona']]);
+    }
 }

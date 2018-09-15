@@ -121,6 +121,10 @@ Route::get('movimientocambiosituacioncip','ProcesoMovimientoPersonal@movimientoc
 Route::get('movimientocambiositucioncipcreate','ProcesoMovimientoPersonal@movimientocambiosituacioncipcreate')->name('movimientocambiositucioncipcreate');
 Route::post('insertMovimientoCambioSituacionCip','ProcesoMovimientoPersonal@movimientocambiosituacioncipinsertar')->name('insertMovimientoCambioSituacionCip');
 
+Route::get('movimientocambiohorario','ProcesoMovimientoPersonal@movimientocambiohorario')->name('movimientocambiohorario');
+Route::get('movimientocambiohorariocreate','ProcesoMovimientoPersonal@movimientocambiohorariocreate')->name('movimientocambiohorariocreate');
+Route::post('insertMovimientoCambioHorario','ProcesoMovimientoPersonal@movimientocambiohorarioinsert')->name('insertMovimientoCambioHorario');
+
 Route::get('login','Auth\LoginController@showLogForm');
 Route::post('login','Auth\LoginController@login');
 Route::get('logout','Auth\LoginController@logout');
