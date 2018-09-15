@@ -43,18 +43,14 @@
                   <table id="example" class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th> CIP</th>
-                        <th>DNI</th>
-                        <th>Apellidos y Nombres </th>
-                        <th>Fecha nacimiento</th>
-                        <th>Sexo</th>
-                        <th>N° de celular</th>
-                        <th>Email</th>
-                        <th>Estado civil</th>
-                        <th>Unidad incluida</th>
-              
-                        <th>Fecha asignacion</th>
-                        <th>Observación</th>
+                        <th> NRO</th>
+                        <th>CARNET</th>
+                        <th>APELLIDOS Y NOMBRES </th>
+                        <th>CÓDIGO UNIDAD</th>
+                        <th>CÓDIGO CARGO</th>
+                        <th>CÓDIGO FP/MH</th>
+                        <th>DOCUMENTO (CON QUE LLEGA A LA UNIDAD)</th>
+                        
                         <th></th>
 
                       </tr>
@@ -63,10 +59,6 @@
          
                           <tr>
             
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
                               <td></td>
                               <td></td>
                               <td></td>
