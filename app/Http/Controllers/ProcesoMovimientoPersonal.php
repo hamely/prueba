@@ -209,7 +209,17 @@ class ProcesoMovimientoPersonal extends Controller
 
     public function movimientoexcluir()
     {
-        return view('proceso.movimientopersonal.excluir.index');
+        $data = DB::table('movimiento_personal')
+        ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','documento.nombre as nombredocumento')
+        ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
+        ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
+        ->join('documento','documento.id','=','movimiento_personal.documento_id')
+        ->where('movimiento_personal.tipo','=','excluir')
+        ->where('movimiento_personal.estado','=','activo')
+        ->orderBy('movimiento_personal.id', 'desc')
+        ->get();
+        //dd($data);
+        return view('proceso.movimientopersonal.excluir.index',['data'=>$data]);
     }
 
     public function movimientoexcluircreate()
