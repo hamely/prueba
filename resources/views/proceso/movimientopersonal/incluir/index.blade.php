@@ -15,7 +15,8 @@
                 <div class="x_panel">
                   <div class="x_title">
                   <!--<a href="" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>-->
-                  <a href="{{('movimientoincluircreate')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
+                  <a href="{{('movimientoincluircreate')}}" class="btn btn-sm btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
+                  <a href="{{route('reporteexcelmovimientoincluir')}}" class="btn btn-sm btn-primary">EXCEL</a>
                     <h2>Lista de personas incluidas<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
@@ -37,7 +38,7 @@
                     <div class="clearfix"></div>
                   </div>
                  
-
+          
                    <div class="x_content">
                   
                   <table id="example" class="table table-striped table-bordered">
@@ -56,19 +57,20 @@
                       </tr>
                     </thead>
                     <tbody>
-         
+                    @foreach($data as $item)
                           <tr>
             
                               <td></td>
+                              <td>{{$item->cip}}</td>
+                              <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
+                              <td>{{$item->codigounidad}}</td>
+                              <td>{{$item->codigocargo}}</td>
                               <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
+                              <td>{{$item->nombredocumento}}</td>
                               <td>                        
                               </td>
                           </tr>
+                    @endforeach
                     </tbody>
                   </table>
                 </div>
