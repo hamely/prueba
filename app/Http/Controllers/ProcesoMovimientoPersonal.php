@@ -186,7 +186,7 @@ class ProcesoMovimientoPersonal extends Controller
             $excel->sheet('Excel sheet', function($sheet) {
 
                 //otra opción -> $products = Product::select('name')->get();
-
+              
                 $data = DB::table('movimiento_personal')
                             ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento')
                             ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
@@ -196,7 +196,8 @@ class ProcesoMovimientoPersonal extends Controller
                             ->where('movimiento_personal.tipo','=','incluir')
                             ->where('movimiento_personal.estado','=','activo')
                             ->orderBy('movimiento_personal.id', 'desc')
-                            ->get();           
+                            ->get();       
+                $data= json_decode( json_encode($data), true);    
                 $sheet->fromArray($data);
 
                 $sheet->setOrientation('landscape');
