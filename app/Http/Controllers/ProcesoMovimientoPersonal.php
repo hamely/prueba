@@ -451,7 +451,17 @@ class ProcesoMovimientoPersonal extends Controller
 
     public function movimientocambiosituacioncip()
     {
-        return view('proceso.movimientopersonal.cambiosituacioncip.index');
+        $data = DB::table('movimiento_personal')
+        ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','documento.nombre as nombredocumento')
+        ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
+        ->join('cip', 'cip.id', '=', 'movimiento_personal.cip_id')
+        ->join('documento','documento.id','=','movimiento_personal.documento_id')
+        ->where('movimiento_personal.tipo','=','cambiosituacioncip')
+        ->where('movimiento_personal.estado','=','activo')
+        ->orderBy('movimiento_personal.id', 'desc')
+        ->get();
+        //dd($data);
+        return view('proceso.movimientopersonal.cambiosituacioncip.index',['data'=>$data]);
     }
 
     public function movimientocambiosituacioncipcreate()
@@ -518,7 +528,16 @@ class ProcesoMovimientoPersonal extends Controller
 
     public function movimientocambiohorario()
     {
-        return view('proceso.movimientopersonal.cambiohorario.index');
+        $data = DB::table('movimiento_personal')
+        ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','documento.nombre as nombredocumento')
+        ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
+        ->join('horario', 'horario.id', '=', 'movimiento_personal.horario_id')
+        ->join('documento','documento.id','=','movimiento_personal.documento_id')
+        ->where('movimiento_personal.tipo','=','cambiohorario')
+        ->where('movimiento_personal.estado','=','activo')
+        ->orderBy('movimiento_personal.id', 'desc')
+        ->get();
+        return view('proceso.movimientopersonal.cambiohorario.index',['data'=>$data]);
     }
     public function movimientocambiohorariocreate()
     {
