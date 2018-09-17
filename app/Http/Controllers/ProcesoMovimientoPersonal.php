@@ -373,7 +373,17 @@ class ProcesoMovimientoPersonal extends Controller
 
     public function movimientocambiocargo()
     {
-        return view('proceso.movimientopersonal.cambiocargo.index');
+        $data = DB::table('movimiento_personal')
+        ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','cargo.codigo as codigocargo','documento.nombre as nombredocumento')
+        ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
+        ->join('cargo', 'cargo.id', '=', 'movimiento_personal.cargo_id')
+        ->join('documento','documento.id','=','movimiento_personal.documento_id')
+        ->where('movimiento_personal.tipo','=','cambiocargo')
+        ->where('movimiento_personal.estado','=','activo')
+        ->orderBy('movimiento_personal.id', 'desc')
+        ->get();
+        //dd($data);
+        return view('proceso.movimientopersonal.cambiocargo.index',['data'=>$data]);
     }
     public function movimientocambiocargocreate()
     {
