@@ -104,6 +104,7 @@ Route::resource('cambiosituacionpolicial','ProcesoSituacionPolicial');
 Route::get('movimientoincluir','ProcesoMovimientoPersonal@movimientoincluir')->name('movimientoincluir');
 Route::get('movimientoincluircreate','ProcesoMovimientoPersonal@movimientoincluircreate')->name('movimmovimientoincluircreate');
 Route::post('insertMovimientoIncluir','ProcesoMovimientoPersonal@movimientoincluirinsertar')->name('insertMovimientoIncluir');
+Route::get('reporteexcelmovimientoincluir', 'ProcesoMovimientoPersonal@excelmovimientoincluir')->name('reporteexcelmovimientoincluir');
 
 Route::get('movimientoexcluir','ProcesoMovimientoPersonal@movimientoexcluir')->name('movimientoexcluir');
 Route::get('movimientoexcluircreate','ProcesoMovimientoPersonal@movimientoexcluircreate')->name('movimientoexcluircreate');

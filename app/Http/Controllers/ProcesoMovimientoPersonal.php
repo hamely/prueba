@@ -167,6 +167,25 @@ class ProcesoMovimientoPersonal extends Controller
         return Response(['data'=>$_POST['idPersona']]);
     }
 
+    public function excelmovimientoincluir()
+    {
+        Excel::create('Laravel Excel', function($excel) {
+            $excel->sheet('Excel sheet', function($sheet) {
+                //otra opción -> $products = Product::select('name')->get();
+                $data = DB::table('movimiento_personal')
+                ->select('*')
+                ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
+                ->where('movimiento_personal.tipo','=','incluir')
+                ->where('movimiento_personal.estado','=','activo')
+                ->get();
+                //dd($data);
+               // $data = Product::all();                
+                $sheet->fromArray($data);
+                $sheet->setOrientation('landscape');
+            });
+        })->export('xls');
+    }
+
     public function movimientoexcluir()
     {
         return view('proceso.movimientopersonal.excluir.index');
