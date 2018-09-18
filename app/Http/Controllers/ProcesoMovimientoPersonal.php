@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\movimientoIncluir;
 use DB;
 use App\MovimientoPersonal;
 
@@ -182,29 +183,31 @@ class ProcesoMovimientoPersonal extends Controller
 
     public function excelmovimientoincluir()
     {
-        Excel::create('Laravel Excel', function($excel) {
-            $excel->sheet('Excel sheet', function($sheet) {
+        // Excel::create('Laravel Excel', function($excel) {
+        //     $excel->sheet('Excel sheet', function($sheet) {
 
-                //otra opción -> $products = Product::select('name')->get();
+        //         //otra opción -> $products = Product::select('name')->get();
               
-                $data = DB::table('movimiento_personal')
-                            ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento')
-                            ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
-                            ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
-                            ->join('cargo','cargo.id','=','movimiento_personal.cargo_id')
-                            ->join('documento','documento.id','=','movimiento_personal.documento_id')
-                            ->where('movimiento_personal.tipo','=','incluir')
-                            ->where('movimiento_personal.estado','=','activo')
-                            ->orderBy('movimiento_personal.id', 'desc')
-                            ->get();       
-                $data= json_decode( json_encode($data), true);    
-                $sheet->fromArray($data);
+        //         $data = DB::table('movimiento_personal')
+        //                     ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento')
+        //                     ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
+        //                     ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
+        //                     ->join('cargo','cargo.id','=','movimiento_personal.cargo_id')
+        //                     ->join('documento','documento.id','=','movimiento_personal.documento_id')
+        //                     ->where('movimiento_personal.tipo','=','incluir')
+        //                     ->where('movimiento_personal.estado','=','activo')
+        //                     ->orderBy('movimiento_personal.id', 'desc')
+        //                     ->get();       
+        //         $data= json_decode( json_encode($data), true);    
+        //         $sheet->fromArray($data);
 
-                $sheet->setOrientation('landscape');
+        //         $sheet->setOrientation('landscape');
 
-            });
-        })->export('xls');
+        //     });
+        // })->export('xls');
         
+
+        return Excel::download(new movimientoIncluir, 'movimiento.xlsx');
     }
 
     public function movimientoexcluir()
@@ -308,7 +311,7 @@ class ProcesoMovimientoPersonal extends Controller
                             ->get();       
                 $data= json_decode( json_encode($data), true);   
 
-                $excel->fromArray($data);
+                $excel=fromArray($data);
 
                 $excel->setOrientation('landscape');
              
