@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\movimientoIncluir;
+use App\Exports\movimientoExcluir;
 use DB;
 use App\MovimientoPersonal;
 
@@ -295,29 +296,7 @@ class ProcesoMovimientoPersonal extends Controller
     }
     public function excelmovimientoexcluir()
     {
-
-        Excel::create('Laravel Excel', function($excel) {
-                $excel->sheet('Excel sheet', function($sheet) {
-    
-            //         //otra opción -> $products = Product::select('name')->get();
-                  
-                     $data = DB::table('movimiento_personal')
-                                 ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento')
-                                 ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
-                                 ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
-                                 ->join('cargo','cargo.id','=','movimiento_personal.cargo_id')
-                                 ->join('documento','documento.id','=','movimiento_personal.documento_id')
-                                 ->where('movimiento_personal.tipo','=','incluir')
-                                 ->where('movimiento_personal.estado','=','activo')
-                                 ->orderBy('movimiento_personal.id', 'desc')
-                                 ->get();       
-                     $data= json_decode( json_encode($data), true);    
-                     $sheet->fromArray($data);
-    
-                     $sheet->setOrientation('landscape');
-    
-               });
-             })->export('xls');
+        return Excel::download(new movimientoExcluir, 'movimientoexcluir.xlsx');
     }
 
     public function movimientocambiounidad()
@@ -401,6 +380,48 @@ class ProcesoMovimientoPersonal extends Controller
         return Response(['data'=>$_POST['idPersona']]);
     }
 
+    public function excelcambiounidad()
+    {
+        Excel::create('cambio cargo', function($excel) {
+                $excel->sheet('Excel sheet', function($sheet) {
+    
+                    //otra opción -> $products = Product::select('name')->get();
+                  
+                    $data = DB::table('movimiento_personal')
+                                 ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento')
+                                 ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
+                                 ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
+                                 ->join('cargo','cargo.id','=','movimiento_personal.cargo_id')
+                                 ->join('documento','documento.id','=','movimiento_personal.documento_id')
+                                 ->where('movimiento_personal.tipo','=','incluir')
+                                 ->where('movimiento_personal.estado','=','activo')
+                                 ->orderBy('movimiento_personal.id', 'desc')
+                                 ->get();       
+                    $data= json_decode( json_encode($data), true);    
+                    $sheet->fromArray($data);
+    
+                    $sheet->setOrientation('landscape');
+                    $sheet->setBorder('A1:G1', 'thin');
+             
+                    $sheet->cells('A1:G1', function($cells)
+                        {
+                        $cells->setBackground('#000000');
+                        $cells->setFontColor('#FFFFFF');
+                        $cells->setAlignment('center');
+                        $cells->setValignment('center');
+                        });
+                        $sheet->setHeight(array
+                        (
+                         '1' => '30'
+                        )
+                       );   
+                       $sheet->getStyle('A1:B5' , $sheet->getHighestRow())->getAlignment()->setWrapText(true);
+                       $sheet->setTitle("Lista Revista-Cargo unidad");
+                    //$sheet->prependRow(1, array( 'FORMATO 01 (CODIFICACIÓN CAMBIO UNIDAD)' ))->cell('A1', function($cell) { $cell->setFontWeight('bold'); $cell->setFontSize(14); }); 
+                 });
+            })->export('xls');
+
+    }
     public function movimientocambiocargo()
     {
         $data = DB::table('movimiento_personal')

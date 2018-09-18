@@ -114,6 +114,7 @@ Route::get('reporteexcelmovimientoexcluir','ProcesoMovimientoPersonal@excelmovim
 Route::get('movimientocambiounidad','ProcesoMovimientoPersonal@movimientocambiounidad')->name('movimientocambiounidad');
 Route::get('movimientocambiounidadcreate','ProcesoMovimientoPersonal@movimientocambiounidadcreate')->name('movimientocambiounidadcreate');
 Route::post('insertMovimientoCambioUnidad','ProcesoMovimientoPersonal@movimientocambiounidadinsertar')->name('insertMovimientoCambioUnidad');
+Route::get('reporteexcelcambiounidad','ProcesoMovimientoPersonal@excelcambiounidad')->name('reporteexcelcambiounidad');
 
 Route::get('movimientocambiocargo','ProcesoMovimientoPersonal@movimientocambiocargo')->name('movimientocambiocargo');
 Route::get('movimientocambiocargocreate','ProcesoMovimientoPersonal@movimientocambiocargocreate')->name('movimientocambiocargocreate');

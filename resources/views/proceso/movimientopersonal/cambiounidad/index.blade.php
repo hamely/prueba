@@ -16,6 +16,7 @@
                   <div class="x_title">
                   <!--<a href="" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>-->
                   <a href="{{('movimientocambiounidadcreate')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
+                  <a href="{{route('reporteexcelcambiounidad')}}" class="btn btn-sm btn-primary">EXCEL</a>
                     <h2>Lista de cambio de unidad<small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                     
