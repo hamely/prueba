@@ -10,10 +10,10 @@ class movimientoIncluir implements FromView
     public function view():view
     {
         $data = DB::table('movimiento_personal')
-                             ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento')
-                             ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
-                             ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
-                             ->join('cargo','cargo.id','=','movimiento_personal.cargo_id')
+                            ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento')
+                            ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
+                            ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
+                            ->join('cargo','cargo.id','=','movimiento_personal.cargo_id')
                             ->join('documento','documento.id','=','movimiento_personal.documento_id')
                             ->where('movimiento_personal.tipo','=','incluir')
                             ->where('movimiento_personal.estado','=','activo')
@@ -23,7 +23,7 @@ class movimientoIncluir implements FromView
                                 'data' =>$data
                             ]);
     }
- 
+
     public function headings(): array
     {
         return [
@@ -33,7 +33,6 @@ class movimientoIncluir implements FromView
             'APELLIDO MATERNO',
             'NOMBRE',
             'CODIGO DE UNIDAD',
-
             'DOCUMENTO'
         ];
     }

@@ -296,28 +296,28 @@ class ProcesoMovimientoPersonal extends Controller
     public function excelmovimientoexcluir()
     {
 
-
-                //otra opción -> $products = Product::select('name')->get();
-              
-                $data = DB::table('movimiento_personal')
-                            ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento')
-                            ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
-                            ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
-                            ->join('cargo','cargo.id','=','movimiento_personal.cargo_id')
-                            ->join('documento','documento.id','=','movimiento_personal.documento_id')
-                            ->where('movimiento_personal.tipo','=','incluir')
-                            ->where('movimiento_personal.estado','=','activo')
-                            ->orderBy('movimiento_personal.id', 'desc')
-                            ->get();       
-                $data= json_decode( json_encode($data), true);   
-
-                $excel=fromArray($data);
-
-                $excel->setOrientation('landscape');
-             
-                $excel=Excel::create('reportes.personacomision.papeletareincorporacioncomision', compact());
-                $excel->export('xls');
-       
+        Excel::create('Laravel Excel', function($excel) {
+                $excel->sheet('Excel sheet', function($sheet) {
+    
+            //         //otra opción -> $products = Product::select('name')->get();
+                  
+                     $data = DB::table('movimiento_personal')
+                                 ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento')
+                                 ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
+                                 ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
+                                 ->join('cargo','cargo.id','=','movimiento_personal.cargo_id')
+                                 ->join('documento','documento.id','=','movimiento_personal.documento_id')
+                                 ->where('movimiento_personal.tipo','=','incluir')
+                                 ->where('movimiento_personal.estado','=','activo')
+                                 ->orderBy('movimiento_personal.id', 'desc')
+                                 ->get();       
+                     $data= json_decode( json_encode($data), true);    
+                     $sheet->fromArray($data);
+    
+                     $sheet->setOrientation('landscape');
+    
+               });
+             })->export('xls');
     }
 
     public function movimientocambiounidad()
