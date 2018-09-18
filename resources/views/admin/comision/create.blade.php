@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('admin.layout.modulos.mantenimientoyusuarios.master')
 
 @section('content')
 <div class="right_col" role="main">
