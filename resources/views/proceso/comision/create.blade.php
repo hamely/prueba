@@ -39,7 +39,15 @@
                     <div class="panel panel-default">
                       <div class="panel-heading">BUSCADOR</div>
                       <div class="panel-body">
-                        
+                      @if(count($errors) > 0)
+                        <div class="errors">
+                          <ul>
+                          @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                          @endforeach
+                          </ul>
+                        </div>
+                      @endif
                     <div class="col-sm-12">
 
                       <div class="col-sm-3">
@@ -94,12 +102,12 @@
                           
                         </div>
                       </div> 
-
+                    
                       <div class="col-sm-6">
                         <div class="form-group">
                             <label for="email">Número comision</label>
-                            <input type="number" class="form-control" id="numerocomision" name="numerocomision" placeholder="N° de comisión">
-                            
+                            <input type="number" class="form-control" id="numerocomision" name="numerocomision" value="{{ old('numerocomision') }}" placeholder="N° de comisión">
+                            <p style="color:red;">{{ $errors->first('numerocomision') }}</p>
                         </div>
                       </div> 
 
@@ -145,17 +153,16 @@
                                     
                                   </select>
                             </div>
-                         </div>
-                         
+                         </div>   
                       </div> 
 
                        <div class="col-sm-12">
                       
                             <div class="form-group">
                                 <label for="email">Lugar:</label>
-                                  <input id="lugarcomision"  name="lugarcomision" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar lugar de comisión" required="required" type="text">
+                                  <input id="lugarcomision"  name="lugarcomision" value="{{ old('lugarcomision') }}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar lugar de comisión" required="required" type="text">
+                                  <p style="color:red;">{{ $errors->first('lugarcomision') }}</p>
                               </div>
-
                         </div> 
                         <div class="col-sm-12">
                       

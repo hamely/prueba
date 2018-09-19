@@ -13,6 +13,8 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Session;
 use Carbon\Carbon;
 use App\Http\Requests\ProcesoComisionRequest;
+use DispatchesJobs, ValidatesRequests;
+
 class ProcesoComisionController extends Controller
 {
     /**
@@ -149,8 +151,55 @@ class ProcesoComisionController extends Controller
         //
     }
 
+    //public function asignarComision(ProcesoComisionRequest $request)
     public function asignarComision(Request $request)
     {
+        /*try {
+
+            $arrValid = array(
+                'numerocomision' => 'required|integer',
+            );
+            $request->validate(
+                $arrValid,
+                array(
+                    'numerocomision.required' => 'User Id is missing',
+                    'numerocomision.integer' => 'User Id must be an integer',
+                )
+            );
+
+        } catch (\Illuminate\Validate\ValidationException $e ) {
+            $arrError = $e->errors();
+            foreach ($arrValid as $key=>$value ) {
+                $arrImplode[] = implode( ', ', $arrError[$key] );
+            }
+            $message = implode(', ', $arrImplode);
+            $arrResponse = array(
+                'result' => 0,
+                'reason' => $message,
+                'data' => array(),
+                'statusCode' => $e->status,
+            );
+        } catch (\Exception $ex) {
+
+            $arrResponse = array(
+                'result' => 0,
+                'reason' => $ex->getMessage(),
+                'data' => array(),
+                'statusCode' => 404
+            );
+
+        } finally {
+
+            return response()->json($arrResponse);
+
+        }*/
+
+        $this->validate($request, [
+            'numerocomision' => 'required|numeric',
+        ]);
+    
+        echo 'Ahora sé que los datos están validados. Puedo insertar en la base de datos';
+           
         if($request->ajax())
         {       
             $insert=new AsignarComision;
@@ -174,6 +223,7 @@ class ProcesoComisionController extends Controller
         }
         Session::flash('Mensaje','Se registró correctamente la comision');
         return Response(['data'=>$_POST['idPersona']]);
+
 
     }
     public function pdfpapeletacomision($id='')

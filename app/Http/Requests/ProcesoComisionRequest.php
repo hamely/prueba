@@ -25,12 +25,14 @@ class ProcesoComisionRequest extends FormRequest
     {
         return [
             'numerocomision'=>'required',
+            'lugarcomision'=>'required',
         ];
     }
     public function messages()
     {
         return [
-            'numerocomision.required'=>'Debe ingresar número de comision',
+            'numerocomision.required'=>'Debe ingresar el tipo de documento',
+            'lugarcomision.required'=>'Debe ingresar el lugar de comision',
         ];
     }
 }
