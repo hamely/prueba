@@ -10,7 +10,12 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class movimientoExcluir implements FromCollection,  WithMapping, WithHeadings , WithTitle, WithColumnFormatting
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Events\BeforeExport;
+use Maatwebsite\Excel\Events\BeforeWriting;
+use Maatwebsite\Excel\Events\BeforeSheet;
+
+class movimientoExcluir implements FromCollection,  WithMapping, WithHeadings , WithTitle, WithColumnFormatting, WithEvents
 {
 
     /**
@@ -63,6 +68,31 @@ class movimientoExcluir implements FromCollection,  WithMapping, WithHeadings , 
             'A' => NumberFormat::FORMAT_GENERAL,
             'B' => NumberFormat::FORMAT_GENERAL,
             'C' => NumberFormat::FORMAT_GENERAL,
+            'B' => '0',
+                'D' => '0.00',
+                'F' => '@',
+                'F' => 'yyyy-mm-dd',
+               
         ];
+    }
+
+    public function registerEvents(): array
+    {
+        return [
+            // Handle by a closure.
+            BeforeExport::class => function(BeforeExport $event) {
+                $event->writer->getProperties()->setCreator('Patrick');
+            },
+            
+            // Array callable, refering to a static method.
+            BeforeWriting::class => [self::class, 'beforeWriting'],
+            
+            // Using a class with an __invoke method.
+            //BeforeSheet::class => new BeforeSheetHandler()
+        ];
+    }
+    public static function beforeWriting(BeforeWriting $event) 
+    {
+        //
     }
 }

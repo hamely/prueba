@@ -385,6 +385,11 @@ class ProcesoMovimientoPersonal extends Controller
         Excel::create('cambio cargo', function($excel) {
                 $excel->sheet('Excel sheet', function($sheet) {
     
+                    $sheet->mergeCells('A1:E1');
+                    $sheet->row(1,['LISTA DE REVISTA']);
+                    $sheet->mergeCells('A2:E2');
+                    $sheet->row(2,['LISTA DE REVISTA']);
+                    $sheet->row(3,['CARNET','APELLIDOS Y NOMBRES','CODIGO UNIDAD','CODIGO CARGO']);
                     //otra opción -> $products = Product::select('name')->get();
                   
                     $data = DB::table('movimiento_personal')
@@ -397,11 +402,23 @@ class ProcesoMovimientoPersonal extends Controller
                                  ->where('movimiento_personal.estado','=','activo')
                                  ->orderBy('movimiento_personal.id', 'desc')
                                  ->get();       
-                    $data= json_decode( json_encode($data), true);    
-                    $sheet->fromArray($data);
+                    //$array=[];
+                    foreach($data as $item)
+                    {
+                        $row=[];
+                        $row[0]=$item->cip;
+                        $row[1]=$item->apellidopaterno.' '.$item->apellidomaterno.' '.$item->nombres;
+                        $row[2]=$item->codigounidad;
+                        $row[3]=$item->codigocargo;
+                        $row[4]=$item->nombredocumento;
+                        $array[]=$row;
+                        $sheet->appendRow($row);
+                    }
+                    //$data= json_decode( json_encode($data), true);    
+                    //$sheet->fromArray($array);
     
-                    $sheet->setOrientation('landscape');
-                    $sheet->setBorder('A1:G1', 'thin');
+                    //$sheet->setOrientation('landscape');
+                    /*$sheet->setBorder('A1:G1', 'thin');
              
                     $sheet->cells('A1:G1', function($cells)
                         {
@@ -414,7 +431,7 @@ class ProcesoMovimientoPersonal extends Controller
                         (
                          '1' => '30'
                         )
-                       );   
+                       );   */
                        $sheet->getStyle('A1:B5' , $sheet->getHighestRow())->getAlignment()->setWrapText(true);
                        $sheet->setTitle("Lista Revista-Cargo unidad");
                     //$sheet->prependRow(1, array( 'FORMATO 01 (CODIFICACIÓN CAMBIO UNIDAD)' ))->cell('A1', function($cell) { $cell->setFontWeight('bold'); $cell->setFontSize(14); }); 
