@@ -89,7 +89,7 @@ class ProcesoMovimientoPersonal extends Controller
     public function movimientoincluir()
     {
         $data = DB::table('movimiento_personal')
-        ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento')
+        ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento','movimiento_personal.numerodocumento','unidadlaboral.nivel2','unidadlaboral.nivel4','unidadlaboral.nivel6','unidadlaboral.nivel8','unidadlaboral.nivel10','unidadlaboral.nivel12','unidadlaboral.nivel14')
         ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
         ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
         ->join('cargo','cargo.id','=','movimiento_personal.cargo_id')
@@ -97,7 +97,7 @@ class ProcesoMovimientoPersonal extends Controller
         ->where('movimiento_personal.tipo','=','incluir')
         ->where('movimiento_personal.estado','=','activo')
         ->orderBy('movimiento_personal.id', 'desc')
-        ->get();
+        ->get(); 
         //dd($data);
         return view('proceso.movimientopersonal.incluir.index', compact('data'));
         //return view('proceso.movimientopersonal.incluir.index',['data'=>$data]);
@@ -184,6 +184,82 @@ class ProcesoMovimientoPersonal extends Controller
 
     public function excelmovimientoincluir()
     {
+        Excel::create('Lista revista-incluir', function($excel) {
+            $excel->sheet('Excel sheet', function($sheet) {
+
+                $sheet->mergeCells('A1:G1');
+                //$sheet->prependRow(1, array( 'Example header' ))->cell('A1', function($cell) { $cell->setFontWeight('bold'); $cell->setFontSize(18); });
+                //$sheet->row(1,array('FORMATO 01 (CODIFICACIÓN DE INCLUSIÓN)'))->cell('A1', function($cell) { $cell->setFontWeight('bold'); $cell->setFontSize(18); });;
+                //$sheet->row(1,['FORMATO 01 (CODIFICACIÓN DE INCLUSIÓN)'])->cell(function($cell){ $cell->setFontWeight('bold'); $cell->setFontSize(18);});
+            
+                $sheet->row(1,['FORMATO 01 (CODIFICACIÓN DE INCLUSIÓN)']);
+                $sheet->mergeCells('A2:G2');
+                $sheet->row(2,['RELACIÓN DE PERSONAL PNP "INCLUIDOS" EN LA LISTA DE REVISTA ']);
+                $sheet->row(3,['NRO.','CARNET','APELLIDOS Y NOMBRES','CODIGO UNIDAD','CODIGO CARGO','CODIGO FP/MH','DOCUMENTO']);;
+              
+                $data = DB::table('movimiento_personal')
+                             ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento','movimiento_personal.numerodocumento','unidadlaboral.nivel2','unidadlaboral.nivel4','unidadlaboral.nivel6','unidadlaboral.nivel8','unidadlaboral.nivel10','unidadlaboral.nivel12','unidadlaboral.nivel14')
+                             ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
+                             ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
+                             ->join('cargo','cargo.id','=','movimiento_personal.cargo_id')
+                             ->join('documento','documento.id','=','movimiento_personal.documento_id')
+                             ->where('movimiento_personal.tipo','=','incluir')
+                             ->where('movimiento_personal.estado','=','activo')
+                             ->orderBy('movimiento_personal.id', 'desc')
+                             ->get();      
+                
+                $numero=0; 
+                foreach($data as $item)
+                {
+                    $row=[];
+                    $row[0]=$numero+1;
+                    $row[1]=$item->cip;
+                    $row[2]=$item->apellidopaterno.' '.$item->apellidomaterno.' '.$item->nombres;
+                    $row[3]=$item->codigounidad;
+                    $row[4]=$item->codigocargo;
+                    $row[5]='';
+                    $row[6]=$item->nombredocumento.' '.$item->numerodocumento.' '.$item->nivel2.' '.$item->nivel4.' '.$item->nivel6.' '.$item->nivel8.' '.$item->nivel10.' '.$item->nivel12.' '.$item->nivel14;
+                    $array[]=$row;
+                    $sheet->appendRow($row);
+                }
+                    $sheet->getStyle('A1:B5' , $sheet->getHighestRow())->getAlignment()->setWrapText(true);
+                    $sheet->setTitle("Lista Revista-Cargo unidad");
+
+                    $sheet->cells('A1:G1', function($cells)
+                    {
+                        $cells->setAlignment('center');
+                        $cells->setFontWeight('bold');
+                        $cells->setFontSize(14);
+                        $cells->setValignment('center');
+                    });
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    )); 
+                    $sheet->cells('A2:G2', function($cells)
+                    {
+                        $cells->setAlignment('center');
+                        $cells->setFontWeight('bold');
+                        $cells->setFontSize(12);
+                        $cells->setValignment('center');
+                    });
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    ));  
+                    $sheet->cells('A3:G3', function($cells)
+                    {
+                        $cells->setAlignment('center');
+                        $cells->setFontWeight('bold');
+                        $cells->setFontSize(11);
+                        $cells->setValignment('center');
+                    });
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    ));   
+             });
+        })->export('xls');
         // Excel::create('Laravel Excel', function($excel) {
         //     $excel->sheet('Excel sheet', function($sheet) {
 
@@ -208,7 +284,7 @@ class ProcesoMovimientoPersonal extends Controller
         // })->export('xls');
         
 
-        return Excel::download(new movimientoIncluir, 'movimiento.xlsx');
+        //return Excel::download(new movimientoIncluir, 'movimiento.xlsx');
     }
 
     public function movimientoexcluir()

@@ -54,7 +54,7 @@
                 <span>BIENVENIDOS</span>
                 <h2></h2>
               </div>
-            </div>
+            </div>  
             <!-- /menu profile quick info -->
 
 @include('admin.layout.modulos.descansomedico.header')

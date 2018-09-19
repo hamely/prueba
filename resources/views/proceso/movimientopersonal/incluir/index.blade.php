@@ -66,7 +66,7 @@
                               <td>{{$item->codigounidad}}</td>
                               <td>{{$item->codigocargo}}</td>
                               <td></td>
-                              <td>{{$item->nombredocumento}}</td>
+                              <td>{{$item->nombredocumento}} {{$item->numerodocumento}} {{$item->nivel2}} {{$item->nivel4}} {{$item->nivel6}} {{$item->nivel8}} {{$item->nivel10}} {{$item->nivel12}} {{$item->nivel14}}</td>
                               <td>                        
                               </td>
                           </tr>
