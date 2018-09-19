@@ -12,6 +12,7 @@ use App\AsignarComision;
 use Barryvdh\DomPDF\Facade as PDF;
 use Session;
 use Carbon\Carbon;
+use App\Http\Requests\ProcesoComisionRequest;
 class ProcesoComisionController extends Controller
 {
     /**

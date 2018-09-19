@@ -223,7 +223,7 @@ class ProcesoMovimientoPersonal extends Controller
                     $sheet->appendRow($row);
                 }
                     $sheet->getStyle('A1:B5' , $sheet->getHighestRow())->getAlignment()->setWrapText(true);
-                    $sheet->setTitle("Lista Revista-Cargo unidad");
+                    $sheet->setTitle("Lista Revista-Incluir");
 
                     $sheet->cells('A1:G1', function($cells)
                     {
@@ -372,7 +372,78 @@ class ProcesoMovimientoPersonal extends Controller
     }
     public function excelmovimientoexcluir()
     {
-        return Excel::download(new movimientoExcluir, 'movimientoexcluir.xlsx');
+        Excel::create('Lista revista-excluir', function($excel) {
+            $excel->sheet('Excel sheet', function($sheet) {
+
+                $sheet->mergeCells('A1:F1');
+                $sheet->row(1,['FORMATO 02 (CODIFICACIÓN DE EXCLUSIÓN)']);
+                $sheet->mergeCells('A2:F2');
+                $sheet->row(2,['RELACIÓN DE PERSONAL PNP "EXCLUIDOS" EN LA LISTA DE REVISTA ']);
+                $sheet->row(3,['NRO.','CARNET','GRADO','APELLIDOS Y NOMBRES','CODIGO EXCLUSION','DOCUMENTO']);;
+              
+                $data = DB::table('movimiento_personal')
+                             ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','unidadlaboral.codigo as codigounidad','cargo.codigo as codigocargo','documento.nombre as nombredocumento','movimiento_personal.numerodocumento','unidadlaboral.nivel2','unidadlaboral.nivel4','unidadlaboral.nivel6','unidadlaboral.nivel8','unidadlaboral.nivel10','unidadlaboral.nivel12','unidadlaboral.nivel14')
+                             ->join('persona', 'persona.id', '=', 'movimiento_personal.persona_id')
+                             ->join('unidadlaboral', 'unidadlaboral.id', '=', 'movimiento_personal.unidad_id')
+                             ->join('cargo','cargo.id','=','movimiento_personal.cargo_id')
+                             ->join('documento','documento.id','=','movimiento_personal.documento_id')
+                             ->where('movimiento_personal.tipo','=','incluir')
+                             ->where('movimiento_personal.estado','=','activo')
+                             ->orderBy('movimiento_personal.id', 'desc')
+                             ->get();      
+                
+                $numero=0; 
+                foreach($data as $item)
+                {
+                    $row=[];
+                    $row[0]=$numero+1;
+                    $row[1]=$item->cip;
+                    $row[2]='';
+                    $row[3]=$item->apellidopaterno.' '.$item->apellidomaterno.' '.$item->nombres;
+                    $row[4]='';
+                    $row[5]=$item->nombredocumento.' '.$item->numerodocumento.' '.$item->nivel2.' '.$item->nivel4.' '.$item->nivel6.' '.$item->nivel8.' '.$item->nivel10.' '.$item->nivel12.' '.$item->nivel14;
+                    $array[]=$row;
+                    $sheet->appendRow($row);
+                }
+                    $sheet->getStyle('A1:B5' , $sheet->getHighestRow())->getAlignment()->setWrapText(true);
+                    $sheet->setTitle("Lista Revista-Excluir");
+
+                    $sheet->cells('A1:F1', function($cells)
+                    {
+                        $cells->setAlignment('center');
+                        $cells->setFontWeight('bold');
+                        $cells->setFontSize(14);
+                        $cells->setValignment('center');
+                    });
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    )); 
+                    $sheet->cells('A2:F2', function($cells)
+                    {
+                        $cells->setAlignment('center');
+                        $cells->setFontWeight('bold');
+                        $cells->setFontSize(12);
+                        $cells->setValignment('center');
+                    });
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    ));  
+                    $sheet->cells('A3:F3', function($cells)
+                    {
+                        $cells->setAlignment('center');
+                        $cells->setFontWeight('bold');
+                        $cells->setFontSize(11);
+                        $cells->setValignment('center');
+                    });
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    ));   
+             });
+        })->export('xls');
+        //return Excel::download(new movimientoExcluir, 'movimientoexcluir.xlsx');
     }
 
     public function movimientocambiounidad()

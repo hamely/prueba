@@ -24,7 +24,13 @@ class ProcesoComisionRequest extends FormRequest
     public function rules()
     {
         return [
-           
+            'numerocomision'=>'required',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'numerocomision.required'=>'Debe ingresar número de comision',
         ];
     }
 }
