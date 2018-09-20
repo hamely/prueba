@@ -13,7 +13,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Session;
 use Carbon\Carbon;
 use App\Http\Requests\ProcesoComisionRequest;
-use DispatchesJobs, ValidatesRequests;
+//use DispatchesJobs, ValidatesRequests;
 
 class ProcesoComisionController extends Controller
 {
@@ -78,18 +78,18 @@ class ProcesoComisionController extends Controller
      */
     public function create()
     {
-        
+       
             
         //$ubigeo=Ubigeo::all();
         //return $persona;
         $comision=Comision::all();
-
+        
        $ubigeo = DB::table('ubigeo')
         ->select('departamento','provincia', 'distrito')
         ->wherenull('provincia')
         ->wherenull('distrito')
         ->get();
-
+       
         return view('proceso.comision.create',['ubigeo'=>$ubigeo,'comision'=>$comision]);
     }
 
@@ -151,8 +151,8 @@ class ProcesoComisionController extends Controller
         //
     }
 
-    //public function asignarComision(ProcesoComisionRequest $request)
-    public function asignarComision(Request $request)
+    public function asignarComision(ProcesoComisionRequest $request)
+    //public function asignarComision(Request $request)
     {
         /*try {
 
@@ -194,12 +194,12 @@ class ProcesoComisionController extends Controller
 
         }*/
 
-        $this->validate($request, [
+        /*$this->validate($request, [
             'numerocomision' => 'required|numeric',
         ]);
     
-        echo 'Ahora sé que los datos están validados. Puedo insertar en la base de datos';
-           
+        echo 'Ahora sé que los datos están validados. Puedo insertar en la base de datos';*/
+           //return $request->all();
         if($request->ajax())
         {       
             $insert=new AsignarComision;

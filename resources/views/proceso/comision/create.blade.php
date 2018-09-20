@@ -34,12 +34,14 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    
+                  <div class="alert alert-danger print-error-msg" style="display:none">
+                      <ul></ul>
+                  </div>
                     
                     <div class="panel panel-default">
                       <div class="panel-heading">BUSCADOR</div>
                       <div class="panel-body">
-                      @if(count($errors) > 0)
+                     <!-- @if(count($errors) > 0)
                         <div class="errors">
                           <ul>
                           @foreach($errors->all() as $error)
@@ -47,7 +49,7 @@
                           @endforeach
                           </ul>
                         </div>
-                      @endif
+                      @endif-->
                     <div class="col-sm-12">
 
                       <div class="col-sm-3">
@@ -315,7 +317,15 @@
                  dataType: 'JSON',
                  beforeSend: function() {
                  },
-                 error: function() {
+                 error: function(e) {
+                  //  console.log(e.responseJSON.errors);
+                  $(".print-error-msg").find("ul").html('');
+		            	$(".print-error-msg").css('display','block');
+                   var data =e.responseJSON.errors;
+                   
+                   $.each( data, function( key, value ) {
+                       $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+                    });
                  },
                   success: function(respuesta) {
                    console.log(respuesta);
