@@ -187,11 +187,7 @@ class ProcesoMovimientoPersonal extends Controller
         Excel::create('Lista revista-incluir', function($excel) {
             $excel->sheet('Excel sheet', function($sheet) {
 
-                $sheet->mergeCells('A1:G1');
-                //$sheet->prependRow(1, array( 'Example header' ))->cell('A1', function($cell) { $cell->setFontWeight('bold'); $cell->setFontSize(18); });
-                //$sheet->row(1,array('FORMATO 01 (CODIFICACIÓN DE INCLUSIÓN)'))->cell('A1', function($cell) { $cell->setFontWeight('bold'); $cell->setFontSize(18); });;
-                //$sheet->row(1,['FORMATO 01 (CODIFICACIÓN DE INCLUSIÓN)'])->cell(function($cell){ $cell->setFontWeight('bold'); $cell->setFontSize(18);});
-            
+                $sheet->mergeCells('A1:G1');            
                 $sheet->row(1,['FORMATO 01 (CODIFICACIÓN DE INCLUSIÓN)']);
                 $sheet->mergeCells('A2:G2');
                 $sheet->row(2,['RELACIÓN DE PERSONAL PNP "INCLUIDOS" EN LA LISTA DE REVISTA ']);
@@ -231,6 +227,7 @@ class ProcesoMovimientoPersonal extends Controller
                         $cells->setFontWeight('bold');
                         $cells->setFontSize(14);
                         $cells->setValignment('center');
+
                     });
                     $sheet->setHeight(array
                     (
@@ -253,6 +250,8 @@ class ProcesoMovimientoPersonal extends Controller
                         $cells->setFontWeight('bold');
                         $cells->setFontSize(11);
                         $cells->setValignment('center');
+                   
+                        //$cells->setBorder('1px dashed #CCC');
                     });
                     $sheet->setHeight(array
                     (

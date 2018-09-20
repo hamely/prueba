@@ -31,7 +31,7 @@ class ProcesoComisionRequest extends FormRequest
     public function messages()
     {
         return [
-            'numerocomision.required'=>'Debe ingresar el tipo de documento',
+            'numerocomision.required'=>'Debe ingresar el número de comision',
             'lugarcomision.required'=>'Debe ingresar el lugar de comision',
         ];
     }
