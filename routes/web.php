@@ -14,6 +14,11 @@ Route::get('/', function () {
     return view('login');
 });
 
+Route::get('/modulocontrolpersonal', function()
+{
+    return view('admin/inicio/modulos/controlpersonal/index');
+});
+
 Route::get('/administracion', function () {
     return view('admin/inicio/index');
 });
@@ -71,10 +76,6 @@ Route::resource('movimiento','MovimientoController');
 Route::resource('horario','HorarioController');
 Route::resource('cip','CipController');
 
-Route::resource('asignarcomision','ProcesoComisionController');
-Route::get('selectListadoComision/{estado?}','ProcesoComisionController@selectListadoPorComisionEstado')->name('selectListadoComision');
-Route::post('insertComision','ProcesoComisionController@asignarComision')->name('insertComision');
-
 Route::resource('personagrado','ProcesoPersonaGrado');
 
 Route::resource('personacargo','ProcesoPersonaCargo');
@@ -82,20 +83,23 @@ Route::get('historialpersonacargo/{id}','ProcesoPersonaCargo@pdfhistorialpersona
 
 Route::resource('personaunidad','ProcesoPersonaUnidad');
 
-
 Route::resource('licencia','LicenciaController');
 Route::resource('ubigeo','UbigeoController');
 Route::post('list/provincia','UbigeoController@provincia')->name('listProvincia');
 Route::post('list/distrito','UbigeoController@distrito')->name('listDistrito');
 
+Route::resource('asignarcomision','ProcesoComisionController');
+Route::get('selectListadoComision/{estado?}','ProcesoComisionController@selectListadoPorComisionEstado')->name('selectListadoComision');
+Route::post('insertComision','ProcesoComisionController@asignarComision')->name('insertComision');
+
 Route::get('papeletacomision/{id?}', 'ProcesoComisionController@pdfpapeletacomision')->name('papeletacomision');
 Route::get('historialpersonacomision/{id?}','ProcesoComisionController@pdfhistorialpersonacomision')->name('historialpersonacomision');
 Route::get('papeletareincorporacioncomision/{id?}','ProcesoComisionController@pdfpapeletareincorporacioncomision')->name('papeletareincorporacioncomision');
 Route::get('comisionporunidad','ProcesoComisionController@pdfcomisionporunidad')->name('comisionporunidad');
-//Route::get('culminarcomision', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 Route::get('culminarcomision/{id?}', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
-//Route::post('post/cargo','CargoController@asignar');
 Route::post('terminarcomision/','ProcesoComisionController@terminarcomision')->name('terminarcomision');
+
+Route::resource('controlardescansomedico','ProcesoDescansoMedicoController');
 
 Route::get('tags','PersonaController@buscar');
 

@@ -73,7 +73,7 @@
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#28B463;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
-                    <div class="icon"><i class="fa fa-pencil-square"></i></div>
+                    <div class="icon"><i class="fa fa-car"></i></div>
                     <div class="count">5</div>
                     <h3>Permisos</h3>
                     <p>Ingresar</p>
@@ -81,7 +81,7 @@
                   </a>
               </div>
             
-               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+              <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#5DADE2;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/modulosancion')}}"> 
                     <div class="icon"><i class="fa fa-hand-o-down"></i></div>
@@ -95,10 +95,11 @@
               @if(auth()->user()->hasRoles(['admin','com']))
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#F4D03F;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/administracion')}}"> 
-                    <div class="icon"><i class="fa fa-car"></i></div>
+                <a href="{{('/modulocontrolpersonal')}}">
+                <!--<a href="{{('/administracion')}}">--> 
+                    <div class="icon"><i class="fa fa-pencil-square"></i></div>
                     <div class="count">7</div>
-                    <h3>Comisiones</h3>
+                    <h3>Control de personal</h3>
                     <p>Ingresar</p>
                     </div>
                   </a>
@@ -129,6 +130,7 @@
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#2874A6;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
+                
                     <div class="icon"><i class="fa fa-institution"></i></div>
                     <div class="count">10</div>
                     <h3>Incorporaciones</h3>

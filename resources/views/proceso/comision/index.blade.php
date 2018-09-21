@@ -1,4 +1,4 @@
-@extends('admin.layout.master')
+@extends('admin.layout.modulos.descansomedico.master')
 
 @section('content')
 
