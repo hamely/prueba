@@ -75,6 +75,7 @@ Route::resource('documento','DocumentoController');
 Route::resource('movimiento','MovimientoController');
 Route::resource('horario','HorarioController');
 Route::resource('cip','CipController');
+Route::resource('descanso','DescansoController');
 
 Route::resource('personagrado','ProcesoPersonaGrado');
 
@@ -98,6 +99,8 @@ Route::get('papeletareincorporacioncomision/{id?}','ProcesoComisionController@pd
 Route::get('comisionporunidad','ProcesoComisionController@pdfcomisionporunidad')->name('comisionporunidad');
 Route::get('culminarcomision/{id?}', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 Route::post('terminarcomision/','ProcesoComisionController@terminarcomision')->name('terminarcomision');
+
+
 
 Route::resource('controlardescansomedico','ProcesoDescansoMedicoController');
 

@@ -58,6 +58,11 @@
                       <li><a href="{{ url('cip') }}">Estados del cip</a></li>
                     </ul>
                   </li> 
+                  <li><a><i class="fa fa-toggle-down"></i>Descanso Médico<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{ url('descanso') }}">Descanso</a></li>
+                    </ul>
+                  </li> 
                   <li><a><i class="fa fa-user"></i>Usuarios<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="{{ url('usuario')}}">Registro</a></li>

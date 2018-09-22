@@ -1,10 +1,8 @@
 @extends('layout.master')
 
 @section('content')
-  <!-- page content -->
-  
-  <div class="right_col" role="main">
-  
+  <!-- page content --> 
+<div class="right_col" role="main"> 
           <div class="">
             <div class="row">
               <div class="col-md-12">
@@ -22,8 +20,8 @@
               </div>
             </div>
         @if(auth()->check())
-        
-            <div class="row top_tiles">
+       
+          <div class="row top_tiles">
             @if(auth()->user()->hasRoles(['admin','carnet']))
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#229954; box-shadow:6px 6px 0px #CCD1D1">
@@ -42,23 +40,21 @@
                 <a href="{{('/modulodescansomedico')}}"> 
                     <div class="icon"><i class="fa fa-medkit"></i></div>
                     <div class="count">2</div>
-                    <h3>Descanso médico</h3>
-                    <p>Ingresar</p>
+                        <h3> Descanso médico</h3>
+                        <p> Ingresar</p>
                     </div>
-                  </a>
-              </div>
-             
+                </a>
+              </div>            
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#F1C40F;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/modulocambiosituacion')}}"> 
                     <div class="icon"><i class="fa fa-comments-o"></i></div>
                     <div class="count">3</div>
-                    <h3> Cambio de situación</h3>
+                    <h3>Cambio de situación</h3>
                     <p>Ingresar</p>
                     </div>
                   </a>
-              </div>
-           
+              </div>          
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#F5B041;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/modulolicencia')}}"> 
@@ -68,19 +64,17 @@
                     <p>Ingresar</p>
                     </div>
                   </a>
-              </div>
-             
+              </div>            
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#28B463;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-car"></i></div>
                     <div class="count">5</div>
-                    <h3>Permisos</h3>
+                    <h3>Base de datos</h3>
                     <p>Ingresar</p>
                     </div>
                   </a>
-              </div>
-            
+              </div>            
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#5DADE2;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/modulosancion')}}"> 
@@ -89,7 +83,7 @@
                     <h3>Sanciones</h3>
                     <p>Ingresar</p>
                     </div>
-                  </a>
+                </a>
               </div>
               @endif
               @if(auth()->user()->hasRoles(['admin','com']))
@@ -114,19 +108,18 @@
                     <h3> Mov. Personal</h3>
                     <p>Ingresar</p>
                     </div>
-                  </a>
+                </a>
               </div>
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#17A589;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/modulovacaciones')}}"> 
                     <div class="icon"><i class="fa fa-umbrella"></i></div>
                     <div class="count">9</div>
-                    <h3>Vacaciones</h3>
+                    <h3>Vacaciones y Permisos</h3>
                     <p>Ingresar</p>
                     </div>
                   </a>
-              </div>
-            
+              </div>            
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#2874A6;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
@@ -137,41 +130,36 @@
                     <p>Ingresar</p>
                     </div>
                   </a>
-              </div>
-              
+              </div>            
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#B7950B;  box-shadow:6px 6px 0px #CCD1D1">
                 <a href="{{('/administracion')}}"> 
                     <div class="icon"><i class="fa fa-file-pdf-o"></i></div>
                     <div class="count">11</div>
-                    <h3>Reportes</h3>
-                    <p>Ingresar</p>
+                      <h3>Reportes</h3>
+                      <p>Ingresar</p>
                     </div>
-                  </a>
+                </a>
               </div>
-          
               <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="tile-stats" style="background:#E67E22;  box-shadow:6px 6px 0px #CCD1D1">
-                <a href="{{('/modulomantenimientoyusuarios')}}"> 
+                  <a href="{{('/modulomantenimientoyusuarios')}}"> 
                     <div class="icon"><i class="fa fa-user"></i></div>
                     <div class="count">12</div>
                     <h3>Mant. y Usuarios</h3>
                     <p>Ingresar</p>
-                </div>
+                  </div>
                   </a>
               </div>
               @endif
             </div>
           </div>
         </div>
-        @endif
-   
+        @endif  
         <!-- /page content -->
         @endsection
-
-
 @section('script')
-   <script>
-    
+  <script>
+          
   </script>
 @endsection

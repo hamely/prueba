@@ -94,39 +94,50 @@
                             
                             <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="email">Motivo</label>
-                                <input type="text" class="form-control" id="motivo" name="motivo" placeholder="Motivo">
+                                <label for="email">Diagnóstico</label>
+                                <input type="text" class="form-control" id="diagnostico" name="diagnostico" placeholder="Diagnóstico">
                             </div>
                             </div> 
-                          
-                        </div>
-
-                        <div class="col-sm-6">
-
-                         <div class="col-sm-6">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="email">Fecha de emision</label>
-                                    <input type="date" class="form-control" id="fecha" name="fecha" placeholder="N° de descanso médico.">
+                                    <input type="date" class="form-control" id="fechaemision" name="fechaemision">
                                 </div>
                         </div> 
                             
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="email">fecha de salida</label>
-                                <input type="date" class="form-control" id="motivo" name="motivo" placeholder="Motivo">
+                                <label for="email">Fecha de término</label>
+                                <input type="date" class="form-control" id="fechatermino" name="fechatermino">
+                            </div>
+                        </div> 
+                          
+                        </div>
+
+                        <div class="col-sm-6">
+
+                        
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Número de días</label>
+                                <input type="text" class="form-control" id="numerodia" name="numerodia" placeholder="Número de días">
+                            </div>
+                        </div> 
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Año</label>
+                                <input type="text" class="form-control" id="anio" name="anio" placeholder="Año">
                             </div>
                         </div> 
                           <div class="col-md-12">
                             <label class="control-label" for="name">Observación <span class="required">*</span>
                             </label>
                             <div class="col-md-12">
-                              <textarea id="observacion" name="observacion" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                              <textarea id="observacion" name="observacion" class="form-control" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
                               data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones"></textarea>
                             </div>
                           </div>
                         </div>
-
-
                       </div>
                     </div>
 
@@ -134,16 +145,11 @@
                       
                       <div class="col-sm-6">
                         <div class="form-group">
-                            
                             <input type="hidden" id="idpersonaBuscador" name="idpersonaBuscador">
                         </div>
                       </div> 
-
-                     
-                     
                     </div> 
 
-                   
                   </div>
                    <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
