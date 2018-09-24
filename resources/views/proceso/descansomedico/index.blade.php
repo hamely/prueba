@@ -54,51 +54,35 @@
                             
                               <table id="datatable" class="table table-striped table-bordered" style="color:#1A5276;">
                                 <h2>Descanso médico<small></small></h2>
-                                 
-                                    <a href="" class="btn btn-warning">Todo</a> 
-                                    <a href="" class="btn btn-success">Proceso</a> 
-                                    <a href="" class="btn btn-primary"><i class="fa fa-file-pdf-o"> Culminado</i></a>
-                            
                                 <hr/>
                                 <thead>
+                              
                                   <tr>
-                                    
                                     <th>Cip</th>
                                     <th>Dias</th>
                                     <th>Persona</th>
                                     <th>Grado</th>
-                                    <th>N° Comisión</th>
-                                    <th>Tipo comision</th>
-                                    <th>Destino</th>
-                                    <th>Lugar</th>
-                                    <th>Por disposición superior</th>
-                                    <th>Motivo</th>
-                                    <th>Fecha salida</th>
-                                    <th>Fecha llegada</th>
+                                    <th>N° Descanso</th>
+                                    <th>Expedido por</th>
+                                    <th>Diagnostico</th>
                                     <th>Observación</th>
-                                    <th>Estado</th>
                                     <th></th>
                                   </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($data as $item)
                                 <tr>
+                                    <td>{{$item->cip}}</td>
+                                    <td style="background: #D98880;">{{$item->dia}}</td>
+                                    <td>{{$item->apellidopaterno}} {{$item->apellidomaterno}} {{$item->nombres}}</td>
                                     <td></td>
-                                    <td style="background: #D98880;"></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$item->numerodescanso}}</td>
+                                    <td>{{$item->expedido}}</td>
+                                    <td>{{$item->diagnostico}}</td>
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                                  
+                                @endforeach                  
                               </tbody>
                             </table>
                            </div>

@@ -160,9 +160,8 @@
                             <button id="enviarDescansoMedico" type="button" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
                               <a href="{{('/asignarcomision/create')}}" class="btn btn-default  "><i class="fa fa-eraser"> Limpiar</i></a>
                               <a href="{{('/movimientoincluir/')}}" class="btn btn-info"><i class="fa fa-mail-reply"> Retroceder</i></a>
-
                         </div>
-                      </div><br>
+                     </div><br>
                     
                 </div>
               </div>
