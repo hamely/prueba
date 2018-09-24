@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Descanso;
 use Session;
+use App\Http\Requests\DescansoRequest;
+
 class DescansoController extends Controller
 {
     /**
@@ -34,7 +36,7 @@ class DescansoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DescansoRequest $request)
     {
         $descanso = new Descanso;
         $descanso->codigo = $request->codigo;
