@@ -41,7 +41,6 @@ class CargoController extends Controller
     {
         return view('admin.cargo.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *

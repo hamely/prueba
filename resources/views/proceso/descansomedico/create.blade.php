@@ -91,7 +91,6 @@
                                     <input type="text" class="form-control" id="expedido" name="expedido" placeholder="Expedido por">
                                 </div>
                             </div> 
-                            
                             <div class="col-sm-12">
                             <div class="form-group">
                               <label for="email">Tipo Diagnóstico</label>
@@ -125,7 +124,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="email">Número de días</label>
-                                <input type="text" class="form-control" id="numerodia" name="numerodia" placeholder="Número de días">
+                                <input type="text" class="form-control" id="dia" name="dia" placeholder="Número de días">
                             </div>
                         </div> 
                         <div class="col-sm-6">
@@ -158,7 +157,7 @@
                   </div>
                    <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
-                            <button id="enviarMovimientoPersonalIncluir" type="button" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
+                            <button id="enviarDescansoMedico" type="button" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
                               <a href="{{('/asignarcomision/create')}}" class="btn btn-default  "><i class="fa fa-eraser"> Limpiar</i></a>
                               <a href="{{('/movimientoincluir/')}}" class="btn btn-info"><i class="fa fa-mail-reply"> Retroceder</i></a>
 
@@ -176,8 +175,7 @@
 
 @section('script')
    <script>
-
-   	$("#enviarMovimientoPersonalIncluir").click(function( event ) {
+   	$("#enviarDescansoMedico").click(function( event ) {
         event.preventDefault();
         if($("#idpersonaBuscador").val()===''){
           var Idpersona=$("#idPersona").val();

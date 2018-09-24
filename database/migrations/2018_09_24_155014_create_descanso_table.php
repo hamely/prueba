@@ -19,7 +19,8 @@ class CreateDescansoTable extends Migration
             $table->string('nombre');
             $table->timestamps();
         });
-    }   
+    }
+
     /**
      * Reverse the migrations.
      *

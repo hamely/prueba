@@ -102,7 +102,7 @@ Route::post('terminarcomision/','ProcesoComisionController@terminarcomision')->n
 
 
 
-Route::resource('controlardescansomedico','ProcesoDescansoMedicoController');
+
 
 Route::get('tags','PersonaController@buscar');
 
@@ -134,6 +134,9 @@ Route::post('insertMovimientoCambioSituacionCip','ProcesoMovimientoPersonal@movi
 Route::get('movimientocambiohorario','ProcesoMovimientoPersonal@movimientocambiohorario')->name('movimientocambiohorario');
 Route::get('movimientocambiohorariocreate','ProcesoMovimientoPersonal@movimientocambiohorariocreate')->name('movimientocambiohorariocreate');
 Route::post('insertMovimientoCambioHorario','ProcesoMovimientoPersonal@movimientocambiohorarioinsert')->name('insertMovimientoCambioHorario');
+
+Route::resource('controlardescansomedico','ProcesoDescansoMedicoController');
+Route::get('insertAsignarDescansoMedico','ProcesoDescansoMedicoController@asignardescansomedicoinsert')->name('insertAsignarDescansoMedico');
 
 Route::get('login','Auth\LoginController@showLogForm');
 Route::post('login','Auth\LoginController@login');

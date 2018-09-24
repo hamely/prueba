@@ -84,4 +84,8 @@ class ProcesoDescansoMedicoController extends Controller
     {
         //
     }
+    public function asignardescansomedicoinsert()
+    {
+        
+    }
 }
