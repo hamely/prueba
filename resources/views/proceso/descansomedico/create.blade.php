@@ -185,36 +185,28 @@
           var Idpersona=$("#idpersonaBuscador").val();
         }
         
-        var Combodocumento=$("#comboDocumento").val();
-        var Numerodocumento=$('#numerodocumento').val();
-        var Sigladocumento=$('#sigladocumento').val();
-        var Fechadocumento=$('#fechadocumento').val();
-        var Fechainclusion=$('#fechainclusion').val();
-        var Combomovimiento=$('#comboMovimiento').val();
-        var Tiempo=$('#tiempo').val();
-        var Combounidad=$('#comboUnidad').val();
-        var Combocargo=$('#comboCargo').val();
-        var Combocip=$('#comboCip').val();
-        var Combohorario=$('#comboHorario').val();
+        var Combodiagnostico=$("#comboDiagnostico").val();
+        var Numerodescanso=$('#numerodescanso').val();
+        var Expedido=$('#expedido').val();
+        var Fechaemision=$('#fechaemision').val();
+        var Fechatermino=$('#fechatermino').val();
+        var Dia=$('#dia').val();
+        var Anio=$('#anio').val();
         var Observacion=$('#observacion').val();
 
         $.ajax({
-                 url:'{{ route('insertMovimientoIncluir') }}',
+                 url:'{{ route('insertAsignarDescansoMedico') }}',
                  type: 'POST',
                  data:{
                         "_token": "{{ csrf_token() }}",
                         "idPersona":Idpersona,
-                        'comboDocumento':Combodocumento,
-                        "numerodocumento":Numerodocumento,
-                        "sigladocumento":Sigladocumento,
-                        "fechadocumento":Fechadocumento,
-                        "fechainclusion":Fechainclusion,
-                        "comboMovimiento":Combomovimiento,
-                        "tiempo":Tiempo,
-                        "comboUnidad":Combounidad,
-                        "comboCargo":Combocargo,
-                        "comboCip":Combocip,
-                        "comboHorario":Combohorario,
+                        'comboDiagnostico':Combodiagnostico,
+                        "numerodescanso":Numerodescanso,
+                        "expedido":Expedido,
+                        "fechaemision":Fechaemision,
+                        "fechatermino":Fechatermino,
+                        "dia":Dia,
+                        "anio":Anio,
                         "observacion":Observacion,
                     },
                  dataType: 'JSON',

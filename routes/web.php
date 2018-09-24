@@ -136,7 +136,7 @@ Route::get('movimientocambiohorariocreate','ProcesoMovimientoPersonal@movimiento
 Route::post('insertMovimientoCambioHorario','ProcesoMovimientoPersonal@movimientocambiohorarioinsert')->name('insertMovimientoCambioHorario');
 
 Route::resource('controlardescansomedico','ProcesoDescansoMedicoController');
-Route::get('insertAsignarDescansoMedico','ProcesoDescansoMedicoController@asignardescansomedicoinsert')->name('insertAsignarDescansoMedico');
+Route::post('insertAsignarDescansoMedico','ProcesoDescansoMedicoController@asignardescansomedicoinsert')->name('insertAsignarDescansoMedico');
 
 Route::get('login','Auth\LoginController@showLogForm');
 Route::post('login','Auth\LoginController@login');

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
-
+use App\ControlarDescansoMedico;
 class ProcesoDescansoMedicoController extends Controller
 {
     /**
@@ -84,8 +84,22 @@ class ProcesoDescansoMedicoController extends Controller
     {
         //
     }
-    public function asignardescansomedicoinsert()
+    public function asignardescansomedicoinsert(Request $request)
     {
-        
+        if($request->ajax())
+        {
+            $insert=new ControlarDescansoMedico;
+            $insert->persona_id=$_POST['idPersona'];
+            $insert->descanso_id=$_POST['comboDiagnostico'];
+            $insert->numerodescanso=$_POST['numerodescanso'];
+            $insert->expedido=$_POST['expedido'];
+            $insert->fechaemision=$_POST['fechaemision'];
+            $insert->fechatermino=$_POST['fechatermino'];
+            $insert->dia=$_POST['dia'];
+            $insert->anio=$_POST['anio'];
+            $insert->observacion=$_POST['observacion'];
+            $insert->save();
+        }       
+        return Response(['data'=>$_POST['idPersona']]);
     }
 }
