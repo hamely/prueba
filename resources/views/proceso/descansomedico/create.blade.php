@@ -94,10 +94,15 @@
                             
                             <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="email">Diagnóstico</label>
-                                <input type="text" class="form-control" id="diagnostico" name="diagnostico" placeholder="Diagnóstico">
+                              <label for="email">Tipo Diagnóstico</label>
+                              <select class='selectpicker form-control input-sm' id='comboDiagnostico' name="comboDiagnostico" data-live-search='true'>
+                                @foreach($descanso as $item)
+                                  <option value="{{$item->id}}">{{$item->codigo}} {{$item->nombre}}
+                                  </option>
+                                @endforeach
+                              </select>
                             </div>
-                            </div> 
+                          </div> 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="email">Fecha de emision</label>

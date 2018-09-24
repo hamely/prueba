@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use DB;
 use Illuminate\Http\Request;
 
 class ProcesoDescansoMedicoController extends Controller
@@ -23,7 +23,10 @@ class ProcesoDescansoMedicoController extends Controller
      */
     public function create()
     {
-        return view('proceso.descansomedico.create');
+        $descanso = DB::table('descanso')
+                ->select('id','codigo','nombre')
+                ->get();
+        return view('proceso.descansomedico.create',['descanso'=>$descanso]);
     }
 
     /**

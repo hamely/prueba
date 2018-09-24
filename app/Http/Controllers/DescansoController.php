@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Descanso;
+use Session;
 class DescansoController extends Controller
 {
     /**
@@ -13,7 +14,8 @@ class DescansoController extends Controller
      */
     public function index()
     {
-        return view('admin.descansomedico.index');
+        $descanso=Descanso::all();
+        return view('admin.descansomedico.index',['descanso'=>$descanso]);
     }
 
     /**
@@ -34,12 +36,12 @@ class DescansoController extends Controller
      */
     public function store(Request $request)
     {
-        $descanso = new Comision;
+        $descanso = new Descanso;
         $descanso->codigo = $request->codigo;
         $descanso->nombre = $request->nombre;
         $descanso->save();
         Session::flash('Mensaje', 'Se registro correctamente la comisión');
-        return redirect()->route('descansomedico.index');
+        return redirect()->route('descanso.index');
     }
 
     /**
@@ -61,7 +63,8 @@ class DescansoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $descanso= Descanso::find($id);
+        return  view('admin.descansomedico.update',['descanso' => $descanso]);
     }
 
     /**
@@ -73,7 +76,10 @@ class DescansoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $descanso= Descanso::findOrFail($id);
+        $descanso->update($request->all());
+        Session::flash('MensajeActualizar','Se actualizó correctamente la actualizacion de descanso');
+        return redirect()->route('descanso.index');
     }
 
     /**

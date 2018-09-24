@@ -47,13 +47,14 @@
                         </tr>
                       </thead>
                       <tbody>
-                      
+                        @foreach($descanso as $item)
                             <tr>
-                            <td></td>
-                            <td></td>
-                            <td><a style= "color:blue" href="" >editar<a/>                          
+                            <td>{{$item->codigo}}</td>
+                            <td>{{$item->nombre}}</td>
+                            <td><a style= "color:blue" href="{{route('descanso.edit',$item->id)}}" >editar<a/>                          
                             </td>
-                            </tr>               
+                            </tr>   
+                        @endforeach            
                       </tbody>
                     </table>
                   </div>
