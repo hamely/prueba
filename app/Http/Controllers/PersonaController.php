@@ -7,7 +7,9 @@ use App\Persona;
 use DB;
 use App\Grado;
 use Session;
+use Carbon\Carbon;
 use App\Http\Requests\PersonaRequest;
+
 class PersonaController extends Controller
 {
     /**
@@ -130,7 +132,12 @@ class PersonaController extends Controller
             ->where('persona.id', $idPersona)
             ->get()[0];
 
-            return response(["data" => $search]);
+            $maxComision= DB::table('asignar_comision')
+            ->select(DB::raw('max(asignar_comision.numerocomision) as numerocomision'))
+            ->groupby('asignar_comision.persona_id')
+            ->get()[0];
+
+            return response(["data" => $search,'maxComision'=>$maxComision]);
         }
     }
      public function searchCipPersona()
@@ -146,10 +153,18 @@ class PersonaController extends Controller
             ->join('grado', 'grado.id', '=', 'persona_grado.grado_id')
             ->where('persona.cip', $cip)
             ->get()[0];
-           /* $Persona=Persona::
-            where('cip', $cip)
-                              ->get()[0];*/
-            return response(["data" => $Persona]);
+           
+            $maxComision= DB::table('asignar_comision')
+            ->select(DB::raw('max(asignar_comision.numerocomision) as numerocomision'))
+            ->groupby('asignar_comision.persona_id')
+            ->get()[0];
+            
+            $nuevoNumeroComision=(int)($maxComision->numerocomision)+1;
+            
+            $dateSistema = Carbon::now();
+            
+            $date = $dateSistema->format('Y-m-d');
+            return response(["data" => $Persona,'nuevoNumeroComision'=>$nuevoNumeroComision,'date' => $date]);
         }
     }
 

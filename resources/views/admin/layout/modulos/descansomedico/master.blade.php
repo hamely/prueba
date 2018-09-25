@@ -34,6 +34,8 @@
     <link rel="stylesheet" href="{{ asset("vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css") }}" >
     <link rel="stylesheet" href="{{ asset("admin/css/bootstrap-select.min.css") }}" >
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" rel="stylesheet" />
+
 </head>
 <body class="nav-md">
     <div class="container body">
@@ -98,6 +100,7 @@
     <script src="{{ asset("vendors/pdfmake/build/vfs_fonts.js") }}"></script>
     <script src="{{ asset("admin/js/bootstrap-select.min.js") }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>  
 
     <!-- Custom Theme Scripts -->
     <script src="../"></script>

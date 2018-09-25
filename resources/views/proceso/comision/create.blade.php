@@ -328,7 +328,7 @@
                     });
                  },
                   success: function(respuesta) {
-                   console.log(respuesta);
+                      toastr.success("YYEESSSSSSS");
                   }
               });
         
@@ -505,6 +505,8 @@
                  },
                   success: function(respuesta) {
                     console.log(respuesta);
+                    var nuevoNumero=respuesta.nuevoNumeroComision;
+                    $('#numerocomision').val(nuevoNumero);
                     var dato=respuesta.data;
                     
                     var cip=dato.cip;
@@ -517,6 +519,7 @@
                     $("#idpersonaBuscador").val(id);
                     $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
                     $("#gradopersona").val(grado);
+                    $("#fechasalida").val(respuesta.date);
                   }
               });
       });

@@ -151,7 +151,7 @@ class ProcesoComisionController extends Controller
         //
     }
 
-    public function asignarComision(ProcesoComisionRequest $request)
+    public function asignarComision(Request $request)
     //public function asignarComision(Request $request)
     {
         /*try {
@@ -202,6 +202,7 @@ class ProcesoComisionController extends Controller
            //return $request->all();
         if($request->ajax())
         {       
+            
             $insert=new AsignarComision;
             $insert->persona_id=$_POST['idPersona'];
             $insert->numerocomision=$_POST['numeroComision'];
