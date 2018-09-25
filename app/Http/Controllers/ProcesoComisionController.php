@@ -13,6 +13,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Session;
 use Carbon\Carbon;
 use App\Http\Requests\ProcesoComisionRequest;
+use Maatwebsite\Excel\Facades\Excel;
 //use DispatchesJobs, ValidatesRequests;
 
 class ProcesoComisionController extends Controller
@@ -324,6 +325,70 @@ class ProcesoComisionController extends Controller
         //SELECT unidadlaboral.codigo, count(persona_unidad.persona_id) as cantidad FROM `asignar_comision` RIGHT join comision on asignar_comision.comision_id=comision.id left join persona on asignar_comision.persona_id=persona.id left join persona_unidad on persona.id=persona_unidad.persona_id RIGHT join unidadlaboral on persona_unidad.unidad_id=unidadlaboral.id GROUP by (unidadlaboral.codigo)
     }
 
+    public function excelpendientescomision()
+    {
+        Excel::create('Comision-pendientes', function($excel) {
+            $excel->sheet('Excel sheet', function($sheet) {
+
+                $sheet->mergeCells('A1:G1');            
+                $sheet->row(1,['LISTADO DE PERSONAS QUE NO RETORNARON DE COMISIÓN (PENDIENTE)']);
+                $sheet->row(2,['NRO.','CIP','APELLIDOS Y NOMBRES','LUGAR','MOTIVO','POR DISPOSICIÓN','FECHA DE SALIDA']);;
+              
+                $data= DB::table('asignar_comision')
+                ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','asignar_comision.lugarcomision','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.disposicion')
+                ->join('persona','persona.id','=','asignar_comision.persona_id')
+                ->join('comision','comision.id','=','asignar_comision.comision_id')
+                ->get();
+
+                foreach($data as $item)
+                {
+                    $row=[];
+                    for( $numero=1; $numero<100; $numero++){
+                        $row[0]=$numero;
+                    }
+                    $row[1]=$item->cip;
+                    $row[2]=$item->apellidopaterno.' '.$item->apellidomaterno.' '.$item->nombres;
+                    $row[3]=$item->lugarcomision;
+                    $row[4]=$item->motivo;
+                    $row[5]=$item->disposicion;
+                    $row[6]=$item->fechasalida.' '.$item->horasalida;
+                    $array[]=$row;
+                    $sheet->appendRow($row);
+                }
+                    $sheet->getStyle('A1:B5' , $sheet->getHighestRow())->getAlignment()->setWrapText(true);
+                    $sheet->setTitle("Lista Revista-Incluir");
+
+                    $sheet->cells('A1:G1', function($cells)
+                    {
+                        $cells->setAlignment('center');
+                        $cells->setFontWeight('bold');
+                        $cells->setFontSize(14);
+                        $cells->setValignment('center');
+
+                    });
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    )); 
+                    $sheet->cells('A2:G2', function($cells)
+                    {
+                        $cells->setAlignment('center');
+                        $cells->setFontWeight('bold');
+                        $cells->setFontSize(12);
+                        $cells->setValignment('center');
+                    });
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    ));  
+                    
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    ));   
+             });
+        })->export('xls');
+    }
     public function culminarcomision($id)
     {   
         

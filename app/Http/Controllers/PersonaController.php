@@ -134,7 +134,7 @@ class PersonaController extends Controller
 
             $maxComision= DB::table('asignar_comision')
             ->select(DB::raw('max(asignar_comision.numerocomision) as numerocomision'))
-            ->groupby('asignar_comision.persona_id')
+            //->groupby('asignar_comision.persona_id')
             ->get()[0];
 
             $nuevoNumeroComision=(int)($maxComision->numerocomision)+1;
@@ -162,7 +162,7 @@ class PersonaController extends Controller
            
             $maxComision= DB::table('asignar_comision')
             ->select(DB::raw('max(asignar_comision.numerocomision) as numerocomision'))
-            ->groupby('asignar_comision.persona_id')
+            //->groupby('asignar_comision.persona_id')
             ->get()[0];
             
             $nuevoNumeroComision=(int)($maxComision->numerocomision)+1;

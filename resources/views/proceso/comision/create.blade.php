@@ -79,172 +79,152 @@
                       </div>
                     </div>
 
-
-                     <div class="col-sm-6">
-                      
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">CIP</label>
-                            <input type="hidden" id="idpersonaBuscador" name="idpersonaBuscador">
-                            <input type="number" class="form-control" id="cippersona" name="cippersona" placeholder="CIP" readonly>
+                        <div align="center">
+                          GRADO:<label id="grado"> </label> <br/>
+                          CIP: <label id="cipP"> </label> <br/>
+                          APELLIDOS Y NOMBRES: <label id="nombrecompletopersona"></label> <br/>
                         </div>
-                      </div> 
-
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Grado</label>
-                            <input type="text" class="form-control" id="gradopersona"  name="gradopersona" placeholder="Grado" readonly>
-                          
-                        </div>
-                      </div> 
-                      <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="email">Nombres y apellidos</label>
-                            <input type="text" class="form-control" id="nombrecompletopersona"  name="nombrecompletopersona" placeholder="Nombres y Apellidos" readonly>
-                          
-                        </div>
-                      </div> 
+                        <br/>
                     
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Número comision</label>
-                            <input type="number" class="form-control" id="numerocomision" name="numerocomision" value="{{ old('numerocomision') }}" placeholder="N° de comisión">
-                            <p style="color:red;">{{ $errors->first('numerocomision') }}</p>
-                        </div>
-                      </div> 
+                    <div class="panel panel-default">
+                      <div class="panel-body">
 
-                      <div class="col-sm-6">
-                        <div class="form-group">
-                            <label for="email">Tipo comisión</label>
-                            <select class='selectpicker' id='Combocomision' name="Combocomision" data-live-search='true'>
-                                @foreach($comision as $item)
-                                  <option value="{{ $item->id}}">
-                                  {{ $item->nombre}}
-                                  </option>
-                                @endforeach
-                            </select>
-                          
-                        </div>
-                      </div> 
-                       <div class="col-sm-12">
-                         <div class="col-xs-4">
-                               <div class="form-group">
-                                  <label for="usr"> Departamento</label>
-                                  <select class='selectpicker form-control' data-size="100" id='Combodepartamento' name="Combodepartamento" data-live-search='true'>
-                                      @foreach($ubigeo as $item)
-                                        <option value="{{ $item->departamento}}">
-                                        {{ $item->departamento}}
+                        <div class="col-sm-6">
+                            <div class="col-sm-5">
+                              <div class="form-group">
+                                  <label for="email">Número comision</label>
+                                  <input type="number" class="form-control" id="numerocomision" name="numerocomision" value="{{ old('numerocomision') }}" placeholder="N° de comisión">
+                                  <p style="color:red;">{{ $errors->first('numerocomision') }}</p>
+                              </div>
+                            </div> 
+                            <div class="col-sm-6">
+                              <div class="form-group">
+                                  <label for="email">Tipo comisión</label>
+                                  <select class='selectpicker form-control input-sm' id='Combocomision' name="Combocomision" data-live-search='true'>
+                                      @foreach($comision as $item)
+                                        <option value="{{ $item->id}}">
+                                        {{ $item->nombre}}
                                         </option>
                                       @endforeach
                                   </select>
-                                
-                            </div>
-                         </div>
-                         <div class="col-xs-4">
-                            <div class="form-group">
-                                    <label for="usr">Provincias</label>
-                                      <select class="form-control" id="ComboProvincia" name="ComboProvincia">
-                                       
-                                      </select>
-                            </div>
-                         </div>
-                         <div class="col-xs-4">
-                            <div class="form-group">
-                                    <label for="usr">Distrito</label>
-                                  <select class="form-control" id="ComboDistrito" name="ComboDistrito">
-                                    
-                                  </select>
-                            </div>
-                         </div>   
-                      </div> 
-
-                       <div class="col-sm-12">
-                      
-                            <div class="form-group">
-                                <label for="email">Lugar:</label>
-                                  <input id="lugarcomision"  name="lugarcomision" value="{{ old('lugarcomision') }}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar lugar de comisión" required="required" type="text">
-                                  <p style="color:red;">{{ $errors->first('lugarcomision') }}</p>
                               </div>
-                        </div> 
-                        <div class="col-sm-12">
-                      
-                            <div class="form-group">
-                                <label for="email">Motivo:</label>
-                                   <input id="motivo"  name="motivo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar el motivo" required="required" type="text">
+                            </div> 
+                                 
+                              <div class="col-sm-12">
+                                <div class="col-xs-4">
+                                      <div class="form-group">
+                                          <label for="usr"> Departamento</label>
+                                          <select class='selectpicker form-control' data-size="100" id='Combodepartamento' name="Combodepartamento" data-live-search='true'>
+                                              @foreach($ubigeo as $item)
+                                                <option value="{{ $item->departamento}}">
+                                                {{ $item->departamento}}
+                                                </option>
+                                              @endforeach
+                                          </select>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                            <label for="usr">Provincias</label>
+                                              <select class="form-control" id="ComboProvincia" name="ComboProvincia">
+                                              
+                                              </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="form-group">
+                                            <label for="usr">Distrito</label>
+                                          <select class="form-control" id="ComboDistrito" name="ComboDistrito">
+                                            
+                                          </select>
+                                    </div>
+                                </div>   
+                              </div> 
+                              <div class="col-sm-12">
+                                  <div class="form-group">
+                                      <label for="email">Lugar:</label>
+                                        <input id="lugarcomision"  name="lugarcomision" value="{{ old('lugarcomision') }}" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar lugar de comisión" required="required" type="text">
+                                        <p style="color:red;">{{ $errors->first('lugarcomision') }}</p>
+                                    </div>
                               </div>
+                              <div class="col-sm-12">
+                                <div class="form-group">
+                                  <label for="email">Motivo:</label>
+                                  <input id="motivo"  name="motivo" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar el motivo" required="required" type="text">
+                                </div>
+                              </div> 
+                        </div>
 
-                        </div> 
-                        <div class="col-sm-12">
-                      
+                        <div class="col-sm-6">
+                          <div class="col-sm-12">
                             <div class="form-group">
-                                <label for="email">Por disposición:</label>
-                                  <input id="disposicion"  name="disposicion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar disposión" required="required" type="text">
+                              <label for="email">Por disposición:</label>
+                              <input id="disposicion"  name="disposicion" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" placeholder="Ingresar disposión" required="required" type="text">
+                            </div>
+                          </div> 
+                          <div class="col-sm-6">
+                              <div class="form-group">
+                                  <label for="email">Fecha de salida</label>
+                                  <input type="date" class="form-control" id="fechasalida" name="fechasalida">
                               </div>
+                          </div> 
+                          <div class="col-sm-6">
+                              <div class="form-group">
+                                  <label for="email">Hora de salida</label>
+                                  <input type="time" class="form-control" id="horasalida" name="horasalida">
+                              </div>
+                          </div> 
+                        <!-- <div class="col-sm-2">
+                            <div class="form-group">
+                                  <label for="email">Fecha de llegada</label>
+                                  <input id="fechallegada"  name="fechallegada" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
 
+                                </div>
+                          </div> 
+
+                          <div class="col-sm-4">
+                            <div class="form-group">
+                                  <label for="email">Hora de llegada</label>
+                                <div>
+                                <input id="horallegada"  name="horallegada" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="time" placeholder="Hora de salida">  
+                                </div>
+                                </div>
+                          </div> -->
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Fecha de retorno</label>
+                                <input type="date" class="form-control" id="fecharetorno" name="fecharetorno" readonly>
+                            </div>
                         </div> 
-
-                    </div> 
-
-                   
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                            <label for="email">Fecha de salida</label>
-                            <input id="fechasalida"  name="fechasalida" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
-
-                          </div>
-                    </div> 
-
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                            <label for="email">Hora de salida</label>
-                          <div>
-                           <input id="horasalida"  name="horasalida" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="time" placeholder="Hora de salida">   
-                          </div>
-                          </div>
-                    </div> 
-
-                  <!-- <div class="col-sm-2">
-                      <div class="form-group">
-                            <label for="email">Fecha de llegada</label>
-                            <input id="fechallegada"  name="fechallegada" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date">
-
-                          </div>
-                    </div> 
-
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                            <label for="email">Hora de llegada</label>
-                          <div>
-                           <input id="horallegada"  name="horallegada" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="time" placeholder="Hora de salida">  
-                          </div>
-                          </div>
-                    </div> -->
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                            <label for="email">Fecha de retorno</label>
-                            <input id="fecharetorno"  name="fecharetorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="date" readonly>
-
-                          </div>
-                    </div> 
-
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                            <label for="email">Hora de retorno</label>
-                          <div>
-                            <input id="horaretorno"  name="horaretorno" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" required="required" type="text" placeholder="Hora de retorno" readonly>  
-                          </div>
-                          </div>
-                    </div> 
-                    <div class="col-md-6">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="email">Hora de retorno</label>
+                                <input type="time" class="form-control" id="horaretorno" name="horaretorno" readonly>
+                            </div>
+                        </div> 
+                          <div class="col-md-12">
                             <label class="control-label" for="name">Observación <span class="required">*</span>
                             </label>
-                          <div class="col-md-12">
-                            <textarea id="observacion" name="observacion" required="required" class="form-control" name="message" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
-                                data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones" readonly></textarea>
+                            <div class="col-md-12">
+                              <textarea id="observacion" name="observacion" class="form-control" data-parsley-trigger="keyup" data-parsley-minlength="20" data-parsley-maxlength="100" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."
+                              data-parsley-validation-threshold="10" placeholder="Ingrese sus observaciones" readonly></textarea>
+                            </div>
                           </div>
-                     </div>
-                   
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
+
+                    <div class="col-sm-6">
+                        
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                              <input type="hidden" id="idpersonaBuscador" name="idpersonaBuscador">
+                          </div>
+                        </div> 
+                    </div> 
                    <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                             <button id="enviarComision" type="button" class="btn btn-success"><i class="fa fa-save"> Guardar</i></button>
@@ -481,8 +461,10 @@
 
                     $('#numerocomision').val(nuevoNumero);
                     $("#cippersona").val(cip);
-                    $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
+                    $("#nombrecompletopersona").html(nombre+' '+ape+' '+apm);
                     $("#gradopersona").val(grado);
+                    $("#grado").html(grado);
+                    $("#cipP").html(cip);
                     $("#fechasalida").val(respuesta.date);
 
                   }
@@ -522,8 +504,10 @@
                     var grado=dato.nombrecorto;
                     $("#cippersona").val(cip);
                     $("#idpersonaBuscador").val(id);
-                    $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
+                    $("#nombrecompletopersona").html(nombre+' '+ape+' '+apm);
                     $("#gradopersona").val(grado);
+                    $("#grado").html(grado);
+                    $("#cipP").html(cip);
                     $("#fechasalida").val(respuesta.date);
                   }
               });

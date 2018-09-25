@@ -47,7 +47,7 @@
                             <div class="x_title">
                             <a href="{{('/asignarcomision/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
                             <a href="{{route('comisionporunidad')}}" class="btn btn-primary" target="_blank">Reporte unidad</a>  
-                              
+                            <a href="{{route('reporteexcelpendientescomision')}}" class="btn btn-primary" target="_blank">excel</a>    
                               <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
@@ -56,8 +56,8 @@
                                  <h2>Comisiones<small></small></h2>
                                  
                                     <a href="{{url('asignarcomision')}}" class="btn btn-warning">Todo</a> 
-                                    <a href="{{route('selectListadoComision', 'proceso')}}" class="btn btn-success">Proceso</a> 
-                                    <a href="{{route('selectListadoComision', 'culminado')}}" class="btn btn-primary"><i class="fa fa-file-pdf-o"> Culminado</i></a>
+                                    <a href="{{route('selectListadoComision', 'proceso')}}" class="btn btn-success">Pendiente</a> 
+                                    <a href="{{route('selectListadoComision', 'culminado')}}" class="btn btn-primary"><i class="fa fa-file-pdf-o"> Controlado</i></a>
                             
                                   <hr/>
                                 <thead>

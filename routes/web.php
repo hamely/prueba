@@ -99,10 +99,7 @@ Route::get('papeletareincorporacioncomision/{id?}','ProcesoComisionController@pd
 Route::get('comisionporunidad','ProcesoComisionController@pdfcomisionporunidad')->name('comisionporunidad');
 Route::get('culminarcomision/{id?}', 'ProcesoComisionController@culminarcomision')->name('culminarcomision');
 Route::post('terminarcomision/','ProcesoComisionController@terminarcomision')->name('terminarcomision');
-
-
-
-
+Route::get('reporteexcelpendientescomision','ProcesoComisionController@excelpendientescomision')->name('reporteexcelpendientescomision');
 
 Route::get('tags','PersonaController@buscar');
 
