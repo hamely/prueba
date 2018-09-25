@@ -287,6 +287,12 @@ class ProcesoComisionController extends Controller
         return $pdf->stream('papeletacomision.pdf'); 
     }
 
+    public function pdfpapeletacomisionpornumero(Request $request)
+    {
+        $pdf=PDF::loadView('reportes.personacomision.papeletacomisionpornumerocomision');
+        return $pdf->stream('papeleta.pdf'); 
+    }
+
     public function pdfhistorialpersonacomision($id)
     {
         $historialcomisionpersona = DB :: table('asignar_comision')
