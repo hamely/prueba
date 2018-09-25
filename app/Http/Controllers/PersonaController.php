@@ -137,7 +137,13 @@ class PersonaController extends Controller
             ->groupby('asignar_comision.persona_id')
             ->get()[0];
 
-            return response(["data" => $search,'maxComision'=>$maxComision]);
+            $nuevoNumeroComision=(int)($maxComision->numerocomision)+1;
+            
+            $dateSistema = Carbon::now();
+            
+            $date = $dateSistema->format('Y-m-d');
+
+            return response(["data" => $search,'nuevoNumeroComision'=>$nuevoNumeroComision,'date'=>$date]);
         }
     }
      public function searchCipPersona()

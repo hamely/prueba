@@ -328,7 +328,7 @@
                     });
                  },
                   success: function(respuesta) {
-                      toastr.success("YYEESSSSSSS");
+                      toastr.success("SE REGISTRO CORRECTAMENTE LA COMISIÓN");
                   }
               });
         
@@ -476,9 +476,14 @@
                     var apm=dato.apellidomaterno;
                     var nombre=dato.nombres;
                     var grado=dato.nombrecorto;
+                    var nuevoNumero=respuesta.nuevoNumeroComision;
+                    var dato=respuesta.data;
+
+                    $('#numerocomision').val(nuevoNumero);
                     $("#cippersona").val(cip);
                     $("#nombrecompletopersona").val(nombre+' '+ape+' '+apm);
                     $("#gradopersona").val(grado);
+                    $("#fechasalida").val(respuesta.date);
 
                   }
               });
