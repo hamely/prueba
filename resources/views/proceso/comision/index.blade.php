@@ -1,4 +1,4 @@
-@extends('admin.layout.modulos.descansomedico.master')
+@extends('admin.layout.modulos.controlpersonal.master')
 
 @section('content')
 
