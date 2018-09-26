@@ -14,6 +14,7 @@
                     <li><a><i class="fa fa-ambulance"></i>Descanso médico<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{url('controlardescansomedico')}}">Controlar</a></li>
+                            <li><a href="{{url('reportesDescansoMedico')}}">Reporte</a></li>
                         </ul>
                     </li>
                 @endif

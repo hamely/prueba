@@ -110,4 +110,73 @@ class ProcesoDescansoMedicoController extends Controller
         }       
         return Response(['data'=>$_POST['idPersona']]);
     }
+
+    public function reportedescansomedico()
+    {
+        return view('proceso.descansomedico.reporte');
+    }
+    public function excelpnpcondescansomedico()
+    {
+        Excel::create('Lista Descanso Medico', function($excel) {
+            $excel->sheet('Excel sheet', function($sheet) {
+
+                $sheet->mergeCells('A1:G1');            
+                $sheet->row(1,['LISTADO DE PERSONAS CON DESCANSO MÉDICO']);
+                $sheet->row(2,['NRO.','CIP','APELLIDOS Y NOMBRES','NUMERO DE DÍAS','MOTIVO','FECHA INICIO','FECHA TÉRMINO']);;
+              
+                /*$data= DB::table('asignar_comision')
+                ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','asignar_comision.lugarcomision','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.disposicion')
+                ->join('persona','persona.id','=','asignar_comision.persona_id')
+                ->join('comision','comision.id','=','asignar_comision.comision_id')
+                ->get();
+                $numero=0;
+                foreach($data as $item)
+                {
+                    $numero=(int)$numero+1;
+                    $row=[];
+                    
+                    $row[0]=$numero;
+                    $row[1]=$item->cip;
+                    $row[2]=$item->apellidopaterno.' '.$item->apellidomaterno.' '.$item->nombres;
+                    $row[3]=$item->lugarcomision;
+                    $row[4]=$item->motivo;
+                    $row[5]=$item->disposicion;
+                    $row[6]=$item->fechasalida.' '.$item->horasalida;
+                    $array[]=$row;
+                    $sheet->appendRow($row);
+                }*/
+                    $sheet->getStyle('A1:B5' , $sheet->getHighestRow())->getAlignment()->setWrapText(true);
+                    $sheet->setTitle("Lista Revista-Incluir");
+
+                    $sheet->cells('A1:G1', function($cells)
+                    {
+                        $cells->setAlignment('center');
+                        $cells->setFontWeight('bold');
+                        $cells->setFontSize(14);
+                        $cells->setValignment('center');
+
+                    });
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    )); 
+                    $sheet->cells('A2:G2', function($cells)
+                    {
+                        $cells->setAlignment('center');
+                        $cells->setFontWeight('bold');
+                        $cells->setFontSize(12);
+                        $cells->setValignment('center');
+                    });
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    ));  
+                    
+                    $sheet->setHeight(array
+                    (
+                        '1' => '20'
+                    ));   
+             });
+        })->export('xls');
+    }
 }

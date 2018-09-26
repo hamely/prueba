@@ -286,7 +286,6 @@ class ProcesoMovimientoPersonal extends Controller
 
         //return Excel::download(new movimientoIncluir, 'movimiento.xlsx');
     }
-
     public function movimientoexcluir()
     {
         $data = DB::table('movimiento_personal')
