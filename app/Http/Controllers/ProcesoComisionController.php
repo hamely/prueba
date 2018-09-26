@@ -289,9 +289,10 @@ class ProcesoComisionController extends Controller
 
     public function pdfpapeletacomisionpornumero(Request $request)
     {
+        //return $request;
         $data=DB::table('asignar_comision')
                 ->select('*')
-                ->whereBetween('asignar_comision.numerocomision', [1, 3])
+                ->whereBetween('asignar_comision.numerocomision', [$request->numinicial, $request->numfinal])
                 ->get();
         $pdf=PDF::loadView('reportes.personacomision.papeletacomisionpornumerocomision',compact('data'));
         return $pdf->stream('papeleta.pdf'); 
@@ -349,13 +350,13 @@ class ProcesoComisionController extends Controller
                 ->join('persona','persona.id','=','asignar_comision.persona_id')
                 ->join('comision','comision.id','=','asignar_comision.comision_id')
                 ->get();
-
+                $numero=0;
                 foreach($data as $item)
                 {
+                    $numero=(int)$numero+1;
                     $row=[];
-                    for( $numero=1; $numero<100; $numero++){
-                        $row[0]=$numero;
-                    }
+                    
+                    $row[0]=$numero;
                     $row[1]=$item->cip;
                     $row[2]=$item->apellidopaterno.' '.$item->apellidomaterno.' '.$item->nombres;
                     $row[3]=$item->lugarcomision;

@@ -207,8 +207,9 @@ class ProcesoMovimientoPersonal extends Controller
                 $numero=0; 
                 foreach($data as $item)
                 {
+                    $numero=$numero+1;
                     $row=[];
-                    $row[0]=$numero+1;
+                    $row[0]= $numero;
                     $row[1]=$item->cip;
                     $row[2]=$item->apellidopaterno.' '.$item->apellidomaterno.' '.$item->nombres;
                     $row[3]=$item->codigounidad;

@@ -45,24 +45,18 @@
                           <div class="col-md-12 col-sm-12 col-xs-12">
                           <div class="x_panel">
                             <div class="x_title">
-                                <div class="dropdown">
-                                    <button class="btn btn-primary dropdown-toggle btn-sm" type="button" data-toggle="dropdown">Reportes
-                                    <span class="caret"></span></button>
-                                    <ul class="dropdown-menu">
-                                      
-                                      <li><a  class="btn btn-sm" data-toggle="modal" data-target="#unidad">cargo
-                                      </button></a></li>
-                                      <li><a onclick="" class="btn btn-sm" data-toggle="modal" data-target="#unidadlaboral">unidad
-                                      </button></a></li>
-                                      <li><a onclick="" class="btn btn-sm" data-toggle="modal" data-target="#grado">grado
-                                      </button></a></li>
-                                    </ul>
-                                </div>
+                             
                             <a href="{{('/asignarcomision/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
                             <a href="{{route('comisionporunidad')}}" class="btn btn-primary" target="_blank">Reporte unidad</a>  
                             <a href="{{route('reporteexcelpendientescomision')}}" class="btn btn-primary" target="_blank">excel</a>  
-                            <a href="{{route('reportepapeletacomisionpornumero')}}" class="btn btn-primary" target="_blank">prueba</a>  
+                           
 
+                             {!! Form::open(['route' => ['reportepapeletacomisionpornumero'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
+                            
+                             <input type="number" class="form-control" id="numinicial" name="numinicial" placeholder="N° de comisión">
+                             <input type="number" class="form-control" id="numfinal" name="numfinal" placeholder="N° de comisión">
+                             <button type="submit">prueba</button>
+                             {!! Form::close() !!}
                               <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
