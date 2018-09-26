@@ -101,6 +101,7 @@ Route::get('culminarcomision/{id?}', 'ProcesoComisionController@culminarcomision
 Route::post('terminarcomision/','ProcesoComisionController@terminarcomision')->name('terminarcomision');
 Route::get('reporteexcelpendientescomision','ProcesoComisionController@excelpendientescomision')->name('reporteexcelpendientescomision');
 Route::post('reportepapeletacomisionpornumero','ProcesoComisionController@pdfpapeletacomisionpornumero')->name('reportepapeletacomisionpornumero');
+Route::get('reportecomision','ProcesoComisionController@reportescomision')->name('reportecomision');
 
 Route::get('tags','PersonaController@buscar');
 

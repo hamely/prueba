@@ -44,19 +44,8 @@
                           <div class="row">
                           <div class="col-md-12 col-sm-12 col-xs-12">
                           <div class="x_panel">
-                            <div class="x_title">
-                             
-                            <a href="{{('/asignarcomision/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
-                            <a href="{{route('comisionporunidad')}}" class="btn btn-primary" target="_blank">Reporte unidad</a>  
-                            <a href="{{route('reporteexcelpendientescomision')}}" class="btn btn-primary" target="_blank">excel</a>  
-                           
-
-                             {!! Form::open(['route' => ['reportepapeletacomisionpornumero'] , 'method' => 'POST', 'class' => 'form-horizontal','enctype' => 'multipart/form-data' ]) !!}
-                            
-                             <input type="number" class="form-control" id="numinicial" name="numinicial" placeholder="N° de comisión">
-                             <input type="number" class="form-control" id="numfinal" name="numfinal" placeholder="N° de comisión">
-                             <button type="submit">prueba</button>
-                             {!! Form::close() !!}
+                            <div class="x_title">                           
+                              <a href="{{('/asignarcomision/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
                               <div class="clearfix"></div>
                             </div>
                             <div class="x_content">

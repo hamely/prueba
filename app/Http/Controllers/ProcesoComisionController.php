@@ -430,5 +430,10 @@ class ProcesoComisionController extends Controller
      
         return redirect()->route('asignarcomision.index');
     }
+
+    public function reportescomision()
+    {
+        return view('proceso.comision.reporte');
+    }
    
 }

@@ -7,8 +7,8 @@
                 @if(auth()->user()->hasRoles(['admin','com']))
                     <li><a><i class="fa fa-automobile"></i>Comisiones<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ url('asignarcomision') }}">Registro</a></li>
-                            <li><a href="form_advanced.html">Reporte</a></li>
+                            <li><a href="{{ url('asignarcomision') }}">Controlar</a></li>
+                            <li><a href="{{ url('reportecomision')}}">Reportes</a></li>
                         </ul>
                     </li>
                     <li><a><i class="fa fa-ambulance"></i>Descanso médico<span class="fa fa-chevron-down"></span></a>
