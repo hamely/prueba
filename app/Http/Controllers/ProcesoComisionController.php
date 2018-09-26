@@ -291,7 +291,11 @@ class ProcesoComisionController extends Controller
     {
         //return $request;
         $data=DB::table('asignar_comision')
-                ->select('*')
+                ->select('asignar_comision.numerocomision','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','asignar_comision.disposicion','ubigeo.departamento', 'ubigeo.provincia', 'ubigeo.distrito','asignar_comision.lugarcomision','asignar_comision.motivo','asignar_comision.fecharetorno','grado.nombrecorto')
+                ->join('persona', 'persona.id', '=', 'asignar_comision.persona_id')
+                ->join('ubigeo', 'ubigeo.id', '=', 'asignar_comision.ubigeo_id')
+                ->join('persona_grado','persona_grado.persona_id','=','persona.id')
+                ->join('grado','grado.id','=','persona_grado.grado_id')
                 ->whereBetween('asignar_comision.numerocomision', [$request->numinicial, $request->numfinal])
                 ->get();
         $pdf=PDF::loadView('reportes.personacomision.papeletacomisionpornumerocomision',compact('data'));

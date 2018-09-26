@@ -14,7 +14,7 @@
      
         <tr>
             <td width="30%">GRADO Y NOMBRES </td>
-            <td >:       
+            <td >: {{$itemp->nombrecorto}}  {{$itemp->apellidopaterno}}  {{$itemp->apellidomaterno}} {{$itemp->nombres}}
             </td>          
         </tr>       
         <tr>
@@ -24,23 +24,27 @@
         </tr>
         <tr>
             <td width="30%">POR DISPOSICIÓN</td>
-            <td >            
+            <td >: {{$itemp->disposicion }}              
             </td>          
         </tr>
         <tr>
             <td width="30%">A DONDE SE DIRIGE</td>
-            <td >
+            <td >: {{$itemp->departamento}} {{$itemp->provincia}}  {{$itemp->distrito}}, {{$itemp->lugarcomision}} 
             </td>          
         </tr>
         <tr>
             <td width="30%">MOTIVO </td>
-            <td >:             
+            <td >: {{$itemp->motivo}}            
             </td>          
         </tr>
         <tr>
             <td width="30%">DEBIENDO RETORNAR  </td>
-            <td >      
+            @if(is_null($itemp->fecharetorno))
+            <td >: AL TERMINO DE SU COMETIDO         
             </td>    
+            @else
+            <td>{{$itemp->fecharetorno}}</td>
+            @endif        
               
         </tr>
         
@@ -109,7 +113,7 @@
      
         <tr>
             <td width="30%">GRADO Y NOMBRES </td>
-            <td >:
+            <td >: {{$itemp->nombrecorto}} {{$itemp->apellidopaterno}}  {{$itemp->apellidomaterno}} {{$itemp->nombres}}
             </td>          
         </tr>       
         <tr>
@@ -119,23 +123,27 @@
         </tr>
         <tr>
             <td width="30%">POR DISPOSICIÓN</td>
-            <td >:       
+            <td >: {{$itemp->disposicion }}       
             </td>          
         </tr>
         <tr>
             <td width="30%">A DONDE SE DIRIGE</td>
-            <td >: 
+            <td >: {{$itemp->departamento}} {{$itemp->provincia}}  {{$itemp->distrito}}, {{$itemp->lugarcomision}}
             </td>          
         </tr>
         <tr>
             <td width="30%">MOTIVO </td>
-            <td >:         
+            <td >: {{$itemp->motivo}}          
             </td>          
         </tr>
         <tr>
             <td width="30%">DEBIENDO RETORNAR  </td>
-            <td > :       
-            </td>          
+            @if(is_null($itemp->fecharetorno))
+            <td >: AL TERMINO DE SU COMETIDO         
+            </td>    
+            @else
+            <td>{{$itemp->fecharetorno}}</td>
+            @endif              
         </tr>
         
     </table>
