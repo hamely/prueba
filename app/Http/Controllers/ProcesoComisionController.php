@@ -311,8 +311,8 @@ class ProcesoComisionController extends Controller
             ->join('comision', 'comision.id', '=', 'asignar_comision.comision_id')
             ->join('persona_grado','persona_grado.persona_id','=','persona.id')
             ->join('grado','grado.id','=','persona_grado.grado_id')
-            ->join('persona_unidad','persona_unidad.persona_id','=','persona.id')
-            ->join('unidadlaboral','unidadlaboral.id','=','persona_unidad.unidad_id')
+            ->leftJoin('persona_unidad','persona_unidad.persona_id','=','persona.id')
+            ->leftJoin('unidadlaboral','unidadlaboral.id','=','persona_unidad.unidad_id')
             ->where('persona.id',$id)
             ->get();
         $pdf = PDF::loadView('reportes.historialcomisionpersona', compact('historialcomisionpersona'));

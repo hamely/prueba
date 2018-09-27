@@ -8,10 +8,6 @@
             $i=$i+1;
             $htmlTemp.=
                         '<tr>'.
-                        '<td width="30%">UNIDAD</td>'.
-                        '<td>:'.' '. $item->nivel2.' '.$item->nivel4.' '.$item->nivel6.' '.$item->nivel8.' '.$item->nivel10.' '.$item->nivel12.' '.$item->nivel14.' '.
-                        '</td>'.
-                        '<tr>'.
                         '<td width="30%">GRADO </td>'.
                         '<td >:'.' '. $item->nombrecorto.' '.
                         '</td>'.      
@@ -20,13 +16,7 @@
                         '<td width="30%">APELLIDOS Y NOMBRES </td>'.
                         '<td >:'.' '. $item->apellidopaterno.' '.$item->apellidomaterno.' '.$item->nombres.' '.        
                         '</td> '.        
-                        '</tr>'.
-                        '<tr>'.
-                        '<td width="30%">UNIDAD</td>'.
-                        ' <td >:'. ' '.$item->nivel2.' '.$item->nivel4.' '.$item->nivel6.' '.$item->nivel8.' '.$item->nivel10.' '.$item->nivel12.' '.$item->nivel14.' '.
-                        ' </td> '.     
-                        '</tr>	';
-                             
+                        '</tr>';               
             if($i==1)
             break;
         }
@@ -42,7 +32,7 @@
        <?=datosPersonas($historialcomisionpersona);?>
 </table>
  <br/>
-<table style="font-size:13px; margin-left:35px; border: solid 1px;">
+<table table border="1" style="font-size:13px;">
     <thead>
         <tr>
             <th>N° comisión</th>
@@ -60,7 +50,7 @@
             <tr>
                 <td>{{$item->numerocomision }}</td>
                 <td>{{$item->nombrecomision }}</td>
-                <td>{{$item->departamento}}-{{$item->provincia}}-{{$item->distrito}}, {{$item->lugarcomision}}</td>
+                <td>{{$item->departamento}} {{$item->provincia}} {{$item->distrito}}, {{$item->lugarcomision}}</td>
                 <td>{{$item->motivo }}</td>
                 <td>{{$item->disposicion }}</td>
                 <td>{{$item->fechasalida }}</td>

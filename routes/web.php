@@ -138,6 +138,7 @@ Route::resource('controlardescansomedico','ProcesoDescansoMedicoController');
 Route::post('insertAsignarDescansoMedico','ProcesoDescansoMedicoController@asignardescansomedicoinsert')->name('insertAsignarDescansoMedico');
 Route::get('reportesDescansoMedico','ProcesoDescansoMedicoController@reportedescansomedico')->name('reportesDescansoMedico');
 Route::get('reporteExcelDescansoMedico','ProcesoDescansoMedicoController@excelpnpcondescansomedico')->name('reporteExcelDescansoMedico');
+Route::get('historialpersonadescanso/{id}','ProcesoPersonaCargo@pdfhistorialpersonadescanso')->name('historialpersonadescanso');
 
 Route::get('login','Auth\LoginController@showLogForm');
 Route::post('login','Auth\LoginController@login');

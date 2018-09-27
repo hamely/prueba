@@ -45,9 +45,7 @@
                           <div class="col-md-12 col-sm-12 col-xs-12">
                           <div class="x_panel">
                             <div class="x_title">
-                            <a href="{{('/controlardescansomedico/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a>
-                            <a href="" class="btn btn-primary" target="_blank">Reporte unidad</a>  
-                              
+                            <a href="{{('/controlardescansomedico/create')}}" class="btn btn-success "><i class="fa fa-plus-circle"> Nuevo</i></a> 
                               <div class="clearfix"></div>
                             </div>
                             <div class="x_content">

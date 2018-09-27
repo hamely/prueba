@@ -43,7 +43,7 @@
                           <div class="col-md-12 col-sm-12 col-xs-12">
                           <div class="x_panel">
                             <div class="x_title">
-                            <a href="{{route('reporteExcelDescansoMedico')}}" class="btn btn-success" target="_blank">PERSONAL PENDIENTE</a>   
+                            <a href="{{route('reporteExcelDescansoMedico')}}" class="btn btn-success" target="_blank">REPORTE PERSONAL CON DESCANSO MÉDICO</a>   
                             <hr/>
                            
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\ControlarDescansoMedico;
+use Maatwebsite\Excel\Facades\Excel;
 class ProcesoDescansoMedicoController extends Controller
 {
     /**
@@ -124,6 +125,24 @@ class ProcesoDescansoMedicoController extends Controller
                 $sheet->row(1,['LISTADO DE PERSONAS CON DESCANSO MÉDICO']);
                 $sheet->row(2,['NRO.','CIP','APELLIDOS Y NOMBRES','NUMERO DE DÍAS','MOTIVO','FECHA INICIO','FECHA TÉRMINO']);;
               
+                $data= DB::table('persona_descanso')
+                        ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona_descanso.numerodescanso','descanso.nombre as nombredescanso','persona_descanso.fechaemision','persona_descanso.fechatermino')
+                        ->join('persona','persona.id','=','persona_descanso.persona_id')
+                        ->join('descanso','descanso.id','=','persona_descanso.descanso_id')
+                        ->get();
+                foreach($data as $item)
+                {
+                    $row=[];
+                    $row[0]='';
+                    $row[1]=$item->cip;
+                    $row[2]=$item->apellidopaterno.' '.$item->apellidomaterno;
+                    $row[3]=$item->numerodescanso;
+                    $row[4]=$item->nombredescanso;
+                    $row[5]=$item->fechaemision;
+                    $row[6]=$item->fechatermino;
+                    $array[]=$row;
+                    $sheet->appendRow($row);
+                }
                 /*$data= DB::table('asignar_comision')
                 ->select('persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','asignar_comision.lugarcomision','asignar_comision.motivo','asignar_comision.fechasalida','asignar_comision.horasalida','asignar_comision.disposicion')
                 ->join('persona','persona.id','=','asignar_comision.persona_id')
