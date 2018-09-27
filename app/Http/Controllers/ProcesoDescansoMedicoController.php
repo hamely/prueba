@@ -5,6 +5,7 @@ use DB;
 use Illuminate\Http\Request;
 use App\ControlarDescansoMedico;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade as PDF;
 class ProcesoDescansoMedicoController extends Controller
 {
     /**
@@ -116,6 +117,19 @@ class ProcesoDescansoMedicoController extends Controller
     {
         return view('proceso.descansomedico.reporte');
     }
+
+    public function pdfhistorialpersonadescanso($id)
+    {
+        $historialdescansopersona = DB :: table('persona_descanso')
+        ->select('persona.id' ,'persona.cip','persona.apellidopaterno','persona.apellidomaterno','persona.nombres','persona_descanso.numerodescanso','persona_descanso.fechaemision','persona_descanso.fechatermino')
+            ->join('persona', 'persona.id', '=', 'persona_descanso.persona_id')
+            ->join('descanso','descanso.id','=','persona_descanso.descanso_id')
+            ->where('persona.id',$id)
+            ->get();
+        $pdf = PDF::loadView('reportes.controlpersonal.descansomedico.historialpersonadescanso', compact('historialdescansopersona'));
+        return $pdf->stream('historialdescansopersona.pdf');    
+    }
+
     public function excelpnpcondescansomedico()
     {
         Excel::create('Lista Descanso Medico', function($excel) {

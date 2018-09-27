@@ -78,7 +78,7 @@
                                     <td>{{$item->expedido}}</td>
                                     <td>{{$item->diagnostico}}</td>
                                     <td></td>
-                                    <td></td>
+                                    <td> <a href="{{route('historialpersonadescanso', $item->personaid)}}" class="btn btn-default btn-xs btn-warning"><i class="fa fa-file-pdf-o"> Historial</i></a></td>
                                 </tr>
                                 @endforeach                  
                               </tbody>
@@ -87,15 +87,7 @@
                           </div>
                          </div>
                        </div>
-
-
-
-
-
-                        </div>
-                        
-                        
-
+                        </div>                      
                       </div>
                     </div>
 
