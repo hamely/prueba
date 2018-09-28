@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\ControlarDescansoMedico;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Auth;
 class ProcesoDescansoMedicoController extends Controller
 {
     /**
@@ -16,9 +17,10 @@ class ProcesoDescansoMedicoController extends Controller
     public function index()
     {
         $data = DB::table('persona_descanso')
-        ->select(DB::raw('max(persona.cip) as cip ,max(persona_descanso.id) as id_as_co, max(persona.id) as personaid,max(persona.fechanacimiento) as fechanacimiento,max(persona.apellidopaterno) as apellidopaterno,max(persona.apellidomaterno) as apellidomaterno,max(persona.nombres) as nombres, max(persona_descanso.dia) as dia, max(persona_descanso.numerodescanso)as numerodescanso, max(persona_descanso.expedido) as expedido, max(descanso.nombre) as diagnostico '))
+        ->select(DB::raw('max(persona.cip) as cip ,max(persona_descanso.id) as id_as_co, max(persona.id) as personaid,max(persona.fechanacimiento) as fechanacimiento,max(persona.apellidopaterno) as apellidopaterno,max(persona.apellidomaterno) as apellidomaterno,max(persona.nombres) as nombres, max(persona_descanso.dia) as dia, max(persona_descanso.numerodescanso)as numerodescanso, max(persona_descanso.expedido) as expedido, max(descanso.nombre) as diagnostico, max(users.name) as name'))
         ->join('persona', 'persona.id', '=', 'persona_descanso.persona_id')
         ->join('descanso', 'descanso.id', '=', 'persona_descanso.descanso_id')
+        ->join('users','users.id','=','persona_descanso.usuario_id')
         ->groupby('persona_descanso.persona_id')
         ->orderBy('persona_descanso.id', 'desc')
         ->get();
@@ -95,7 +97,9 @@ class ProcesoDescansoMedicoController extends Controller
         //
     }
     public function asignardescansomedicoinsert(Request $request)
-    {
+    { 
+        $user = Auth::user();
+        $usuarioId=$user->id;
         if($request->ajax())
         {
             $insert=new ControlarDescansoMedico;
@@ -108,6 +112,7 @@ class ProcesoDescansoMedicoController extends Controller
             $insert->dia=$_POST['dia'];
             $insert->anio=$_POST['anio'];
             $insert->observacion=$_POST['observacion'];
+            $insert->usuario_id=$usuarioId;
             $insert->save();
         }       
         return Response(['data'=>$_POST['idPersona']]);

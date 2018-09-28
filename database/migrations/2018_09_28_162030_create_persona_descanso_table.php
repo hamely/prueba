@@ -24,6 +24,7 @@ class CreatePersonaDescansoTable extends Migration
             $table->integer('dia')->nullable();
             $table->integer('anio')->nullable();
             $table->string('observacion')->nullable(); 
+            $table->integer('usuario_id')->unsigned()->index();
             $table->timestamps();
         });
     }
