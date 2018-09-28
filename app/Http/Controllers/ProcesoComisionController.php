@@ -15,7 +15,7 @@ use Carbon\Carbon;
 use App\Http\Requests\ProcesoComisionRequest;
 use Maatwebsite\Excel\Facades\Excel;
 //use DispatchesJobs, ValidatesRequests;
-
+use Illuminate\Support\Facades\Auth;
 class ProcesoComisionController extends Controller
 {
     /**
@@ -25,6 +25,8 @@ class ProcesoComisionController extends Controller
      */
     public function index()
     {      
+        
+       
         $date = Carbon::now();
         $fechaSistema=$date->format('Y-m-d');
         //return $fechaSistema;
@@ -201,6 +203,9 @@ class ProcesoComisionController extends Controller
     
         echo 'Ahora sé que los datos están validados. Puedo insertar en la base de datos';*/
            //return $request->all();
+
+           $user = Auth::user();
+           $usuarioId=$user->id;
         if($request->ajax())
         {       
             
