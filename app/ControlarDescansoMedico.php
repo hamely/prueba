@@ -17,5 +17,6 @@ class ControlarDescansoMedico extends Model
         'dia',
         'anio',
         'observacion',
+        'usuario_id',
       ];
 }

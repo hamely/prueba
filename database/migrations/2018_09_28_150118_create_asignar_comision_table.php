@@ -32,8 +32,7 @@ class CreateAsignarComisionTable extends Migration
             $table->string('retorno')->nullable(); 
             $table->string('observacion')->nullable(); //(habilitado)
             $table->string('estado');
-            $table->foreign('persona_id')->references('id')->on('persona');
-            $table->foreign('comision_id')->references('id')->on('comision');
+            $table->integer('usuario_id')->unsigned()->index();
             $table->timestamps();
         });
     }

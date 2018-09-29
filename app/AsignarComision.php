@@ -25,5 +25,6 @@ class AsignarComision extends Model
         'retorno',
         'observacion',
         'estado',
+        'usuario_id',
       ];
 }

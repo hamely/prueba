@@ -75,6 +75,7 @@
                                     <th>Fecha llegada</th>
                                     <th>Observación</th>
                                     <th>Estado</th>
+                                    <th>Controlado por</th>
                                     <th></th>
                                   </tr>
                                 </thead>
@@ -105,6 +106,7 @@
                                       <td style="background: #73C6B6;">{{$item->estado}}</td>
                                       </td>
                                       @endif
+                                      <td>{{$item->name}}</td>
                                       <td>
                                      @if($item->estado=='proceso')
                                       <a href="{{route('culminarcomision', $item->id_as_co)}}" class="btn btn-default btn-xs">Estado</a> 
